@@ -2,19 +2,22 @@ import React from 'react';
 import styles from './WeatherIcon.module.scss';
 import * as weatherImages from '../../assets/weather-icons';
 
+export enum WeatherIconVariants {
+  Cloudy = 'cloudy',
+  Fog = 'fog',
+  Moon = 'moon',
+  PartySunny = 'partlySunny',
+  Rain = 'rain',
+  Shower = 'shower',
+  Snow = 'snow',
+  Sun = 'sun',
+  SunnyRain = 'sunnyRain',
+  Thunder = 'thunder',
+  Windy = 'windy',
+}
+
 export type WeatherIconPropsType = {
-  icon:
-  'cloudy' |
-  'fog' |
-  'moon' |
-  'partlySunny' |
-  'rain' |
-  'shower' |
-  'snow' |
-  'sun' |
-  'sunnyRain' |
-  'thunder' |
-  'windy'
+  icon: WeatherIconVariants
   size?: 'small' | 'default' | 'large'
 };
 

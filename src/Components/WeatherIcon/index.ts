@@ -1,4 +1,4 @@
-import WeatherIcon, { WeatherIconPropsType } from './WeatherIcon';
+import WeatherIcon, { WeatherIconPropsType, WeatherIconVariants } from './WeatherIcon';
 
-export { WeatherIcon };
+export { WeatherIcon, WeatherIconVariants };
 export type { WeatherIconPropsType };
