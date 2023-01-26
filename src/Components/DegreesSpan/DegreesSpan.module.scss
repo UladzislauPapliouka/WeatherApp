@@ -1,0 +1,15 @@
+.degreesSpan {
+  font-size: 0.8125em;
+  font-weight: 200;
+  &.default {
+    font-size: 32px;
+  }
+
+  &.small {
+    font-size: 20px;
+  }
+
+  &.large {
+    font-size: 44px;
+  }
+}
