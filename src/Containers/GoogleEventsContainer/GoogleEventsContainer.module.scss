@@ -1,0 +1,14 @@
+.googleEventsContainer {
+  max-width: 500px;
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: auto;
+
+  & > div {
+    margin: 0 0 1em 0;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
