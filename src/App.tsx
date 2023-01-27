@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import SettingsModal from './Components/SettingsModal';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <SettingsModal isOpen onClose={() => { console.log('Modal try to close'); }} />
     </div>
   );
 }
