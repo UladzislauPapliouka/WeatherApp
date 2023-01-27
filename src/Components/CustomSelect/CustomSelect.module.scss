@@ -1,0 +1,48 @@
+.customSelect {
+  background-color: rgba(53, 62, 77, 0.7);
+  padding: 0.5em;
+  color: #f1eaea;
+  font-size: 20px;
+  position: relative;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 0.6em solid transparent;
+    border-right: 0.6em solid transparent;
+    border-top: 0.6em solid #353e4d;
+    line-height: 0;
+    float: left;
+
+    &.activeArrow {
+      transform: rotateX(180deg);
+    }
+  }
+
+  .dropdownMenu {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    background-color: rgba(53, 62, 77, 0.7);
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+
+    span {
+      width: 100%;
+      text-align: left;
+
+      &:hover {
+        background-color: rgba(53, 62, 77, 0.9);
+        color: #FFF;
+      }
+    }
+  }
+}
