@@ -1,11 +1,13 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import styles from './SettingsModal.module.scss';
+import CustomSelect from '../CustomSelect';
 
 type SettingModalPropsTyp = {
   isOpen:boolean,
   onClose: ()=>void
 };
 export default function SettingsModal({ isOpen, onClose }:SettingModalPropsTyp) {
+  const [preferredService, setPreferredService] = useState<string>('OpenWeather');
   const onClickModalBackgroundHandler = () => {
     onClose();
   };
@@ -13,6 +15,7 @@ export default function SettingsModal({ isOpen, onClose }:SettingModalPropsTyp) 
     event.stopPropagation();
   };
   const onKeyDownAny = () => {};
+  // TODO: Restyling
   return isOpen ? (
     <div tabIndex={0} role="button" onKeyDown={onKeyDownAny} onClick={onClickModalBackgroundHandler} className={styles.modalContainer}>
       <div
@@ -23,6 +26,9 @@ export default function SettingsModal({ isOpen, onClose }:SettingModalPropsTyp) 
         className={styles.modalWindow}
       >
         <h3>Settings</h3>
+        <h4>Service</h4>
+        <CustomSelect options={['OpenWeather', 'StormGlass']} selected={preferredService} onChangeSelected={setPreferredService} />
+        <button className={styles.applyButton} type="submit">Apply</button>
       </div>
     </div>
   ) : (null);
