@@ -1,30 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import React, { useState } from 'react';
+import styles from './App.module.scss';
+import WeatherForecastContainer from './Containers/WeatherForecastContainer';
+import DateBlock from './Components/DateBlock';
+import PlaceBlock from './Components/PlaceBlock';
+import GoogleEventsContainer from './Containers/GoogleEventsContainer';
+import bg1 from './assets/backgrounds/bg1.jpg';
+import bg2 from './assets/backgrounds/bg2.jpg';
+import SettingIcon from './Components/Icons';
 import SettingsModal from './Components/SettingsModal';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <SettingsModal isOpen onClose={() => { console.log('Modal try to close'); }} />
+    <div style={{ backgroundImage: `url(${bg1})` }} className={styles.App}>
+
+      <div className={styles.AppBackground}>
+        <div style={{ backgroundImage: `url(${bg2})` }} className={styles.container}>
+          <div
+            tabIndex={-1}
+            onKeyDown={() => {
+            }}
+            onClick={() => {
+              setIsModalOpen(true);
+            }}
+            role="button"
+            className={styles.settingButton}
+          >
+            <SettingIcon color="#f1eaea" scale={1} />
+          </div>
+          <div className={styles.withGoogleEvents}>
+            <div className={styles.info}>
+              <DateBlock />
+              <PlaceBlock />
+            </div>
+            <GoogleEventsContainer />
+          </div>
+          <WeatherForecastContainer />
+          <SettingsModal
+            isOpen={isModalOpen}
+            onClose={() => {
+              setIsModalOpen(false);
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
