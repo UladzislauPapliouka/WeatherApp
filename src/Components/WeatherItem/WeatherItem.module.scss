@@ -1,3 +1,10 @@
+@mixin mobileView {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
 .weatherItem {
   &.compact {
     display: flex;
@@ -6,14 +13,18 @@
     align-items: center;
     gap: 1em;
     padding: 1em;
-    max-width: 120px;
+    @media screen and (max-width: 481px){
+      @include mobileView;
+    }
   }
 
   &.full {
     display: grid;
     grid-template-columns: repeat(2, 100px);
     grid-template-rows: repeat(2, 1fr);
-
+    @media screen and (max-width: 481px){
+      @include mobileView;
+    }
     & > .iconContainer {
       grid-column-start: 1;
       grid-column-end: 2;
