@@ -1,3 +1,3 @@
-import SettingIcon from './Icons';
+import { SettingIcon, RefreshIcon } from './Icons';
 
-export default SettingIcon;
+export { RefreshIcon, SettingIcon };

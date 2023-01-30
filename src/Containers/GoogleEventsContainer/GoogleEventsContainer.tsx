@@ -13,7 +13,9 @@ export default function GoogleEventsContainer() {
             {events.map((event) => <GoogleEvent time={event.time} eventTitle={event.title} />)}
           </>
         )
-        : <span>No events</span>}
+        : (
+          <span>No events or not logged in</span>
+        )}
     </div>
   );
 }

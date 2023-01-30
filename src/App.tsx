@@ -6,7 +6,7 @@ import PlaceBlock from './Components/PlaceBlock';
 import GoogleEventsContainer from './Containers/GoogleEventsContainer';
 import bg1 from './assets/backgrounds/bg1.jpg';
 import bg2 from './assets/backgrounds/bg2.jpg';
-import SettingIcon from './Components/Icons';
+import { SettingIcon } from './Components/Icons';
 import SettingsModal from './Components/SettingsModal';
 
 function App() {

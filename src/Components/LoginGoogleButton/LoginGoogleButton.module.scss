@@ -1,0 +1,25 @@
+.loginGoogleButton {
+  background-color: #FFFFFF;
+  border: 2px solid black;
+  padding: 1em 2em;
+  width: fit-content;
+  border-radius: 2em;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+
+  img {
+    width: 2em;
+    aspect-ratio: 1;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+}

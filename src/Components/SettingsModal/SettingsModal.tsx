@@ -1,6 +1,7 @@
 import React, { MouseEvent, useState } from 'react';
 import styles from './SettingsModal.module.scss';
 import CustomSelect from '../CustomSelect';
+import LoginGoogleButton from '../LoginGoogleButton';
 
 type SettingModalPropsTyp = {
   isOpen:boolean,
@@ -14,6 +15,7 @@ export default function SettingsModal({ isOpen, onClose }:SettingModalPropsTyp) 
   const onClickModalWindow = (event:MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
+
   const onKeyDownAny = () => {};
   // TODO: Restyling
   return isOpen ? (
@@ -28,7 +30,7 @@ export default function SettingsModal({ isOpen, onClose }:SettingModalPropsTyp) 
         <h3>Settings</h3>
         <h4>Service</h4>
         <CustomSelect options={['OpenWeather', 'StormGlass']} selected={preferredService} onChangeSelected={setPreferredService} />
-        <button className={styles.applyButton} type="submit">Apply</button>
+        <LoginGoogleButton />
       </div>
     </div>
   ) : (null);

@@ -1,10 +1,11 @@
 import React from 'react';
+import refresh from '../../assets/icons/sync.png';
 
 type IconPropsType = {
   color:string,
   scale: number
 };
-export default function SettingIcon({ color, scale }:IconPropsType) {
+function SettingIcon({ color, scale }:IconPropsType) {
   return (
     <svg style={{ transform: `scale(${scale})`, position: 'relative' }} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
       <path d="M0 0h48v48h-48z" fill="none" />
@@ -12,3 +13,12 @@ export default function SettingIcon({ color, scale }:IconPropsType) {
     </svg>
   );
 }
+function RefreshIcon() {
+  return (
+    <img src={refresh} alt="Refresh icon" />
+  );
+}
+export {
+  SettingIcon,
+  RefreshIcon,
+};
