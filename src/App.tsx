@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 import WeatherForecastContainer from './Containers/WeatherForecastContainer';
 import DateBlock from './Components/DateBlock';
@@ -12,6 +12,11 @@ import { action } from './Store/Store';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  useEffect(() => {
+    window.navigator.geolocation.getCurrentPosition((res) => {
+      action('FIND_PLACE', { lon: res.coords.longitude, lat: res.coords.latitude });
+    });
+  }, []);
   return (
     <div style={{ backgroundImage: `url(${bg1})` }} className={styles.App}>
 

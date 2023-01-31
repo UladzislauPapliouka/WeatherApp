@@ -76,6 +76,7 @@ function openWeatherAPIConverterByDay(array:Array<any>):Array<any> {
         name: getDayName(new Date(obj.dt_txt).getDay(), 0),
         degrees: obj.main.temp,
       });
+      console.log(new Date(obj.dt_txt).getDay());
     }
     return null;
   });

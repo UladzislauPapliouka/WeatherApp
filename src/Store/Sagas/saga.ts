@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { call, put, takeLatest } from 'redux-saga/effects';
+import {
+  call, put, takeLatest, select,
+} from 'redux-saga/effects';
 import ApiCalendar from 'react-google-calendar-api';
 import { GoogleEventsActions, PlaceActions, WeatherByDayActions } from '../Reducers';
 import weatherAPI from '../../API/weatherAPI';
@@ -58,7 +60,9 @@ function* loginGoogle(action:any) {
 function* fetchWeatherAPIByDay() {
   try {
     // @ts-ignore
-    const response = yield call(weatherAPI.getWeatherByDay);
+    const location = yield select((state) => state.PlaceReducer.city);
+    // @ts-ignore
+    const response = yield call(weatherAPI.getWeatherByDay, location);
     yield put(
       {
         type: PlaceActions.setPlace.type,
@@ -90,7 +94,9 @@ function* fetchWeatherAPIByDay() {
 function* fetchWeatherAPIByHours() {
   try {
     // @ts-ignore
-    const response = yield call(weatherAPI.getWeatherByHours);
+    const location = yield select((state) => state.PlaceReducer.city);
+    // @ts-ignore
+    const response = yield call(weatherAPI.getWeatherByHours, location);
     const currentHours = new Date().getHours();
     yield put(
       {
@@ -126,12 +132,14 @@ function* fetchWeatherAPIByHours() {
 function* fetchOpenWeatherAPIByDay() {
   try {
     // @ts-ignore
-    const response = yield call(openWeatherAPI.getWeatherByDay);
+    const location = yield select((state) => state.PlaceReducer.coord);
+    // @ts-ignore
+    const response = yield call(openWeatherAPI.getWeatherByDay, location.lat, location.lon);
     const { list } = response.data;
     yield put(
       {
         type: PlaceActions.setPlace.type,
-        payload: { city: response.data.city.name, country: response.data.city.country },
+        payload: { city: response.data.city.name, country: new Intl.DisplayNames(['en'], { type: 'region' }).of(response.data.city.country) },
       },
     );
     yield put(
@@ -143,7 +151,7 @@ function* fetchOpenWeatherAPIByDay() {
             name: 'Today',
             degrees: list[0].main.temp,
           },
-        ].concat(openWeatherAPIConverterByDay(list.slice(8))),
+        ].concat(openWeatherAPIConverterByDay(list)),
       },
     );
   } catch (e) {
@@ -154,7 +162,9 @@ function* fetchOpenWeatherAPIByDay() {
 function* fetchOpenWeatherAPIByHours() {
   try {
     // @ts-ignore
-    const response = yield call(openWeatherAPI.getWeatherByHours);
+    const location = yield select((state) => state.PlaceReducer.coord);
+    // @ts-ignore
+    const response = yield call(openWeatherAPI.getWeatherByHours, location.lat, location.lon);
     const { list } = response.data;
     yield put(
       {
@@ -178,7 +188,60 @@ function* fetchOpenWeatherAPIByHours() {
     console.log(e);
   }
 }
-
+function* findPlace(action:any) {
+  try {
+    // @ts-ignore
+    const response = yield call(weatherAPI.getFindPlace, action.payload.lat, action.payload.lon);
+    const place = response.data[0];
+    yield put(
+      {
+        type: PlaceActions.setPlace.type,
+        payload: {
+          city: place.name,
+          country: place.country,
+          coord: {
+            lat: place.lat,
+            lon: place.lon,
+          },
+        },
+      },
+    );
+    if (place) {
+      yield put({ type: 'FETCH_STORM_BY_DAY' });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+function* findPlaceByCoords(action:any) {
+  try {
+    // @ts-ignore
+    const response = yield call(
+      openWeatherAPI.getPlaceByCoords,
+      action.payload.lat,
+      action.payload.lon,
+    );
+    const place = response.data[0];
+    yield put(
+      {
+        type: PlaceActions.setPlace.type,
+        payload: {
+          city: place.local_names.en || place.local_names.ascii,
+          country: place.country,
+          coord: {
+            lat: place.lat,
+            lon: place.lon,
+          },
+        },
+      },
+    );
+    if (place) {
+      yield put({ type: 'FETCH_OPEN_BY_DAY' });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
 /*
   Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
   dispatched while a fetch is already pending, that pending fetch is cancelled
@@ -191,6 +254,8 @@ function* mySaga() {
   yield takeLatest('FETCH_STORM_BY_HOURS', fetchWeatherAPIByHours);
   yield takeLatest('FETCH_OPEN_BY_DAY', fetchOpenWeatherAPIByDay);
   yield takeLatest('FETCH_OPEN_BY_HOURS', fetchOpenWeatherAPIByHours);
+  yield takeLatest('FIND_PLACE', findPlace);
+  yield takeLatest('FIND_PLACE_BY_COORDS', findPlaceByCoords);
 }
 
 export default mySaga;

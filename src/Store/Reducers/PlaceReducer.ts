@@ -3,22 +3,25 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type PlaceInitialStateType = {
   city:string,
-  country:string
+  country:string,
+  coord: {
+    lat:number,
+    lon:number
+  }
 };
 const initialState: PlaceInitialStateType = {
   city: 'Minsk',
   country: 'Belarus',
+  coord: {
+    lat: 0,
+    lon: 0,
+  },
 };
 const PlaceSlice = createSlice({
   name: 'PLACE',
   initialState,
   reducers: {
-    setPlace: (state, action:PayloadAction<PlaceInitialStateType>) => {
-      // eslint-disable-next-line no-param-reassign
-      state.city = action.payload.city;
-      // eslint-disable-next-line no-param-reassign
-      state.country = action.payload.country;
-    },
+    setPlace: (state, action:PayloadAction<PlaceInitialStateType>) => action.payload,
   },
 });
 const PlaceReducer = PlaceSlice.reducer;
