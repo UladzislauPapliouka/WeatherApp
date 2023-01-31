@@ -1,12 +1,12 @@
 import { PlaceReducer, PlaceActions } from './PlaceReducer';
 import { GoogleEventsReducer, GoogleEventsActions } from './GoogleEventsReducer';
-import { WeatherByDayReducer, WeatherByDayActions } from './WeatherByDayReducer';
+import { WeatherReducer, WeatherActions } from './WeatherReducer';
 
 export {
   PlaceActions,
   PlaceReducer,
   GoogleEventsActions,
   GoogleEventsReducer,
-  WeatherByDayActions,
-  WeatherByDayReducer,
+  WeatherActions,
+  WeatherReducer,
 };

@@ -1,15 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
-  call, put, takeLatest, select,
+  call, put, select, takeLatest,
 } from 'redux-saga/effects';
 import ApiCalendar from 'react-google-calendar-api';
-import { GoogleEventsActions, PlaceActions, WeatherByDayActions } from '../Reducers';
+import { GoogleEventsActions, PlaceActions, WeatherActions } from '../Reducers';
 import weatherAPI from '../../API/weatherAPI';
-import {
-  getWeatherIcon, getDayName, openWeatherAPIConverterByDay,
-  getOpenWeatherIcon, openWeatherAPIConverterByHours,
-} from '../../Services/services';
-import openWeatherAPI from '../../API/openWeatherAPI';
+import { getDayName, getWeatherIcon } from '../../Services/services';
 
 const config = {
   clientId: '573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com',
@@ -71,7 +67,7 @@ function* fetchWeatherAPIByDay() {
     );
     yield put(
       {
-        type: WeatherByDayActions.setInfo.type,
+        type: WeatherActions.setInfo.type,
         payload: [
           {
             icon: getWeatherIcon(response.data.current.condition.code),
@@ -90,7 +86,6 @@ function* fetchWeatherAPIByDay() {
     console.log(e);
   }
 }
-
 function* fetchWeatherAPIByHours() {
   try {
     // @ts-ignore
@@ -106,7 +101,7 @@ function* fetchWeatherAPIByHours() {
     );
     yield put(
       {
-        type: WeatherByDayActions.setInfo.type,
+        type: WeatherActions.setInfo.type,
         payload: [
           {
             icon: getWeatherIcon(response.data
@@ -122,66 +117,6 @@ function* fetchWeatherAPIByHours() {
               degrees: obj.temp_c,
             })),
         ],
-      },
-    );
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-function* fetchOpenWeatherAPIByDay() {
-  try {
-    // @ts-ignore
-    const location = yield select((state) => state.PlaceReducer.coord);
-    // @ts-ignore
-    const response = yield call(openWeatherAPI.getWeatherByDay, location.lat, location.lon);
-    const { list } = response.data;
-    yield put(
-      {
-        type: PlaceActions.setPlace.type,
-        payload: { city: response.data.city.name, country: new Intl.DisplayNames(['en'], { type: 'region' }).of(response.data.city.country) },
-      },
-    );
-    yield put(
-      {
-        type: WeatherByDayActions.setInfo.type,
-        payload: [
-          {
-            icon: getOpenWeatherIcon(list[0].weather[0].id),
-            name: 'Today',
-            degrees: list[0].main.temp,
-          },
-        ].concat(openWeatherAPIConverterByDay(list)),
-      },
-    );
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-function* fetchOpenWeatherAPIByHours() {
-  try {
-    // @ts-ignore
-    const location = yield select((state) => state.PlaceReducer.coord);
-    // @ts-ignore
-    const response = yield call(openWeatherAPI.getWeatherByHours, location.lat, location.lon);
-    const { list } = response.data;
-    yield put(
-      {
-        type: PlaceActions.setPlace.type,
-        payload: { city: response.data.city.name, country: new Intl.DisplayNames(['en'], { type: 'region' }).of(response.data.city.country) },
-      },
-    );
-    yield put(
-      {
-        type: WeatherByDayActions.setInfo.type,
-        payload: [
-          {
-            icon: getOpenWeatherIcon(list[0].weather[0].id),
-            name: 'Now',
-            degrees: list[0].main.temp,
-          },
-        ].concat(openWeatherAPIConverterByHours(list.slice(1, 7))),
       },
     );
   } catch (e) {
@@ -206,38 +141,6 @@ function* findPlace(action:any) {
         },
       },
     );
-    if (place) {
-      yield put({ type: 'FETCH_STORM_BY_DAY' });
-    }
-  } catch (e) {
-    console.log(e);
-  }
-}
-function* findPlaceByCoords(action:any) {
-  try {
-    // @ts-ignore
-    const response = yield call(
-      openWeatherAPI.getPlaceByCoords,
-      action.payload.lat,
-      action.payload.lon,
-    );
-    const place = response.data[0];
-    yield put(
-      {
-        type: PlaceActions.setPlace.type,
-        payload: {
-          city: place.local_names.en || place.local_names.ascii,
-          country: place.country,
-          coord: {
-            lat: place.lat,
-            lon: place.lon,
-          },
-        },
-      },
-    );
-    if (place) {
-      yield put({ type: 'FETCH_OPEN_BY_DAY' });
-    }
   } catch (e) {
     console.log(e);
   }
@@ -247,15 +150,13 @@ function* findPlaceByCoords(action:any) {
   dispatched while a fetch is already pending, that pending fetch is cancelled
   and only the latest one will be run.
 */
+
 function* mySaga() {
   yield takeLatest('USER_FETCH_REQUESTED', fetchUser);
   yield takeLatest('GOOGLE_LOGIN', loginGoogle);
   yield takeLatest('FETCH_STORM_BY_DAY', fetchWeatherAPIByDay);
   yield takeLatest('FETCH_STORM_BY_HOURS', fetchWeatherAPIByHours);
-  yield takeLatest('FETCH_OPEN_BY_DAY', fetchOpenWeatherAPIByDay);
-  yield takeLatest('FETCH_OPEN_BY_HOURS', fetchOpenWeatherAPIByHours);
   yield takeLatest('FIND_PLACE', findPlace);
-  yield takeLatest('FIND_PLACE_BY_COORDS', findPlaceByCoords);
 }
 
 export default mySaga;

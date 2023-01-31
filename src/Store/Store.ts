@@ -4,8 +4,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import createSagaMiddleware from 'redux-saga';
-import { PlaceReducer, GoogleEventsReducer, WeatherByDayReducer } from './Reducers';
+import { PlaceReducer, GoogleEventsReducer, WeatherReducer } from './Reducers';
 import mySaga from './Sagas/saga';
+import { OpenWeatherSaga } from './Sagas/OpenWeatherSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,12 +14,13 @@ const Store = configureStore({
   reducer: {
     PlaceReducer,
     GoogleEventsReducer,
-    WeatherByDayReducer,
+    WeatherByDayReducer: WeatherReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(mySaga);
+sagaMiddleware.run(OpenWeatherSaga);
 export type RootAppType = ReturnType<typeof Store.getState>;
 export type AppDispatch = typeof Store.dispatch;
 const useAppDispatch: () => AppDispatch = useDispatch;

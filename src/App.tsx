@@ -8,13 +8,15 @@ import bg1 from './assets/backgrounds/bg1.jpg';
 import bg2 from './assets/backgrounds/bg2.jpg';
 import { SettingIcon } from './Components/Icons';
 import SettingsModal from './Components/SettingsModal';
-import { action } from './Store/Store';
+import { useAppDispatch } from './Store/Store';
+import { findPlaceByCoordsOpenWeatherAC } from './Store/Sagas/OpenWeatherSaga';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition((res) => {
-      action('FIND_PLACE', { lon: res.coords.longitude, lat: res.coords.latitude });
+      dispatch(findPlaceByCoordsOpenWeatherAC(res.coords.latitude, res.coords.longitude, true));
     });
   }, []);
   return (
@@ -40,7 +42,6 @@ function App() {
               <PlaceBlock />
             </div>
             <GoogleEventsContainer />
-            <button type="button" onClick={() => action('FETCH_OPEN_BY_HOURS')}>Fetch</button>
           </div>
           <WeatherForecastContainer />
           <SettingsModal
