@@ -8,6 +8,7 @@ import bg1 from './assets/backgrounds/bg1.jpg';
 import bg2 from './assets/backgrounds/bg2.jpg';
 import { SettingIcon } from './Components/Icons';
 import SettingsModal from './Components/SettingsModal';
+import { action } from './Store/Store';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -34,6 +35,7 @@ function App() {
               <PlaceBlock />
             </div>
             <GoogleEventsContainer />
+            <button type="button" onClick={() => action('FETCH_OPEN_BY_HOURS')}>Fetch</button>
           </div>
           <WeatherForecastContainer />
           <SettingsModal
