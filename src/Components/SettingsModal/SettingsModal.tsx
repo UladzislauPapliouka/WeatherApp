@@ -6,7 +6,7 @@ import PlaceSearch from '../PlaceSearch';
 import { APIVariants, AppActions, WeatherRepresentVariant } from '../../Store/Reducers/AppReducer';
 import { useAppDispatch, useAppSelector } from '../../Store';
 import { fetchDailyOpenWeatherAC, fetchHourlyOpenWeatherAC } from '../../Store/Sagas/OpenWeatherSaga';
-import { fetchWeatherAPIHourlyAC, fetchWeatherAPIDailyAC } from '../../Store/Sagas/WeatherSaga';
+import { fetchWeatherAPIDailyAC, fetchWeatherAPIHourlyAC } from '../../Store/Sagas/WeatherSaga';
 
 type SettingModalPropsTyp = {
   isOpen:boolean,
@@ -39,7 +39,6 @@ export default function SettingsModal({ isOpen, onClose }:SettingModalPropsTyp) 
   };
 
   const onKeyDownAny = () => {};
-  // TODO: Restyling
   return isOpen ? (
     <div tabIndex={0} role="button" onKeyDown={onKeyDownAny} onMouseDown={onClickModalBackgroundHandler} className={styles.modalContainer}>
       <div
@@ -50,20 +49,26 @@ export default function SettingsModal({ isOpen, onClose }:SettingModalPropsTyp) 
         onMouseDown={onClickModalWindow}
         className={styles.modalWindow}
       >
-        <h3>Settings</h3>
+        <h2>Settings</h2>
+        <h4>Find place</h4>
+        <PlaceSearch
+          hourly={weatherRepresent === WeatherRepresentVariant.hourly}
+          preferredAPI={preferredService}
+        />
         <h4>Service</h4>
         <CustomSelect
           options={[APIVariants.weatherAPI, APIVariants.openWeatherAPI]}
           selected={preferredService}
           onChangeSelected={setPreferredService}
         />
+        <h4>How to represent weather</h4>
         <CustomSelect
           options={[WeatherRepresentVariant.daily, WeatherRepresentVariant.hourly]}
           selected={weatherRepresent}
           onChangeSelected={setWeatherRepresent}
         />
         <LoginGoogleButton />
-        <PlaceSearch />
+
       </div>
     </div>
   ) : (null);

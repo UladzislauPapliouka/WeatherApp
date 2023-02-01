@@ -14,6 +14,7 @@ export default function LoginGoogleButton() {
       return codeResponse;
     },
   });
+
   return (
     <div tabIndex={0} role="button" onKeyDown={() => {}} onClick={() => onClickLoginHandler()} className={style.loginGoogleButton}>
       <img alt="Google logo" src={loginIcon} />

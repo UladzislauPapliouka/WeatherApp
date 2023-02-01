@@ -5,8 +5,8 @@ export enum APIVariants {
   openWeatherAPI = 'OpenWeather API',
 }
 export enum WeatherRepresentVariant {
-  daily = 'daliy',
-  hourly = 'hourly',
+  daily = 'Daily',
+  hourly = 'Hourly',
 }
 type AppInitialStateType = {
   preferredAPI:APIVariants,
