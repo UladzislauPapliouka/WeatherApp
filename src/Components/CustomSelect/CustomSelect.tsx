@@ -4,7 +4,7 @@ import styles from './CustomSelect.module.scss';
 interface ICustomSelect {
   options: string[],
   selected: string,
-  onChangeSelected: (value: string) => void
+  onChangeSelected: (value: any) => void
 }
 
 export default function CustomSelect({
