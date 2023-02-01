@@ -1,0 +1,61 @@
+import { getDayName, getOpenWeatherIcon, getWeatherIcon } from './services';
+import { WeatherIconVariants } from '../Components/WeatherIcon';
+
+describe('Services should work correct', () => {
+  test('getWeatherIcon should work correctly', () => {
+    let result = getWeatherIcon(1006);
+    expect(result).toBe(WeatherIconVariants.Cloudy);
+    result = getWeatherIcon(1003);
+    expect(result).toBe(WeatherIconVariants.PartySunny);
+    result = getWeatherIcon(1192);
+    expect(result).toBe(WeatherIconVariants.Rain);
+    result = getWeatherIcon(1246);
+    expect(result).toBe(WeatherIconVariants.Shower);
+    result = getWeatherIcon(1213);
+    expect(result).toBe(WeatherIconVariants.Snow);
+    result = getWeatherIcon(1000);
+    expect(result).toBe(WeatherIconVariants.Sun);
+    result = getWeatherIcon(1282);
+    expect(result).toBe(WeatherIconVariants.Thunder);
+    result = getWeatherIcon(1030);
+    expect(result).toBe(WeatherIconVariants.Fog);
+    result = getWeatherIcon(10000);
+    expect(result).toBe(WeatherIconVariants.Windy);
+  });
+  test('getOpenWeatherIcon should work correct', () => {
+    let result = getOpenWeatherIcon(250);
+    expect(result).toBe(WeatherIconVariants.Thunder);
+    result = getOpenWeatherIcon(350);
+    expect(result).toBe(WeatherIconVariants.Shower);
+    result = getOpenWeatherIcon(555);
+    expect(result).toBe(WeatherIconVariants.Rain);
+    result = getOpenWeatherIcon(666);
+    expect(result).toBe(WeatherIconVariants.Snow);
+    result = getOpenWeatherIcon(777);
+    expect(result).toBe(WeatherIconVariants.Fog);
+    result = getOpenWeatherIcon(800);
+    expect(result).toBe(WeatherIconVariants.Sun);
+    result = getOpenWeatherIcon(802);
+    expect(result).toBe(WeatherIconVariants.Cloudy);
+    result = getOpenWeatherIcon(999);
+    expect(result).toBe(WeatherIconVariants.Windy);
+  });
+  test('getDayName should work correct', () => {
+    let result = getDayName(2, 1);
+    expect(result).toMatch('THU');
+    result = getDayName(2, 2);
+    expect(result).toMatch('FRI');
+    result = getDayName(2, 3);
+    expect(result).toMatch('SAT');
+    result = getDayName(2, 4);
+    expect(result).toMatch('SUN');
+    result = getDayName(2, 5);
+    expect(result).toMatch('MON');
+    result = getDayName(2, 6);
+    expect(result).toMatch('TUE');
+    result = getDayName(2, 7);
+    expect(result).toMatch('WED');
+    result = getDayName(2, 8);
+    expect(result).toMatch('THU');
+  });
+});

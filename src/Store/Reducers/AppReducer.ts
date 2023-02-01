@@ -8,7 +8,7 @@ export enum WeatherRepresentVariant {
   daily = 'Daily',
   hourly = 'Hourly',
 }
-type AppInitialStateType = {
+export type AppInitialStateType = {
   preferredAPI:APIVariants,
   weatherRepresent:WeatherRepresentVariant,
 };

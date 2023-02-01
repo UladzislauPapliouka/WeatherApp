@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type PlaceInitialStateType = {
+export type PlaceInitialStateType = {
   city:string,
   country:string,
   coord: {

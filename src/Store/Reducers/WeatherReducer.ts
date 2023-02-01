@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { WeatherIconVariants } from '../../Components/WeatherIcon';
 
-type DayInfoType = {
+export type DayInfoType = {
   name: string,
   degrees: number,
   icon:WeatherIconVariants

@@ -51,7 +51,7 @@ function getOpenWeatherIcon(code:number) {
   if (code >= 801 && code <= 804) {
     return WeatherIconVariants.Cloudy;
   }
-  return WeatherIconVariants.Sun;
+  return WeatherIconVariants.Windy;
 }
 function getDayName(dayNumber:number, index: number) {
   const resultIndex = dayNumber + index > 6 ? dayNumber + index - 7 : dayNumber + index;
@@ -66,7 +66,7 @@ function getDayName(dayNumber:number, index: number) {
   ];
   return daysName[resultIndex];
 }
-
+// TODO add test
 function openWeatherAPIConverterByDay(array:Array<any>):Array<any> {
   const result:any[] = [];
   array.forEach((obj, i) => {
@@ -82,7 +82,7 @@ function openWeatherAPIConverterByDay(array:Array<any>):Array<any> {
   });
   return result;
 }
-
+// TODO add test
 function openWeatherAPIConverterByHours(array:Array<any>):Array<any> {
   const result:any[] = [];
   array.forEach((obj) => {
