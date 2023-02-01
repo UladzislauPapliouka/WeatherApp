@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios/index';
 import {
   call, put, select, takeLatest,
 } from 'redux-saga/effects';
-import openWeatherAPI, { OpenWeatherPlaceResponseType, OpenWeatherResponseType } from '../../API';
+import { OpenWeatherAPI, OpenWeatherPlaceResponseType, OpenWeatherResponseType } from '../../API';
 import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
 import {
   getOpenWeatherIcon,
@@ -33,7 +33,7 @@ function* fetchOpenWeatherAPIDaily() {
   try {
     const location: ReturnType<typeof PlaceReducer> = yield select((state) => state.PlaceReducer);
     const response: AxiosResponse<OpenWeatherResponseType> = yield call(
-      openWeatherAPI.getWeatherDaily,
+      OpenWeatherAPI.getWeatherDaily,
       location.coord.lat,
       location.coord.lon,
     );
@@ -54,7 +54,7 @@ function* fetchOpenWeatherAPIHourly() {
   try {
     const location: ReturnType<typeof PlaceReducer> = yield select((state) => state.PlaceReducer);
     const response: AxiosResponse<OpenWeatherResponseType> = yield call(
-      openWeatherAPI.getWeatherHourly,
+      OpenWeatherAPI.getWeatherHourly,
       location.coord.lat,
       location.coord.lon,
     );
@@ -76,7 +76,7 @@ function* fetchOpenWeatherAPIHourly() {
 function* findPlaceByCoordsOpenWeather(action: ReturnType<typeof findPlaceByCoordsOpenWeatherAC>) {
   try {
     const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
-      openWeatherAPI.getPlaceByCoords,
+      OpenWeatherAPI.getPlaceByCoords,
       action.payload.lat,
       action.payload.lon,
     );
@@ -107,7 +107,7 @@ function* findPlaceByCoordsOpenWeather(action: ReturnType<typeof findPlaceByCoor
 function* findPlaceByNameOpenWeather(action: ReturnType<typeof findPlaceByNameOpenWeatherAC>) {
   try {
     const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
-      openWeatherAPI.getPlaceByName,
+      OpenWeatherAPI.getPlaceByName,
       action.payload.name,
     );
     const place = response.data[0];

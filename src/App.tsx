@@ -9,14 +9,16 @@ import bg2 from './assets/backgrounds/bg2.jpg';
 import { SettingIcon } from './Components/Icons';
 import SettingsModal from './Components/SettingsModal';
 import { useAppDispatch } from './Store/Store';
-import { findPlaceByCoordsOpenWeatherAC } from './Store/Sagas/OpenWeatherSaga';
+import { findPlaceWeatherByCoordsAC } from './Store/Sagas/WeatherSaga';
+// import { findPlaceByCoordsOpenWeatherAC } from './Store/Sagas/OpenWeatherSaga';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition((res) => {
-      dispatch(findPlaceByCoordsOpenWeatherAC(res.coords.latitude, res.coords.longitude, true));
+      // dispatch(findPlaceByCoordsOpenWeatherAC(res.coords.latitude, res.coords.longitude, true));
+      dispatch(findPlaceWeatherByCoordsAC(res.coords.latitude, res.coords.longitude));
     });
   }, []);
   return (

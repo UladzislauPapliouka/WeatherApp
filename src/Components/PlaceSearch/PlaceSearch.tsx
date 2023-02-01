@@ -1,7 +1,8 @@
 import React, { SyntheticEvent, useState } from 'react';
 import styles from './PlaceSearch.module.scss';
 import { useAppDispatch } from '../../Store/Store';
-import { findPlaceByNameOpenWeatherAC } from '../../Store/Sagas/OpenWeatherSaga';
+import { findPlaceWeatherByNameAC } from '../../Store/Sagas/WeatherSaga';
+// import { findPlaceByNameOpenWeatherAC } from '../../Store/Sagas/OpenWeatherSaga';
 
 export default function PlaceSearch() {
   const [field, setField] = useState<string>('');
@@ -16,7 +17,8 @@ export default function PlaceSearch() {
       <button
         type="button"
         onClick={() => {
-          dispatch(findPlaceByNameOpenWeatherAC(field));
+          // dispatch(findPlaceByNameOpenWeatherAC(field));
+          dispatch(findPlaceWeatherByNameAC(field));
         }}
       >
         Search
