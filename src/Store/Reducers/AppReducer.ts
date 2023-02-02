@@ -12,25 +12,38 @@ export type AppInitialStateType = {
   preferredAPI:APIVariants,
   weatherRepresent:WeatherRepresentVariant,
 };
-const initialState:AppInitialStateType = {
+let initialState:AppInitialStateType = {
   preferredAPI: APIVariants.weatherAPI,
   weatherRepresent: WeatherRepresentVariant.daily,
 };
+if (localStorage.getItem('AppState')) {
+  // eslint-disable-next-line no-debugger
+  debugger;
+  const item = localStorage.getItem('AppState') as string;
+  initialState = JSON.parse(item);
+}
 const AppSlice = createSlice({
   name: 'APP',
   initialState,
   reducers: {
-    setPreferredAPI: (state, action:PayloadAction<{ preferredAPI:APIVariants }>) => (
-      {
+    setPreferredAPI: (state, action:PayloadAction<{ preferredAPI:APIVariants }>) => {
+      const result = {
         ...state,
         preferredAPI: action.payload.preferredAPI,
-      }),
+      };
+      localStorage.setItem('AppState', JSON.stringify(result));
+      return result;
+    },
     setWeatherRepresent: (state, action:PayloadAction<{
       weatherRepresent:WeatherRepresentVariant
-    }>) => ({
-      ...state,
-      weatherRepresent: action.payload.weatherRepresent,
-    }),
+    }>) => {
+      const result = {
+        ...state,
+        weatherRepresent: action.payload.weatherRepresent,
+      };
+      localStorage.setItem('AppState', JSON.stringify(result));
+      return result;
+    },
   },
 });
 

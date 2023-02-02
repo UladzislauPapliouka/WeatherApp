@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import styles from './App.module.scss';
 import WeatherForecastContainer from './Containers/WeatherForecastContainer';
 import DateBlock from './Components/DateBlock';
@@ -7,17 +7,49 @@ import GoogleEventsContainer from './Containers/GoogleEventsContainer';
 import { SettingIcon } from './Components/Icons';
 import SettingsModal from './Components/SettingsModal';
 import { useAppDispatch, useAppSelector } from './Store';
-import { findPlaceWeatherByCoordsAC } from './Store/Sagas/WeatherSaga';
 import { getBackground } from './Services';
 import { bg1, bg2 } from './assets/backgrounds';
 import { WeatherIconVariants } from './Components/WeatherIcon';
+import { APIVariants, WeatherRepresentVariant } from './Store/Reducers/AppReducer';
+import { findPlaceWeatherByCoordsAC, findPlaceWeatherByNameAC } from './Store/Sagas/WeatherSaga';
+import { findPlaceByCoordsOpenWeatherAC, findPlaceByNameOpenWeatherAC } from './Store/Sagas/OpenWeatherSaga';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  useEffect(() => {
+  const AppState = useAppSelector((state) => state.AppReducer);
+  const place = useAppSelector((state) => state.PlaceReducer);
+  useLayoutEffect(() => {
     window.navigator.geolocation.getCurrentPosition((res) => {
-      dispatch(findPlaceWeatherByCoordsAC(res.coords.latitude, res.coords.longitude));
+      if (place.city) {
+        if (AppState.preferredAPI === APIVariants.openWeatherAPI) {
+          dispatch(findPlaceByNameOpenWeatherAC(
+            place.city,
+            AppState.weatherRepresent === WeatherRepresentVariant.hourly,
+          ));
+        } else {
+          dispatch(
+            findPlaceWeatherByNameAC(
+              place.city,
+              AppState.weatherRepresent === WeatherRepresentVariant.hourly,
+            ),
+          );
+        }
+      } else if (AppState.preferredAPI === APIVariants.openWeatherAPI) {
+        dispatch(findPlaceByCoordsOpenWeatherAC(
+          res.coords.latitude,
+          res.coords.longitude,
+          AppState.weatherRepresent === WeatherRepresentVariant.hourly,
+        ));
+      } else {
+        dispatch(
+          findPlaceWeatherByCoordsAC(
+            res.coords.latitude,
+            res.coords.longitude,
+            AppState.weatherRepresent === WeatherRepresentVariant.hourly,
+          ),
+        );
+      }
     });
   }, []);
   const currentWeather = useAppSelector((state) => state.WeatherByDayReducer[0]);
