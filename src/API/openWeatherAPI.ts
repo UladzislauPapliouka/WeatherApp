@@ -19,7 +19,7 @@ type OpenWeatherPlaceResponseType = {
   }
 };
 
-export type OpenWeatherListType = {
+type OpenWeatherListType = {
   clouds:{
     all:number
   },
@@ -75,5 +75,5 @@ const openWeatherAPI = {
 };
 export default openWeatherAPI;
 export type {
-  OpenWeatherPlaceResponseType, OpenWeatherResponseType,
+  OpenWeatherPlaceResponseType, OpenWeatherResponseType, OpenWeatherListType,
 };

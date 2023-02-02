@@ -2,9 +2,10 @@ import { AxiosResponse } from 'axios';
 import {
   call, put, select, takeLatest,
 } from 'redux-saga/effects';
+import { v1 } from 'uuid';
 import { weatherAPI, WeatherAPIForecastResponseType, WeatherPlaceResponseType } from '../../API';
 import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
-import { getDayName, getWeatherIcon } from '../../Services/services';
+import { getDayName, getWeatherIcon } from '../../Services';
 
 const fetchWeatherAPIDailyAC = () => ({
   type: 'FETCH_WEATHER_DAILY',
@@ -39,16 +40,18 @@ export function* fetchWeatherAPIDaily() {
           icon: getWeatherIcon(response.data.current.condition.code),
           name: 'Today',
           degrees: response.data.current.temp_c,
+          id: v1(),
         },
         ...response.data.forecast.forecastday.slice(1).map((obj: any, i: number) => ({
           icon: getWeatherIcon(obj.day.condition.code),
           name: getDayName(new Date(response.data.location.localtime).getDay(), i),
           degrees: obj.day.avgtemp_c,
+          id: v1(),
         })),
       ],
     ));
   } catch (e) {
-    console.log(e);
+    throw new Error('Error');
   }
 }
 function* fetchWeatherAPIHourly() {
@@ -78,6 +81,7 @@ function* fetchWeatherAPIHourly() {
           .forecastday[0]
           .hour[currentHours]
           .temp_c,
+        id: v1(),
       },
       ...response
         .data
@@ -89,10 +93,11 @@ function* fetchWeatherAPIHourly() {
           icon: getWeatherIcon(obj.condition.code),
           name: `${new Date(obj.time).getHours()}:00`,
           degrees: obj.temp_c,
+          id: v1(),
         })),
     ]));
   } catch (e) {
-    console.log(e);
+    throw new Error('Error');
   }
 }
 
@@ -122,7 +127,7 @@ function* findPlaceWeatherByCoords(action: ReturnType<typeof findPlaceWeatherByC
       }
     }
   } catch (e) {
-    console.log(e);
+    throw new Error('Error');
   }
 }
 
@@ -151,7 +156,7 @@ function* findPlaceWeatherByName(action: ReturnType<typeof findPlaceWeatherByNam
       }
     }
   } catch (e) {
-    console.log(e);
+    throw new Error('Error');
   }
 }
 function* WeatherSaga() {

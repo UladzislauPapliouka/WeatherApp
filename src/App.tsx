@@ -6,9 +6,9 @@ import PlaceBlock from './Components/PlaceBlock';
 import GoogleEventsContainer from './Containers/GoogleEventsContainer';
 import { SettingIcon } from './Components/Icons';
 import SettingsModal from './Components/SettingsModal';
-import { useAppDispatch, useAppSelector } from './Store/Store';
+import { useAppDispatch, useAppSelector } from './Store';
 import { findPlaceWeatherByCoordsAC } from './Store/Sagas/WeatherSaga';
-import { getBackground } from './Services/services';
+import { getBackground } from './Services';
 import { bg1, bg2 } from './assets/backgrounds';
 import { WeatherIconVariants } from './Components/WeatherIcon';
 

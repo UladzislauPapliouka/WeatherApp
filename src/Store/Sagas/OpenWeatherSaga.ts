@@ -1,14 +1,15 @@
-import { AxiosResponse } from 'axios/index';
+import { AxiosResponse } from 'axios';
 import {
   call, put, select, takeLatest,
 } from 'redux-saga/effects';
+import { v1 } from 'uuid';
 import { OpenWeatherAPI, OpenWeatherPlaceResponseType, OpenWeatherResponseType } from '../../API';
 import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
 import {
   getOpenWeatherIcon,
   openWeatherAPIConverterByDay,
   openWeatherAPIConverterByHours,
-} from '../../Services/services';
+} from '../../Services';
 
 const findPlaceByCoordsOpenWeatherAC = (lat: number, lon: number, hourly: boolean = false) => ({
   type: 'FIND_PLACE_BY_COORDS_OPEN_WEATHER',
@@ -43,10 +44,11 @@ function* fetchOpenWeatherAPIDaily() {
         icon: getOpenWeatherIcon(list[0].weather[0].id),
         name: 'Today',
         degrees: list[0].main.temp,
+        id: v1(),
       },
     ].concat(openWeatherAPIConverterByDay(list))));
   } catch (e) {
-    console.log(e);
+    throw new Error('Error');
   }
 }
 
@@ -65,11 +67,12 @@ function* fetchOpenWeatherAPIHourly() {
           icon: getOpenWeatherIcon(list[0].weather[0].id),
           name: 'Now',
           degrees: list[0].main.temp,
+          id: v1(),
         },
       ].concat(openWeatherAPIConverterByHours(list.slice(1, 7))),
     ));
   } catch (e) {
-    console.log(e);
+    throw new Error('Error');
   }
 }
 
@@ -101,7 +104,7 @@ function* findPlaceByCoordsOpenWeather(action: ReturnType<typeof findPlaceByCoor
       }
     }
   } catch (e) {
-    console.log(e);
+    throw new Error('Error');
   }
 }
 function* findPlaceByNameOpenWeather(action: ReturnType<typeof findPlaceByNameOpenWeatherAC>) {
@@ -131,7 +134,7 @@ function* findPlaceByNameOpenWeather(action: ReturnType<typeof findPlaceByNameOp
       }
     }
   } catch (e) {
-    console.log(e);
+    throw new Error('Error');
   }
 }
 

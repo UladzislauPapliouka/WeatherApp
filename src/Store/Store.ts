@@ -1,8 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { configureStore } from '@reduxjs/toolkit';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import createSagaMiddleware from 'redux-saga';
 import {
   PlaceReducer, GoogleEventsReducer, WeatherReducer, AppReducer,

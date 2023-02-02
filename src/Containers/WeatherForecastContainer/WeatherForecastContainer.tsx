@@ -8,7 +8,7 @@ export default function WeatherForecastContainer() {
   return (
     <div className={styles.forecastContainer}>
       {infoByDays
-        .map((info, i) => <WeatherItem key="as" chipText={info.name} variant={i === 0 ? 'full' : 'compact'} weatherIcon={info.icon} temperature={info.degrees} />)}
+        .map((info, i) => <WeatherItem key={info.id} chipText={info.name} variant={i === 0 ? 'full' : 'compact'} weatherIcon={info.icon} temperature={info.degrees} />)}
     </div>
   );
 }

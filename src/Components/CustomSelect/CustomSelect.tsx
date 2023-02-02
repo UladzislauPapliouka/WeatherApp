@@ -16,44 +16,45 @@ export default function CustomSelect({
     toggleSelect();
     onChangeSelected(value);
   };
+  const onKeyDownHandler = () => {};
   return (
     <div
       tabIndex={0}
-      onKeyDown={(e) => e.key}
+      onKeyDown={onKeyDownHandler}
       role="button"
       className={styles.customSelect}
-      onClick={() => toggleSelect()}
+      onClick={toggleSelect}
     >
       <div>
         <span>{selected}</span>
         <div className={`${styles.arrow} ${isActive && styles.activeArrow}`} />
       </div>
       {
-                isActive
-                && (
-                <div
-                  tabIndex={-1}
-                  onKeyPress={(e) => e.key}
-                  role="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                  }}
-                  className={styles.dropdownMenu}
-                >
-                  {options.map((opt, i) => (
-                    <span
-                      tabIndex={-i - 2}
-                      onKeyPress={(e) => e.key}
-                      role="button"
-                      key={opt}
-                      onClick={() => onChangeSelectedHandler(opt)}
-                    >
-                      {opt}
-                    </span>
-                  ))}
-                </div>
-                )
-            }
+        isActive
+        && (
+        <div
+          tabIndex={-1}
+          onKeyDown={onKeyDownHandler}
+          role="button"
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
+          className={styles.dropdownMenu}
+        >
+          {options.map((opt, i) => (
+            <span
+              tabIndex={-i - 2}
+              onKeyDown={(e) => e.key}
+              role="button"
+              key={opt}
+              onClick={() => onChangeSelectedHandler(opt)}
+            >
+              {opt}
+            </span>
+          ))}
+        </div>
+        )
+      }
     </div>
   );
 }

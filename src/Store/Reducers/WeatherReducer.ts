@@ -4,7 +4,8 @@ import { WeatherIconVariants } from '../../Components/WeatherIcon';
 export type DayInfoType = {
   name: string,
   degrees: number,
-  icon:WeatherIconVariants
+  icon:WeatherIconVariants,
+  id: string
 };
 
 const initialState:DayInfoType[] = [];

@@ -1,4 +1,4 @@
-import OpenWeatherAPI, { OpenWeatherPlaceResponseType, OpenWeatherResponseType } from './openWeatherAPI';
+import OpenWeatherAPI, { OpenWeatherPlaceResponseType, OpenWeatherResponseType, OpenWeatherListType } from './openWeatherAPI';
 import weatherAPI, { WeatherAPIForecastResponseType, WeatherPlaceResponseType } from './weatherAPI';
 
 export { OpenWeatherAPI, weatherAPI };
@@ -7,4 +7,5 @@ export type {
   OpenWeatherResponseType,
   WeatherAPIForecastResponseType,
   WeatherPlaceResponseType,
+  OpenWeatherListType,
 };

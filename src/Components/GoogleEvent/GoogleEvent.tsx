@@ -10,7 +10,7 @@ export type GoogleEventPropsType = {
 export function GoogleEvent({ time, eventTitle }: GoogleEventPropsType) {
   return (
     <div className={styles.googleEvent}>
-      <Chip text={time} />
+      <Chip text={time.slice(0, 5)} />
       <span>{eventTitle}</span>
     </div>
   );

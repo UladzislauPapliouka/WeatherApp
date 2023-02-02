@@ -14,11 +14,11 @@ export default function LoginGoogleButton() {
       return codeResponse;
     },
   });
-
+  const onKeyDownHandler = () => {};
   return (
-    <div tabIndex={0} role="button" onKeyDown={() => {}} onClick={() => onClickLoginHandler()} className={style.loginGoogleButton}>
+    <div tabIndex={0} role="button" onKeyDown={onKeyDownHandler} onClick={() => onClickLoginHandler()} className={style.loginGoogleButton}>
       <img alt="Google logo" src={loginIcon} />
-      <button type="button" onClick={() => onClickLoginHandler()}>
+      <button type="button">
         Login
       </button>
     </div>

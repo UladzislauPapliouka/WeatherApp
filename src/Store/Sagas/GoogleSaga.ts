@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { call, put, takeLatest } from 'redux-saga/effects';
 import ApiCalendar from 'react-google-calendar-api';
 import { TokenResponse } from '@react-oauth/google';

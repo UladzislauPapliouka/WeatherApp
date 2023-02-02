@@ -1,3 +1,4 @@
+import { v1 } from 'uuid';
 import { WeatherIconVariants } from '../Components/WeatherIcon';
 import * as backgrounds from '../assets/backgrounds';
 import { OpenWeatherListType } from '../API/openWeatherAPI';
@@ -76,8 +77,8 @@ function openWeatherAPIConverterByDay(array:Array<OpenWeatherListType>):Array<an
         icon: getOpenWeatherIcon(obj.weather[0].id),
         name: getDayName(new Date(obj.dt_txt).getDay(), 0),
         degrees: obj.main.temp,
+        id: v1(),
       });
-      console.log(new Date(obj.dt_txt).getDay());
     }
     return null;
   });
@@ -90,6 +91,7 @@ function openWeatherAPIConverterByHours(array:Array<OpenWeatherListType>):Array<
       icon: getOpenWeatherIcon(obj.weather[0].id),
       name: `${new Date(obj.dt_txt).getHours()}:00`,
       degrees: obj.main.temp,
+      id: v1(),
     });
     return null;
   });
