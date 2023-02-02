@@ -4,13 +4,11 @@ import WeatherForecastContainer from './Containers/WeatherForecastContainer';
 import DateBlock from './Components/DateBlock';
 import PlaceBlock from './Components/PlaceBlock';
 import GoogleEventsContainer from './Containers/GoogleEventsContainer';
-import bg1 from './assets/backgrounds/bg1.jpg';
-import bg2 from './assets/backgrounds/bg2.jpg';
 import { SettingIcon } from './Components/Icons';
 import SettingsModal from './Components/SettingsModal';
-import { useAppDispatch } from './Store/Store';
+import { useAppDispatch, useAppSelector } from './Store/Store';
 import { findPlaceWeatherByCoordsAC } from './Store/Sagas/WeatherSaga';
-// import { findPlaceByCoordsOpenWeatherAC } from './Store/Sagas/OpenWeatherSaga';
+import { getBackground } from './Services/services';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -21,11 +19,16 @@ function App() {
       dispatch(findPlaceWeatherByCoordsAC(res.coords.latitude, res.coords.longitude));
     });
   }, []);
+  const currentWeather = useAppSelector((state) => state.WeatherByDayReducer[0]);
+  const [backgrounds, setBackgrounds] = useState(getBackground(currentWeather.icon));
+  useEffect(() => {
+    setBackgrounds(getBackground(currentWeather.icon));
+  }, [currentWeather]);
   return (
-    <div style={{ backgroundImage: `url(${bg1})` }} className={styles.App}>
+    <div style={{ backgroundImage: `url(${backgrounds[1]})` }} className={styles.App}>
 
       <div className={styles.AppBackground}>
-        <div style={{ backgroundImage: `url(${bg2})` }} className={styles.container}>
+        <div style={{ backgroundImage: `url(${backgrounds[0]})` }} className={styles.container}>
           <div
             tabIndex={-1}
             onKeyDown={() => {

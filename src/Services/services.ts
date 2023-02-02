@@ -1,4 +1,5 @@
 import { WeatherIconVariants } from '../Components/WeatherIcon';
+import * as backgrounds from '../assets/backgrounds';
 
 function getWeatherIcon(code:number) {
   if (code === 1006 || code === 1009) {
@@ -95,10 +96,28 @@ function openWeatherAPIConverterByHours(array:Array<any>):Array<any> {
   });
   return result;
 }
+function getBackground(weather:WeatherIconVariants) {
+  switch (weather) {
+    case WeatherIconVariants.Cloudy: return [backgrounds.cloudsMain, backgrounds.cloudsSecondary];
+    case WeatherIconVariants.Fog: return [backgrounds.fogMain, backgrounds.fogSecondary];
+    case WeatherIconVariants.PartySunny: return [
+      backgrounds.partlySunnyMain,
+      backgrounds.partlySunnySecondary];
+    case WeatherIconVariants.Rain: return [backgrounds.rainMain, backgrounds.rainSecondary];
+    case WeatherIconVariants.Shower: return [backgrounds.showerMain, backgrounds.showerSEcondary];
+    case WeatherIconVariants.Snow: return [backgrounds.snowMain, backgrounds.snowSecondary];
+    case WeatherIconVariants.Sun: return [backgrounds.sunMain, backgrounds.sunSecondary];
+    case WeatherIconVariants.Thunder: return [
+      backgrounds.thunderMain,
+      backgrounds.thunderSecondary];
+    default: return [backgrounds.windyMain, backgrounds.windySecondary];
+  }
+}
 export {
   getDayName,
   getWeatherIcon,
   openWeatherAPIConverterByDay,
   getOpenWeatherIcon,
   openWeatherAPIConverterByHours,
+  getBackground,
 };
