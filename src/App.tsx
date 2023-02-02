@@ -11,8 +11,8 @@ import { getBackground } from './Services';
 import { bg1, bg2 } from './assets/backgrounds';
 import { WeatherIconVariants } from './Components/WeatherIcon';
 import { APIVariants, WeatherRepresentVariant } from './Store/Reducers/AppReducer';
-import { findPlaceWeatherByCoordsAC, findPlaceWeatherByNameAC } from './Store/Sagas/WeatherSaga';
-import { findPlaceByCoordsOpenWeatherAC, findPlaceByNameOpenWeatherAC } from './Store/Sagas/OpenWeatherSaga';
+import { findPlaceWeatherByCoordsAC } from './Store/Sagas/WeatherSaga';
+import { findPlaceByCoordsOpenWeatherAC } from './Store/Sagas/OpenWeatherSaga';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -23,14 +23,16 @@ function App() {
     window.navigator.geolocation.getCurrentPosition((res) => {
       if (place.city) {
         if (AppState.preferredAPI === APIVariants.openWeatherAPI) {
-          dispatch(findPlaceByNameOpenWeatherAC(
-            place.city,
+          dispatch(findPlaceByCoordsOpenWeatherAC(
+            place.coord.lat,
+            place.coord.lon,
             AppState.weatherRepresent === WeatherRepresentVariant.hourly,
           ));
         } else {
           dispatch(
-            findPlaceWeatherByNameAC(
-              place.city,
+            findPlaceWeatherByCoordsAC(
+              place.coord.lat,
+              place.coord.lon,
               AppState.weatherRepresent === WeatherRepresentVariant.hourly,
             ),
           );
