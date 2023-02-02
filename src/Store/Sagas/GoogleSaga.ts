@@ -65,7 +65,7 @@ function* loginGoogle(action:ReturnType<typeof loginGoogleAC>) {
 
 function* GoogleSaga() {
   yield takeLatest('FETCH_GOOGLE_EVENTS', fetchGoogleEvents);
-  yield takeLatest('GOOGLE_LOGIN', loginGoogle);
+  yield takeLatest('LOGIN_GOOGLE_OAUTH2', loginGoogle);
 }
 
 export { GoogleSaga, fetchGoogleEventsAC, loginGoogleAC };

@@ -17,8 +17,6 @@ let initialState:AppInitialStateType = {
   weatherRepresent: WeatherRepresentVariant.daily,
 };
 if (localStorage.getItem('AppState')) {
-  // eslint-disable-next-line no-debugger
-  debugger;
   const item = localStorage.getItem('AppState') as string;
   initialState = JSON.parse(item);
 }
