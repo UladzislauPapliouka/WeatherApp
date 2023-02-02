@@ -4,6 +4,7 @@ const insnatce = axios.create({
   baseURL: 'http://api.weatherapi.com/v1/',
   headers: {
     'Access-Control-Allow-Origin': '*',
+    'Cache-Control': 'public,must-revalidate',
   },
 });
 type WeatherAPIForecastResponseType = {
