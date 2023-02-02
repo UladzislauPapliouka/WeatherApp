@@ -19,6 +19,38 @@ type OpenWeatherPlaceResponseType = {
   }
 };
 
+export type OpenWeatherListType = {
+  clouds:{
+    all:number
+  },
+  dt: number,
+  dt_txt:string,
+  pop:number
+  wind: {
+    speed:number,
+    deg:number,
+    gust:number
+  },
+  weather: Array<{
+    id:number,
+    main:string,
+    description:string,
+    icon:string
+  }>
+  visibility: number,
+  main: {
+    feels_like: number
+    grnd_level: number
+    humidity: number
+    pressure: number
+    sea_level: number
+    temp: number
+    temp_kf: number
+    temp_max: number
+    temp_min: number
+  }
+};
+
 type OpenWeatherResponseType = {
   cnt:number
   message: number
@@ -33,37 +65,7 @@ type OpenWeatherResponseType = {
     sunset: number
     timezone: number
   }
-  list: Array<{
-    clouds:{
-      all:number
-    },
-    dt: number,
-    dt_txt:string,
-    pop:number
-    wind: {
-      speed:number,
-      deg:number,
-      gust:number
-    },
-    weather: Array<{
-      id:number,
-      main:string,
-      description:string,
-      icon:string
-    }>
-    visibility: number,
-    main: {
-      feels_like: number
-      grnd_level: number
-      humidity: number
-      pressure: number
-      sea_level: number
-      temp: number
-      temp_kf: number
-      temp_max: number
-      temp_min: number
-    }
-  }>
+  list: Array<OpenWeatherListType>
 };
 const openWeatherAPI = {
   getWeatherDaily: (lat:number, lon:number) => weatherInstance.get<OpenWeatherResponseType>(`forecast?lat=${lat}&lon=${lon}&appid=be4e4f1db7d4bfa1854ee2145c155b97&units=metric&cnt=48`),

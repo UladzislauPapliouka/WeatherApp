@@ -1,5 +1,6 @@
 import { WeatherIconVariants } from '../Components/WeatherIcon';
 import * as backgrounds from '../assets/backgrounds';
+import { OpenWeatherListType } from '../API/openWeatherAPI';
 
 function getWeatherIcon(code:number) {
   if (code === 1006 || code === 1009) {
@@ -67,8 +68,7 @@ function getDayName(dayNumber:number, index: number) {
   ];
   return daysName[resultIndex];
 }
-// TODO add test
-function openWeatherAPIConverterByDay(array:Array<any>):Array<any> {
+function openWeatherAPIConverterByDay(array:Array<OpenWeatherListType>):Array<any> {
   const result:any[] = [];
   array.forEach((obj, i) => {
     if (!(i % 8)) {
@@ -83,8 +83,7 @@ function openWeatherAPIConverterByDay(array:Array<any>):Array<any> {
   });
   return result;
 }
-// TODO add test
-function openWeatherAPIConverterByHours(array:Array<any>):Array<any> {
+function openWeatherAPIConverterByHours(array:Array<OpenWeatherListType>):Array<any> {
   const result:any[] = [];
   array.forEach((obj) => {
     result.push({

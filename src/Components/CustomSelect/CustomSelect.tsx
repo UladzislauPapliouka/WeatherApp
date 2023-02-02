@@ -16,11 +16,10 @@ export default function CustomSelect({
     toggleSelect();
     onChangeSelected(value);
   };
-  // TODO: maybe change styles and elsint error fix correct
   return (
     <div
       tabIndex={0}
-      onKeyPress={(e) => e.key}
+      onKeyDown={(e) => e.key}
       role="button"
       className={styles.customSelect}
       onClick={() => toggleSelect()}
