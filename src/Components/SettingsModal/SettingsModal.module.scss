@@ -20,6 +20,9 @@
     align-items: center;
     padding: 0 2em  2em 2em;
     gap: 1em;
+    @media screen and (max-width: 768px){
+      width: 80%;
+    }
     h2, h4 {
       color: #353e4d;
       margin-bottom: 0.01em;
