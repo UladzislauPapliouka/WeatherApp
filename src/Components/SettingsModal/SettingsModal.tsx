@@ -40,7 +40,7 @@ export default function SettingsModal({ isOpen, onClose }:SettingModalPropsTyp) 
 
   const onKeyDownAny = () => {};
   return isOpen ? (
-    <div tabIndex={0} role="button" onKeyDown={onKeyDownAny} onMouseDown={onClickModalBackgroundHandler} className={styles.modalContainer}>
+    <div id="modalBG" tabIndex={0} role="button" onKeyDown={onKeyDownAny} onMouseDown={onClickModalBackgroundHandler} className={styles.modalContainer}>
       <div
         tabIndex={-1}
         role="button"
