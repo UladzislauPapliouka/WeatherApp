@@ -1,10 +1,12 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
 import ApiCalendar from 'react-google-calendar-api';
 import { TokenResponse } from '@react-oauth/google';
+import { call, put, takeLatest } from 'redux-saga/effects';
+
 import { GoogleEventsActions } from '../Reducers';
 
 const config = {
-  clientId: '573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com',
+  clientId:
+    '573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com',
   apiKey: 'AIzaSyCyrCsJylVwzKnPBaHD1nMs8b2hlc2wgzc',
   scope: 'https://www.googleapis.com/auth/calendar',
   discoveryDocs: [
@@ -16,7 +18,7 @@ const fetchGoogleEventsAC = () => ({
   type: 'FETCH_GOOGLE_EVENTS',
 });
 
-const loginGoogleAC = (token:TokenResponse) => ({
+const loginGoogleAC = (token: TokenResponse) => ({
   type: 'LOGIN_GOOGLE_OAUTH2',
   payload: token,
 });
@@ -26,17 +28,19 @@ function* fetchGoogleEvents() {
   try {
     const listEventConfig = {
       timeMin: new Date().toISOString(),
-      timeMax: new Date(new Date().getTime() + 12 * 60 * 60 * 1000).toISOString(),
+      timeMax: new Date(
+        new Date().getTime() + 12 * 60 * 60 * 1000,
+      ).toISOString(),
       showDeleted: true,
       maxResults: 10,
       orderBy: 'updated',
     };
     // @ts-ignore
     const response = yield call(apiCalendar.listEvents, listEventConfig);
-    const eventsList:Array<any> = response.result.items;
+    const eventsList: Array<any> = response.result.items;
     yield put({
       type: GoogleEventsActions.setEvents.type,
-      payload: eventsList.map((event:any) => ({
+      payload: eventsList.map((event: any) => ({
         time: new Intl.DateTimeFormat('en-US', {
           hour: '2-digit',
           minute: '2-digit',
@@ -49,7 +53,7 @@ function* fetchGoogleEvents() {
     yield put({ type: 'USER_FETCH_FAILED', message: e.message });
   }
 }
-function* loginGoogle(action:ReturnType<typeof loginGoogleAC>) {
+function* loginGoogle(action: ReturnType<typeof loginGoogleAC>) {
   try {
     apiCalendar.tokenClient = action.payload;
     yield put(fetchGoogleEventsAC());

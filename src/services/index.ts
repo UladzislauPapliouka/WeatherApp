@@ -1,13 +1,17 @@
 import {
-  openWeatherAPIConverterByDay,
-  getOpenWeatherIcon,
+  getBackground,
   getDayName,
-  getWeatherIcon, openWeatherAPIConverterByHours, getBackground,
+  getOpenWeatherIcon,
+  getWeatherIcon,
+  openWeatherAPIConverterByDay,
+  openWeatherAPIConverterByHours,
 } from './services';
 
 export {
   openWeatherAPIConverterByDay,
   getOpenWeatherIcon,
   getDayName,
-  getWeatherIcon, openWeatherAPIConverterByHours, getBackground,
+  getWeatherIcon,
+  openWeatherAPIConverterByHours,
+  getBackground,
 };

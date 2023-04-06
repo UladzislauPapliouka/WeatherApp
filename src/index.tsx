@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GoogleOAuthProvider } from '@react-oauth/google';
+
 import App from './App';
 import { Store } from './store';
+
+import './index.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

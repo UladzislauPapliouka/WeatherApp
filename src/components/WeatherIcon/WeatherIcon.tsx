@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './WeatherIcon.module.scss';
+
 import * as weatherImages from '../../assets/weather-icons';
+
+import styles from './WeatherIcon.module.scss';
 
 export enum WeatherIconVariants {
   Cloudy = 'cloudy',
@@ -17,12 +19,21 @@ export enum WeatherIconVariants {
 }
 
 export type WeatherIconPropsType = {
-  icon: WeatherIconVariants
-  size?: 'small' | 'default' | 'large'
+  icon: WeatherIconVariants;
+  size?: 'small' | 'default' | 'large';
 };
 
-export default function WeatherIcon({ icon, size = 'default' }: WeatherIconPropsType) {
-  return <img className={`${styles.weatherIcon} ${styles[size]}`} src={weatherImages[icon]} alt="Weather icon" />;
+export default function WeatherIcon({
+  icon,
+  size = 'default',
+}: WeatherIconPropsType) {
+  return (
+    <img
+      className={`${styles.weatherIcon} ${styles[size]}`}
+      src={weatherImages[icon]}
+      alt="Weather icon"
+    />
+  );
 }
 WeatherIcon.defaultProps = {
   size: 'default',

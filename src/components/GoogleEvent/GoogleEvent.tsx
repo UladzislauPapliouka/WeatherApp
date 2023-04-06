@@ -1,10 +1,12 @@
 import React from 'react';
-import styles from './GoogleEvent.module.scss';
+
 import { Chip } from '../Chip';
 
+import styles from './GoogleEvent.module.scss';
+
 export type GoogleEventPropsType = {
-  time: string,
-  eventTitle: string
+  time: string;
+  eventTitle: string;
 };
 
 export function GoogleEvent({ time, eventTitle }: GoogleEventPropsType) {

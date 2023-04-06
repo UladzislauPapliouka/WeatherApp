@@ -9,10 +9,10 @@ export enum WeatherRepresentVariant {
   hourly = 'Hourly',
 }
 export type AppInitialStateType = {
-  preferredAPI:APIVariants,
-  weatherRepresent:WeatherRepresentVariant,
+  preferredAPI: APIVariants;
+  weatherRepresent: WeatherRepresentVariant;
 };
-let initialState:AppInitialStateType = {
+let initialState: AppInitialStateType = {
   preferredAPI: APIVariants.weatherAPI,
   weatherRepresent: WeatherRepresentVariant.daily,
 };
@@ -24,7 +24,10 @@ const AppSlice = createSlice({
   name: 'APP',
   initialState,
   reducers: {
-    setPreferredAPI: (state, action:PayloadAction<{ preferredAPI:APIVariants }>) => {
+    setPreferredAPI: (
+      state,
+      action: PayloadAction<{ preferredAPI: APIVariants }>,
+    ) => {
       const result = {
         ...state,
         preferredAPI: action.payload.preferredAPI,
@@ -32,9 +35,12 @@ const AppSlice = createSlice({
       localStorage.setItem('AppState', JSON.stringify(result));
       return result;
     },
-    setWeatherRepresent: (state, action:PayloadAction<{
-      weatherRepresent:WeatherRepresentVariant
-    }>) => {
+    setWeatherRepresent: (
+      state,
+      action: PayloadAction<{
+        weatherRepresent: WeatherRepresentVariant;
+      }>,
+    ) => {
       const result = {
         ...state,
         weatherRepresent: action.payload.weatherRepresent,
@@ -48,7 +54,4 @@ const AppSlice = createSlice({
 const AppReducer = AppSlice.reducer;
 const AppActions = AppSlice.actions;
 
-export {
-  AppActions,
-  AppReducer,
-};
+export { AppActions, AppReducer };

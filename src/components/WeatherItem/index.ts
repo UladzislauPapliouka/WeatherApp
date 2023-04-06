@@ -1,4 +1,4 @@
-import { WeatherItemPropsType, WeatherItem } from './WeatherItem';
+import { WeatherItem, WeatherItemPropsType } from './WeatherItem';
 
 export { WeatherItem };
 export type { WeatherItemPropsType };

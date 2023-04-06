@@ -1,3 +1,3 @@
-import { SettingIcon, RefreshIcon } from './Icons';
+import { RefreshIcon, SettingIcon } from './Icons';
 
 export { RefreshIcon, SettingIcon };

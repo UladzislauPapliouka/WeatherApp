@@ -1,8 +1,4 @@
-import { DegreesSpanPropsType, DegreesSpan } from './DegreesSpan';
+import { DegreesSpan, DegreesSpanPropsType } from './DegreesSpan';
 
-export {
-  DegreesSpan,
-};
-export type {
-  DegreesSpanPropsType,
-};
+export { DegreesSpan };
+export type { DegreesSpanPropsType };

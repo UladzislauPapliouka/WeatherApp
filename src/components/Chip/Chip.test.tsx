@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+
 import { Chip } from './Chip';
 
 test('Chip render', () => {

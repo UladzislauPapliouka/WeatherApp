@@ -1,7 +1,10 @@
-import { PlaceReducer, PlaceActions } from './PlaceReducer';
-import { GoogleEventsReducer, GoogleEventsActions } from './GoogleEventsReducer';
-import { WeatherReducer, WeatherActions } from './WeatherReducer';
-import { AppReducer, AppActions } from './AppReducer';
+import { AppActions, AppReducer } from './AppReducer';
+import {
+  GoogleEventsActions,
+  GoogleEventsReducer,
+} from './GoogleEventsReducer';
+import { PlaceActions, PlaceReducer } from './PlaceReducer';
+import { WeatherActions, WeatherReducer } from './WeatherReducer';
 
 export {
   PlaceActions,

@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
+
 import styles from './DateBlock.module.scss';
 
 export default function DateBlock() {
   const [date, setDate] = useState<Date>(new Date());
   useEffect(() => {
-    const intervalId = setInterval(() => { setDate(new Date()); }, 1000);
-    return () => { clearInterval(intervalId); };
+    const intervalId = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
   const time = new Intl.DateTimeFormat('en-US', {
     hour: '2-digit',

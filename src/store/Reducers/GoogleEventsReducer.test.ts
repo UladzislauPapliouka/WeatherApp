@@ -1,7 +1,11 @@
-import { GoogleEventsActions, GoogleEventsInitialStateType, GoogleEventsReducer } from './GoogleEventsReducer';
+import {
+  GoogleEventsActions,
+  GoogleEventsInitialStateType,
+  GoogleEventsReducer,
+} from './GoogleEventsReducer';
 
 describe('GoogleEventsReducer should work correct', () => {
-  const initialState:GoogleEventsInitialStateType[] = [];
+  const initialState: GoogleEventsInitialStateType[] = [];
   test('Google events should be set correctly', () => {
     const result = GoogleEventsReducer(
       initialState,

@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+
 import styles from './CustomSelect.module.scss';
 
 interface ICustomSelect {
-  options: string[],
-  selected: string,
-  onChangeSelected: (value: any) => void
+  options: string[];
+  selected: string;
+  onChangeSelected: (value: any) => void;
 }
 
 export default function CustomSelect({
-  options, selected, onChangeSelected,
+  options,
+  selected,
+  onChangeSelected,
 }: ICustomSelect) {
   const [isActive, setIsActive] = useState<boolean>(false);
   const toggleSelect = () => setIsActive(!isActive);
@@ -29,9 +32,7 @@ export default function CustomSelect({
         <span>{selected}</span>
         <div className={`${styles.arrow} ${isActive && styles.activeArrow}`} />
       </div>
-      {
-        isActive
-        && (
+      {isActive && (
         <div
           tabIndex={-1}
           onKeyDown={onKeyDownHandler}
@@ -53,8 +54,7 @@ export default function CustomSelect({
             </span>
           ))}
         </div>
-        )
-      }
+      )}
     </div>
   );
 }

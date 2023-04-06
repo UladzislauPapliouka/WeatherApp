@@ -13,7 +13,7 @@
     align-items: center;
     gap: 1em;
     padding: 1em;
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 768px) {
       @include mobileView;
     }
   }
@@ -22,7 +22,7 @@
     display: grid;
     grid-template-columns: repeat(2, 100px);
     grid-template-rows: repeat(2, 1fr);
-    @media screen and (max-width: 481px){
+    @media screen and (max-width: 481px) {
       @include mobileView;
     }
     & > .iconContainer {

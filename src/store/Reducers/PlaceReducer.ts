@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type PlaceInitialStateType = {
-  city:string,
-  country:string,
+  city: string;
+  country: string;
   coord: {
-    lat:number,
-    lon:number
-  }
+    lat: number;
+    lon: number;
+  };
 };
 let initialState: PlaceInitialStateType = {
   city: '',
@@ -24,7 +24,7 @@ const PlaceSlice = createSlice({
   name: 'PLACE',
   initialState,
   reducers: {
-    setPlace: (state, action:PayloadAction<PlaceInitialStateType>) => {
+    setPlace: (state, action: PayloadAction<PlaceInitialStateType>) => {
       localStorage.setItem('Place', JSON.stringify(action.payload));
       return action.payload;
     },
@@ -32,7 +32,4 @@ const PlaceSlice = createSlice({
 });
 const PlaceReducer = PlaceSlice.reducer;
 const PlaceActions = PlaceSlice.actions;
-export {
-  PlaceActions,
-  PlaceReducer,
-};
+export { PlaceActions, PlaceReducer };
