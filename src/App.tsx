@@ -1,18 +1,18 @@
 import React, { useLayoutEffect, useState } from 'react';
 import styles from './App.module.scss';
-import WeatherForecastContainer from './Containers/WeatherForecastContainer';
-import DateBlock from './Components/DateBlock';
-import PlaceBlock from './Components/PlaceBlock';
-import GoogleEventsContainer from './Containers/GoogleEventsContainer';
-import { SettingIcon } from './Components/Icons';
-import SettingsModal from './Components/SettingsModal';
-import { useAppDispatch, useAppSelector } from './Store';
-import { getBackground } from './Services';
+import WeatherForecastContainer from './containers/WeatherForecastContainer';
+import DateBlock from './components/DateBlock';
+import PlaceBlock from './components/PlaceBlock';
+import GoogleEventsContainer from './containers/GoogleEventsContainer';
+import { SettingIcon } from './components/Icons';
+import SettingsModal from './components/SettingsModal';
+import { useAppDispatch, useAppSelector } from './store';
+import { getBackground } from './services';
 import { bg1, bg2 } from './assets/backgrounds';
-import { WeatherIconVariants } from './Components/WeatherIcon';
-import { APIVariants, WeatherRepresentVariant } from './Store/Reducers/AppReducer';
-import { findPlaceWeatherByCoordsAC } from './Store/Sagas/WeatherSaga';
-import { findPlaceByCoordsOpenWeatherAC } from './Store/Sagas/OpenWeatherSaga';
+import { WeatherIconVariants } from './components/WeatherIcon';
+import { APIVariants, WeatherRepresentVariant } from './store/Reducers/AppReducer';
+import { findPlaceWeatherByCoordsAC } from './store/Sagas/WeatherSaga';
+import { findPlaceByCoordsOpenWeatherAC } from './store/Sagas/OpenWeatherSaga';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

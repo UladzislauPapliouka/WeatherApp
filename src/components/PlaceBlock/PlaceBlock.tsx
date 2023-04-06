@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './PlaceBlock.module.scss';
-import { RootAppType } from '../../Store';
+import { RootAppType } from '../../store';
 
 export default function PlaceBlock() {
   const place = useSelector((state:RootAppType) => state.PlaceReducer);

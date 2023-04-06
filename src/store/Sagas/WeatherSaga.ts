@@ -3,9 +3,9 @@ import {
   call, put, select, takeLatest,
 } from 'redux-saga/effects';
 import { v1 } from 'uuid';
-import { weatherAPI, WeatherAPIForecastResponseType, WeatherPlaceResponseType } from '../../API';
+import { weatherAPI, WeatherAPIForecastResponseType, WeatherPlaceResponseType } from '../../api';
 import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
-import { getDayName, getWeatherIcon } from '../../Services';
+import { getDayName, getWeatherIcon } from '../../services';
 
 const fetchWeatherAPIDailyAC = () => ({
   type: 'FETCH_WEATHER_DAILY',

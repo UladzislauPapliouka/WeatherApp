@@ -1,9 +1,9 @@
 import React, { SyntheticEvent, useState } from 'react';
 import styles from './PlaceSearch.module.scss';
-import { useAppDispatch, useAppSelector } from '../../Store/Store';
-import { findPlaceWeatherByNameAC } from '../../Store/Sagas/WeatherSaga';
-import { APIVariants } from '../../Store/Reducers/AppReducer';
-import { findPlaceByNameOpenWeatherAC } from '../../Store/Sagas/OpenWeatherSaga';
+import { useAppDispatch, useAppSelector } from '../../store/Store';
+import { findPlaceWeatherByNameAC } from '../../store/Sagas/WeatherSaga';
+import { APIVariants } from '../../store/Reducers/AppReducer';
+import { findPlaceByNameOpenWeatherAC } from '../../store/Sagas/OpenWeatherSaga';
 
 export default function PlaceSearch({
   preferredAPI,

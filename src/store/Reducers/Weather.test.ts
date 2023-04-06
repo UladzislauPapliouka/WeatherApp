@@ -1,5 +1,5 @@
 import { DayInfoType, WeatherActions, WeatherReducer } from './WeatherReducer';
-import { WeatherIconVariants } from '../../Components/WeatherIcon';
+import { WeatherIconVariants } from '../../components/WeatherIcon';
 
 describe('WeatherReducer should work correct', () => {
   const initialState:DayInfoType[] = [];

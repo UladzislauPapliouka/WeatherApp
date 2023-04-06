@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './WeatherForecastContainer.module.scss';
-import { WeatherItem } from '../../Components/WeatherItem';
-import { useAppSelector } from '../../Store';
+import { WeatherItem } from '../../components/WeatherItem';
+import { useAppSelector } from '../../store';
 
 export default function WeatherForecastContainer() {
   const infoByDays = useAppSelector((state) => state.WeatherByDayReducer);

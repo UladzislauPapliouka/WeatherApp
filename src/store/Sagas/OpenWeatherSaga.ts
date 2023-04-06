@@ -3,13 +3,13 @@ import {
   call, put, select, takeLatest,
 } from 'redux-saga/effects';
 import { v1 } from 'uuid';
-import { OpenWeatherAPI, OpenWeatherPlaceResponseType, OpenWeatherResponseType } from '../../API';
+import { OpenWeatherAPI, OpenWeatherPlaceResponseType, OpenWeatherResponseType } from '../../api';
 import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
 import {
   getOpenWeatherIcon,
   openWeatherAPIConverterByDay,
   openWeatherAPIConverterByHours,
-} from '../../Services';
+} from '../../services';
 
 const findPlaceByCoordsOpenWeatherAC = (lat: number, lon: number, hourly: boolean = false) => ({
   type: 'FIND_PLACE_BY_COORDS_OPEN_WEATHER',

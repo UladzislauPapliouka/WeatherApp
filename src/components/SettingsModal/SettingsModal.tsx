@@ -3,10 +3,10 @@ import styles from './SettingsModal.module.scss';
 import CustomSelect from '../CustomSelect';
 import LoginGoogleButton from '../LoginGoogleButton';
 import PlaceSearch from '../PlaceSearch';
-import { APIVariants, AppActions, WeatherRepresentVariant } from '../../Store/Reducers/AppReducer';
-import { useAppDispatch, useAppSelector } from '../../Store';
-import { fetchDailyOpenWeatherAC, fetchHourlyOpenWeatherAC } from '../../Store/Sagas/OpenWeatherSaga';
-import { fetchWeatherAPIDailyAC, fetchWeatherAPIHourlyAC } from '../../Store/Sagas/WeatherSaga';
+import { APIVariants, AppActions, WeatherRepresentVariant } from '../../store/Reducers/AppReducer';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { fetchDailyOpenWeatherAC, fetchHourlyOpenWeatherAC } from '../../store/Sagas/OpenWeatherSaga';
+import { fetchWeatherAPIDailyAC, fetchWeatherAPIHourlyAC } from '../../store/Sagas/WeatherSaga';
 
 type SettingModalPropsTyp = {
   isOpen:boolean,

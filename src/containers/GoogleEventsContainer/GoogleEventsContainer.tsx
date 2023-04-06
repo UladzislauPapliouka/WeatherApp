@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './GoogleEventsContainer.module.scss';
-import { GoogleEvent } from '../../Components/GoogleEvent';
-import { useAppSelector } from '../../Store';
+import { GoogleEvent } from '../../components/GoogleEvent';
+import { useAppSelector } from '../../store';
 
 export default function GoogleEventsContainer() {
   const events = useAppSelector((state) => state.GoogleEventsReducer);

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { WeatherIconVariants } from '../../Components/WeatherIcon';
+import { WeatherIconVariants } from '../../components/WeatherIcon';
 
 export type DayInfoType = {
   name: string,

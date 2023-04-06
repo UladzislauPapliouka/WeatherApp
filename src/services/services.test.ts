@@ -6,7 +6,7 @@ import {
   openWeatherAPIConverterByDay,
   openWeatherAPIConverterByHours,
 } from './services';
-import { WeatherIconVariants } from '../Components/WeatherIcon';
+import { WeatherIconVariants } from '../components/WeatherIcon';
 
 describe('Services should work correct', () => {
   test('getWeatherIcon should work correctly', () => {
