@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Chip } from '../Chip';
+import Chip from '../Chip';
 import { DegreesSpan } from '../DegreesSpan';
 import { WeatherIcon, WeatherIconVariants } from '../WeatherIcon';
 

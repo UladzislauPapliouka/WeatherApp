@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Chip } from '../Chip';
+import Chip from '../Chip';
 
 import styles from './GoogleEvent.module.scss';
 

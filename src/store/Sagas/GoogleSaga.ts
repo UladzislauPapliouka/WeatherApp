@@ -35,6 +35,7 @@ function* fetchGoogleEvents() {
       maxResults: 10,
       orderBy: 'updated',
     };
+    // @ts-ignore
     const response = yield call(apiCalendar.listEvents, listEventConfig);
     const eventsList: Array<any> = response.result.items;
     yield put({

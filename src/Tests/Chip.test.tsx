@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { Chip } from './Chip';
+import Chip from '../components/Chip';
 
 test('Chip render', () => {
   render(<Chip text="test" />);
