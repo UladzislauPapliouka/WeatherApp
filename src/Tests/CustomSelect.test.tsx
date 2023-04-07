@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import CustomSelect from './index';
+import CustomSelect from '../components/CustomSelect';
 
 test('Custom select render', () => {
   let testVar = 'variant1';
