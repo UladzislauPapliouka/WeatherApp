@@ -56,15 +56,20 @@ export function* fetchWeatherAPIDaily() {
         },
         ...response.data.forecast.forecastday
           .slice(1)
-          .map((obj: any, i: number) => ({
-            icon: getWeatherIcon(obj.day.condition.code),
-            name: getDayName(
-              new Date(response.data.location.localtime).getDay(),
-              i,
-            ),
-            degrees: obj.day.avgtemp_c,
-            id: v1(),
-          })),
+          .map(
+            (
+              obj: WeatherAPIForecastResponseType['forecast']['forecastday'][0],
+              i: number,
+            ) => ({
+              icon: getWeatherIcon(obj.day.condition.code),
+              name: getDayName(
+                new Date(response.data.location.localtime).getDay(),
+                i,
+              ),
+              degrees: obj.day.avgtemp_c,
+              id: v1(),
+            }),
+          ),
       ]),
     );
   } catch (e) {
@@ -96,12 +101,16 @@ function* fetchWeatherAPIHourly() {
         },
         ...response.data.forecast.forecastday[0].hour
           .slice(currentHours + 1, currentHours + 7)
-          .map((obj: any) => ({
-            icon: getWeatherIcon(obj.condition.code),
-            name: `${new Date(obj.time).getHours()}:00`,
-            degrees: obj.temp_c,
-            id: v1(),
-          })),
+          .map(
+            (
+              obj: WeatherAPIForecastResponseType['forecast']['forecastday'][0]['hour'][0],
+            ) => ({
+              icon: getWeatherIcon(obj.condition.code),
+              name: `${new Date(obj.time).getHours()}:00`,
+              degrees: obj.temp_c,
+              id: v1(),
+            }),
+          ),
       ]),
     );
   } catch (e) {

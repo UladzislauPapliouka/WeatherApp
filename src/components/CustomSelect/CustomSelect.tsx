@@ -19,7 +19,9 @@ export default function CustomSelect({
     toggleSelect();
     onChangeSelected(value);
   };
-  const onKeyDownHandler = () => {};
+  const onKeyDownHandler = () => {
+    setIsActive(isActive);
+  };
   return (
     <div
       tabIndex={0}

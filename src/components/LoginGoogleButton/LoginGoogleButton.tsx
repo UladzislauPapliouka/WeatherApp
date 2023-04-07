@@ -11,7 +11,6 @@ export default function LoginGoogleButton() {
   const dispatch = useAppDispatch();
   const onClickLoginHandler = useGoogleLogin({
     onSuccess: (codeResponse) => {
-      console.log(codeResponse);
       dispatch(loginGoogleAC(codeResponse));
       return codeResponse;
     },

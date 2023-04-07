@@ -4,11 +4,12 @@ import { render, screen } from '@testing-library/react';
 import CustomSelect from './index';
 
 test('Custom select render', () => {
+  let testVar = 'variant1';
   render(
     <CustomSelect
-      selected="variant1"
+      selected={testVar}
       onChangeSelected={(e) => {
-        console.log(e);
+        testVar = e.target.value;
       }}
       options={['variant1', 'variant2']}
     />,

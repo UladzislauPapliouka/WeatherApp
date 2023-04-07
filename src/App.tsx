@@ -62,7 +62,14 @@ function App() {
         );
       }
     });
-  }, []);
+  }, [
+    AppState.preferredAPI,
+    AppState.weatherRepresent,
+    dispatch,
+    place.coord.lat,
+    place.coord.lon,
+    place.city,
+  ]);
   const currentWeather = useAppSelector(
     (state) => state.WeatherByDayReducer[0],
   );
@@ -86,7 +93,6 @@ function App() {
         >
           <div
             tabIndex={-1}
-            onKeyDown={() => {}}
             onClick={() => {
               setIsModalOpen(true);
             }}

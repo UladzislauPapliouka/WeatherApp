@@ -35,7 +35,6 @@ function* fetchGoogleEvents() {
       maxResults: 10,
       orderBy: 'updated',
     };
-    // @ts-ignore
     const response = yield call(apiCalendar.listEvents, listEventConfig);
     const eventsList: Array<any> = response.result.items;
     yield put({
@@ -58,7 +57,8 @@ function* loginGoogle(action: ReturnType<typeof loginGoogleAC>) {
     apiCalendar.tokenClient = action.payload;
     yield put(fetchGoogleEventsAC());
   } catch (e) {
-    console.log(e);
+    // @ts-ignore
+    yield put({ type: 'USER_FETCH_FAILED', message: e.message });
   }
 }
 /*

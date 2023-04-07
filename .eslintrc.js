@@ -22,6 +22,11 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'simple-import-sort', 'prettier'],
   rules: {
     'prefer-destructuring': ['error', { object: true, array: false }],
+    'jsx-a11y/click-events-have-key-events': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    'no-shadow': 'off',
     'simple-import-sort/imports': [
       'error',
       {

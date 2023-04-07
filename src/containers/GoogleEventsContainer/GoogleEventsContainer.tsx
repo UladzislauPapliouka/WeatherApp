@@ -12,7 +12,11 @@ export default function GoogleEventsContainer() {
       {events.length ? (
         <>
           {events.map((event) => (
-            <GoogleEvent time={event.time} eventTitle={event.title} />
+            <GoogleEvent
+              key={event.time}
+              time={event.time}
+              eventTitle={event.title}
+            />
           ))}
         </>
       ) : (
