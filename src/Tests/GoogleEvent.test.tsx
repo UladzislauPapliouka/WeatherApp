@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { GoogleEvent } from './index';
+import GoogleEvent from '../components/GoogleEvent/index';
 
 test('GoogleEvent render', () => {
   render(<GoogleEvent time="9:00" eventTitle="Wake up" />);
