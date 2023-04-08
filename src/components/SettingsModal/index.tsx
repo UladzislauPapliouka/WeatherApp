@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import {
@@ -19,16 +19,13 @@ import LoginGoogleButton from '../LoginGoogleButton';
 import ModalWindow from '../Modal';
 import PlaceSearch from '../PlaceSearch';
 
-import styles from './SettingsModal.module.scss';
+import { SettingsModalWrapper, SubTitle, Title } from './styled';
 
 type SettingModalPropsTyp = {
   isOpen: boolean;
   onClose: () => void;
 };
-export default function SettingsModal({
-  isOpen,
-  onClose,
-}: SettingModalPropsTyp) {
+export default function Index({ isOpen, onClose }: SettingModalPropsTyp) {
   const preferredService = useAppSelector(
     (state) => state.AppReducer.preferredAPI,
   );
@@ -60,34 +57,22 @@ export default function SettingsModal({
   const onClickModalBackgroundHandler = () => {
     onClose();
   };
-  const onClickModalWindow = (event: MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-  };
-
-  const onKeyDownAny = () => {};
   return isOpen ? (
     <ModalWindow handleClose={onClickModalBackgroundHandler}>
-      <div
-        tabIndex={-1}
-        role="button"
-        onKeyDown={onKeyDownAny}
-        onClick={onClickModalWindow}
-        onMouseDown={onClickModalWindow}
-        className={styles.modalWindow}
-      >
-        <h2>Settings</h2>
-        <h4>Find place</h4>
+      <SettingsModalWrapper>
+        <Title>Settings</Title>
+        <SubTitle>Find place</SubTitle>
         <PlaceSearch
           hourly={weatherRepresent === WeatherRepresentVariant.hourly}
           preferredAPI={preferredService}
         />
-        <h4>Service</h4>
+        <SubTitle>Service</SubTitle>
         <CustomSelect
           options={[APIVariants.weatherAPI, APIVariants.openWeatherAPI]}
           selected={preferredService}
           onChangeSelected={setPreferredService}
         />
-        <h4>How to represent weather</h4>
+        <SubTitle>How to represent weather</SubTitle>
         <CustomSelect
           options={[
             WeatherRepresentVariant.daily,
@@ -97,7 +82,7 @@ export default function SettingsModal({
           onChangeSelected={setWeatherRepresent}
         />
         <LoginGoogleButton />
-      </div>
+      </SettingsModalWrapper>
     </ModalWindow>
   ) : null;
 }
