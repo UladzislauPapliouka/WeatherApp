@@ -1,23 +1,30 @@
 import React, { useLayoutEffect, useState } from 'react';
 
-import { bg1, bg2 } from './assets/backgrounds';
-import DateBlock from './components/DateBlock';
-import { SettingIcon } from './components/Icons';
-import PlaceBlock from './components/PlaceBlock';
-import SettingsModal from './components/SettingsModal';
-import GoogleEventsContainer from './containers/GoogleEventsContainer';
-import WeatherForecastContainer from './containers/WeatherForecastContainer';
+import { bg1, bg2 } from '../../assets/backgrounds';
+import GoogleEventsContainer from '../../containers/GoogleEventsContainer';
+import WeatherForecastContainer from '../../containers/WeatherForecastContainer';
+import { getBackground } from '../../services';
+import { useAppDispatch, useAppSelector } from '../../store';
 import {
   APIVariants,
   WeatherRepresentVariant,
-} from './store/Reducers/AppReducer';
-import { findPlaceByCoordsOpenWeatherAC } from './store/Sagas/OpenWeatherSaga';
-import { findPlaceWeatherByCoordsAC } from './store/Sagas/WeatherSaga';
-import { WeatherIconVariants } from './types/propsTypes/weatherIcon';
-import { getBackground } from './services';
-import { useAppDispatch, useAppSelector } from './store';
+} from '../../store/Reducers/AppReducer';
+import { findPlaceByCoordsOpenWeatherAC } from '../../store/Sagas/OpenWeatherSaga';
+import { findPlaceWeatherByCoordsAC } from '../../store/Sagas/WeatherSaga';
+import { WeatherIconVariants } from '../../types/propsTypes/weatherIcon';
+import DateBlock from '../DateBlock';
+import { SettingIcon } from '../Icons';
+import PlaceBlock from '../PlaceBlock';
+import SettingsModal from '../SettingsModal';
 
-import styles from './App.module.scss';
+import {
+  AppBackground,
+  AppWrapper,
+  Container,
+  Info,
+  SettingButtonWrapper,
+  WithGoogleEvents,
+} from './styled';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -80,34 +87,29 @@ function App() {
     if (currentWeather) setBackgrounds(getBackground(currentWeather.icon));
   }, [currentWeather]);
   return (
-    <div
+    <AppWrapper
       style={{ backgroundImage: `url(${backgrounds ? backgrounds[1] : bg2})` }}
-      className={styles.App}
     >
-      <div className={styles.AppBackground}>
-        <div
+      <AppBackground>
+        <Container
           style={{
             backgroundImage: `url(${backgrounds ? backgrounds[0] : bg1})`,
           }}
-          className={styles.container}
         >
-          <div
-            tabIndex={-1}
+          <SettingButtonWrapper
             onClick={() => {
               setIsModalOpen(true);
             }}
-            role="button"
-            className={styles.settingButton}
           >
             <SettingIcon color="#f1eaea" scale={1} />
-          </div>
-          <div className={styles.withGoogleEvents}>
-            <div className={styles.info}>
+          </SettingButtonWrapper>
+          <WithGoogleEvents>
+            <Info>
               <DateBlock />
               <PlaceBlock />
-            </div>
+            </Info>
             <GoogleEventsContainer />
-          </div>
+          </WithGoogleEvents>
           <WeatherForecastContainer />
           <SettingsModal
             isOpen={isModalOpen}
@@ -115,9 +117,9 @@ function App() {
               setIsModalOpen(false);
             }}
           />
-        </div>
-      </div>
-    </div>
+        </Container>
+      </AppBackground>
+    </AppWrapper>
   );
 }
 

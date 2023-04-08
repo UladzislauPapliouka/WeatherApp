@@ -5,10 +5,9 @@ import { Provider } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import App from './App';
+import App from './components/App';
+import GlobalStyles from './components/GlobalStyles';
 import { Store } from './store';
-
-import './index.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -16,6 +15,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <GlobalStyles />
     <Provider store={Store}>
       <GoogleOAuthProvider clientId="573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com">
         <App />
