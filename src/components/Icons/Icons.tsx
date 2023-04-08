@@ -1,6 +1,6 @@
 import React from 'react';
 
-import refresh from '../../assets/icons/sync.png';
+import refresh from '../../assets/icons/sync.webp';
 
 type IconPropsType = {
   color: string;

@@ -1,14 +1,14 @@
-import cloudy from './cloudy.png';
-import fog from './fog.png';
-import moon from './moon.png';
-import partlySunny from './partly-sunny.png';
-import rain from './rain.png';
-import shower from './shower.png';
-import snow from './snow.png';
-import sun from './sun.png';
-import sunnyRain from './sunny-rain.png';
-import thunder from './thunder.png';
-import windy from './windy.png';
+import cloudy from './cloudy.webp';
+import fog from './fog.webp';
+import moon from './moon.webp';
+import partlySunny from './partly-sunny.webp';
+import rain from './rain.webp';
+import shower from './shower.webp';
+import snow from './snow.webp';
+import sun from './sun.webp';
+import sunnyRain from './sunny-rain.webp';
+import thunder from './thunder.webp';
+import windy from './windy.webp';
 
 export {
   cloudy,

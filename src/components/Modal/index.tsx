@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  MouseEvent,
-  PropsWithChildren,
-  ReactElement,
-  useRef,
-} from 'react';
+import React, { FC, MouseEvent, PropsWithChildren, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import ModalWrapper from './styled';

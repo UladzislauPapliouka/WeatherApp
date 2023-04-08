@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 
-import loginIcon from '../../assets/icons/google.png';
+import loginIcon from '../../assets/icons/google.webp';
 import { loginGoogleAC } from '../../store/Sagas/GoogleSaga';
 import { useAppDispatch } from '../../store/Store';
 
