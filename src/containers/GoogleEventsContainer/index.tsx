@@ -3,12 +3,12 @@ import React from 'react';
 import GoogleEvent from '../../components/GoogleEvent';
 import { useAppSelector } from '../../store';
 
-import styles from './GoogleEventsContainer.module.scss';
+import { GoogleEventsWrapper, NoEventsText } from './styled';
 
 export default function GoogleEventsContainer() {
   const events = useAppSelector((state) => state.GoogleEventsReducer);
   return (
-    <div className={styles.googleEventsContainer}>
+    <GoogleEventsWrapper>
       {events.length ? (
         <>
           {events.map((event) => (
@@ -20,8 +20,8 @@ export default function GoogleEventsContainer() {
           ))}
         </>
       ) : (
-        <span>No events or not logged in</span>
+        <NoEventsText>No events or not logged in</NoEventsText>
       )}
-    </div>
+    </GoogleEventsWrapper>
   );
 }
