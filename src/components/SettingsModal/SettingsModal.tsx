@@ -16,6 +16,7 @@ import {
 } from '../../store/Sagas/WeatherSaga';
 import CustomSelect from '../CustomSelect';
 import LoginGoogleButton from '../LoginGoogleButton';
+import ModalWindow from '../Modal';
 import PlaceSearch from '../PlaceSearch';
 
 import styles from './SettingsModal.module.scss';
@@ -65,14 +66,7 @@ export default function SettingsModal({
 
   const onKeyDownAny = () => {};
   return isOpen ? (
-    <div
-      id="modalBG"
-      tabIndex={0}
-      role="button"
-      onKeyDown={onKeyDownAny}
-      onMouseDown={onClickModalBackgroundHandler}
-      className={styles.modalContainer}
-    >
+    <ModalWindow handleClose={onClickModalBackgroundHandler}>
       <div
         tabIndex={-1}
         role="button"
@@ -104,6 +98,6 @@ export default function SettingsModal({
         />
         <LoginGoogleButton />
       </div>
-    </div>
+    </ModalWindow>
   ) : null;
 }

@@ -1,16 +1,5 @@
-.modalContainer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(53, 62, 77, 0.7);
-
-  .modalWindow {
+ .modalWindow {
     position: relative;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     width: 500px;
     height: fit-content;
     border-radius: 8px;
@@ -41,4 +30,3 @@
       right: 10px;
     }
   }
-}
