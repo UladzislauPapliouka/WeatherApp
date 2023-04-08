@@ -1,9 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { WeatherIconVariants } from '../../types/propsTypes/weatherIcon';
-
-import { WeatherItem } from './index';
+import WeatherItem from '../components/WeatherItem/index';
+import { WeatherIconVariants } from '../types/propsTypes/weatherIcon';
 
 test('WeatherItem render', () => {
   render(
