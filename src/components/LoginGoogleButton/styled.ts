@@ -1,4 +1,6 @@
-.loginGoogleButton {
+import styled from 'styled-components';
+
+export const LoginGoogleButtonWrapper = styled.div`
   background-color: #ffffff;
   border: 2px solid black;
   padding: 0.5em 1em;
@@ -11,16 +13,14 @@
   justify-content: center;
   gap: 20px;
   cursor: pointer;
+`;
 
-  img {
-    width: 2em;
-    aspect-ratio: 1;
-  }
-
-  button {
-    background-color: transparent;
-    border: none;
-    font-size: 1.5em;
-    font-weight: 700;
-  }
-}
+export const GoogleImage = styled.img`
+  width: 2em;
+  aspect-ratio: 1;
+`;
+export const ButtonText = styled.span`
+  font-size: 1.5em;
+  font-weight: 700;
+  color: black;
+`;
