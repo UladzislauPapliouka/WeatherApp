@@ -3,12 +3,12 @@ import React from 'react';
 import WeatherItem from '../../components/WeatherItem';
 import { useAppSelector } from '../../store';
 
-import styles from './WeatherForecastContainer.module.scss';
+import ForecastWrapper from './styled';
 
 export default function WeatherForecastContainer() {
   const infoByDays = useAppSelector((state) => state.WeatherByDayReducer);
   return (
-    <div className={styles.forecastContainer}>
+    <ForecastWrapper>
       {infoByDays.map((info, i) => (
         <WeatherItem
           key={info.id}
@@ -18,6 +18,6 @@ export default function WeatherForecastContainer() {
           temperature={info.degrees}
         />
       ))}
-    </div>
+    </ForecastWrapper>
   );
 }

@@ -1,4 +1,6 @@
-.forecastContainer {
+import styled from 'styled-components';
+
+const ForecastWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -14,4 +16,5 @@
       display: none;
     }
   }
-}
+`;
+export default ForecastWrapper;
