@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { DegreesSpan } from './DegreesSpan';
+import DegreesSpan from '../components/DegreesSpan';
 
 test('DegreeSpan render', () => {
   render(<DegreesSpan value={10} />);

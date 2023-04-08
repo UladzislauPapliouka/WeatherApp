@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import DateBlock from '../components/DateBlock/index';
+import DateBlock from '../components/DateBlock';
 
 test('DateBlock render', () => {
   render(<DateBlock />);
