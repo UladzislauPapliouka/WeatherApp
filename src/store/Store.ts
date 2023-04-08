@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import { GoogleSaga } from './Sagas/GoogleSaga';
 import { OpenWeatherSaga } from './Sagas/OpenWeatherSaga';
+import RootSaga from './Sagas/rootSaga';
 import { WeatherSaga } from './Sagas/WeatherSaga';
 import {
   AppReducer,
@@ -25,9 +26,7 @@ const Store = configureStore({
     getDefaultMiddleware().concat(sagaMiddleware),
 });
 
-sagaMiddleware.run(GoogleSaga);
-sagaMiddleware.run(OpenWeatherSaga);
-sagaMiddleware.run(WeatherSaga);
+sagaMiddleware.run(RootSaga);
 
 export type RootAppType = ReturnType<typeof Store.getState>;
 export type AppDispatch = typeof Store.dispatch;
