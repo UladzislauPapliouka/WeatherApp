@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { WeatherIconVariants } from '../../types/propsTypes/weatherIcon';
 import Chip from '../Chip';
 import DegreesSpan from '../DegreesSpan';
-import { WeatherIcon, WeatherIconVariants } from '../WeatherIcon';
+import WeatherIcon from '../WeatherIcon';
 
 import styles from './WeatherItem.module.scss';
 

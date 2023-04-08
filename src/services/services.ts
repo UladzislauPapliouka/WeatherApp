@@ -2,7 +2,7 @@ import { v1 } from 'uuid';
 
 import { OpenWeatherListType } from '../api/openWeatherAPI';
 import * as backgrounds from '../assets/backgrounds';
-import { WeatherIconVariants } from '../components/WeatherIcon';
+import { WeatherIconVariants } from '../types/propsTypes/weatherIcon';
 
 function getWeatherIcon(code: number) {
   if (code === 1006 || code === 1009) {

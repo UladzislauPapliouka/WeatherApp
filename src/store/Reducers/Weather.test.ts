@@ -1,4 +1,4 @@
-import { WeatherIconVariants } from '../../components/WeatherIcon';
+import { WeatherIconVariants } from '../../types/propsTypes/weatherIcon';
 
 import { DayInfoType, WeatherActions, WeatherReducer } from './WeatherReducer';
 

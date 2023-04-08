@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { WeatherIconVariants } from '../WeatherIcon';
+import { WeatherIconVariants } from '../../types/propsTypes/weatherIcon';
 
 import { WeatherItem } from './index';
 

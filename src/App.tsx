@@ -5,7 +5,6 @@ import DateBlock from './components/DateBlock';
 import { SettingIcon } from './components/Icons';
 import PlaceBlock from './components/PlaceBlock';
 import SettingsModal from './components/SettingsModal';
-import { WeatherIconVariants } from './components/WeatherIcon';
 import GoogleEventsContainer from './containers/GoogleEventsContainer';
 import WeatherForecastContainer from './containers/WeatherForecastContainer';
 import {
@@ -14,6 +13,7 @@ import {
 } from './store/Reducers/AppReducer';
 import { findPlaceByCoordsOpenWeatherAC } from './store/Sagas/OpenWeatherSaga';
 import { findPlaceWeatherByCoordsAC } from './store/Sagas/WeatherSaga';
+import { WeatherIconVariants } from './types/propsTypes/weatherIcon';
 import { getBackground } from './services';
 import { useAppDispatch, useAppSelector } from './store';
 
