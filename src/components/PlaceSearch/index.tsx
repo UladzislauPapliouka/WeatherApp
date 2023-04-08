@@ -5,7 +5,7 @@ import { findPlaceByNameOpenWeatherAC } from '../../store/Sagas/OpenWeatherSaga'
 import { findPlaceWeatherByNameAC } from '../../store/Sagas/WeatherSaga';
 import { useAppDispatch, useAppSelector } from '../../store/Store';
 
-import styles from './PlaceSearch.module.scss';
+import { PlaceSearchWrapper, SearchButton, SearchInput } from './styled';
 
 export default function PlaceSearch({
   preferredAPI,
@@ -30,8 +30,8 @@ export default function PlaceSearch({
   };
 
   return (
-    <div className={styles.search}>
-      <input
+    <PlaceSearchWrapper>
+      <SearchInput
         value={field}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
@@ -39,11 +39,8 @@ export default function PlaceSearch({
           }
         }}
         onChange={onChangeHandler}
-        type="text"
       />
-      <button type="button" onClick={onClickHandler}>
-        Search
-      </button>
-    </div>
+      <SearchButton onClick={onClickHandler}>Search</SearchButton>
+    </PlaceSearchWrapper>
   );
 }
