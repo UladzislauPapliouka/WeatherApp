@@ -20,7 +20,7 @@ const ModalWindow: FC<PropsWithChildren<{ handleClose: () => void }>> = ({
     }
   };
   return ReactDOM.createPortal(
-    <ModalWrapper ref={backRef} onClick={handleBackgroundClick}>
+    <ModalWrapper ref={backRef} onMouseUp={handleBackgroundClick}>
       {children}
     </ModalWrapper>,
     document.body,
