@@ -20,3 +20,8 @@ export interface IGreyscale {
   '90': number;
   '100': number;
 }
+export interface IFontWeight {
+  '100': number;
+  '200': number;
+  '500': number;
+}

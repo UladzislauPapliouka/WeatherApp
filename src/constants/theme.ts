@@ -1,3 +1,4 @@
+import fontWeight from '@constants/styles/fontWeight';
 import greyscale from '@constants/styles/greyscale';
 import { DefaultTheme } from 'styled-components';
 
@@ -8,5 +9,6 @@ const theme: DefaultTheme = {
   sizes,
   colors,
   greyscale,
+  fontWeight,
 };
 export default theme;
