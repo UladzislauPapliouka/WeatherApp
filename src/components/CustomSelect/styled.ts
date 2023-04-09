@@ -2,14 +2,13 @@ import { SelectArrowPropsType } from '@Types/propsTypes/customSelectTypes';
 import styled, { css } from 'styled-components';
 
 export const CustomSelectWrapper = styled.div`
-  background-color: rgba(53, 62, 77, 0.7);
-  padding: 0.5em 0.5em 0.5em 0.7em;
-  color: #f1eaea;
-  font-size: 20px;
+  background-color: ${({ theme: { colors } }) => colors.selectBackground};
+  padding: ${({ theme: { sizes } }) => sizes.fontSizes.sm}px;
+  color: ${({ theme: { colors } }) => colors.textColor};
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
   position: relative;
-  width: 100%;
-  min-width: 200px;
-  border-radius: 2em;
+  min-width: ${({ theme: { sizes } }) => sizes.selectWidthSizes.md}px;
+  border-radius: ${({ theme: { sizes } }) => sizes.fontSizes.xxl}px;
 `;
 export const SelectedVariantWrapper = styled.div`
   display: flex;
@@ -18,13 +17,12 @@ export const SelectedVariantWrapper = styled.div`
 `;
 export const SelectedVariantText = styled.span``;
 export const SelectArrow = styled.div<SelectArrowPropsType>`
-  width: 0;
-  height: 0;
-  border-left: 0.6em solid transparent;
-  border-right: 0.6em solid transparent;
-  border-top: 0.6em solid #353e4d;
-  line-height: 0;
-  float: left;
+  border-left: ${({ theme: { sizes } }) => sizes.selectArrowSizes.md}px solid
+    transparent;
+  border-right: ${({ theme: { sizes } }) => sizes.selectArrowSizes.md}px solid
+    transparent;
+  border-top: ${({ theme: { sizes } }) => sizes.selectArrowSizes.md}px solid
+    #353e4d;
   ${({ isActive }) =>
     isActive &&
     css`
