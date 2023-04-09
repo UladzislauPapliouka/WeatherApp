@@ -6,8 +6,8 @@ export const PlaceBlockWrapper = styled.div`
   text-align: right;
 `;
 export const CityName = styled.span`
-  font-size: 40px;
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
 `;
 export const CountryName = styled.span`
-  font-size: 20px;
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
 `;
