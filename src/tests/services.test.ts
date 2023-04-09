@@ -7,7 +7,7 @@ import {
   getWeatherIcon,
   openWeatherAPIConverterByDay,
   openWeatherAPIConverterByHours,
-} from './services';
+} from '@services/services';
 
 describe('Services should work correct', () => {
   test('getWeatherIcon should work correctly', () => {
