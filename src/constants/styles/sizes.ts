@@ -106,6 +106,12 @@ const WeatherItemGaps: ISize = {
 const WeatherItemColumn: ISize = {
   md: 100,
 };
+const GoogleEventWrapperWidth: ISize = {
+  md: 500,
+};
+const GoogleEventWrapperHeight: ISize = {
+  md: 200,
+};
 const sizes = {
   displayBreakpoints,
   gap,
@@ -129,6 +135,8 @@ const sizes = {
   WeatherIconSizes,
   WeatherItemGaps,
   WeatherItemColumn,
+  GoogleEventWrapperHeight,
+  GoogleEventWrapperWidth,
 };
 export type sizesType = typeof sizes;
 export default sizes;

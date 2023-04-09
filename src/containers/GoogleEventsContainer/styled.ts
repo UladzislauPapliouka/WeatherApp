@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const GoogleEventsWrapper = styled.div`
-  max-width: 500px;
-  max-height: 200px;
+  max-width: ${({ theme: { sizes } }) => sizes.GoogleEventWrapperWidth.md}px;
+  max-height: ${({ theme: { sizes } }) => sizes.GoogleEventWrapperHeight.md}px;
   overflow: hidden;
   overflow-y: auto;
   &::-webkit-scrollbar {

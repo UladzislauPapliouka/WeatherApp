@@ -5,10 +5,10 @@ const ForecastWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(53, 62, 77, 0.8);
-  color: #f1eaea;
-  @media screen and (max-width: 768px) {
-    max-height: 400px;
+  background-color: ${({ theme: { colors } }) => colors.selectBackground};
+  color: ${({ theme: { colors } }) => colors.textColor};
+  @media screen and (max-width: ${({ theme: { sizes } }) =>
+      sizes.displayBreakpoints.md}px) {
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
