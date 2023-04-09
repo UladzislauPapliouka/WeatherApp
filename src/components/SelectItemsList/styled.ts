@@ -4,8 +4,7 @@ export const SelectListWrapper = styled.div`
   box-sizing: border-box;
   position: absolute;
   width: 100%;
-  z-index: 10000;
-  background-color: rgba(53, 62, 77, 0.7);
+  background-color: ${({ theme: { colors } }) => colors.selectBackground};
   top: 100%;
   left: 0;
   display: flex;
@@ -16,7 +15,6 @@ export const SelectOption = styled.span`
   text-align: left;
 
   &:hover {
-    background-color: rgba(53, 62, 77, 0.9);
-    color: #fff;
+    background-color: ${({ theme: { colors } }) => colors.chipColor};
   }
 `;
