@@ -71,6 +71,12 @@ const selectWidthSizes: ISize = {
 const selectArrowSizes: ISize = {
   md: 12,
 };
+const googleEventWidth: ISize = {
+  md: 300,
+};
+const googleEvenMargin: ISize = {
+  md: 10,
+};
 const sizes = {
   displayBreakpoints,
   gap,
@@ -82,6 +88,8 @@ const sizes = {
   selectWidthSizes,
   selectGapSizes,
   chipWidthSize,
+  googleEventWidth,
+  googleEvenMargin,
   selectArrowSizes,
 };
 export type sizesType = typeof sizes;

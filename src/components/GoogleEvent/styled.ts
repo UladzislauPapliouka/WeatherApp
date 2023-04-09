@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const GoogleEventWrapper = styled.div`
   display: block;
-  font-weight: 500;
-  max-width: 300px;
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight['500']};
+  max-width: ${({ theme: { sizes } }) => sizes.googleEventWidth.md};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
 `;
 export const GoogleEventTitle = styled.span`
-  margin-left: 1em;
+  margin-left: ${({ theme: { sizes } }) => sizes.googleEvenMargin.md}px;
 `;
