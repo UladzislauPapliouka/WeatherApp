@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -7,6 +8,7 @@ const plugins = [
     favicon: './public/favicon.ico',
     manifest: './public/manifest.json',
   }),
+  new WebpackManifestPlugin({}),
 ];
 
 module.exports = {
