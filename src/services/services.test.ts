@@ -1,4 +1,4 @@
-import { WeatherIconVariants } from '../types/propsTypes/weatherIcon';
+import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
 
 import {
   getBackground,

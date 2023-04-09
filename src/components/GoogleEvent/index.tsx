@@ -1,7 +1,6 @@
 import React from 'react';
-
-import { GoogleEventPropsType } from '../../types/propsTypes/googleEventTypes';
-import Chip from '../Chip';
+import Chip from '@components/Chip';
+import { GoogleEventPropsType } from '@Types/propsTypes/googleEventTypes';
 
 import { GoogleEventTitle, GoogleEventWrapper } from './styled';
 

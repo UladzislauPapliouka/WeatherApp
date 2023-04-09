@@ -1,3 +1,7 @@
 webpack.config.js
 webpack.dev.js
 webpack.prod.js
+/build
+/src/tests
+/cypress
+cypress.config.ts

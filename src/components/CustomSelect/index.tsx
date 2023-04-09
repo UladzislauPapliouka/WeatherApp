@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { ICustomSelect } from '@Types/propsTypes/customSelectTypes';
 
-import { ICustomSelect } from '../../types/propsTypes/customSelectTypes';
 import SelectItemsList from '../SelectItemsList';
 
 import {

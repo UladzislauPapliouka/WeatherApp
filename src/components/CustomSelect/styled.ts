@@ -1,6 +1,5 @@
+import { SelectArrowPropsType } from '@Types/propsTypes/customSelectTypes';
 import styled, { css } from 'styled-components';
-
-import { SelectArrowPropsType } from '../../types/propsTypes/customSelectTypes';
 
 export const CustomSelectWrapper = styled.div`
   background-color: rgba(53, 62, 77, 0.7);

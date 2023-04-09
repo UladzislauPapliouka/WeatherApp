@@ -1,7 +1,7 @@
 import React from 'react';
+import GoogleEvent from '@components/GoogleEvent';
 
-import GoogleEvent from '../../components/GoogleEvent';
-import { useAppSelector } from '../../store';
+import { useAppSelector } from '@/store';
 
 import { GoogleEventsWrapper, NoEventsText } from './styled';
 

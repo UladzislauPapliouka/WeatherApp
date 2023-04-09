@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react';
-
-import { useAppDispatch, useAppSelector } from '../../store';
+import CustomSelect from '@components/CustomSelect';
+import LoginGoogleButton from '@components/LoginGoogleButton';
+import ModalWindow from '@components/Modal';
+import PlaceSearch from '@components/PlaceSearch';
 import {
   APIVariants,
   AppActions,
   WeatherRepresentVariant,
-} from '../../store/Reducers/AppReducer';
+} from '@store/Reducers/AppReducer';
 import {
   fetchDailyOpenWeatherAC,
   fetchHourlyOpenWeatherAC,
-} from '../../store/Sagas/OpenWeatherSaga';
+} from '@store/Sagas/OpenWeatherSaga';
 import {
   fetchWeatherAPIDailyAC,
   fetchWeatherAPIHourlyAC,
-} from '../../store/Sagas/WeatherSaga';
-import CustomSelect from '../CustomSelect';
-import LoginGoogleButton from '../LoginGoogleButton';
-import ModalWindow from '../Modal';
-import PlaceSearch from '../PlaceSearch';
+} from '@store/Sagas/WeatherSaga';
+
+import { useAppDispatch, useAppSelector } from '@/store';
 
 import { SettingsModalWrapper, SubTitle, Title } from './styled';
 

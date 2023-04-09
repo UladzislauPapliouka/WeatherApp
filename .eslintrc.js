@@ -50,6 +50,19 @@ module.exports = {
   settings: {
     'import/resolver': {
       typescript: {},
+      alias: {
+        map: [
+          ['@', './src'],
+          ['@constants', './src/constants'],
+          ['@assets', './src/assets'],
+          ['@components', './src/components'],
+          ['@containers', './src/containers'],
+          ['@services', './src/services'],
+          ['@Types', './src/types'],
+          ['@store', './src/store'],
+        ],
+        extensions: ['.ts', '.tsx', '.json'],
+      },
       node: {
         extensions: ['*', '.js', '.ts', '.tsx'],
       },

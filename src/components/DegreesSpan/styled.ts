@@ -1,6 +1,5 @@
+import { StyledDegreesSpanPropsType } from '@Types/propsTypes/degreeSpanTypes';
 import styled from 'styled-components';
-
-import { StyledDegreesSpanPropsType } from '../../types/propsTypes/degreeSpanTypes';
 
 const StyledDegreeSpan = styled.span<StyledDegreesSpanPropsType>`
   font-size: ${({ size }) => {

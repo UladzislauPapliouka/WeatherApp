@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { RootAppType } from '../../store';
+import { RootAppType } from '@/store';
 
 import { CityName, CountryName, PlaceBlockWrapper } from './styled';
 

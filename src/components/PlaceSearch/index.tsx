@@ -1,9 +1,9 @@
 import React, { SyntheticEvent, useState } from 'react';
+import { APIVariants } from '@store/Reducers/AppReducer';
+import { findPlaceByNameOpenWeatherAC } from '@store/Sagas/OpenWeatherSaga';
+import { findPlaceWeatherByNameAC } from '@store/Sagas/WeatherSaga';
 
-import { APIVariants } from '../../store/Reducers/AppReducer';
-import { findPlaceByNameOpenWeatherAC } from '../../store/Sagas/OpenWeatherSaga';
-import { findPlaceWeatherByNameAC } from '../../store/Sagas/WeatherSaga';
-import { useAppDispatch, useAppSelector } from '../../store/Store';
+import { useAppDispatch, useAppSelector } from '@/store';
 
 import { PlaceSearchWrapper, SearchButton, SearchInput } from './styled';
 

@@ -2,10 +2,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
-import { GoogleSaga } from './Sagas/GoogleSaga';
-import { OpenWeatherSaga } from './Sagas/OpenWeatherSaga';
 import RootSaga from './Sagas/rootSaga';
-import { WeatherSaga } from './Sagas/WeatherSaga';
 import {
   AppReducer,
   GoogleEventsReducer,

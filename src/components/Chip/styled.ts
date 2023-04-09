@@ -1,6 +1,5 @@
+import { ChipWrapperPropsTypes } from '@Types/propsTypes/chipTypes';
 import styled, { css } from 'styled-components';
-
-import { ChipWrapperPropsTypes } from '../../types/propsTypes/chipTypes';
 
 export const ChipWrapper = styled.div<ChipWrapperPropsTypes>`
   box-sizing: border-box;

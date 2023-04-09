@@ -1,21 +1,21 @@
 import React, { useLayoutEffect, useState } from 'react';
-
-import { bg1, bg2 } from '../../assets/backgrounds';
-import GoogleEventsContainer from '../../containers/GoogleEventsContainer';
-import WeatherForecastContainer from '../../containers/WeatherForecastContainer';
-import { getBackground } from '../../services';
-import { useAppDispatch, useAppSelector } from '../../store';
+import { bg1, bg2 } from '@assets/backgrounds';
+import DateBlock from '@components/DateBlock';
+import { SettingIcon } from '@components/Icons';
+import PlaceBlock from '@components/PlaceBlock';
+import SettingsModal from '@components/SettingsModal';
+import GoogleEventsContainer from '@containers/GoogleEventsContainer';
+import WeatherForecastContainer from '@containers/WeatherForecastContainer';
 import {
   APIVariants,
   WeatherRepresentVariant,
-} from '../../store/Reducers/AppReducer';
-import { findPlaceByCoordsOpenWeatherAC } from '../../store/Sagas/OpenWeatherSaga';
-import { findPlaceWeatherByCoordsAC } from '../../store/Sagas/WeatherSaga';
-import { WeatherIconVariants } from '../../types/propsTypes/weatherIcon';
-import DateBlock from '../DateBlock';
-import { SettingIcon } from '../Icons';
-import PlaceBlock from '../PlaceBlock';
-import SettingsModal from '../SettingsModal';
+} from '@store/Reducers/AppReducer';
+import { findPlaceByCoordsOpenWeatherAC } from '@store/Sagas/OpenWeatherSaga';
+import { findPlaceWeatherByCoordsAC } from '@store/Sagas/WeatherSaga';
+import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
+
+import { getBackground } from '@/services';
+import { useAppDispatch, useAppSelector } from '@/store';
 
 import {
   AppBackground,

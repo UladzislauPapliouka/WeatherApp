@@ -1,6 +1,5 @@
+import { WeatherImagePropsType } from '@Types/propsTypes/weatherIcon';
 import styled from 'styled-components';
-
-import { WeatherImagePropsType } from '../../types/propsTypes/weatherIcon';
 
 const WeatherImage = styled.img<WeatherImagePropsType>`
   aspect-ratio: 1;

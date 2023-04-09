@@ -42,7 +42,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.*','.ts', '.tsx', '.js'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@assets': path.resolve(__dirname, 'src/assets'),
@@ -51,7 +51,7 @@ module.exports = {
       '@containers': path.resolve(__dirname, 'src/containers'),
       '@services': path.resolve(__dirname, 'src/services'),
       '@store': path.resolve(__dirname, 'src/store'),
-      '@types': path.resolve(__dirname, 'src/types'),
+      '@Types': path.resolve(__dirname, 'src/types'),
     },
   },
 };

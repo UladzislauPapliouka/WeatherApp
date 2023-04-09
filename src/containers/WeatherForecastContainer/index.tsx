@@ -1,7 +1,7 @@
 import React from 'react';
+import WeatherItem from '@components/WeatherItem';
 
-import WeatherItem from '../../components/WeatherItem';
-import { useAppSelector } from '../../store';
+import { useAppSelector } from '@/store';
 
 import ForecastWrapper from './styled';
 

@@ -6,8 +6,9 @@ import {
   weatherAPI,
   WeatherAPIForecastResponseType,
   WeatherPlaceResponseType,
-} from '../../api';
-import { getDayName, getWeatherIcon } from '../../services';
+} from '@/api';
+import { getDayName, getWeatherIcon } from '@/services';
+
 import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
 
 const fetchWeatherAPIDailyAC = () => ({

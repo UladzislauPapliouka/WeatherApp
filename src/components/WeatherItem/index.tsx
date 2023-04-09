@@ -1,9 +1,8 @@
 import React from 'react';
-
-import { WeatherItemPropsType } from '../../types/propsTypes/weatherItemTypes';
-import Chip from '../Chip';
-import DegreesSpan from '../DegreesSpan';
-import WeatherIcon from '../WeatherIcon';
+import Chip from '@components/Chip';
+import DegreesSpan from '@components/DegreesSpan';
+import WeatherIcon from '@components/WeatherIcon';
+import { WeatherItemPropsType } from '@Types/propsTypes/weatherItemTypes';
 
 import {
   ChipContainer,

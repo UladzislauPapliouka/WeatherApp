@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-import { formatTime, parseDate } from '../../services/dateService';
+import { formatTime, parseDate } from '@services/dateService';
 
 import { DateBlockWrapper, DateText, TimeWrapper } from './styled';
 

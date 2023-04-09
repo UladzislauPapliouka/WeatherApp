@@ -6,12 +6,13 @@ import {
   OpenWeatherAPI,
   OpenWeatherPlaceResponseType,
   OpenWeatherResponseType,
-} from '../../api';
+} from '@/api';
 import {
   getOpenWeatherIcon,
   openWeatherAPIConverterByDay,
   openWeatherAPIConverterByHours,
-} from '../../services';
+} from '@/services';
+
 import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
 
 const findPlaceByCoordsOpenWeatherAC = (

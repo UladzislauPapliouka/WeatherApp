@@ -1,6 +1,5 @@
+import { DateTextVariants } from '@Types/propsTypes/dateBlockTypes';
 import styled from 'styled-components';
-
-import { DateTextVariants } from '../../types/propsTypes/dateBlockTypes';
 
 export const DateBlockWrapper = styled.div`
   display: flex;

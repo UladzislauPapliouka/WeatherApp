@@ -1,9 +1,9 @@
 import React from 'react';
+import loginIcon from '@assets/icons/google.webp';
 import { useGoogleLogin } from '@react-oauth/google';
+import { loginGoogleAC } from '@store/Sagas/GoogleSaga';
 
-import loginIcon from '../../assets/icons/google.webp';
-import { loginGoogleAC } from '../../store/Sagas/GoogleSaga';
-import { useAppDispatch } from '../../store/Store';
+import { useAppDispatch } from '@/store';
 
 import { ButtonText, GoogleImage, LoginGoogleButtonWrapper } from './styled';
 
