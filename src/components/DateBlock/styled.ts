@@ -8,15 +8,15 @@ export const DateBlockWrapper = styled.div`
 `;
 
 export const DateText = styled.span<DateTextVariants>`
-  font-size: ${({ variant = 'default' }) => {
+  font-size: ${({ variant = 'default', theme: { sizes } }) => {
     switch (variant) {
       case 'large':
-        return 3;
+        return sizes.fontSizes.xxl;
       case 'small':
-        return 1;
+        return sizes.fontSizes.sm;
       default:
-        return 1.6;
+        return sizes.fontSizes.lg;
     }
-  }}em;
+  }}px;
 `;
 export const TimeWrapper = styled.div``;
