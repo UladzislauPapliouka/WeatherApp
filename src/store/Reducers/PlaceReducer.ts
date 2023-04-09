@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-let initialState: PlaceInitialStateType = {
+const initialState: PlaceInitialStateType = {
   city: '',
   country: '',
   coord: {
@@ -9,20 +11,19 @@ let initialState: PlaceInitialStateType = {
     lon: 0,
   },
 };
-if (localStorage.getItem('Place')) {
-  const item = localStorage.getItem('Place') as string;
-  initialState = JSON.parse(item);
-}
+const persistConfig = {
+  key: 'PlaceState',
+  storage,
+};
 const PlaceSlice = createSlice({
   name: 'PLACE',
   initialState,
   reducers: {
-    setPlace: (state, action: PayloadAction<PlaceInitialStateType>) => {
-      localStorage.setItem('Place', JSON.stringify(action.payload));
-      return action.payload;
-    },
+    setPlace: (state, action: PayloadAction<PlaceInitialStateType>) =>
+      action.payload,
   },
 });
 const PlaceReducer = PlaceSlice.reducer;
+const PersistedPlaceReducer = persistReducer(persistConfig, PlaceSlice.reducer);
 const PlaceActions = PlaceSlice.actions;
-export { PlaceActions, PlaceReducer };
+export { PlaceActions, PlaceReducer, PersistedPlaceReducer };

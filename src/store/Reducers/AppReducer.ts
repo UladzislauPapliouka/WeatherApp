@@ -4,15 +4,17 @@ import {
   AppInitialStateType,
   WeatherRepresentVariant,
 } from '@Types/storeTypes/appStateTypes';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-let initialState: AppInitialStateType = {
+const initialState: AppInitialStateType = {
   preferredAPI: APIVariants.weatherAPI,
   weatherRepresent: WeatherRepresentVariant.daily,
 };
-if (localStorage.getItem('AppState')) {
-  const item = localStorage.getItem('AppState') as string;
-  initialState = JSON.parse(item);
-}
+const persistConfig = {
+  key: 'AppState',
+  storage,
+};
 const AppSlice = createSlice({
   name: 'APP',
   initialState,
@@ -25,7 +27,6 @@ const AppSlice = createSlice({
         ...state,
         preferredAPI: action.payload.preferredAPI,
       };
-      localStorage.setItem('AppState', JSON.stringify(result));
       return result;
     },
     setWeatherRepresent: (
@@ -38,13 +39,13 @@ const AppSlice = createSlice({
         ...state,
         weatherRepresent: action.payload.weatherRepresent,
       };
-      localStorage.setItem('AppState', JSON.stringify(result));
       return result;
     },
   },
 });
 
 const AppReducer = AppSlice.reducer;
+const PersistedAppReducer = persistReducer(persistConfig, AppSlice.reducer);
 const AppActions = AppSlice.actions;
 
-export { AppActions, AppReducer };
+export { AppActions, PersistedAppReducer, AppReducer };
