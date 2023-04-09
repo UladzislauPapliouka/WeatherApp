@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 const WeatherImage = styled.img<WeatherImagePropsType>`
   aspect-ratio: 1;
-  width: ${({ size }) => {
+  width: ${({ size, theme: { sizes } }) => {
     switch (size) {
       case 'small':
-        return 50;
+        return sizes.WeatherIconSizes.sm;
       case 'large':
-        return 150;
+        return sizes.WeatherIconSizes.lg;
       default:
-        return 100;
+        return sizes.WeatherIconSizes.md;
     }
   }}px;
 `;

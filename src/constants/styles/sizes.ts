@@ -86,6 +86,26 @@ const borderWidth: ISize = {
 const searchHeight: ISize = {
   md: 50,
 };
+const settingPadding: ISize = {
+  md: 20,
+};
+const settingSizes: ISize = {
+  md: 500,
+};
+const borderRadiuses: ISize = {
+  md: 8,
+};
+const WeatherIconSizes: ISize = {
+  sm: 50,
+  md: 100,
+  lg: 150,
+};
+const WeatherItemGaps: ISize = {
+  md: 26,
+};
+const WeatherItemColumn: ISize = {
+  md: 100,
+};
 const sizes = {
   displayBreakpoints,
   gap,
@@ -103,6 +123,12 @@ const sizes = {
   selectArrowSizes,
   borderWidth,
   searchHeight,
+  settingPadding,
+  settingSizes,
+  borderRadiuses,
+  WeatherIconSizes,
+  WeatherItemGaps,
+  WeatherItemColumn,
 };
 export type sizesType = typeof sizes;
 export default sizes;
