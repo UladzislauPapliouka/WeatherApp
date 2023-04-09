@@ -1,10 +1,10 @@
 import {
   APIVariants,
-  AppActions,
   AppInitialStateType,
-  AppReducer,
   WeatherRepresentVariant,
-} from './AppReducer';
+} from '@Types/storeTypes/appStateTypes';
+
+import { AppActions, AppReducer } from '@store/Reducers/AppReducer';
 
 describe('AppReducer should work correct', () => {
   const initialState: AppInitialStateType = {

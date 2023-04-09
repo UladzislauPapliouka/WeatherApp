@@ -1,3 +1,7 @@
+import {
+  OpenWeatherPlaceResponseType,
+  OpenWeatherResponseType,
+} from '@Types/apiTypes/openWeatherAPITypes';
 import axios from 'axios';
 
 const weatherInstance = axios.create({
@@ -8,65 +12,6 @@ const locationInstance = axios.create({
   baseURL: 'http://api.openweathermap.org/geo/1.0/',
 });
 
-type OpenWeatherPlaceResponseType = {
-  country: string;
-  lat: number;
-  lon: number;
-  name: string;
-  state: string;
-  local_names: {
-    [key: string]: string;
-  };
-};
-
-type OpenWeatherListType = {
-  clouds: {
-    all: number;
-  };
-  dt: number;
-  dt_txt: string;
-  pop: number;
-  wind: {
-    speed: number;
-    deg: number;
-    gust: number;
-  };
-  weather: Array<{
-    id: number;
-    main: string;
-    description: string;
-    icon: string;
-  }>;
-  visibility: number;
-  main: {
-    feels_like: number;
-    grnd_level: number;
-    humidity: number;
-    pressure: number;
-    sea_level: number;
-    temp: number;
-    temp_kf: number;
-    temp_max: number;
-    temp_min: number;
-  };
-};
-
-type OpenWeatherResponseType = {
-  cnt: number;
-  message: number;
-  cod: string;
-  city: {
-    coord: { lat: number; lon: number };
-    country: string;
-    id: number;
-    name: string;
-    population: number;
-    sunrise: number;
-    sunset: number;
-    timezone: number;
-  };
-  list: Array<OpenWeatherListType>;
-};
 const openWeatherAPI = {
   getWeatherDaily: (lat: number, lon: number) =>
     weatherInstance.get<OpenWeatherResponseType>(
@@ -86,8 +31,3 @@ const openWeatherAPI = {
     ),
 };
 export default openWeatherAPI;
-export type {
-  OpenWeatherPlaceResponseType,
-  OpenWeatherResponseType,
-  OpenWeatherListType,
-};

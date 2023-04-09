@@ -1,8 +1,8 @@
 import {
   PlaceActions,
-  PlaceInitialStateType,
   PlaceReducer,
-} from './PlaceReducer';
+} from '@store/Reducers/PlaceReducer';
+import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
 
 describe('PlaceReducer should work correct', () => {
   const initialState: PlaceInitialStateType = {

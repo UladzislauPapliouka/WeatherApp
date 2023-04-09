@@ -1,12 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
-
-export type DayInfoType = {
-  name: string;
-  degrees: number;
-  icon: WeatherIconVariants;
-  id: string;
-};
+import { DayInfoType } from '@Types/storeTypes/weatherStateType';
 
 const initialState: DayInfoType[] = [];
 

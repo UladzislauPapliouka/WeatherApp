@@ -1,8 +1,8 @@
 import {
   GoogleEventsActions,
-  GoogleEventsInitialStateType,
   GoogleEventsReducer,
-} from './GoogleEventsReducer';
+} from '@store/Reducers/GoogleEventsReducer';
+import { GoogleEventsInitialStateType } from '@Types/storeTypes/googleStateTypes';
 
 describe('GoogleEventsReducer should work correct', () => {
   const initialState: GoogleEventsInitialStateType[] = [];

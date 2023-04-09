@@ -2,12 +2,12 @@ import { AxiosResponse } from 'axios';
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { v1 } from 'uuid';
 
+import { weatherAPI } from '@/api';
+import { getDayName, getWeatherIcon } from '@/services';
 import {
-  weatherAPI,
   WeatherAPIForecastResponseType,
   WeatherPlaceResponseType,
-} from '@/api';
-import { getDayName, getWeatherIcon } from '@/services';
+} from '@/types/apiTypes/weatherAPITypes';
 
 import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
 

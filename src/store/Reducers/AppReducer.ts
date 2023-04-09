@@ -1,17 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  APIVariants,
+  AppInitialStateType,
+  WeatherRepresentVariant,
+} from '@Types/storeTypes/appStateTypes';
 
-export enum APIVariants {
-  weatherAPI = 'Weather API',
-  openWeatherAPI = 'OpenWeather API',
-}
-export enum WeatherRepresentVariant {
-  daily = 'Daily',
-  hourly = 'Hourly',
-}
-export type AppInitialStateType = {
-  preferredAPI: APIVariants;
-  weatherRepresent: WeatherRepresentVariant;
-};
 let initialState: AppInitialStateType = {
   preferredAPI: APIVariants.weatherAPI,
   weatherRepresent: WeatherRepresentVariant.daily,

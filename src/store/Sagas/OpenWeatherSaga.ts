@@ -1,12 +1,12 @@
+import {
+  OpenWeatherPlaceResponseType,
+  OpenWeatherResponseType,
+} from '@Types/apiTypes/openWeatherAPITypes';
 import { AxiosResponse } from 'axios';
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { v1 } from 'uuid';
 
-import {
-  OpenWeatherAPI,
-  OpenWeatherPlaceResponseType,
-  OpenWeatherResponseType,
-} from '@/api';
+import { OpenWeatherAPI } from '@/api';
 import {
   getOpenWeatherIcon,
   openWeatherAPIConverterByDay,

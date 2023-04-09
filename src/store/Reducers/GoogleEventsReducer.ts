@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { GoogleEventsInitialStateType } from '@Types/storeTypes/googleStateTypes';
 
-export type GoogleEventsInitialStateType = {
-  time: string;
-  title: string;
-};
 const initialState: GoogleEventsInitialStateType[] = [];
 const GoogleEventsSlice = createSlice({
   name: 'GOOGLE_EVENTS',

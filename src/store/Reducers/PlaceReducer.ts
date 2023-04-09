@@ -1,13 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
 
-export type PlaceInitialStateType = {
-  city: string;
-  country: string;
-  coord: {
-    lat: number;
-    lon: number;
-  };
-};
 let initialState: PlaceInitialStateType = {
   city: '',
   country: '',

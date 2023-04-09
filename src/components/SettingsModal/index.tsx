@@ -3,11 +3,7 @@ import CustomSelect from '@components/CustomSelect';
 import LoginGoogleButton from '@components/LoginGoogleButton';
 import ModalWindow from '@components/Modal';
 import PlaceSearch from '@components/PlaceSearch';
-import {
-  APIVariants,
-  AppActions,
-  WeatherRepresentVariant,
-} from '@store/Reducers/AppReducer';
+import { AppActions } from '@store/Reducers/AppReducer';
 import {
   fetchDailyOpenWeatherAC,
   fetchHourlyOpenWeatherAC,
@@ -16,6 +12,10 @@ import {
   fetchWeatherAPIDailyAC,
   fetchWeatherAPIHourlyAC,
 } from '@store/Sagas/WeatherSaga';
+import {
+  APIVariants,
+  WeatherRepresentVariant,
+} from '@Types/storeTypes/appStateTypes';
 
 import { useAppDispatch, useAppSelector } from '@/store';
 
