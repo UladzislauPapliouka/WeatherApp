@@ -9,13 +9,13 @@ const weatherInstance = axios.create({
 });
 
 const locationInstance = axios.create({
-  baseURL: 'http://api.openweathermap.org/geo/1.0/',
+  baseURL: 'https://api.openweathermap.org/geo/1.0/',
 });
 
 const openWeatherAPI = {
   getWeatherDaily: (lat: number, lon: number) =>
     weatherInstance.get<OpenWeatherResponseType>(
-      `forecast?lat=${lat}&lon=${lon}&appid=be4e4f1db7d4bfa1854ee2145c155b97&units=metric&cnt=48`,
+      `forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}&units=metric&cnt=48`,
     ),
   getWeatherHourly: (lat: number, lon: number) =>
     weatherInstance.get<OpenWeatherResponseType>(

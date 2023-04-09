@@ -6,7 +6,7 @@ import {
 } from '@/types/apiTypes/weatherAPITypes';
 
 const insnatce = axios.create({
-  baseURL: 'http://api.weatherapi.com/v1/',
+  baseURL: 'https://api.weatherapi.com/v1/',
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Cache-Control': 'public,must-revalidate',
@@ -16,7 +16,7 @@ const insnatce = axios.create({
 const weatherAPI = {
   getWeatherDaily: (lat: number, lon: number) =>
     insnatce.get<WeatherAPIForecastResponseType>(
-      `forecast.json?key=7e5fc8f7edca45498ea180325233001&q=${lat},${lon}&days=7&aqi=no&alerts=no`,
+      `forecast.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${lat},${lon}&days=7&aqi=no&alerts=no`,
     ),
   getWeatherHourly: (lat: number, lon: number) =>
     insnatce.get<WeatherAPIForecastResponseType>(

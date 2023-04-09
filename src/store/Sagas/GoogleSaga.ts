@@ -5,9 +5,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { GoogleEventsActions } from '../Reducers';
 
 const config = {
-  clientId:
-    '573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com',
-  apiKey: 'AIzaSyCyrCsJylVwzKnPBaHD1nMs8b2hlc2wgzc',
+  clientId: `${process.env.REACT_GOOGLE_CLIENT_ID}.apps.googleusercontent.com`,
+  apiKey: `${process.env.REACT_GOOGLE_API_KEY}`,
   scope: 'https://www.googleapis.com/auth/calendar',
   discoveryDocs: [
     'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest',

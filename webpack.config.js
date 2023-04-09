@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
+const Dotenv = require('dotenv-webpack');
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -9,6 +11,8 @@ const plugins = [
     manifest: './public/manifest.json',
   }),
   new WebpackManifestPlugin({}),
+  new NodePolyfillPlugin(),
+  new Dotenv()
 ];
 
 module.exports = {
