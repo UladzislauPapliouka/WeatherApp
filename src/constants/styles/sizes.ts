@@ -77,6 +77,15 @@ const googleEventWidth: ISize = {
 const googleEvenMargin: ISize = {
   md: 10,
 };
+const searchPadding: ISize = {
+  md: 10,
+};
+const borderWidth: ISize = {
+  xs: 2,
+};
+const searchHeight: ISize = {
+  md: 50,
+};
 const sizes = {
   displayBreakpoints,
   gap,
@@ -88,9 +97,12 @@ const sizes = {
   selectWidthSizes,
   selectGapSizes,
   chipWidthSize,
+  searchPadding,
   googleEventWidth,
   googleEvenMargin,
   selectArrowSizes,
+  borderWidth,
+  searchHeight,
 };
 export type sizesType = typeof sizes;
 export default sizes;
