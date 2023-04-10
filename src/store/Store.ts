@@ -1,5 +1,6 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import userReducer from '@store/Reducers/UserReducer';
 import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 
@@ -20,6 +21,7 @@ const Store = configureStore({
     GoogleEventsReducer,
     WeatherByDayReducer: WeatherReducer,
     AppReducer: PersistedAppReducer,
+    userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

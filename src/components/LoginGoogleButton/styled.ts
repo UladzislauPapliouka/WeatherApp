@@ -18,6 +18,7 @@ export const LoginGoogleButtonWrapper = styled.div`
 export const GoogleImage = styled.img`
   width: 2em;
   aspect-ratio: 1;
+  border-radius: ${({ theme: { sizes } }) => sizes.fontSizes.xxl}px;
 `;
 export const ButtonText = styled.span`
   font-size: 1.5em;
