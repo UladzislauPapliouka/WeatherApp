@@ -1,15 +1,21 @@
 import { ColorType } from '@Types/themeTypes';
 
-const textColor: ColorType = '#f1eaea';
+const textColorLight: ColorType = '#f1eaea';
+const textColorDark: ColorType = '#100f0f';
 const chipColor: ColorType = '#353e4d';
 const selectBackground: ColorType = '#353E4DB2';
 const borderColor: ColorType = '#000';
+const whiteColor: ColorType = '#FFF';
+const lightHoverColor: ColorType = '#F5F4FB';
 
 const colors = {
-  textColor,
+  textColor: textColorLight,
+  textColorDark,
   chipColor,
   selectBackground,
   borderColor,
+  whiteColor,
+  lightHoverColor,
 };
 export type colorsType = typeof colors;
 export default colors;

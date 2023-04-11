@@ -35,7 +35,7 @@ const marginSize: ISize = {
 };
 const paddingSize: ISize = {
   xs: 14,
-  sm: 16,
+  sm: 8,
   md: 20,
   lg: 26,
   xl: 40,

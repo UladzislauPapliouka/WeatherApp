@@ -2,13 +2,22 @@ import { SelectArrowPropsType } from '@Types/propsTypes/customSelectTypes';
 import styled, { css } from 'styled-components';
 
 export const CustomSelectWrapper = styled.div`
-  background-color: ${({ theme: { colors } }) => colors.selectBackground};
-  padding: ${({ theme: { sizes } }) => sizes.fontSizes.sm}px;
-  color: ${({ theme: { colors } }) => colors.textColor};
+  position: relative;
+  background-color: ${({ theme: { colors } }) => colors.whiteColor};
+  padding: ${({ theme: { sizes } }) => sizes.paddingSize.sm}px
+    ${({ theme: { sizes } }) => 2 * sizes.paddingSize.sm!}px;
+  color: ${({ theme: { colors } }) => colors.textColorDark};
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
   position: relative;
   min-width: ${({ theme: { sizes } }) => sizes.selectWidthSizes.md}px;
-  border-radius: ${({ theme: { sizes } }) => sizes.fontSizes.xxl}px;
+  border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
+  &:hover {
+    background-color: ${({ theme: { colors } }) => colors.lightHoverColor};
+    cursor: pointer;
+  }
+  & > * {
+    pointer-events: none;
+  }
 `;
 export const SelectedVariantWrapper = styled.div`
   display: flex;
@@ -17,12 +26,9 @@ export const SelectedVariantWrapper = styled.div`
 `;
 export const SelectedVariantText = styled.span``;
 export const SelectArrow = styled.div<SelectArrowPropsType>`
-  border-left: ${({ theme: { sizes } }) => sizes.selectArrowSizes.md}px solid
-    transparent;
-  border-right: ${({ theme: { sizes } }) => sizes.selectArrowSizes.md}px solid
-    transparent;
-  border-top: ${({ theme: { sizes } }) => sizes.selectArrowSizes.md}px solid
-    #353e4d;
+  & > svg > path {
+    stroke: ${({ theme: { colors } }) => colors.textColorDark};
+  }
   ${({ isActive }) =>
     isActive &&
     css`

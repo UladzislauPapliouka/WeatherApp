@@ -26,4 +26,22 @@ function SettingIcon({ color, scale }: IconPropsType) {
 function RefreshIcon() {
   return <img src={refresh} alt="Refresh icon" />;
 }
-export { SettingIcon, RefreshIcon };
+function CheckIcon() {
+  return (
+    <svg
+      width="16"
+      height="10"
+      viewBox="0 0 16 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2 1.75L8 7.75L14 1.75"
+        stroke="#5533FF"
+        strokeWidth="2"
+        strokeLinecap="square"
+      />
+    </svg>
+  );
+}
+export { SettingIcon, RefreshIcon, CheckIcon };
