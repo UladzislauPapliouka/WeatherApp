@@ -36,8 +36,17 @@ export const Container = styled.div`
 `;
 export const SettingButtonWrapper = styled.div`
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: ${({ theme: { sizes } }) => sizes.gap.xs}px;
   right: ${({ theme: { sizes } }) => sizes.gap.xs}px;
+  padding: ${({ theme: { sizes } }) => sizes.paddingSize.xs}px;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    background: ${({ theme: { colors } }) => colors.lightHoverColor03};
+  }
 `;
 export const WithGoogleEvents = styled.div`
   padding: ${({ theme: { sizes } }) => sizes.gap.lg}px

@@ -7,6 +7,7 @@ const selectBackground: ColorType = '#353E4DB2';
 const borderColor: ColorType = '#000';
 const whiteColor: ColorType = '#FFF';
 const lightHoverColor: ColorType = '#F5F4FB';
+const lightHoverColor03: ColorType = 'rgba(245,244,251,0.3)';
 
 const colors = {
   textColor: textColorLight,
@@ -16,6 +17,7 @@ const colors = {
   borderColor,
   whiteColor,
   lightHoverColor,
+  lightHoverColor03,
 };
 export type colorsType = typeof colors;
 export default colors;
