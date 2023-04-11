@@ -32,4 +32,5 @@ export const SearchButton = styled.button`
   font-weight: ${({ theme: { fontWeight } }) => fontWeight['500']};
   border: none;
   outline: none;
+  cursor: pointer;
 `;
