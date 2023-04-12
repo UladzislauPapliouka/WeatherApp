@@ -112,6 +112,9 @@ const GoogleEventWrapperWidth: ISize = {
 const GoogleEventWrapperHeight: ISize = {
   md: 200,
 };
+const ForeCastMaxHeight: ISize = {
+  md: 300,
+};
 const sizes = {
   displayBreakpoints,
   gap,
@@ -137,6 +140,7 @@ const sizes = {
   WeatherItemColumn,
   GoogleEventWrapperHeight,
   GoogleEventWrapperWidth,
+  ForeCastMaxHeight,
 };
 export type sizesType = typeof sizes;
 export default sizes;

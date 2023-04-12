@@ -12,6 +12,7 @@ const ForecastWrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
+    max-height: ${({ theme: { sizes } }) => sizes.ForeCastMaxHeight.md}px;
     &::-webkit-scrollbar {
       display: none;
     }
