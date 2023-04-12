@@ -15,7 +15,8 @@ export const SelectOption = styled.span`
   box-sizing: border-box;
   text-align: left;
   padding: ${({ theme: { sizes } }) => sizes.paddingSize.sm}px
-    ${({ theme: { sizes } }) => 2 * sizes.paddingSize.sm!}px;
+    ${({ theme: { sizes } }) =>
+      sizes.paddingSize.sm && 2 * sizes.paddingSize.sm}px;
   background-color: ${({ theme: { colors } }) => colors.whiteColor};
   z-index: 1;
   &:hover {

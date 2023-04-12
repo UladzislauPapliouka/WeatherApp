@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 const plugins = [
@@ -12,7 +12,7 @@ const plugins = [
   }),
   new WebpackManifestPlugin({}),
   new NodePolyfillPlugin(),
-  new Dotenv()
+  new Dotenv(),
 ];
 
 module.exports = {
@@ -48,7 +48,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.*','.ts', '.tsx', '.js'],
+    extensions: ['.*', '.ts', '.tsx', '.js'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@assets': path.resolve(__dirname, 'src/assets'),

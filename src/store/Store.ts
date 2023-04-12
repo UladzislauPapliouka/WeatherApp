@@ -6,7 +6,6 @@ import createSagaMiddleware from 'redux-saga';
 
 import RootSaga from './Sagas/rootSaga';
 import {
-  AppReducer,
   GoogleEventsReducer,
   PersistedAppReducer,
   PersistedPlaceReducer,

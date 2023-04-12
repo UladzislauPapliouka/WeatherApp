@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { CheckIcon } from '@components/Icons/Icons';
 import { ICustomSelect } from '@Types/propsTypes/customSelectTypes';
 
@@ -29,7 +29,7 @@ function CustomSelect({ options, selected, onChangeSelected }: ICustomSelect) {
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  }, [selectRef.current]);
+  }, [selectRef]);
   return (
     <CustomSelectWrapper ref={selectRef} onClick={toggleSelect}>
       <SelectedVariantWrapper>

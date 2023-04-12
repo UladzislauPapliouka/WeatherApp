@@ -1,6 +1,7 @@
 import * as backgrounds from '@assets/backgrounds';
 import { OpenWeatherListType } from '@Types/apiTypes/openWeatherAPITypes';
 import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
+import { ForecastItemInfoType } from '@Types/storeTypes/weatherStateType';
 import { v1 } from 'uuid';
 
 function getWeatherIcon(code: number) {
@@ -105,8 +106,8 @@ function getDayName(dayNumber: number, index: number) {
 }
 function openWeatherAPIConverterByDay(
   array: Array<OpenWeatherListType>,
-): Array<any> {
-  const result: any[] = [];
+): Array<ForecastItemInfoType> {
+  const result: ForecastItemInfoType[] = [];
   array.forEach((obj, i) => {
     if (!(i % 8)) {
       result.push({
@@ -122,8 +123,8 @@ function openWeatherAPIConverterByDay(
 }
 function openWeatherAPIConverterByHours(
   array: Array<OpenWeatherListType>,
-): Array<any> {
-  const result: any[] = [];
+): Array<ForecastItemInfoType> {
+  const result: ForecastItemInfoType[] = [];
   array.forEach((obj) => {
     result.push({
       icon: getOpenWeatherIcon(obj.weather[0].id),

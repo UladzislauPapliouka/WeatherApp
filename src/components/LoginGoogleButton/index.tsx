@@ -31,7 +31,7 @@ export default function LoginGoogleButton() {
       );
     };
     initializeGoogleLogin();
-  }, [buttonRef.current, user]);
+  }, [buttonRef, user, dispatch]);
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {

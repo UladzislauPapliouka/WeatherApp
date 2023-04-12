@@ -8,8 +8,8 @@ test('Custom select render', () => {
   render(
     <CustomSelect
       selected={testVar}
-      onChangeSelected={(e) => {
-        testVar = e.target.value;
+      onChangeSelected={(value) => {
+        testVar = value;
       }}
       options={['variant1', 'variant2']}
     />,

@@ -1,6 +1,6 @@
 import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
 
-export type DayInfoType = {
+export type ForecastItemInfoType = {
   name: string;
   degrees: number;
   icon: WeatherIconVariants;

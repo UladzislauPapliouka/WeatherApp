@@ -16,7 +16,7 @@ export default function PlaceSearch({
 }) {
   const initialField = useAppSelector((state) => state.PlaceReducer.city);
   const [field, setField] = useState<string>(initialField);
-  const onChangeHandler = (e: SyntheticEvent<any>) => {
+  const onChangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
     e.preventDefault();
     setField(e.currentTarget.value);
   };

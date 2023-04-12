@@ -5,7 +5,8 @@ export const CustomSelectWrapper = styled.div`
   position: relative;
   background-color: ${({ theme: { colors } }) => colors.whiteColor};
   padding: ${({ theme: { sizes } }) => sizes.paddingSize.sm}px
-    ${({ theme: { sizes } }) => 2 * sizes.paddingSize.sm!}px;
+    ${({ theme: { sizes } }) =>
+      sizes.paddingSize.sm && 2 * sizes.paddingSize.sm}px;
   color: ${({ theme: { colors } }) => colors.textColorDark};
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
   position: relative;

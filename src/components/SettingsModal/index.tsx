@@ -33,11 +33,17 @@ export default function Index({ isOpen, onClose }: SettingModalPropsTyp) {
     (state) => state.AppReducer.weatherRepresent,
   );
   const dispatch = useAppDispatch();
-  const setPreferredService = (value: APIVariants) => {
-    dispatch(AppActions.setPreferredAPI({ preferredAPI: value }));
+  const setPreferredService = (value: string) => {
+    dispatch(
+      AppActions.setPreferredAPI({ preferredAPI: value as APIVariants }),
+    );
   };
-  const setWeatherRepresent = (value: WeatherRepresentVariant) => {
-    dispatch(AppActions.setWeatherRepresent({ weatherRepresent: value }));
+  const setWeatherRepresent = (value: string) => {
+    dispatch(
+      AppActions.setWeatherRepresent({
+        weatherRepresent: value as WeatherRepresentVariant,
+      }),
+    );
   };
   useEffect(() => {
     dispatch(

@@ -1,10 +1,10 @@
 import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
 
-import {  WeatherActions, WeatherReducer } from '@store/Reducers/WeatherReducer';
-import { DayInfoType } from '@Types/storeTypes/weatherStateType';
+import { WeatherActions, WeatherReducer } from '@store/Reducers/WeatherReducer';
+import { ForecastItemInfoType } from '@Types/storeTypes/weatherStateType';
 
 describe('WeatherReducer should work correct', () => {
-  const initialState: DayInfoType[] = [];
+  const initialState: ForecastItemInfoType[] = [];
   test('Weather should be set correctly', () => {
     const result = WeatherReducer(
       initialState,
