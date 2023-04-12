@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import loginIcon from '@assets/icons/google.webp';
 import { userActions } from '@store/Reducers/UserReducer';
-import { fetchGoogleEventsAC } from '@store/Sagas/GoogleSaga';
+import { fetchGoogleEvents } from '@store/Sagas/GoogleEventsWatcher';
+import { GoogleUserEntityType } from '@Types/apiTypes/googleCalendarAPITypes';
 import { gapi, loadAuth2 } from 'gapi-script';
 
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -14,40 +15,37 @@ export default function LoginGoogleButton() {
   const buttonRef = useRef(null);
 
   useEffect(() => {
-    const init = async () => {
+    const initializeGoogleLogin = async () => {
       const auth2 = await loadAuth2(
         gapi,
         `${process.env.REACT_GOOGLE_CLIENT_ID}`,
         'https://www.googleapis.com/auth/calendar',
       );
-      auth2.attachClickHandler(buttonRef.current, {}, (user: any) => {
-        dispatch(fetchGoogleEventsAC());
-        dispatch(userActions.setUser({ user: user.wt }));
-      });
+      auth2.attachClickHandler(
+        buttonRef.current,
+        {},
+        (user: GoogleUserEntityType) => {
+          dispatch(fetchGoogleEvents());
+          dispatch(userActions.setUser({ user: user.wt }));
+        },
+      );
     };
-    !user.NT && init();
-  }, [user]);
+    initializeGoogleLogin();
+  }, [buttonRef.current, user]);
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
       dispatch(userActions.resetUser());
-      console.log('User signed out.');
     });
   };
-  if (user.hK) {
-    return (
-      <LoginGoogleButtonWrapper key="2" onClick={user.hK ? signOut : () => {}}>
-        <GoogleImage alt="Google logo" src={user.hK} />
-        <ButtonText>Logout</ButtonText>
-      </LoginGoogleButtonWrapper>
-    );
-  }
-  return (
-    <LoginGoogleButtonWrapper
-      key="1"
-      onClick={user.hK ? signOut : () => {}}
-      ref={buttonRef}
-    >
+
+  return user.hK ? (
+    <LoginGoogleButtonWrapper key="2" onClick={signOut}>
+      <GoogleImage alt="Google logo" src={user.hK} />
+      <ButtonText>Logout</ButtonText>
+    </LoginGoogleButtonWrapper>
+  ) : (
+    <LoginGoogleButtonWrapper key="1" ref={buttonRef}>
       <GoogleImage alt="Google logo" src={loginIcon} />
       <ButtonText>Login</ButtonText>
     </LoginGoogleButtonWrapper>

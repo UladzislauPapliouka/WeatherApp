@@ -1,14 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { GoogleUserInfoType } from '@Types/storeTypes/googleStateTypes';
 
-type userType = {
-  Ad: string;
-  NT: string;
-  cu: string;
-  hK: string;
-  rV: string;
-  uT: string;
-};
-const initialState: userType = {
+const initialState: GoogleUserInfoType = {
   Ad: '',
   NT: '',
   cu: '',
@@ -20,7 +13,7 @@ const userSlice = createSlice({
   name: 'userSlice',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<{ user: userType }>) =>
+    setUser: (state, action: PayloadAction<{ user: GoogleUserInfoType }>) =>
       action.payload.user,
     resetUser: () => initialState,
   },
