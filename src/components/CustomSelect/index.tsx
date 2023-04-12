@@ -21,7 +21,6 @@ function CustomSelect({ options, selected, onChangeSelected }: ICustomSelect) {
   };
   useLayoutEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      console.log(e.target, selectRef.current);
       if (e.target !== selectRef.current) {
         setIsActive(false);
       }
