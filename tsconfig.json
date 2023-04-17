@@ -12,7 +12,8 @@
       "@containers/*": ["containers/*"],
       "@services/*": ["services/*"],
       "@Types/*": ["types/*"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@store": ["store/"]
     },
     "skipLibCheck": true,
     "esModuleInterop": true,

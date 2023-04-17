@@ -5,7 +5,7 @@ import App from '@components/App';
 import GlobalStyles from '@components/GlobalStyles';
 import theme from '@constants/theme';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { Store } from '@store/index';
+import { Store } from '@store';
 import { persistor } from '@store/Store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ThemeProvider } from 'styled-components';

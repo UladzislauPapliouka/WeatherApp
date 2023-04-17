@@ -9,6 +9,7 @@ import {
   GoogleEventsReducer,
   PersistedAppReducer,
   PersistedPlaceReducer,
+  SearchAutocompleteReducer,
   WeatherReducer,
 } from './Reducers';
 
@@ -21,6 +22,7 @@ const Store = configureStore({
     WeatherByDayReducer: WeatherReducer,
     AppReducer: PersistedAppReducer,
     userReducer,
+    SearchAutocompleteReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

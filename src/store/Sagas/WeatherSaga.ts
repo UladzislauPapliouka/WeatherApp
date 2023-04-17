@@ -1,5 +1,14 @@
+import { AutocompleteActions } from '@store/Reducers/SearchAutocompleteReducer';
 import { AxiosResponse } from 'axios';
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import {
+  call,
+  delay,
+  put,
+  select,
+  takeEvery,
+  takeLatest,
+  takeLeading,
+} from 'redux-saga/effects';
 import { v1 } from 'uuid';
 
 import { weatherAPI } from '@/api';
@@ -34,6 +43,12 @@ const findPlaceWeatherByNameAC = (name: string, hourly = false) => ({
   payload: {
     name,
     hourly,
+  },
+});
+const getAutocompleteWeatherAC = (name: string) => ({
+  type: 'TAKE_AUTO_COMPLETE_WEATHER',
+  payload: {
+    name,
   },
 });
 
@@ -74,7 +89,7 @@ export function* fetchWeatherAPIDaily() {
       ]),
     );
   } catch (e) {
-    throw new Error('Error');
+    put(WeatherActions.error());
   }
 }
 function* fetchWeatherAPIHourly() {
@@ -115,7 +130,7 @@ function* fetchWeatherAPIHourly() {
       ]),
     );
   } catch (e) {
-    throw new Error('Error');
+    put(WeatherActions.error());
   }
 }
 
@@ -147,7 +162,7 @@ function* findPlaceWeatherByCoords(
       }
     }
   } catch (e) {
-    throw new Error('Error');
+    put(WeatherActions.error());
   }
 }
 
@@ -178,7 +193,33 @@ function* findPlaceWeatherByName(
       }
     }
   } catch (e) {
-    throw new Error('Error');
+    put(WeatherActions.error());
+  }
+}
+function* getAutoCompleteWeather(
+  action: ReturnType<typeof findPlaceWeatherByNameAC>,
+) {
+  yield delay(2000);
+  try {
+    const response: AxiosResponse<WeatherPlaceResponseType> = yield call(
+      weatherAPI.getFindPlaceByName,
+      action.payload.name,
+    );
+    const places = response.data;
+    yield put(
+      AutocompleteActions.setVariant(
+        places.slice(0, 4).map((place) => ({
+          city: place.name,
+          country: place.country,
+          coord: {
+            lat: place.lat,
+            lon: place.lon,
+          },
+        })),
+      ),
+    );
+  } catch (e) {
+    put(WeatherActions.error());
   }
 }
 function* WeatherSaga() {
@@ -186,6 +227,7 @@ function* WeatherSaga() {
   yield takeLatest('FETCH_WEATHER_HOURLY', fetchWeatherAPIHourly);
   yield takeLatest('FIND_PLACE_BY_COORDS_WEATHER', findPlaceWeatherByCoords);
   yield takeLatest('FIND_PLACE_BY_NAME_WEATHER', findPlaceWeatherByName);
+  yield takeLatest('TAKE_AUTO_COMPLETE_WEATHER', getAutoCompleteWeather);
 }
 
 export {
@@ -194,4 +236,5 @@ export {
   fetchWeatherAPIHourlyAC,
   findPlaceWeatherByNameAC,
   findPlaceWeatherByCoordsAC,
+  getAutocompleteWeatherAC,
 };

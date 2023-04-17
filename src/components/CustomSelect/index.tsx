@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { CheckIcon } from '@components/Icons/Icons';
 import { ICustomSelect } from '@Types/propsTypes/customSelectTypes';
+import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
 
 import SelectItemsList from '../SelectItemsList';
 
@@ -15,9 +16,11 @@ function CustomSelect({ options, selected, onChangeSelected }: ICustomSelect) {
   const [isActive, setIsActive] = useState<boolean>(false);
   const toggleSelect = () => setIsActive(!isActive);
   const selectRef = useRef(null);
-  const handleChangeSelected = (value: string) => {
+  const handleChangeSelected = (value: string | PlaceInitialStateType) => {
     toggleSelect();
-    onChangeSelected(value);
+    if (typeof value === 'string') {
+      onChangeSelected(value);
+    }
   };
   useLayoutEffect(() => {
     const handleClick = (e: MouseEvent) => {

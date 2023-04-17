@@ -1,9 +1,18 @@
+import { AutocompleteActions } from '@store/Reducers/SearchAutocompleteReducer';
 import {
   OpenWeatherPlaceResponseType,
   OpenWeatherResponseType,
 } from '@Types/apiTypes/openWeatherAPITypes';
 import { AxiosResponse } from 'axios';
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import {
+  call,
+  delay,
+  put,
+  select,
+  takeEvery,
+  takeLatest,
+  takeLeading,
+} from 'redux-saga/effects';
 import { v1 } from 'uuid';
 
 import { OpenWeatherAPI } from '@/api';
@@ -32,6 +41,12 @@ const findPlaceByNameOpenWeatherAC = (name: string, hourly = false) => ({
   payload: {
     name,
     hourly,
+  },
+});
+const getAutocompleteAC = (name: string) => ({
+  type: 'TAKE_AUTO_COMPLETE_OPEN',
+  payload: {
+    name,
   },
 });
 const fetchDailyOpenWeatherAC = () => ({
@@ -93,7 +108,7 @@ function* fetchOpenWeatherAPIHourly() {
       ),
     );
   } catch (e) {
-    throw new Error('Error');
+    put(WeatherActions.error());
   }
 }
 
@@ -127,13 +142,14 @@ function* findPlaceByCoordsOpenWeather(
       }
     }
   } catch (e) {
-    throw new Error('Error');
+    put(WeatherActions.error());
   }
 }
 function* findPlaceByNameOpenWeather(
   action: ReturnType<typeof findPlaceByNameOpenWeatherAC>,
 ) {
   try {
+    console.log('here');
     const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
       OpenWeatherAPI.getPlaceByName,
       action.payload.name,
@@ -159,10 +175,35 @@ function* findPlaceByNameOpenWeather(
       }
     }
   } catch (e) {
-    throw new Error('Error');
+    put(WeatherActions.error());
   }
 }
-
+function* getAutocomplete(
+  action: ReturnType<typeof findPlaceByNameOpenWeatherAC>,
+) {
+  try {
+    delay(2000);
+    const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
+      OpenWeatherAPI.getPlaceByName,
+      action.payload.name,
+    );
+    const places = response.data;
+    yield put(
+      AutocompleteActions.setVariant(
+        places.slice(0, 4).map((place) => ({
+          city: place.name,
+          country: place.country,
+          coord: {
+            lat: place.lat,
+            lon: place.lon,
+          },
+        })),
+      ),
+    );
+  } catch (e) {
+    put(WeatherActions.error());
+  }
+}
 function* OpenWeatherSaga() {
   yield takeLatest('FETCH_OPEN_WEATHER_DAILY', fetchOpenWeatherAPIDaily);
   yield takeLatest('FETCH_OPEN_WEATHER_HOURLY', fetchOpenWeatherAPIHourly);
@@ -174,6 +215,7 @@ function* OpenWeatherSaga() {
     'FIND_PLACE_BY_NAME_OPEN_WEATHER',
     findPlaceByNameOpenWeather,
   );
+  yield takeLatest('TAKE_AUTO_COMPLETE_OPEN', getAutocomplete);
 }
 
 export {
@@ -182,4 +224,5 @@ export {
   findPlaceByCoordsOpenWeatherAC,
   fetchDailyOpenWeatherAC,
   findPlaceByNameOpenWeatherAC,
+  getAutocompleteAC,
 };

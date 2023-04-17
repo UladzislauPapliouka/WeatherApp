@@ -1,3 +1,5 @@
+import SearchAutocompleteReducer from '@store/Reducers/SearchAutocompleteReducer';
+
 import { AppActions, AppReducer, PersistedAppReducer } from './AppReducer';
 import {
   GoogleEventsActions,
@@ -21,4 +23,5 @@ export {
   WeatherReducer,
   AppActions,
   AppReducer,
+  SearchAutocompleteReducer,
 };

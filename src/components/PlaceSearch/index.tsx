@@ -1,7 +1,16 @@
-import React, { SyntheticEvent, useState } from 'react';
-import { findPlaceByNameOpenWeatherAC } from '@store/Sagas/OpenWeatherSaga';
-import { findPlaceWeatherByNameAC } from '@store/Sagas/WeatherSaga';
+import React, { KeyboardEvent, SyntheticEvent, useState } from 'react';
+import SelectItemsList from '@components/SelectItemsList';
+import { PlaceActions } from '@store/Reducers';
+import {
+  findPlaceByNameOpenWeatherAC,
+  getAutocompleteAC,
+} from '@store/Sagas/OpenWeatherSaga';
+import {
+  findPlaceWeatherByNameAC,
+  getAutocompleteWeatherAC,
+} from '@store/Sagas/WeatherSaga';
 import { APIVariants } from '@Types/storeTypes/appStateTypes';
+import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
 
 import { useAppDispatch, useAppSelector } from '@/store';
 
@@ -14,33 +23,68 @@ export default function PlaceSearch({
   preferredAPI: APIVariants;
   hourly: boolean;
 }) {
+  const dispatch = useAppDispatch();
+  const [isAutoComplete, setIsAutocomplete] = useState(false);
+  const auto = useAppSelector((state) =>
+    state.SearchAutocompleteReducer.map((opt) => ({
+      ...opt,
+      toString() {
+        return `${opt.city},${opt.country}`;
+      },
+    })),
+  );
   const initialField = useAppSelector((state) => state.PlaceReducer.city);
   const [field, setField] = useState<string>(initialField);
   const onChangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
     e.preventDefault();
+    setIsAutocomplete(true);
     setField(e.currentTarget.value);
+    if (!e.currentTarget.value) return;
+    if (preferredAPI === APIVariants.openWeatherAPI) {
+      dispatch(getAutocompleteAC(e.currentTarget.value));
+    } else {
+      dispatch(getAutocompleteWeatherAC(e.currentTarget.value));
+    }
   };
-  const dispatch = useAppDispatch();
+
   const onClickHandler = () => {
-    dispatch(
-      preferredAPI === APIVariants.openWeatherAPI
-        ? findPlaceByNameOpenWeatherAC(field, hourly)
-        : findPlaceWeatherByNameAC(field, hourly),
-    );
+    if (preferredAPI === APIVariants.openWeatherAPI) {
+      dispatch(findPlaceByNameOpenWeatherAC(field, hourly));
+    } else {
+      dispatch(findPlaceWeatherByNameAC(field, hourly));
+    }
+  };
+  const handleInputBlur = () => {
+    setTimeout(() => setIsAutocomplete(false), 100);
+  };
+  const handleEnterClick = ({ key }: KeyboardEvent<HTMLInputElement>) => {
+    if (key === 'Enter') {
+      onClickHandler();
+    }
+  };
+  const handleAutocomplete = (sel: PlaceInitialStateType | string) => {
+    if (typeof sel !== 'string') {
+      setField(sel.city);
+      dispatch(PlaceActions.setPlace(sel));
+      setIsAutocomplete(false);
+    }
   };
 
   return (
     <PlaceSearchWrapper>
       <SearchInput
         value={field}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            onClickHandler();
-          }
-        }}
+        onBlur={handleInputBlur}
+        onKeyDown={handleEnterClick}
         onChange={onChangeHandler}
       />
       <SearchButton onClick={onClickHandler}>Search</SearchButton>
+      {isAutoComplete && auto.length && (
+        <SelectItemsList
+          handleChangeSelected={handleAutocomplete}
+          options={auto}
+        />
+      )}
     </PlaceSearchWrapper>
   );
 }

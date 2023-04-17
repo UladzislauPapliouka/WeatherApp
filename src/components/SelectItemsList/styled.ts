@@ -30,4 +30,7 @@ export const SelectOption = styled.span`
     border-radius: 0 0 ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px
       ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
   }
+  &:only-child {
+    border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
+  }
 `;

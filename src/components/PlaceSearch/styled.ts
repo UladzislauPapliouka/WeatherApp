@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const PlaceSearchWrapper = styled.div`
   display: flex;
+  position: relative;
   width: 100%;
   height: ${({ theme: { sizes } }) => sizes.searchHeight.md}px;
 `;

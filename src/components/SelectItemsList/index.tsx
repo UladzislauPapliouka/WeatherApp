@@ -14,8 +14,11 @@ export default function SelectItemsList({
       }}
     >
       {options.map((option) => (
-        <SelectOption key={option} onClick={() => handleChangeSelected(option)}>
-          {option}
+        <SelectOption
+          key={option.toString()}
+          onClick={() => handleChangeSelected(option)}
+        >
+          {option.toString()}
         </SelectOption>
       ))}
     </SelectListWrapper>

@@ -1,4 +1,6 @@
+import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
+
 export interface SelectListProps {
-  handleChangeSelected: (option: string) => void;
-  options: string[];
+  handleChangeSelected: (value: string | PlaceInitialStateType) => void;
+  options: string[] | Array<PlaceInitialStateType>;
 }

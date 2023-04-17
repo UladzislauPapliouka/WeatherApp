@@ -3,7 +3,7 @@ import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const initialState: PlaceInitialStateType = {
+export const initialState: PlaceInitialStateType = {
   city: '',
   country: '',
   coord: {
