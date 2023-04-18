@@ -9,7 +9,7 @@ const insnatce = axios.create({
   baseURL: 'https://api.weatherapi.com/v1/',
   headers: {
     'Access-Control-Allow-Origin': '*',
-    'Cache-Control': 'public,must-revalidate',
+    'Cache-Control': 'public,must-revalidate, max-age=3600',
   },
 });
 
