@@ -14,6 +14,7 @@ import {
   WeatherRepresentVariant,
 } from '@Types/storeTypes/appStateTypes';
 
+import useUserLocation from '@/hooks/locationHook';
 import { getBackground } from '@/services';
 import { useAppDispatch, useAppSelector } from '@/store';
 
@@ -28,55 +29,7 @@ import {
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
-  const AppState = useAppSelector((state) => state.AppReducer);
-  const place = useAppSelector((state) => state.PlaceReducer);
-  useLayoutEffect(() => {
-    window.navigator.geolocation.getCurrentPosition((res) => {
-      if (place.city) {
-        if (AppState.preferredAPI === APIVariants.openWeatherAPI) {
-          dispatch(
-            findPlaceByCoordsOpenWeatherAC(
-              place.coord.lat,
-              place.coord.lon,
-              AppState.weatherRepresent === WeatherRepresentVariant.hourly,
-            ),
-          );
-        } else {
-          dispatch(
-            findPlaceWeatherByCoordsAC(
-              place.coord.lat,
-              place.coord.lon,
-              AppState.weatherRepresent === WeatherRepresentVariant.hourly,
-            ),
-          );
-        }
-      } else if (AppState.preferredAPI === APIVariants.openWeatherAPI) {
-        dispatch(
-          findPlaceByCoordsOpenWeatherAC(
-            res.coords.latitude,
-            res.coords.longitude,
-            AppState.weatherRepresent === WeatherRepresentVariant.hourly,
-          ),
-        );
-      } else {
-        dispatch(
-          findPlaceWeatherByCoordsAC(
-            res.coords.latitude,
-            res.coords.longitude,
-            AppState.weatherRepresent === WeatherRepresentVariant.hourly,
-          ),
-        );
-      }
-    });
-  }, [
-    AppState.preferredAPI,
-    AppState.weatherRepresent,
-    dispatch,
-    place.coord.lat,
-    place.coord.lon,
-    place.city,
-  ]);
+  useUserLocation();
   const currentWeather = useAppSelector(
     (state) => state.WeatherByDayReducer[0],
   );

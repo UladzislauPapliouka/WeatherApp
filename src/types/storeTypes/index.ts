@@ -9,10 +9,9 @@ import { ForecastItemInfoType } from './weatherStateType';
 
 export type {
   GoogleUserInfoType,
-  APIVariants,
   AppInitialStateType,
   ForecastItemInfoType,
-  WeatherRepresentVariant,
   PlaceInitialStateType,
   GoogleEventStoreType,
 };
+export { APIVariants, WeatherRepresentVariant };
