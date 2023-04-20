@@ -4,6 +4,8 @@ import {
 } from '@Types/apiTypes/openWeatherAPITypes';
 import axios from 'axios';
 
+import { cacheService } from '@/services';
+
 const openWeather = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5/',
 });
@@ -13,21 +15,33 @@ const openWeatherGeocoder = axios.create({
 });
 
 const openWeatherAPI = {
-  fetchDailyWeather: (latitude: number, longitude: number) =>
-    openWeather.get<OpenWeatherResponseType>(
+  fetchDailyWeather: async (latitude: number, longitude: number) => {
+    const response = await cacheService<OpenWeatherResponseType>(
       `forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}&units=metric&cnt=48`,
-    ),
-  fetchHourlyWeather: (latitude: number, longitude: number) =>
-    openWeather.get<OpenWeatherResponseType>(
+      openWeather,
+    );
+    return response;
+  },
+  fetchHourlyWeather: async (latitude: number, longitude: number) => {
+    const response = await cacheService<OpenWeatherResponseType>(
       `forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}&units=metric&cnt=16`,
-    ),
-  fetchPlacesByCoordinates: (latitude: number, longitude: number) =>
-    openWeatherGeocoder.get<OpenWeatherPlaceResponseType[]>(
+      openWeather,
+    );
+    return response;
+  },
+  fetchPlacesByCoordinates: async (latitude: number, longitude: number) => {
+    const response = await cacheService<OpenWeatherPlaceResponseType[]>(
       `reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}`,
-    ),
-  fetchPlacesByName: (city: string) =>
-    openWeatherGeocoder.get<OpenWeatherPlaceResponseType[]>(
+      openWeatherGeocoder,
+    );
+    return response;
+  },
+  fetchPlacesByName: async (city: string) => {
+    const response = await cacheService<OpenWeatherPlaceResponseType[]>(
       `direct?q=${city}&limit=5&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}`,
-    ),
+      openWeatherGeocoder,
+    );
+    return response;
+  },
 };
 export default openWeatherAPI;

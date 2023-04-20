@@ -1,6 +1,7 @@
 import { formatTime, parseDate } from './dateService';
 import normalizeGoogleEventEntity from './googleCalendarService';
 import {
+  cacheService,
   getBackground,
   getDayName,
   getOpenWeatherIcon,
@@ -12,6 +13,7 @@ import {
 } from './services';
 
 export {
+  cacheService,
   normalizeOpenMeteoHourly,
   normalizeOpenMeteoDaily,
   openWeatherAPIConverterByDay,

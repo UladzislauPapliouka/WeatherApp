@@ -8,6 +8,7 @@ import {
   NormalizedWeatherItemDataType,
   WeatherIconVariants,
 } from '@Types/storeTypes/weatherStateType';
+import { AxiosInstance } from 'axios';
 import { v1 } from 'uuid';
 
 function getWeatherIcon(code: number) {
@@ -230,7 +231,26 @@ function normalizeOpenMeteoDaily({
   }
   return result;
 }
+const cacheService = async <T>(url: string, instance: AxiosInstance) => {
+  const Cache = await window.caches.open('openMeteo');
+  const cacheItem = await Cache.match(url);
+  if (cacheItem) {
+    const response = await cacheItem.json();
+    if (Math.abs(response.cacheTime - new Date().getTime()) <= 3600000) {
+      return response;
+    }
+  }
+  const response = await instance.get<T>(url);
+  await Cache.put(
+    response.config.url as string,
+    new Response(
+      JSON.stringify({ ...response.data, cacheTime: new Date().getTime() }),
+    ),
+  );
+  return response.data;
+};
 export {
+  cacheService,
   normalizeOpenMeteoDaily,
   normalizeOpenMeteoHourly,
   getDayName,

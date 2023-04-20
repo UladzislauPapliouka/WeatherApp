@@ -3,16 +3,7 @@ import {
   OpenWeatherPlaceResponseType,
   OpenWeatherResponseType,
 } from '@Types/apiTypes/openWeatherAPITypes';
-import { AxiosResponse } from 'axios';
-import {
-  call,
-  delay,
-  put,
-  select,
-  takeEvery,
-  takeLatest,
-  takeLeading,
-} from 'redux-saga/effects';
+import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 import { v1 } from 'uuid';
 
 import { OpenWeatherAPI } from '@/api';
@@ -67,12 +58,12 @@ function* fetchOpenWeatherAPIDaily() {
       (state) => state.PlaceReducer,
     );
     yield put(AppActions.startWeatherFetching());
-    const response: AxiosResponse<OpenWeatherResponseType> = yield call(
+    const response: OpenWeatherResponseType = yield call(
       OpenWeatherAPI.fetchDailyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
-    const { list } = response.data;
+    const { list } = response;
     yield put(AppActions.finishWeatherFetching());
     yield put(
       WeatherActions.setInfo(
@@ -97,13 +88,13 @@ function* fetchOpenWeatherAPIHourly() {
       (state) => state.PlaceReducer,
     );
     yield put(AppActions.startWeatherFetching());
-    const response: AxiosResponse<OpenWeatherResponseType> = yield call(
+    const response: OpenWeatherResponseType = yield call(
       OpenWeatherAPI.fetchHourlyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
     yield put(AppActions.finishWeatherFetching());
-    const { list } = response.data;
+    const { list } = response;
     yield put(
       WeatherActions.setInfo(
         [
@@ -125,12 +116,12 @@ function* findPlaceByCoordsOpenWeather(
   action: ReturnType<typeof findPlaceByCoordsOpenWeatherAC>,
 ) {
   try {
-    const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
+    const response: OpenWeatherPlaceResponseType[] = yield call(
       OpenWeatherAPI.fetchPlacesByCoordinates,
       action.payload.lat,
       action.payload.lon,
     );
-    const place = response.data[0];
+    const place = response[0];
     yield put(
       PlaceActions.setPlace({
         city: place.local_names.en || place.local_names.ascii,
@@ -158,12 +149,11 @@ function* findPlaceByNameOpenWeather(
   action: ReturnType<typeof findPlaceByNameOpenWeatherAC>,
 ) {
   try {
-    console.log('here');
-    const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
+    const response: OpenWeatherPlaceResponseType[] = yield call(
       OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );
-    const place = response.data[0];
+    const place = response[0];
     yield put(
       PlaceActions.setPlace({
         city: place.local_names.en || place.local_names.ascii,
@@ -192,11 +182,11 @@ function* getAutocomplete(
 ) {
   try {
     delay(2000);
-    const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
+    const response: OpenWeatherPlaceResponseType[] = yield call(
       OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );
-    const places = response.data;
+    const places = response;
     yield put(
       AutocompleteActions.setVariant(
         places.slice(0, 4).map((place) => ({

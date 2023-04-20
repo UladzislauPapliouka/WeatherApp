@@ -6,17 +6,11 @@ import PlaceBlock from '@components/PlaceBlock';
 import SettingsModal from '@components/SettingsModal';
 import GoogleEventsContainer from '@containers/GoogleEventsContainer';
 import WeatherForecastContainer from '@containers/WeatherForecastContainer';
-import { findPlaceByCoordsOpenWeatherAC } from '@store/Sagas/OpenWeatherSaga';
-import { findPlaceWeatherByCoordsAC } from '@store/Sagas/WeatherSaga';
-import {
-  APIVariants,
-  WeatherRepresentVariants,
-} from '@Types/storeTypes/appStateTypes';
 import { WeatherIconVariants } from '@Types/storeTypes/weatherStateType';
 
 import useUserLocation from '@/hooks/locationHook';
 import { getBackground } from '@/services';
-import { useAppDispatch, useAppSelector } from '@/store';
+import { useAppSelector } from '@/store';
 
 import {
   AppBackground,
