@@ -7,6 +7,7 @@ import {
   OpenMeteoDailyResponse,
   OpenMeteoHourlyResponse,
 } from '@Types/apiTypes';
+import { OpenMeteoGeocodeResponse } from '@Types/apiTypes/openMeteoAPIType';
 import { AxiosResponse } from 'axios';
 import {
   call,
@@ -136,18 +137,18 @@ function* findPlaceWeatherByName(
   action: ReturnType<typeof findPlaceWeatherByNameAC>,
 ) {
   try {
-    const response: AxiosResponse<WeatherPlaceResponseType> = yield call(
-      weatherAPI.getFindPlaceByName,
+    const response: AxiosResponse<OpenMeteoGeocodeResponse> = yield call(
+      openMeteoAPI.getPlaceInfoBtName,
       action.payload.name,
     );
-    const place = response.data[0];
+    const place = response.data.results[0];
     yield put(
       PlaceActions.setPlace({
         city: place.name,
         country: place.country,
         coord: {
-          lat: place.lat,
-          lon: place.lon,
+          lat: place.latitude,
+          lon: place.longitude,
         },
       }),
     );
@@ -167,19 +168,19 @@ function* getAutoCompleteWeather(
 ) {
   yield delay(2000);
   try {
-    const response: AxiosResponse<WeatherPlaceResponseType> = yield call(
-      weatherAPI.getFindPlaceByName,
+    const response: AxiosResponse<OpenMeteoGeocodeResponse> = yield call(
+      openMeteoAPI.getPlaceInfoBtName,
       action.payload.name,
     );
-    const places = response.data;
+    const places = response.data.results;
     yield put(
       AutocompleteActions.setVariant(
         places.slice(0, 4).map((place) => ({
           city: place.name,
           country: place.country,
           coord: {
-            lat: place.lat,
-            lon: place.lon,
+            lat: place.latitude,
+            lon: place.longitude,
           },
         })),
       ),

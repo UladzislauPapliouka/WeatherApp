@@ -14,3 +14,11 @@ export type OpenMeteoDailyResponse = {
     weathercode: Array<number>;
   };
 };
+export type OpenMeteoGeocodeResponse = {
+  results: Array<{
+    name: string;
+    latitude: number;
+    longitude: number;
+    country: string;
+  }>;
+};

@@ -10,6 +10,7 @@ import {
 } from './googleCalendarAPITypes';
 import {
   OpenMeteoDailyResponse,
+  OpenMeteoGeocodeResponse,
   OpenMeteoHourlyResponse,
 } from './openMeteoAPIType';
 import {

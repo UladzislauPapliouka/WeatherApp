@@ -221,8 +221,8 @@ function normalizeOpenMeteoDaily({
   for (let i = 1; i < 7; i += 1) {
     result.push({
       icon: getOpenMeteoIcon(weathercode[i]),
-      degrees: (temperature_2m_max[0] + temperature_2m_min[0]) / 2,
-      name: getDayName(new Date(time[0]).getDay(), i),
+      degrees: (temperature_2m_max[i] + temperature_2m_min[i]) / 2,
+      name: getDayName(new Date(time[i]).getDay(), i),
       id: v1(),
     });
   }
