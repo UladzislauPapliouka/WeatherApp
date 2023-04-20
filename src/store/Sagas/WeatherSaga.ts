@@ -1,4 +1,6 @@
+import { normalizeOpenMeteoHourly } from '@services/services';
 import { AutocompleteActions } from '@store/Reducers/SearchAutocompleteReducer';
+import { OpenMeteoHourlyResponse } from '@Types/apiTypes';
 import { AxiosResponse } from 'axios';
 import {
   call,
@@ -11,7 +13,7 @@ import {
 } from 'redux-saga/effects';
 import { v1 } from 'uuid';
 
-import { weatherAPI } from '@/api';
+import { openMeteoAPI, weatherAPI } from '@/api';
 import { getDayName, getWeatherIcon } from '@/services';
 import {
   WeatherAPIForecastResponseType,
@@ -105,39 +107,13 @@ function* fetchWeatherAPIHourly() {
       (state) => state.PlaceReducer,
     );
     yield put(AppActions.startWeatherFetching());
-    const response: AxiosResponse<WeatherAPIForecastResponseType> = yield call(
-      weatherAPI.getWeatherHourly,
+    const response: AxiosResponse<OpenMeteoHourlyResponse> = yield call(
+      openMeteoAPI.getWeatherHoulry,
       location.coord.lat,
       location.coord.lon,
     );
     yield put(AppActions.finishWeatherFetching());
-    const currentHours = new Date().getHours();
-    yield put(
-      WeatherActions.setInfo([
-        {
-          icon: getWeatherIcon(
-            response.data.forecast.forecastday[0].hour[currentHours].condition
-              .code,
-          ),
-          name: 'Now',
-          degrees:
-            response.data.forecast.forecastday[0].hour[currentHours].temp_c,
-          id: v1(),
-        },
-        ...response.data.forecast.forecastday[0].hour
-          .slice(currentHours + 1, currentHours + 7)
-          .map(
-            (
-              obj: WeatherAPIForecastResponseType['forecast']['forecastday'][0]['hour'][0],
-            ) => ({
-              icon: getWeatherIcon(obj.condition.code),
-              name: `${new Date(obj.time).getHours()}:00`,
-              degrees: obj.temp_c,
-              id: v1(),
-            }),
-          ),
-      ]),
-    );
+    yield put(WeatherActions.setInfo(normalizeOpenMeteoHourly(response.data)));
   } catch (e) {
     yield put(AppActions.finishWeatherFetching());
   }

@@ -23,6 +23,7 @@ module.exports = {
   rules: {
     'prefer-destructuring': ['error', { object: true, array: false }],
     'no-shadow': 'off',
+    camelcase: 'off',
     'simple-import-sort/imports': [
       'error',
       {

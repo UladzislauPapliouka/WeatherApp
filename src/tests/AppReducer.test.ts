@@ -10,7 +10,7 @@ describe('AppReducer should work correct', () => {
   const initialState: AppInitialStateType = {
     preferredAPI: APIVariants.weatherAPI,
     weatherRepresent: WeatherRepresentVariant.daily,
-    isWeatherFetching:false
+    isWeatherFetching: false,
   };
   test('AppReducer should setPreferredAPI correct', () => {
     const result = AppReducer(
