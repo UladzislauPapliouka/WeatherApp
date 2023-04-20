@@ -1,4 +1,4 @@
-import { WeatherIconVariants } from './weatherIcon';
+import { WeatherIconVariants } from '@Types/storeTypes/weatherStateType';
 
 export type WeatherItemPropsType = {
   chipText: string;

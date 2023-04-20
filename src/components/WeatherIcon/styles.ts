@@ -1,4 +1,4 @@
-import { WeatherImagePropsType } from '@Types/propsTypes/weatherIcon';
+import { WeatherImagePropsType } from '@components/WeatherIcon/types';
 import styled from 'styled-components';
 
 const WeatherImage = styled.img<WeatherImagePropsType>`

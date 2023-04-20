@@ -2,7 +2,7 @@ import { useLayoutEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@store';
 import { findPlaceByCoordsOpenWeatherAC } from '@store/Sagas/OpenWeatherSaga';
 import { findPlaceWeatherByCoordsAC } from '@store/Sagas/WeatherSaga';
-import { APIVariants, WeatherRepresentVariant } from '@Types/storeTypes';
+import { APIVariants, WeatherRepresentVariants } from '@Types/storeTypes';
 
 const useUserLocation = () => {
   const dispatch = useAppDispatch();
@@ -14,17 +14,17 @@ const useUserLocation = () => {
         if (AppState.preferredAPI === APIVariants.openWeatherAPI) {
           dispatch(
             findPlaceByCoordsOpenWeatherAC(
-              place.coord.lat,
-              place.coord.lon,
-              AppState.weatherRepresent === WeatherRepresentVariant.hourly,
+              place.coordinates.latitude,
+              place.coordinates.longitude,
+              AppState.weatherRepresent === WeatherRepresentVariants.hourly,
             ),
           );
         } else {
           dispatch(
             findPlaceWeatherByCoordsAC(
-              place.coord.lat,
-              place.coord.lon,
-              AppState.weatherRepresent === WeatherRepresentVariant.hourly,
+              place.coordinates.latitude,
+              place.coordinates.longitude,
+              AppState.weatherRepresent === WeatherRepresentVariants.hourly,
             ),
           );
         }
@@ -33,7 +33,7 @@ const useUserLocation = () => {
           findPlaceByCoordsOpenWeatherAC(
             res.coords.latitude,
             res.coords.longitude,
-            AppState.weatherRepresent === WeatherRepresentVariant.hourly,
+            AppState.weatherRepresent === WeatherRepresentVariants.hourly,
           ),
         );
       } else {
@@ -41,7 +41,7 @@ const useUserLocation = () => {
           findPlaceWeatherByCoordsAC(
             res.coords.latitude,
             res.coords.longitude,
-            AppState.weatherRepresent === WeatherRepresentVariant.hourly,
+            AppState.weatherRepresent === WeatherRepresentVariants.hourly,
           ),
         );
       }
@@ -50,8 +50,8 @@ const useUserLocation = () => {
     AppState.preferredAPI,
     AppState.weatherRepresent,
     dispatch,
-    place.coord.lat,
-    place.coord.lon,
+    place.coordinates.latitude,
+    place.coordinates.longitude,
     place.city,
   ]);
 };

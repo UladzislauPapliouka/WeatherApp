@@ -69,8 +69,8 @@ function* fetchOpenWeatherAPIDaily() {
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenWeatherResponseType> = yield call(
       OpenWeatherAPI.getWeatherDaily,
-      location.coord.lat,
-      location.coord.lon,
+      location.coordinates.latitude,
+      location.coordinates.longitude,
     );
     const { list } = response.data;
     yield put(AppActions.finishWeatherFetching());
@@ -99,8 +99,8 @@ function* fetchOpenWeatherAPIHourly() {
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenWeatherResponseType> = yield call(
       OpenWeatherAPI.getWeatherHourly,
-      location.coord.lat,
-      location.coord.lon,
+      location.coordinates.latitude,
+      location.coordinates.longitude,
     );
     yield put(AppActions.finishWeatherFetching());
     const { list } = response.data;
@@ -137,9 +137,9 @@ function* findPlaceByCoordsOpenWeather(
         country: new Intl.DisplayNames(['en'], { type: 'region' }).of(
           place.country,
         ) as string,
-        coord: {
-          lat: place.lat,
-          lon: place.lon,
+        coordinates: {
+          latitude: place.lat,
+          longitude: place.lon,
         },
       }),
     );
@@ -170,9 +170,9 @@ function* findPlaceByNameOpenWeather(
         country: new Intl.DisplayNames(['en'], { type: 'region' }).of(
           place.country,
         ) as string,
-        coord: {
-          lat: place.lat,
-          lon: place.lon,
+        coordinates: {
+          latitude: place.lat,
+          longitude: place.lon,
         },
       }),
     );
@@ -202,9 +202,9 @@ function* getAutocomplete(
         places.slice(0, 4).map((place) => ({
           city: place.name,
           country: place.country,
-          coord: {
-            lat: place.lat,
-            lon: place.lon,
+          coordinates: {
+            latitude: place.lat,
+            longitude: place.lon,
           },
         })),
       ),

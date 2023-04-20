@@ -8,11 +8,11 @@ import GoogleEventsContainer from '@containers/GoogleEventsContainer';
 import WeatherForecastContainer from '@containers/WeatherForecastContainer';
 import { findPlaceByCoordsOpenWeatherAC } from '@store/Sagas/OpenWeatherSaga';
 import { findPlaceWeatherByCoordsAC } from '@store/Sagas/WeatherSaga';
-import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
 import {
   APIVariants,
-  WeatherRepresentVariant,
+  WeatherRepresentVariants,
 } from '@Types/storeTypes/appStateTypes';
+import { WeatherIconVariants } from '@Types/storeTypes/weatherStateType';
 
 import useUserLocation from '@/hooks/locationHook';
 import { getBackground } from '@/services';

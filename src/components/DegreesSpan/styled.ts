@@ -1,4 +1,4 @@
-import { StyledDegreesSpanPropsType } from '@Types/propsTypes/degreeSpanTypes';
+import { StyledDegreesSpanPropsType } from '@components/DegreesSpan/types';
 import styled from 'styled-components';
 
 const StyledDegreeSpan = styled.span<StyledDegreesSpanPropsType>`

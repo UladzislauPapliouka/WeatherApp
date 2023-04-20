@@ -1,5 +1,5 @@
 import React from 'react';
-import { DegreesSpanPropsType } from '@Types/propsTypes/degreeSpanTypes';
+import { DegreesSpanPropsType } from '@components/DegreesSpan/types';
 
 import StyledDegreeSpan from './styled';
 

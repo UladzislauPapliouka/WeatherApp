@@ -1,4 +1,4 @@
-import { WeatherItemWrapperProps } from '@Types/propsTypes/weatherItemTypes';
+import { WeatherItemWrapperProps } from '@components/WeatherItem/types';
 import styled, { css } from 'styled-components';
 
 const mobileView = css`

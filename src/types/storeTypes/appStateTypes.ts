@@ -2,12 +2,12 @@ export enum APIVariants {
   weatherAPI = 'Weather API',
   openWeatherAPI = 'OpenWeather API',
 }
-export enum WeatherRepresentVariant {
+export enum WeatherRepresentVariants {
   daily = 'Daily',
   hourly = 'Hourly',
 }
-export type AppInitialStateType = {
+export type AppStateType = {
   preferredAPI: APIVariants;
-  weatherRepresent: WeatherRepresentVariant;
+  weatherRepresent: WeatherRepresentVariants;
   isWeatherFetching: boolean;
 };

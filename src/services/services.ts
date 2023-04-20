@@ -4,8 +4,10 @@ import {
   OpenMeteoHourlyResponse,
 } from '@Types/apiTypes';
 import { OpenWeatherListType } from '@Types/apiTypes/openWeatherAPITypes';
-import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
-import { ForecastItemInfoType } from '@Types/storeTypes/weatherStateType';
+import {
+  NormalizedWeatherItemDataType,
+  WeatherIconVariants,
+} from '@Types/storeTypes/weatherStateType';
 import { v1 } from 'uuid';
 
 function getWeatherIcon(code: number) {
@@ -110,8 +112,8 @@ function getDayName(dayNumber: number, index: number) {
 }
 function openWeatherAPIConverterByDay(
   array: Array<OpenWeatherListType>,
-): Array<ForecastItemInfoType> {
-  const result: ForecastItemInfoType[] = [];
+): Array<NormalizedWeatherItemDataType> {
+  const result: NormalizedWeatherItemDataType[] = [];
   array.forEach((obj, i) => {
     if (!(i % 8)) {
       result.push({
@@ -127,8 +129,8 @@ function openWeatherAPIConverterByDay(
 }
 function openWeatherAPIConverterByHours(
   array: Array<OpenWeatherListType>,
-): Array<ForecastItemInfoType> {
-  const result: ForecastItemInfoType[] = [];
+): Array<NormalizedWeatherItemDataType> {
+  const result: NormalizedWeatherItemDataType[] = [];
   array.forEach((obj) => {
     result.push({
       icon: getOpenWeatherIcon(obj.weather[0].id),
@@ -188,10 +190,10 @@ function getOpenMeteoIcon(code: number) {
 }
 function normalizeOpenMeteoHourly({
   hourly: { time, temperature_2m, weathercode },
-}: OpenMeteoHourlyResponse): ForecastItemInfoType[] {
+}: OpenMeteoHourlyResponse): NormalizedWeatherItemDataType[] {
   const firstIndex = new Date().getHours();
   const lastIndex = firstIndex + 6;
-  const result: ForecastItemInfoType[] = [];
+  const result: NormalizedWeatherItemDataType[] = [];
   result.push({
     icon: getOpenMeteoIcon(weathercode[firstIndex]),
     degrees: temperature_2m[firstIndex],
@@ -210,8 +212,8 @@ function normalizeOpenMeteoHourly({
 }
 function normalizeOpenMeteoDaily({
   daily: { temperature_2m_max, temperature_2m_min, weathercode, time },
-}: OpenMeteoDailyResponse): ForecastItemInfoType[] {
-  const result: ForecastItemInfoType[] = [];
+}: OpenMeteoDailyResponse): NormalizedWeatherItemDataType[] {
+  const result: NormalizedWeatherItemDataType[] = [];
   result.push({
     icon: getOpenMeteoIcon(weathercode[0]),
     degrees: (temperature_2m_max[0] + temperature_2m_min[0]) / 2,

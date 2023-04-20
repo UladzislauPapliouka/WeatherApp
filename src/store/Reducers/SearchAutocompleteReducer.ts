@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
+import { NormalizedPlaceDataType } from '@Types/storeTypes/placeStateType';
 
-const initialState: Array<PlaceInitialStateType> = [];
+const initialState: Array<NormalizedPlaceDataType> = [];
 const SearchAutocompleteSlice = createSlice({
   name: 'Autocomplete',
   initialState,
   reducers: {
-    setVariant: (state, action: PayloadAction<Array<PlaceInitialStateType>>) =>
-      action.payload,
+    setVariant: (
+      state,
+      action: PayloadAction<Array<NormalizedPlaceDataType>>,
+    ) => action.payload,
   },
 });
 export default SearchAutocompleteSlice.reducer;

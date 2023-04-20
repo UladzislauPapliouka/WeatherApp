@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
+import { NormalizedPlaceDataType } from '@Types/storeTypes/placeStateType';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-export const initialState: PlaceInitialStateType = {
+export const initialState: NormalizedPlaceDataType = {
   city: '',
   country: '',
-  coord: {
-    lat: 0,
-    lon: 0,
+  coordinates: {
+    latitude: 0,
+    longitude: 0,
   },
 };
 const persistConfig = {
@@ -19,7 +19,7 @@ const PlaceSlice = createSlice({
   name: 'PLACE',
   initialState,
   reducers: {
-    setPlace: (state, action: PayloadAction<PlaceInitialStateType>) =>
+    setPlace: (state, action: PayloadAction<NormalizedPlaceDataType>) =>
       action.payload,
   },
 });

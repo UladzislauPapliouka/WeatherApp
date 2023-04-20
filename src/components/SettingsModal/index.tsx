@@ -14,7 +14,7 @@ import {
 } from '@store/Sagas/WeatherSaga';
 import {
   APIVariants,
-  WeatherRepresentVariant,
+  WeatherRepresentVariants,
 } from '@Types/storeTypes/appStateTypes';
 
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -41,7 +41,7 @@ export default function Index({ isOpen, onClose }: SettingModalPropsTyp) {
   const setWeatherRepresent = (value: string) => {
     dispatch(
       AppActions.setWeatherRepresent({
-        weatherRepresent: value as WeatherRepresentVariant,
+        weatherRepresent: value as WeatherRepresentVariants,
       }),
     );
   };
@@ -49,12 +49,12 @@ export default function Index({ isOpen, onClose }: SettingModalPropsTyp) {
     dispatch(
       preferredService === APIVariants.openWeatherAPI
         ? dispatch(
-            weatherRepresent === WeatherRepresentVariant.daily
+            weatherRepresent === WeatherRepresentVariants.daily
               ? fetchDailyOpenWeatherAC()
               : fetchHourlyOpenWeatherAC(),
           )
         : dispatch(
-            weatherRepresent === WeatherRepresentVariant.daily
+            weatherRepresent === WeatherRepresentVariants.daily
               ? fetchWeatherAPIDailyAC()
               : fetchWeatherAPIHourlyAC(),
           ),
@@ -69,7 +69,7 @@ export default function Index({ isOpen, onClose }: SettingModalPropsTyp) {
         <Title>Settings</Title>
         <SubTitle>Find place</SubTitle>
         <PlaceSearch
-          hourly={weatherRepresent === WeatherRepresentVariant.hourly}
+          hourly={weatherRepresent === WeatherRepresentVariants.hourly}
           preferredAPI={preferredService}
         />
         <SubTitle>Service</SubTitle>
@@ -81,8 +81,8 @@ export default function Index({ isOpen, onClose }: SettingModalPropsTyp) {
         <SubTitle>How to represent weather</SubTitle>
         <CustomSelect
           options={[
-            WeatherRepresentVariant.daily,
-            WeatherRepresentVariant.hourly,
+            WeatherRepresentVariants.daily,
+            WeatherRepresentVariants.hourly,
           ]}
           selected={weatherRepresent}
           onChangeSelected={setWeatherRepresent}

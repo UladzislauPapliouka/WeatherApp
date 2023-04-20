@@ -1,17 +1,17 @@
 import {
   APIVariants,
-  AppInitialStateType,
-  WeatherRepresentVariant,
+  AppStateType,
+  WeatherRepresentVariants,
 } from './appStateTypes';
 import { GoogleEventStoreType, GoogleUserInfoType } from './googleStateTypes';
-import { PlaceInitialStateType } from './placeStateType';
-import { ForecastItemInfoType } from './weatherStateType';
+import { NormalizedPlaceDataType } from './placeStateType';
+import { NormalizedWeatherItemDataType } from './weatherStateType';
 
 export type {
   GoogleUserInfoType,
-  AppInitialStateType,
-  ForecastItemInfoType,
-  PlaceInitialStateType,
+  AppStateType,
+  NormalizedWeatherItemDataType,
+  NormalizedPlaceDataType,
   GoogleEventStoreType,
 };
-export { APIVariants, WeatherRepresentVariant };
+export { APIVariants, WeatherRepresentVariants };

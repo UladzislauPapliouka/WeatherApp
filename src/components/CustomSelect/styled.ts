@@ -1,4 +1,4 @@
-import { SelectArrowPropsType } from '@Types/propsTypes/customSelectTypes';
+import { SelectArrowPropsType } from '@components/CustomSelect/types';
 import styled, { css } from 'styled-components';
 
 export const CustomSelectWrapper = styled.div`

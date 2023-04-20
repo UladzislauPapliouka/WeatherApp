@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ForecastItemInfoType } from '@Types/storeTypes/weatherStateType';
+import { NormalizedWeatherItemDataType } from '@Types/storeTypes/weatherStateType';
 
-const initialState: ForecastItemInfoType[] = [];
+const initialState: NormalizedWeatherItemDataType[] = [];
 
 const WeatherByDaySlice = createSlice({
   name: 'SET_WEATHER',
   initialState,
   reducers: {
-    setInfo: (state, action: PayloadAction<ForecastItemInfoType[]>) =>
+    setInfo: (state, action: PayloadAction<NormalizedWeatherItemDataType[]>) =>
       action.payload,
     error: () => initialState,
   },

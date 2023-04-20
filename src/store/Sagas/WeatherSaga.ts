@@ -74,8 +74,8 @@ export function* fetchWeatherAPIDaily() {
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenMeteoDailyResponse> = yield call(
       openMeteoAPI.getWeatherDaily,
-      location.coord.lat,
-      location.coord.lon,
+      location.coordinates.latitude,
+      location.coordinates.longitude,
     );
     yield put(AppActions.finishWeatherFetching());
     yield put(WeatherActions.setInfo(normalizeOpenMeteoDaily(response.data)));
@@ -91,8 +91,8 @@ function* fetchWeatherAPIHourly() {
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenMeteoHourlyResponse> = yield call(
       openMeteoAPI.getWeatherHourly,
-      location.coord.lat,
-      location.coord.lon,
+      location.coordinates.latitude,
+      location.coordinates.longitude,
     );
     yield put(AppActions.finishWeatherFetching());
     yield put(WeatherActions.setInfo(normalizeOpenMeteoHourly(response.data)));
@@ -115,9 +115,9 @@ function* findPlaceWeatherByCoords(
       PlaceActions.setPlace({
         city: place.name,
         country: place.country,
-        coord: {
-          lat: place.lat,
-          lon: place.lon,
+        coordinates: {
+          latitude: place.lat,
+          longitude: place.lon,
         },
       }),
     );
@@ -146,9 +146,9 @@ function* findPlaceWeatherByName(
       PlaceActions.setPlace({
         city: place.name,
         country: place.country,
-        coord: {
-          lat: place.latitude,
-          lon: place.longitude,
+        coordinates: {
+          latitude: place.latitude,
+          longitude: place.longitude,
         },
       }),
     );
@@ -178,9 +178,9 @@ function* getAutoCompleteWeather(
         places.slice(0, 4).map((place) => ({
           city: place.name,
           country: place.country,
-          coord: {
-            lat: place.latitude,
-            lon: place.longitude,
+          coordinates: {
+            latitude: place.latitude,
+            longitude: place.longitude,
           },
         })),
       ),

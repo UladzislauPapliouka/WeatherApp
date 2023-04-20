@@ -1,8 +1,8 @@
-export type PlaceInitialStateType = {
+export type NormalizedPlaceDataType = {
   city: string;
   country: string;
-  coord: {
-    lat: number;
-    lon: number;
+  coordinates: {
+    latitude: number;
+    longitude: number;
   };
 };

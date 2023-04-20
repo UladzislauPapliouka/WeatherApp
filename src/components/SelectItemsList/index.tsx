@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectListProps } from '@Types/propsTypes/selectItemsListTypes';
+import { SelectListProps } from '@components/SelectItemsList/types';
 
 import { SelectListWrapper, SelectOption } from './styled';
 

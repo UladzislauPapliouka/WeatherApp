@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChipPropsType } from '@Types/propsTypes/chipTypes';
+import { ChipPropsType } from '@components/Chip/types';
 
 import { ChipText, ChipWrapper } from './styled';
 

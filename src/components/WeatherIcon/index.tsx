@@ -1,6 +1,6 @@
 import React from 'react';
 import * as weatherImages from '@assets/weather-icons';
-import { WeatherIconPropsType } from '@Types/propsTypes/weatherIcon';
+import { WeatherIconPropsType } from '@components/WeatherIcon/types';
 
 import WeatherImage from './styles';
 

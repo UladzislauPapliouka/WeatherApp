@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   APIVariants,
-  AppInitialStateType,
-  WeatherRepresentVariant,
+  AppStateType,
+  WeatherRepresentVariants,
 } from '@Types/storeTypes/appStateTypes';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const initialState: AppInitialStateType = {
+const initialState: AppStateType = {
   preferredAPI: APIVariants.weatherAPI,
-  weatherRepresent: WeatherRepresentVariant.daily,
+  weatherRepresent: WeatherRepresentVariants.daily,
   isWeatherFetching: false,
 };
 const persistConfig = {
@@ -33,7 +33,7 @@ const AppSlice = createSlice({
     setWeatherRepresent: (
       state,
       action: PayloadAction<{
-        weatherRepresent: WeatherRepresentVariant;
+        weatherRepresent: WeatherRepresentVariants;
       }>,
     ) => {
       const result = {

@@ -1,4 +1,4 @@
-import { ChipWrapperPropsTypes } from '@Types/propsTypes/chipTypes';
+import { ChipWrapperPropsTypes } from '@components/Chip/types';
 import styled, { css } from 'styled-components';
 
 export const ChipWrapper = styled.div<ChipWrapperPropsTypes>`

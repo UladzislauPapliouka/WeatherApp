@@ -1,6 +1,6 @@
 import {
   APIVariants,
-  WeatherRepresentVariant,
+  WeatherRepresentVariants,
 } from '@Types/storeTypes/appStateTypes';
 
 export type SelectArrowPropsType = {
@@ -10,6 +10,6 @@ export interface ICustomSelect {
   options: string[];
   selected: string;
   onChangeSelected: (
-    value: APIVariants | WeatherRepresentVariant | string,
+    value: APIVariants | WeatherRepresentVariants | string,
   ) => void;
 }

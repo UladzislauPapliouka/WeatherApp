@@ -10,7 +10,7 @@ import {
   getAutocompleteWeatherAC,
 } from '@store/Sagas/WeatherSaga';
 import { APIVariants } from '@Types/storeTypes/appStateTypes';
-import { PlaceInitialStateType } from '@Types/storeTypes/placeStateType';
+import { NormalizedPlaceDataType } from '@Types/storeTypes/placeStateType';
 
 import { useAppDispatch, useAppSelector } from '@/store';
 
@@ -62,7 +62,7 @@ export default function PlaceSearch({
       onClickHandler();
     }
   };
-  const handleAutocomplete = (sel: PlaceInitialStateType | string) => {
+  const handleAutocomplete = (sel: NormalizedPlaceDataType | string) => {
     if (typeof sel !== 'string') {
       setField(sel.city);
       dispatch(PlaceActions.setPlace(sel));
