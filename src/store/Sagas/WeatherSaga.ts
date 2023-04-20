@@ -73,7 +73,7 @@ export function* fetchWeatherAPIDaily() {
     );
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenMeteoDailyResponse> = yield call(
-      openMeteoAPI.getWeatherDaily,
+      openMeteoAPI.fetchDailyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
@@ -90,7 +90,7 @@ function* fetchWeatherAPIHourly() {
     );
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenMeteoHourlyResponse> = yield call(
-      openMeteoAPI.getWeatherHourly,
+      openMeteoAPI.fetchHourlyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
@@ -138,7 +138,7 @@ function* findPlaceWeatherByName(
 ) {
   try {
     const response: AxiosResponse<OpenMeteoGeocodeResponse> = yield call(
-      openMeteoAPI.getPlaceInfoBtName,
+      openMeteoAPI.fetchPlacesByName,
       action.payload.name,
     );
     const place = response.data.results[0];
@@ -169,7 +169,7 @@ function* getAutoCompleteWeather(
   yield delay(2000);
   try {
     const response: AxiosResponse<OpenMeteoGeocodeResponse> = yield call(
-      openMeteoAPI.getPlaceInfoBtName,
+      openMeteoAPI.fetchPlacesByName,
       action.payload.name,
     );
     const places = response.data.results;

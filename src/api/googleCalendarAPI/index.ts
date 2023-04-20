@@ -1,10 +1,7 @@
 import ApiCalendar from 'react-google-calendar-api';
 import { GoogleEventEntityType } from '@Types/apiTypes/googleCalendarAPITypes';
 
-import {
-  eventsRequestConfig,
-  gapiConfig,
-} from '@/api/googleCalendarAPI/gapiConfig';
+import { eventsRequestConfig, gapiConfig } from './gapiConfig';
 
 const GoogleCalendarAPI = new ApiCalendar(gapiConfig);
 

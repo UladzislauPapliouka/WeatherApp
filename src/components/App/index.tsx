@@ -28,17 +28,22 @@ import {
 } from './styled';
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useUserLocation();
+
   const currentWeather = useAppSelector(
     (state) => state.WeatherByDayReducer[0],
   );
+
   const [backgrounds, setBackgrounds] = useState(
     getBackground(WeatherIconVariants.Sun),
   );
+
   useLayoutEffect(() => {
     if (currentWeather) setBackgrounds(getBackground(currentWeather.icon));
   }, [currentWeather]);
+
   return (
     <AppWrapper
       style={{ backgroundImage: `url(${backgrounds ? backgrounds[1] : bg2})` }}

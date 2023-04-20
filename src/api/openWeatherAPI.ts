@@ -4,30 +4,30 @@ import {
 } from '@Types/apiTypes/openWeatherAPITypes';
 import axios from 'axios';
 
-const weatherInstance = axios.create({
+const openWeather = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5/',
 });
 
-const locationInstance = axios.create({
+const openWeatherGeocoder = axios.create({
   baseURL: 'https://api.openweathermap.org/geo/1.0/',
 });
 
 const openWeatherAPI = {
-  getWeatherDaily: (lat: number, lon: number) =>
-    weatherInstance.get<OpenWeatherResponseType>(
-      `forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}&units=metric&cnt=48`,
+  fetchDailyWeather: (latitude: number, longitude: number) =>
+    openWeather.get<OpenWeatherResponseType>(
+      `forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}&units=metric&cnt=48`,
     ),
-  getWeatherHourly: (lat: number, lon: number) =>
-    weatherInstance.get<OpenWeatherResponseType>(
-      `forecast?lat=${lat}&lon=${lon}&appid=be4e4f1db7d4bfa1854ee2145c155b97&units=metric&cnt=16`,
+  fetchHourlyWeather: (latitude: number, longitude: number) =>
+    openWeather.get<OpenWeatherResponseType>(
+      `forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}&units=metric&cnt=16`,
     ),
-  getPlaceByCoords: (lat: number, lon: number) =>
-    locationInstance.get<OpenWeatherPlaceResponseType[]>(
-      `reverse?lat=${lat}&lon=${lon}&limit=5&appid=be4e4f1db7d4bfa1854ee2145c155b97`,
+  fetchPlacesByCoordinates: (latitude: number, longitude: number) =>
+    openWeatherGeocoder.get<OpenWeatherPlaceResponseType[]>(
+      `reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}`,
     ),
-  getPlaceByName: (name: string) =>
-    locationInstance.get<OpenWeatherPlaceResponseType[]>(
-      `direct?q=${name}&limit=5&appid=be4e4f1db7d4bfa1854ee2145c155b97`,
+  fetchPlacesByName: (city: string) =>
+    openWeatherGeocoder.get<OpenWeatherPlaceResponseType[]>(
+      `direct?q=${city}&limit=5&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}`,
     ),
 };
 export default openWeatherAPI;

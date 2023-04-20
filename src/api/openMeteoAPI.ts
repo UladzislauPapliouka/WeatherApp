@@ -5,23 +5,23 @@ import {
 import { OpenMeteoGeocodeResponse } from '@Types/apiTypes/openMeteoAPIType';
 import axios from 'axios';
 
-const insnatce = axios.create({
+const openMeteoWeather = axios.create({
   baseURL: 'https://api.open-meteo.com/v1/',
 });
-const geoInsnatce = axios.create({
+const openMeteoGeocoder = axios.create({
   baseURL: 'https://geocoding-api.open-meteo.com/v1/',
 });
 const openMeteoAPI = {
-  getWeatherHourly: (lat: number, lon: number) =>
-    insnatce.get<OpenMeteoHourlyResponse>(
-      `forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&forecast_days=1`,
+  fetchHourlyWeather: (latitude: number, longitude: number) =>
+    openMeteoWeather.get<OpenMeteoHourlyResponse>(
+      `forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&forecast_days=1`,
     ),
-  getWeatherDaily: (lat: number, lon: number) =>
-    insnatce.get<OpenMeteoDailyResponse>(
-      `forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=GMT`,
+  fetchDailyWeather: (latitude: number, longitude: number) =>
+    openMeteoWeather.get<OpenMeteoDailyResponse>(
+      `forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=GMT`,
     ),
-  getPlaceInfoBtName: (city: string) =>
-    geoInsnatce.get<OpenMeteoGeocodeResponse[]>(
+  fetchPlacesByName: (city: string) =>
+    openMeteoGeocoder.get<OpenMeteoGeocodeResponse[]>(
       `search?name=${city}&count=10&language=en&format=json`,
     ),
 };

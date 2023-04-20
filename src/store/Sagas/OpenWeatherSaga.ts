@@ -68,7 +68,7 @@ function* fetchOpenWeatherAPIDaily() {
     );
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenWeatherResponseType> = yield call(
-      OpenWeatherAPI.getWeatherDaily,
+      OpenWeatherAPI.fetchDailyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
@@ -98,7 +98,7 @@ function* fetchOpenWeatherAPIHourly() {
     );
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenWeatherResponseType> = yield call(
-      OpenWeatherAPI.getWeatherHourly,
+      OpenWeatherAPI.fetchHourlyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
@@ -126,7 +126,7 @@ function* findPlaceByCoordsOpenWeather(
 ) {
   try {
     const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
-      OpenWeatherAPI.getPlaceByCoords,
+      OpenWeatherAPI.fetchPlacesByCoordinates,
       action.payload.lat,
       action.payload.lon,
     );
@@ -160,7 +160,7 @@ function* findPlaceByNameOpenWeather(
   try {
     console.log('here');
     const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
-      OpenWeatherAPI.getPlaceByName,
+      OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );
     const place = response.data[0];
@@ -193,7 +193,7 @@ function* getAutocomplete(
   try {
     delay(2000);
     const response: AxiosResponse<OpenWeatherPlaceResponseType[]> = yield call(
-      OpenWeatherAPI.getPlaceByName,
+      OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );
     const places = response.data;

@@ -14,21 +14,21 @@ const insnatce = axios.create({
 });
 
 const weatherAPI = {
-  getWeatherDaily: (lat: number, lon: number) =>
+  getWeatherDaily: (latitude: number, longitude: number) =>
     insnatce.get<WeatherAPIForecastResponseType>(
-      `forecast.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${lat},${lon}&days=7&aqi=no&alerts=no`,
+      `forecast.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`,
     ),
-  getWeatherHourly: (lat: number, lon: number) =>
+  getWeatherHourly: (latitude: number, longitude: number) =>
     insnatce.get<WeatherAPIForecastResponseType>(
-      `forecast.json?key=7e5fc8f7edca45498ea180325233001&q=${lat},${lon}&days=1&aqi=no&alerts=no`,
+      `forecast.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${latitude},${longitude}&days=1&aqi=no&alerts=no`,
     ),
-  getFindPlaceByCoords: (lat: number, lon: number) =>
+  getFindPlaceByCoords: (latitude: number, longitude: number) =>
     insnatce.get<WeatherPlaceResponseType>(
-      `search.json?key=7e5fc8f7edca45498ea180325233001&q=${lat},${lon}`,
+      `search.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${latitude},${longitude}`,
     ),
-  getFindPlaceByName: (name: string) =>
+  getFindPlaceByName: (city: string) =>
     insnatce.get<WeatherPlaceResponseType>(
-      `search.json?key=7e5fc8f7edca45498ea180325233001&q=${name}`,
+      `search.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${city}`,
     ),
 };
 export default weatherAPI;
