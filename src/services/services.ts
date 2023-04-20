@@ -1,5 +1,8 @@
 import * as backgrounds from '@assets/backgrounds';
-import { OpenMeteoHourlyResponse } from '@Types/apiTypes';
+import {
+  OpenMeteoDailyResponse,
+  OpenMeteoHourlyResponse,
+} from '@Types/apiTypes';
 import { OpenWeatherListType } from '@Types/apiTypes/openWeatherAPITypes';
 import { WeatherIconVariants } from '@Types/propsTypes/weatherIcon';
 import { ForecastItemInfoType } from '@Types/storeTypes/weatherStateType';
@@ -205,7 +208,28 @@ function normalizeOpenMeteoHourly({
   }
   return result;
 }
+function normalizeOpenMeteoDaily({
+  daily: { temperature_2m_max, temperature_2m_min, weathercode, time },
+}: OpenMeteoDailyResponse): ForecastItemInfoType[] {
+  const result: ForecastItemInfoType[] = [];
+  result.push({
+    icon: getOpenMeteoIcon(weathercode[0]),
+    degrees: (temperature_2m_max[0] + temperature_2m_min[0]) / 2,
+    name: `Today`,
+    id: v1(),
+  });
+  for (let i = 1; i < 7; i += 1) {
+    result.push({
+      icon: getOpenMeteoIcon(weathercode[i]),
+      degrees: (temperature_2m_max[0] + temperature_2m_min[0]) / 2,
+      name: getDayName(new Date(time[0]).getDay(), i),
+      id: v1(),
+    });
+  }
+  return result;
+}
 export {
+  normalizeOpenMeteoDaily,
   normalizeOpenMeteoHourly,
   getDayName,
   getWeatherIcon,

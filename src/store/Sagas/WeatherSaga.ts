@@ -1,6 +1,12 @@
-import { normalizeOpenMeteoHourly } from '@services/services';
+import {
+  normalizeOpenMeteoDaily,
+  normalizeOpenMeteoHourly,
+} from '@services/services';
 import { AutocompleteActions } from '@store/Reducers/SearchAutocompleteReducer';
-import { OpenMeteoHourlyResponse } from '@Types/apiTypes';
+import {
+  OpenMeteoDailyResponse,
+  OpenMeteoHourlyResponse,
+} from '@Types/apiTypes';
 import { AxiosResponse } from 'axios';
 import {
   call,
@@ -65,38 +71,13 @@ export function* fetchWeatherAPIDaily() {
       (state) => state.PlaceReducer,
     );
     yield put(AppActions.startWeatherFetching());
-    const response: AxiosResponse<WeatherAPIForecastResponseType> = yield call(
-      weatherAPI.getWeatherDaily,
+    const response: AxiosResponse<OpenMeteoDailyResponse> = yield call(
+      openMeteoAPI.getWeatherDaily,
       location.coord.lat,
       location.coord.lon,
     );
     yield put(AppActions.finishWeatherFetching());
-    yield put(
-      WeatherActions.setInfo([
-        {
-          icon: getWeatherIcon(response.data.current.condition.code),
-          name: 'Today',
-          degrees: response.data.current.temp_c,
-          id: v1(),
-        },
-        ...response.data.forecast.forecastday
-          .slice(1)
-          .map(
-            (
-              obj: WeatherAPIForecastResponseType['forecast']['forecastday'][0],
-              i: number,
-            ) => ({
-              icon: getWeatherIcon(obj.day.condition.code),
-              name: getDayName(
-                new Date(response.data.location.localtime).getDay(),
-                i,
-              ),
-              degrees: obj.day.avgtemp_c,
-              id: v1(),
-            }),
-          ),
-      ]),
-    );
+    yield put(WeatherActions.setInfo(normalizeOpenMeteoDaily(response.data)));
   } catch (e) {
     yield put(AppActions.finishWeatherFetching());
   }
@@ -108,7 +89,7 @@ function* fetchWeatherAPIHourly() {
     );
     yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenMeteoHourlyResponse> = yield call(
-      openMeteoAPI.getWeatherHoulry,
+      openMeteoAPI.getWeatherHourly,
       location.coord.lat,
       location.coord.lon,
     );

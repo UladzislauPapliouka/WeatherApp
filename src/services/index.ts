@@ -5,11 +5,15 @@ import {
   getDayName,
   getOpenWeatherIcon,
   getWeatherIcon,
+  normalizeOpenMeteoDaily,
+  normalizeOpenMeteoHourly,
   openWeatherAPIConverterByDay,
   openWeatherAPIConverterByHours,
 } from './services';
 
 export {
+  normalizeOpenMeteoHourly,
+  normalizeOpenMeteoDaily,
   openWeatherAPIConverterByDay,
   getOpenWeatherIcon,
   getDayName,

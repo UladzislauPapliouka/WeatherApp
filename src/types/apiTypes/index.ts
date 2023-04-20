@@ -8,7 +8,10 @@ import {
   GoogleEventEntityType,
   GoogleUserEntityType,
 } from './googleCalendarAPITypes';
-import { OpenMeteoHourlyResponse } from './openMeteoAPIType';
+import {
+  OpenMeteoDailyResponse,
+  OpenMeteoHourlyResponse,
+} from './openMeteoAPIType';
 import {
   WeatherAPIForecastResponseType,
   WeatherPlaceResponseType,
@@ -23,4 +26,5 @@ export type {
   WeatherAPIForecastResponseType,
   WeatherPlaceResponseType,
   OpenMeteoHourlyResponse,
+  OpenMeteoDailyResponse,
 };
