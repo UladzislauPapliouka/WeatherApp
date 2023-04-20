@@ -22,7 +22,12 @@ import {
   openWeatherAPIConverterByHours,
 } from '@/services';
 
-import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
+import {
+  AppActions,
+  PlaceActions,
+  PlaceReducer,
+  WeatherActions,
+} from '../Reducers';
 
 const findPlaceByCoordsOpenWeatherAC = (
   lat: number,
@@ -61,12 +66,14 @@ function* fetchOpenWeatherAPIDaily() {
     const location: ReturnType<typeof PlaceReducer> = yield select(
       (state) => state.PlaceReducer,
     );
+    yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenWeatherResponseType> = yield call(
       OpenWeatherAPI.getWeatherDaily,
       location.coord.lat,
       location.coord.lon,
     );
     const { list } = response.data;
+    yield put(AppActions.finishWeatherFetching());
     yield put(
       WeatherActions.setInfo(
         [
@@ -80,7 +87,7 @@ function* fetchOpenWeatherAPIDaily() {
       ),
     );
   } catch (e) {
-    throw new Error('Error');
+    yield put(AppActions.finishWeatherFetching());
   }
 }
 
@@ -89,11 +96,13 @@ function* fetchOpenWeatherAPIHourly() {
     const location: ReturnType<typeof PlaceReducer> = yield select(
       (state) => state.PlaceReducer,
     );
+    yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<OpenWeatherResponseType> = yield call(
       OpenWeatherAPI.getWeatherHourly,
       location.coord.lat,
       location.coord.lon,
     );
+    yield put(AppActions.finishWeatherFetching());
     const { list } = response.data;
     yield put(
       WeatherActions.setInfo(
@@ -108,7 +117,7 @@ function* fetchOpenWeatherAPIHourly() {
       ),
     );
   } catch (e) {
-    put(WeatherActions.error());
+    yield put(AppActions.finishWeatherFetching());
   }
 }
 

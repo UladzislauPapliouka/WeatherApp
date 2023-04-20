@@ -9,4 +9,5 @@ export enum WeatherRepresentVariant {
 export type AppInitialStateType = {
   preferredAPI: APIVariants;
   weatherRepresent: WeatherRepresentVariant;
+  isWeatherFetching: boolean;
 };

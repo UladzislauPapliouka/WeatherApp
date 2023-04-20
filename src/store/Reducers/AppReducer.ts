@@ -10,6 +10,7 @@ import storage from 'redux-persist/lib/storage';
 const initialState: AppInitialStateType = {
   preferredAPI: APIVariants.weatherAPI,
   weatherRepresent: WeatherRepresentVariant.daily,
+  isWeatherFetching: false,
 };
 const persistConfig = {
   key: 'AppState',
@@ -41,6 +42,14 @@ const AppSlice = createSlice({
       };
       return result;
     },
+    startWeatherFetching: (state) => ({
+      ...state,
+      isWeatherFetching: true,
+    }),
+    finishWeatherFetching: (state) => ({
+      ...state,
+      isWeatherFetching: false,
+    }),
   },
 });
 

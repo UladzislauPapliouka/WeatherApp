@@ -5,6 +5,7 @@ const ForecastWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  min-height: 250px;
   background-color: ${({ theme: { colors } }) => colors.selectBackground};
   color: ${({ theme: { colors } }) => colors.textColor};
   @media screen and (max-width: ${({ theme: { sizes } }) =>

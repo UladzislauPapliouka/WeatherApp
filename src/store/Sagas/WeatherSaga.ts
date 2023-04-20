@@ -18,7 +18,12 @@ import {
   WeatherPlaceResponseType,
 } from '@/types/apiTypes/weatherAPITypes';
 
-import { PlaceActions, PlaceReducer, WeatherActions } from '../Reducers';
+import {
+  AppActions,
+  PlaceActions,
+  PlaceReducer,
+  WeatherActions,
+} from '../Reducers';
 
 const fetchWeatherAPIDailyAC = () => ({
   type: 'FETCH_WEATHER_DAILY',
@@ -57,11 +62,13 @@ export function* fetchWeatherAPIDaily() {
     const location: ReturnType<typeof PlaceReducer> = yield select(
       (state) => state.PlaceReducer,
     );
+    yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<WeatherAPIForecastResponseType> = yield call(
       weatherAPI.getWeatherDaily,
       location.coord.lat,
       location.coord.lon,
     );
+    yield put(AppActions.finishWeatherFetching());
     yield put(
       WeatherActions.setInfo([
         {
@@ -89,7 +96,7 @@ export function* fetchWeatherAPIDaily() {
       ]),
     );
   } catch (e) {
-    put(WeatherActions.error());
+    yield put(AppActions.finishWeatherFetching());
   }
 }
 function* fetchWeatherAPIHourly() {
@@ -97,11 +104,13 @@ function* fetchWeatherAPIHourly() {
     const location: ReturnType<typeof PlaceReducer> = yield select(
       (state) => state.PlaceReducer,
     );
+    yield put(AppActions.startWeatherFetching());
     const response: AxiosResponse<WeatherAPIForecastResponseType> = yield call(
       weatherAPI.getWeatherHourly,
       location.coord.lat,
       location.coord.lon,
     );
+    yield put(AppActions.finishWeatherFetching());
     const currentHours = new Date().getHours();
     yield put(
       WeatherActions.setInfo([
@@ -130,7 +139,7 @@ function* fetchWeatherAPIHourly() {
       ]),
     );
   } catch (e) {
-    put(WeatherActions.error());
+    yield put(AppActions.finishWeatherFetching());
   }
 }
 
