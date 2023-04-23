@@ -1,7 +1,7 @@
-import { ChipWrapperPropsTypes } from '@components/Chip/types';
+import { IChipWrapperProps } from '@components/Chip/types';
 import styled, { css } from 'styled-components';
 
-export const ChipWrapper = styled.div<ChipWrapperPropsTypes>`
+export const ChipWrapper = styled.div<IChipWrapperProps>`
   box-sizing: border-box;
   position: relative;
   display: inline-flex;
@@ -10,24 +10,29 @@ export const ChipWrapper = styled.div<ChipWrapperPropsTypes>`
   min-width: ${({ theme: { sizes } }) => sizes.chipWidthSize.md}px;
   max-width: ${({ theme: { sizes } }) => sizes.chipWidthSize.xl}px;
   min-height: ${({ theme: { sizes } }) => sizes.chipHeightSize.md}px;
-  background-color: ${({ theme: { colors } }) => colors.chipColor};
+  background-color: ${({ theme: { colors } }) => colors.primaryDarkBlue};
   border-radius: ${({ theme: { sizes } }) => sizes.fontSizes.xxl}px;
-  padding: ${({ theme: { sizes } }) => sizes.chipGapSize.sm}px
-    ${({ theme: { sizes } }) => sizes.chipGapSize.md}px;
+
   margin: ${({ theme: { sizes } }) => sizes.chipGapSize.xs}px;
   ${({ variant }) => {
     switch (variant) {
       case 'small':
         return css`
           font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xs}px;
+          padding: ${({ theme: { sizes } }) => sizes.chipGapSize.sm}px
+            ${({ theme: { sizes } }) => sizes.chipGapSize.md}px;
         `;
       case 'large':
         return css`
-          font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xs}px;
+          font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
+          padding: ${({ theme: { sizes } }) => sizes.chipGapSize.md}px
+            ${({ theme: { sizes } }) => sizes.chipGapSize.lg}px;
         `;
       default:
         return css`
-          font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xs}px;
+          font-size: ${({ theme: { sizes } }) => sizes.fontSizes.sm}px;
+          padding: ${({ theme: { sizes } }) => sizes.chipGapSize.sm}px
+            ${({ theme: { sizes } }) => sizes.chipGapSize.md}px;
         `;
     }
   }}

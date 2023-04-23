@@ -4,10 +4,12 @@ import { ColorType, IFontWeight, IGreyscale, ISize } from '@Types/themeTypes';
 
 import 'styled-components';
 
+type sizesKeys = keyof sizesType;
+type colorsKeys = keyof colorsType;
 declare module 'styled-components' {
   export interface DefaultTheme {
-    sizes: { [key in keyof sizesType]: ISize };
-    colors: { [key in keyof colorsType]: ColorType };
+    sizes: Record<sizesKeys, ISize>;
+    colors: Record<colorsKeys, ColorType>;
     greyscale: IGreyscale;
     fontWeight: IFontWeight;
   }

@@ -2,7 +2,7 @@ import { ColorType } from '@Types/themeTypes';
 
 const textColorLight: ColorType = '#f1eaea';
 const textColorDark: ColorType = '#100f0f';
-const chipColor: ColorType = '#353e4d';
+const primaryDarkBlue: ColorType = '#353e4d';
 const selectBackground: ColorType = '#353E4DB2';
 const borderColor: ColorType = '#000';
 const whiteColor: ColorType = '#FFF';
@@ -12,7 +12,7 @@ const lightHoverColor03: ColorType = 'rgba(245,244,251,0.3)';
 const colors = {
   textColor: textColorLight,
   textColorDark,
-  chipColor,
+  primaryDarkBlue,
   selectBackground,
   borderColor,
   whiteColor,

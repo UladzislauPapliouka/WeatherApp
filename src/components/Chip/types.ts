@@ -1,8 +1,8 @@
 export type ChipSizeVariants = 'small' | 'default' | 'large';
-export interface ChipPropsType {
+export interface IChipProps {
   text: string;
   variant?: ChipSizeVariants;
 }
-export interface ChipWrapperPropsTypes {
+export interface IChipWrapperProps {
   variant?: ChipSizeVariants;
 }

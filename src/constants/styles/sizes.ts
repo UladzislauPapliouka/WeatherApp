@@ -54,7 +54,7 @@ const chipHeightSize: ISize = {
 };
 const chipWidthSize: ISize = {
   md: 46,
-  xl: 60,
+  xl: 200,
 };
 
 const selectGapSizes: ISize = {
