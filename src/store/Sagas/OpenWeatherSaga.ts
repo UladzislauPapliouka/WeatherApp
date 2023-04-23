@@ -9,8 +9,8 @@ import { v1 } from 'uuid';
 import { OpenWeatherAPI } from '@/api';
 import {
   getOpenWeatherIcon,
-  openWeatherAPIConverterByDay,
-  openWeatherAPIConverterByHours,
+  noramlizeOpenWeatherHoulry,
+  normalizeOpenWeatherDaily,
 } from '@/services';
 
 import {
@@ -74,7 +74,7 @@ function* fetchOpenWeatherAPIDaily() {
             degrees: list[0].main.temp,
             id: v1(),
           },
-        ].concat(openWeatherAPIConverterByDay(list)),
+        ].concat(normalizeOpenWeatherDaily(list)),
       ),
     );
   } catch (e) {
@@ -104,7 +104,7 @@ function* fetchOpenWeatherAPIHourly() {
             degrees: list[0].main.temp,
             id: v1(),
           },
-        ].concat(openWeatherAPIConverterByHours(list.slice(1, 7))),
+        ].concat(noramlizeOpenWeatherHoulry(list.slice(1, 7))),
       ),
     );
   } catch (e) {

@@ -111,7 +111,7 @@ function getDayName(dayNumber: number, index: number) {
   const daysName = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
   return daysName[resultIndex];
 }
-function openWeatherAPIConverterByDay(
+function normalizeOpenWeatherDaily(
   array: Array<OpenWeatherListType>,
 ): Array<NormalizedWeatherItemDataType> {
   const result: NormalizedWeatherItemDataType[] = [];
@@ -128,7 +128,7 @@ function openWeatherAPIConverterByDay(
   });
   return result;
 }
-function openWeatherAPIConverterByHours(
+function noramlizeOpenWeatherHoulry(
   array: Array<OpenWeatherListType>,
 ): Array<NormalizedWeatherItemDataType> {
   const result: NormalizedWeatherItemDataType[] = [];
@@ -201,7 +201,7 @@ function normalizeOpenMeteoHourly({
     name: `Now`,
     id: v1(),
   });
-  for (let i = firstIndex + 1; i < lastIndex; i += 1) {
+  for (let i = firstIndex + 1; i <= lastIndex; i += 1) {
     result.push({
       icon: getOpenMeteoIcon(weathercode[i]),
       degrees: temperature_2m[i],
@@ -255,8 +255,8 @@ export {
   normalizeOpenMeteoHourly,
   getDayName,
   getWeatherIcon,
-  openWeatherAPIConverterByDay,
+  normalizeOpenWeatherDaily,
   getOpenWeatherIcon,
-  openWeatherAPIConverterByHours,
+  noramlizeOpenWeatherHoulry,
   getBackground,
 };
