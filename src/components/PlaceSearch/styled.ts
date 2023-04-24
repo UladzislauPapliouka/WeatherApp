@@ -8,8 +8,8 @@ export const PlaceSearchWrapper = styled.div`
 `;
 export const SearchInput = styled.input`
   width: 100%;
-  border-radius: ${({ theme: { sizes } }) => sizes.fontSizes.xxl}px 0 0
-    ${({ theme: { sizes } }) => sizes.fontSizes.xxl}px;
+  border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px 0 0
+    ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
   padding: 0 0 0 ${({ theme: { sizes } }) => sizes.searchPadding.md}px;
   border: none;
   outline: none;
@@ -25,8 +25,8 @@ export const SearchInput = styled.input`
   }
 `;
 export const SearchButton = styled.button`
-  border-radius: 0 ${({ theme: { sizes } }) => sizes.fontSizes.xxl}px
-    ${({ theme: { sizes } }) => sizes.fontSizes.xxl}px 0;
+  border-radius: 0 ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px
+    ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px 0;
   background-color: ${({ theme: { colors } }) => colors.primaryDarkBlue};
   color: ${({ theme: { colors } }) => colors.textColor};
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
