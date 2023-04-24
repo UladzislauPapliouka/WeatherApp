@@ -1,4 +1,4 @@
-import { WeatherItemWrapperProps } from '@components/WeatherItem/types';
+import { IWeatherItemWrapperProps } from '@components/WeatherItem/types';
 import styled, { css } from 'styled-components';
 
 const mobileView = css`
@@ -9,7 +9,7 @@ const mobileView = css`
   align-items: center;
 `;
 
-export const WeatherItemWrapper = styled.div<WeatherItemWrapperProps>`
+export const WeatherItemWrapper = styled.div<IWeatherItemWrapperProps>`
   ${({ variant }) =>
     variant === 'compact'
       ? css`

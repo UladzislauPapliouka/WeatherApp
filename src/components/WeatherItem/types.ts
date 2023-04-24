@@ -1,11 +1,12 @@
 import { WeatherIconVariants } from '@Types/storeTypes/weatherStateType';
 
-export type WeatherItemPropsType = {
+type weatherItemSizeVariants = 'compact' | 'full';
+export interface IWeatherItemProps {
   chipText: string;
   weatherIcon: WeatherIconVariants;
   temperature: number;
-  variant?: 'compact' | 'full';
-};
-export type WeatherItemWrapperProps = {
-  variant: 'compact' | 'full';
-};
+  variant?: weatherItemSizeVariants;
+}
+export interface IWeatherItemWrapperProps {
+  variant: weatherItemSizeVariants;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import Chip from '@components/Chip';
 import DegreesSpan from '@components/DegreesSpan';
 import WeatherIcon from '@components/WeatherIcon';
-import { WeatherItemPropsType } from '@components/WeatherItem/types';
+import { IWeatherItemProps } from '@components/WeatherItem/types';
 
 import {
   ChipContainer,
@@ -16,7 +16,7 @@ export default function WeatherItem({
   weatherIcon,
   temperature,
   variant = 'compact',
-}: WeatherItemPropsType) {
+}: IWeatherItemProps) {
   return (
     <WeatherItemWrapper variant={variant}>
       <ChipContainer>
