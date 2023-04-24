@@ -1,4 +1,4 @@
-import { DateTextVariants } from '@components/DateBlock/types';
+import { IDateTextProps } from '@components/DateBlock/types';
 import styled from 'styled-components';
 
 export const DateBlockWrapper = styled.div`
@@ -7,7 +7,7 @@ export const DateBlockWrapper = styled.div`
   text-align: left;
 `;
 
-export const DateText = styled.span<DateTextVariants>`
+export const DateText = styled.span<IDateTextProps>`
   font-size: ${({ variant = 'default', theme: { sizes } }) => {
     switch (variant) {
       case 'large':

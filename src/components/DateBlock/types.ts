@@ -1,3 +1,4 @@
-export type DateTextVariants = {
-  variant?: 'small' | 'default' | 'large';
-};
+type sizeVariant = 'small' | 'default' | 'large';
+export interface IDateTextProps {
+  variant?: sizeVariant;
+}
