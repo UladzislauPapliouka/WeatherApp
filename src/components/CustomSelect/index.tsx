@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { ICustomSelectProps } from '@components/CustomSelect/types';
-import { CheckIcon } from '@components/Icons/Icons';
+import { CheckIcon } from '@components/Icons';
 
 import SelectItemsList from '../SelectItemsList';
 

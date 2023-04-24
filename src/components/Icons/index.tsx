@@ -1,12 +1,9 @@
 import React from 'react';
+import IIconProps from '@components/Icons/types';
 
 import refresh from '../../assets/icons/sync.webp';
 
-type IconPropsType = {
-  color: string;
-  scale: number;
-};
-function SettingIcon({ color, scale }: IconPropsType) {
+function SettingIcon({ color, scale }: IIconProps) {
   return (
     <svg
       style={{ transform: `scale(${scale})`, position: 'relative' }}
@@ -22,9 +19,6 @@ function SettingIcon({ color, scale }: IconPropsType) {
       />
     </svg>
   );
-}
-function RefreshIcon() {
-  return <img src={refresh} alt="Refresh icon" />;
 }
 function CheckIcon() {
   return (
@@ -44,4 +38,4 @@ function CheckIcon() {
     </svg>
   );
 }
-export { SettingIcon, RefreshIcon, CheckIcon };
+export { SettingIcon, CheckIcon };
