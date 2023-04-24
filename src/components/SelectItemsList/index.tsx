@@ -1,26 +1,26 @@
 import React from 'react';
-import { SelectListProps } from '@components/SelectItemsList/types';
+import { ISelectListProps } from '@components/SelectItemsList/types';
 
 import { SelectListWrapper, SelectOption } from './styled';
 
 export default function SelectItemsList<T>({
   options,
   handleChangeSelected,
-}: SelectListProps<T>) {
+}: ISelectListProps<T>) {
+  const handleWrapperClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
   return (
-    <SelectListWrapper
-      onClick={(event) => {
-        event.stopPropagation();
-      }}
-    >
-      {options.map((option) => (
-        <SelectOption
-          key={option?.toString()}
-          onClick={() => handleChangeSelected(option)}
-        >
-          {option?.toString()}
-        </SelectOption>
-      ))}
+    <SelectListWrapper onClick={handleWrapperClick}>
+      {options.map((option) => {
+        const handleSelect = () =>
+          ((option: T) => handleChangeSelected(option))(option);
+        return (
+          <SelectOption key={option?.toString()} onClick={handleSelect}>
+            {option?.toString()}
+          </SelectOption>
+        );
+      })}
     </SelectListWrapper>
   );
 }

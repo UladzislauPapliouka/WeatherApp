@@ -1,4 +1,4 @@
-export interface SelectListProps<Option> {
+export interface ISelectListProps<Option> {
   handleChangeSelected: (value: Option) => void;
   options: Option[];
 }
