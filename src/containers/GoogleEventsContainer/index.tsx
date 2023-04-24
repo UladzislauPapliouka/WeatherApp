@@ -8,7 +8,7 @@ import { GoogleEventsWrapper, NoEventsText } from './styled';
 export default function GoogleEventsContainer() {
   const events = useAppSelector((state) => state.GoogleEventsReducer);
   return (
-    <GoogleEventsWrapper>
+    <GoogleEventsWrapper data-cy="googleEventsList">
       {events.length ? (
         <>
           {events.map((event) => (

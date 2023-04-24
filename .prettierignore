@@ -2,7 +2,6 @@ webpack.config.js
 webpack.dev.js
 webpack.prod.js
 /build
-/cypress
 cypress.config.ts
 fileTransformer.js
 /coverage
