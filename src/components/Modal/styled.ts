@@ -7,7 +7,7 @@ const ModalWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(53, 62, 77, 0.7);
+  background: ${({ theme: { colors } }) => `${colors.primaryDarkBlue}c7`};
   &:empty {
     display: none;
   }
