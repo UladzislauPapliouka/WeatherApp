@@ -1,4 +1,4 @@
-export type GoogleEventPropsType = {
+export interface IGoogleEventProps {
   time: string;
   eventTitle: string;
-};
+}
