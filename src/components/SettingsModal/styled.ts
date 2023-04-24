@@ -20,7 +20,7 @@ export const SettingsModalWrapper = styled.div`
 `;
 
 const TitleMixin = css`
-  color: ${({ theme: { colors } }) => colors.chipColor};
+  color: ${({ theme: { colors } }) => colors.primaryDarkBlue};
   margin: 0;
 `;
 export const Title = styled.h2`

@@ -1,4 +1,4 @@
-import { SelectArrowPropsType } from '@components/CustomSelect/types';
+import { ISelectArrowProps } from '@components/CustomSelect/types';
 import styled, { css } from 'styled-components';
 
 export const CustomSelectWrapper = styled.div`
@@ -9,7 +9,6 @@ export const CustomSelectWrapper = styled.div`
       sizes.paddingSize.sm && 2 * sizes.paddingSize.sm}px;
   color: ${({ theme: { colors } }) => colors.textColorDark};
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
-  position: relative;
   min-width: ${({ theme: { sizes } }) => sizes.selectWidthSizes.md}px;
   border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
   &:hover {
@@ -26,7 +25,7 @@ export const SelectedVariantWrapper = styled.div`
   align-items: center;
 `;
 export const SelectedVariantText = styled.span``;
-export const SelectArrow = styled.div<SelectArrowPropsType>`
+export const SelectArrow = styled.div<ISelectArrowProps>`
   & > svg > path {
     stroke: ${({ theme: { colors } }) => colors.textColorDark};
   }

@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import { ICustomSelect } from '@components/CustomSelect/types';
+import { ICustomSelectProps } from '@components/CustomSelect/types';
 import { CheckIcon } from '@components/Icons/Icons';
-import { NormalizedPlaceDataType } from '@Types/storeTypes/placeStateType';
 
 import SelectItemsList from '../SelectItemsList';
 
@@ -12,15 +11,17 @@ import {
   SelectedVariantWrapper,
 } from './styled';
 
-function CustomSelect({ options, selected, onChangeSelected }: ICustomSelect) {
-  const [isActive, setIsActive] = useState<boolean>(false);
+function CustomSelect<T>({
+  options,
+  selected,
+  onChangeSelected,
+}: ICustomSelectProps<T>) {
+  const [isActive, setIsActive] = useState(false);
   const toggleSelect = () => setIsActive(!isActive);
   const selectRef = useRef(null);
-  const handleChangeSelected = (value: string | NormalizedPlaceDataType) => {
+  const handleChangeSelected = (value: T) => {
     toggleSelect();
-    if (typeof value === 'string') {
-      onChangeSelected(value);
-    }
+    onChangeSelected(value);
   };
   useLayoutEffect(() => {
     const handleClick = (e: MouseEvent) => {

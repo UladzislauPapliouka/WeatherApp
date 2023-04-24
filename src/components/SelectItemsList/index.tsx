@@ -3,10 +3,10 @@ import { SelectListProps } from '@components/SelectItemsList/types';
 
 import { SelectListWrapper, SelectOption } from './styled';
 
-export default function SelectItemsList({
+export default function SelectItemsList<T>({
   options,
   handleChangeSelected,
-}: SelectListProps) {
+}: SelectListProps<T>) {
   return (
     <SelectListWrapper
       onClick={(event) => {
@@ -15,10 +15,10 @@ export default function SelectItemsList({
     >
       {options.map((option) => (
         <SelectOption
-          key={option.toString()}
+          key={option?.toString()}
           onClick={() => handleChangeSelected(option)}
         >
-          {option.toString()}
+          {option?.toString()}
         </SelectOption>
       ))}
     </SelectListWrapper>

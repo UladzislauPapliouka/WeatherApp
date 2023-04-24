@@ -1,15 +1,8 @@
-import {
-  APIVariants,
-  WeatherRepresentVariants,
-} from '@Types/storeTypes/appStateTypes';
-
-export type SelectArrowPropsType = {
+export interface ISelectArrowProps {
   isActive: boolean;
-};
-export interface ICustomSelect {
-  options: string[];
+}
+export interface ICustomSelectProps<Option> {
+  options: Option[];
   selected: string;
-  onChangeSelected: (
-    value: APIVariants | WeatherRepresentVariants | string,
-  ) => void;
+  onChangeSelected: (value: Option) => void;
 }
