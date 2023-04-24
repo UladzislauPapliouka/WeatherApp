@@ -6,14 +6,6 @@ import PlaceSearch from '@components/PlaceSearch';
 import ISettingModalProps from '@components/SettingsModal/types';
 import { AppActions } from '@store/Reducers/AppReducer';
 import {
-  fetchDailyOpenWeatherAC,
-  fetchHourlyOpenWeatherAC,
-} from '@store/Sagas/OpenWeatherSaga';
-import {
-  fetchWeatherAPIDailyAC,
-  fetchWeatherAPIHourlyAC,
-} from '@store/Sagas/WeatherSaga';
-import {
   APIVariants,
   WeatherRepresentVariants,
 } from '@Types/storeTypes/appStateTypes';
