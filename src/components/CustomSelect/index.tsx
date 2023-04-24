@@ -35,7 +35,11 @@ function CustomSelect<T>({
     };
   }, [selectRef]);
   return (
-    <CustomSelectWrapper ref={selectRef} onClick={toggleSelect}>
+    <CustomSelectWrapper
+      data-cy="select"
+      ref={selectRef}
+      onClick={toggleSelect}
+    >
       <SelectedVariantWrapper>
         <SelectedVariantText>{selected}</SelectedVariantText>
         <SelectArrow isActive={isActive}>

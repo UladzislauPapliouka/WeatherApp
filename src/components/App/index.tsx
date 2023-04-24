@@ -49,6 +49,7 @@ function App() {
           }}
         >
           <SettingButtonWrapper
+            data-cy="settingsButton"
             onClick={() => {
               setIsModalOpen(true);
             }}
