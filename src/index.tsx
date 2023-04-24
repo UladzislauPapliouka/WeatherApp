@@ -18,12 +18,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={Store}>
     <GlobalStyles />
-    <PersistGate persistor={persistor} loading={<Loader />}>
-      <GoogleOAuthProvider clientId="573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com">
-        <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <PersistGate persistor={persistor} loading={<Loader />}>
+        <GoogleOAuthProvider clientId="573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com">
           <App />
-        </ThemeProvider>
-      </GoogleOAuthProvider>
-    </PersistGate>
+        </GoogleOAuthProvider>
+      </PersistGate>
+    </ThemeProvider>
   </Provider>,
 );

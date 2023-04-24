@@ -1,8 +1,6 @@
 import React from 'react';
 import IIconProps from '@components/Icons/types';
 
-import refresh from '../../assets/icons/sync.webp';
-
 function SettingIcon({ color, scale }: IIconProps) {
   return (
     <svg
