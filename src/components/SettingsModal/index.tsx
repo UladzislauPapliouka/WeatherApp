@@ -3,6 +3,7 @@ import CustomSelect from '@components/CustomSelect';
 import LoginGoogleButton from '@components/LoginGoogleButton';
 import ModalWindow from '@components/Modal';
 import PlaceSearch from '@components/PlaceSearch';
+import ISettingModalProps from '@components/SettingsModal/types';
 import { AppActions } from '@store/Reducers/AppReducer';
 import {
   fetchDailyOpenWeatherAC,
@@ -21,11 +22,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 
 import { SettingsModalWrapper, SubTitle, Title } from './styled';
 
-type SettingModalPropsTyp = {
-  isOpen: boolean;
-  onClose: () => void;
-};
-export default function Index({ isOpen, onClose }: SettingModalPropsTyp) {
+export default function Index({ isOpen, onClose }: ISettingModalProps) {
   const preferredService = useAppSelector(
     (state) => state.AppReducer.preferredAPI,
   );
@@ -45,21 +42,6 @@ export default function Index({ isOpen, onClose }: SettingModalPropsTyp) {
       }),
     );
   };
-  useEffect(() => {
-    dispatch(
-      preferredService === APIVariants.openWeatherAPI
-        ? dispatch(
-            weatherRepresent === WeatherRepresentVariants.daily
-              ? fetchDailyOpenWeatherAC()
-              : fetchHourlyOpenWeatherAC(),
-          )
-        : dispatch(
-            weatherRepresent === WeatherRepresentVariants.daily
-              ? fetchWeatherAPIDailyAC()
-              : fetchWeatherAPIHourlyAC(),
-          ),
-    );
-  }, [dispatch, preferredService, weatherRepresent]);
   const onClickModalBackgroundHandler = () => {
     onClose();
   };
