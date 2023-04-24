@@ -1,7 +1,7 @@
-import { WeatherImagePropsType } from '@components/WeatherIcon/types';
+import { IWeatherImageProps } from '@components/WeatherIcon/types';
 import styled from 'styled-components';
 
-const WeatherImage = styled.img<WeatherImagePropsType>`
+const WeatherImage = styled.img<IWeatherImageProps>`
   aspect-ratio: 1;
   width: ${({ size, theme: { sizes } }) => {
     switch (size) {
