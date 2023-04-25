@@ -5,10 +5,10 @@ import {
   getBackground,
   getDayName,
   getOpenWeatherIcon,
-  noramlizeOpenWeatherHoulry,
   normalizeOpenMeteoDaily,
   normalizeOpenMeteoHourly,
   normalizeOpenWeatherDaily,
+  normalizeOpenWeatherHourly,
 } from './services';
 
 export {
@@ -18,7 +18,7 @@ export {
   normalizeOpenWeatherDaily,
   getOpenWeatherIcon,
   getDayName,
-  noramlizeOpenWeatherHoulry,
+  normalizeOpenWeatherHourly,
   getBackground,
   normalizeGoogleEventEntity,
   parseDate,

@@ -1,8 +1,8 @@
 import {
-  noramlizeOpenWeatherHoulry,
   normalizeOpenMeteoDaily,
   normalizeOpenMeteoHourly,
   normalizeOpenWeatherDaily,
+  normalizeOpenWeatherHourly,
 } from '@services/services';
 import {
   GoogleEventEntityType,
@@ -1133,7 +1133,7 @@ describe('Entity data should be correct normalized to store', () => {
       },
     };
     const normalizedEntity: NormalizedWeatherItemDataType[] =
-      noramlizeOpenWeatherHoulry(list.slice(1, 7));
+      normalizeOpenWeatherHourly(list.slice(1, 7));
     expect(normalizedEntity).toHaveLength(6);
     expect(normalizedEntity[0]).toHaveProperty('name');
     expect(normalizedEntity[0]).toHaveProperty('degrees');

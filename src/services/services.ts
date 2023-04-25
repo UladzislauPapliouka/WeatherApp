@@ -1,4 +1,5 @@
 import * as backgrounds from '@assets/backgrounds';
+import DayNames from '@constants/dayNames';
 import {
   OpenMeteoDailyResponse,
   OpenMeteoHourlyResponse,
@@ -35,30 +36,33 @@ function getOpenWeatherIcon(code: number) {
   }
   return WeatherIconVariants.Windy;
 }
-function getDayName(dayNumber: number, index: number) {
-  const resultIndex =
-    dayNumber + index > 6 ? dayNumber + index - 7 : dayNumber + index;
-  const daysName = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-  return daysName[resultIndex];
+function getDayName(dayNumber: number) {
+  const daysName = [
+    DayNames.Sunday,
+    DayNames.Monday,
+    DayNames.Tuesday,
+    DayNames.Wednesday,
+    DayNames.Thursday,
+    DayNames.Friday,
+    DayNames.Saturday,
+  ];
+  return daysName[dayNumber];
 }
 function normalizeOpenWeatherDaily(
   array: Array<OpenWeatherListType>,
 ): Array<NormalizedWeatherItemDataType> {
   const result: NormalizedWeatherItemDataType[] = [];
-  array.forEach((obj, i) => {
-    if (!(i % 8)) {
-      result.push({
-        icon: getOpenWeatherIcon(obj.weather[0].id),
-        name: getDayName(new Date(obj.dt_txt).getDay(), 0),
-        degrees: obj.main.temp,
-        id: v1(),
-      });
-    }
-    return null;
-  });
+  for (let i = 7; i < array.length; i += 8) {
+    result.push({
+      icon: getOpenWeatherIcon(array[i].weather[0].id),
+      name: getDayName(new Date(array[i].dt_txt).getDay()),
+      degrees: array[i].main.temp,
+      id: v1(),
+    });
+  }
   return result;
 }
-function noramlizeOpenWeatherHoulry(
+function normalizeOpenWeatherHourly(
   array: Array<OpenWeatherListType>,
 ): Array<NormalizedWeatherItemDataType> {
   const result: NormalizedWeatherItemDataType[] = [];
@@ -152,10 +156,11 @@ function normalizeOpenMeteoDaily({
     id: v1(),
   });
   for (let i = 1; i < 7; i += 1) {
+    console.log(time[i]);
     result.push({
       icon: getOpenMeteoIcon(weathercode[i]),
       degrees: (temperature_2m_max[i] + temperature_2m_min[i]) / 2,
-      name: getDayName(new Date(time[i]).getDay(), i),
+      name: getDayName(new Date(time[i]).getDay()),
       id: v1(),
     });
   }
@@ -187,6 +192,6 @@ export {
   getOpenMeteoIcon,
   normalizeOpenWeatherDaily,
   getOpenWeatherIcon,
-  noramlizeOpenWeatherHoulry,
+  normalizeOpenWeatherHourly,
   getBackground,
 };

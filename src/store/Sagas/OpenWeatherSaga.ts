@@ -9,8 +9,8 @@ import { v1 } from 'uuid';
 import { OpenWeatherAPI } from '@/api';
 import {
   getOpenWeatherIcon,
-  noramlizeOpenWeatherHoulry,
   normalizeOpenWeatherDaily,
+  normalizeOpenWeatherHourly,
 } from '@/services';
 
 import {
@@ -104,7 +104,7 @@ function* fetchOpenWeatherAPIHourly() {
             degrees: list[0].main.temp,
             id: v1(),
           },
-        ].concat(noramlizeOpenWeatherHoulry(list.slice(1, 7))),
+        ].concat(normalizeOpenWeatherHourly(list.slice(1, 7))),
       ),
     );
   } catch (e) {
