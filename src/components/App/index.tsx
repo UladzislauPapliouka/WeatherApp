@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
 import { bg1, bg2 } from '@assets/backgrounds';
 import DateBlock from '@components/DateBlock';
 import { SettingIcon } from '@components/Icons';
@@ -37,7 +37,10 @@ function App() {
   useLayoutEffect(() => {
     if (currentWeather) setBackgrounds(getBackground(currentWeather.icon));
   }, [currentWeather]);
-
+  const handleToggleModalWindow = useCallback(
+    () => setIsModalOpen(!isModalOpen),
+    [isModalOpen],
+  );
   return (
     <AppWrapper
       style={{ backgroundImage: `url(${backgrounds ? backgrounds[1] : bg2})` }}
@@ -50,9 +53,7 @@ function App() {
         >
           <SettingButtonWrapper
             data-cy="settingsButton"
-            onClick={() => {
-              setIsModalOpen(true);
-            }}
+            onClick={handleToggleModalWindow}
           >
             <SettingIcon color="#f1eaea" scale={1} />
           </SettingButtonWrapper>
@@ -66,9 +67,7 @@ function App() {
           <WeatherForecastContainer />
           <SettingsModal
             isOpen={isModalOpen}
-            onClose={() => {
-              setIsModalOpen(false);
-            }}
+            onClose={handleToggleModalWindow}
           />
         </Container>
       </AppBackground>

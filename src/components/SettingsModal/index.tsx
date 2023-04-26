@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import CustomSelect from '@components/CustomSelect';
 import LoginGoogleButton from '@components/LoginGoogleButton';
 import ModalWindow from '@components/Modal';
@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 
 import { SettingsModalWrapper, SubTitle, Title } from './styled';
 
-export default function Index({ isOpen, onClose }: ISettingModalProps) {
+const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
   const preferredService = useAppSelector(
     (state) => state.AppReducer.preferredAPI,
   );
@@ -65,4 +65,6 @@ export default function Index({ isOpen, onClose }: ISettingModalProps) {
       </SettingsModalWrapper>
     </ModalWindow>
   ) : null;
-}
+});
+SettingsModal.displayName = 'SettingModal';
+export default SettingsModal;
