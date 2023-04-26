@@ -156,7 +156,6 @@ function normalizeOpenMeteoDaily({
     id: v1(),
   });
   for (let i = 1; i < 7; i += 1) {
-    console.log(time[i]);
     result.push({
       icon: getOpenMeteoIcon(weathercode[i]),
       degrees: (temperature_2m_max[i] + temperature_2m_min[i]) / 2,
@@ -175,7 +174,7 @@ const cacheService = async <T>(url: string, instance: AxiosInstance) => {
       return response;
     }
   }
-  const response = await instance.get<T>(url).catch((e) => null);
+  const response = await instance.get<T>(url);
   if (!response) return null;
   await Cache.put(
     response.config.url as string,
