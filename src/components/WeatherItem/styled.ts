@@ -20,7 +20,7 @@ export const WeatherItemWrapper = styled.div<IWeatherItemWrapperProps>`
           gap: ${({ theme: { sizes } }) => sizes.WeatherItemGaps.md}px;
           padding: ${({ theme: { sizes } }) => sizes.WeatherItemGaps.md}px;
           @media screen and (max-width: ${({ theme: { sizes } }) =>
-              sizes.displayBreakpoints.md}px) {
+              sizes.displayBreakpoints.lg}px) {
             ${mobileView};
           }
         `
@@ -32,7 +32,7 @@ export const WeatherItemWrapper = styled.div<IWeatherItemWrapperProps>`
           );
           grid-template-rows: repeat(2, 1fr);
           @media screen and (max-width: ${({ theme: { sizes } }) =>
-              sizes.displayBreakpoints.md}px) {
+              sizes.displayBreakpoints.lg}px) {
             ${mobileView};
           }
         `}

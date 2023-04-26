@@ -9,7 +9,7 @@ const ForecastWrapper = styled.div`
   background-color: ${({ theme: { colors } }) => colors.selectBackground};
   color: ${({ theme: { colors } }) => colors.textColor};
   @media screen and (max-width: ${({ theme: { sizes } }) =>
-      sizes.displayBreakpoints.md}px) {
+      sizes.displayBreakpoints.lg}px) {
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
