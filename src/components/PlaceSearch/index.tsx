@@ -85,7 +85,7 @@ export default function PlaceSearch({
         onChange={onChangeHandler}
       />
       <SearchButton onClick={onClickHandler}>Search</SearchButton>
-      {isAutoComplete && auto.length && (
+      {isAutoComplete && !!auto.length && (
         <SelectItemsList
           handleChangeSelected={handleAutocomplete}
           options={auto}
