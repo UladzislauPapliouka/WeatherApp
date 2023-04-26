@@ -10,4 +10,5 @@ export type AppStateType = {
   preferredAPI: APIVariants;
   weatherRepresent: WeatherRepresentVariants;
   isWeatherFetching: boolean;
+  isWeatherError: boolean;
 };

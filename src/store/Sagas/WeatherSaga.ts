@@ -67,7 +67,7 @@ export function* fetchWeatherAPIDaily() {
     yield put(AppActions.finishWeatherFetching());
     yield put(WeatherActions.setInfo(normalizeOpenMeteoDaily(response)));
   } catch (e) {
-    yield put(AppActions.finishWeatherFetching());
+    yield put(AppActions.finishFetchingWithError());
   }
 }
 function* fetchWeatherAPIHourly() {
@@ -84,7 +84,7 @@ function* fetchWeatherAPIHourly() {
     yield put(AppActions.finishWeatherFetching());
     yield put(WeatherActions.setInfo(normalizeOpenMeteoHourly(response)));
   } catch (e) {
-    yield put(AppActions.finishWeatherFetching());
+    yield put(AppActions.finishFetchingWithError());
   }
 }
 
@@ -116,7 +116,7 @@ function* findPlaceWeatherByCoords(
       }
     }
   } catch (e) {
-    put(WeatherActions.error());
+    put(AppActions.finishFetchingWithError());
   }
 }
 
@@ -129,6 +129,7 @@ function* findPlaceWeatherByName(
       action.payload.name,
     );
     const place = response.results[0];
+
     yield put(
       PlaceActions.setPlace({
         city: place.name,
@@ -147,7 +148,7 @@ function* findPlaceWeatherByName(
       }
     }
   } catch (e) {
-    put(WeatherActions.error());
+    put(AppActions.finishFetchingWithError());
   }
 }
 function* getAutoCompleteWeather(
@@ -173,7 +174,8 @@ function* getAutoCompleteWeather(
       ),
     );
   } catch (e) {
-    put(WeatherActions.error());
+    // TODO: add case to another reducer
+    put(AppActions.finishFetchingWithError());
   }
 }
 function* WeatherSaga() {

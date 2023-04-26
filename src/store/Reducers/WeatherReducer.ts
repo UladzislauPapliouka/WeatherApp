@@ -9,7 +9,6 @@ const WeatherByDaySlice = createSlice({
   reducers: {
     setInfo: (state, action: PayloadAction<NormalizedWeatherItemDataType[]>) =>
       action.payload,
-    error: () => initialState,
   },
 });
 

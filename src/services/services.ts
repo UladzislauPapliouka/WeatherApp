@@ -175,7 +175,8 @@ const cacheService = async <T>(url: string, instance: AxiosInstance) => {
       return response;
     }
   }
-  const response = await instance.get<T>(url);
+  const response = await instance.get<T>(url).catch((e) => null);
+  if (!response) return null;
   await Cache.put(
     response.config.url as string,
     new Response(

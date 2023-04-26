@@ -78,7 +78,7 @@ function* fetchOpenWeatherAPIDaily() {
       ),
     );
   } catch (e) {
-    yield put(AppActions.finishWeatherFetching());
+    yield put(AppActions.finishFetchingWithError());
   }
 }
 
@@ -108,7 +108,7 @@ function* fetchOpenWeatherAPIHourly() {
       ),
     );
   } catch (e) {
-    yield put(AppActions.finishWeatherFetching());
+    yield put(AppActions.finishFetchingWithError());
   }
 }
 
@@ -142,7 +142,7 @@ function* findPlaceByCoordsOpenWeather(
       }
     }
   } catch (e) {
-    put(WeatherActions.error());
+    put(AppActions.finishFetchingWithError());
   }
 }
 function* findPlaceByNameOpenWeather(
@@ -174,7 +174,7 @@ function* findPlaceByNameOpenWeather(
       }
     }
   } catch (e) {
-    put(WeatherActions.error());
+    put(AppActions.finishFetchingWithError());
   }
 }
 function* getAutocomplete(
@@ -200,7 +200,8 @@ function* getAutocomplete(
       ),
     );
   } catch (e) {
-    put(WeatherActions.error());
+    // TODO: add another case
+    put(AppActions.finishFetchingWithError());
   }
 }
 function* OpenWeatherSaga() {

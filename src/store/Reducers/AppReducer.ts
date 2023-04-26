@@ -11,6 +11,7 @@ const initialState: AppStateType = {
   preferredAPI: APIVariants.weatherAPI,
   weatherRepresent: WeatherRepresentVariants.daily,
   isWeatherFetching: false,
+  isWeatherError: false,
 };
 const persistConfig = {
   key: 'AppState',
@@ -45,10 +46,16 @@ const AppSlice = createSlice({
     startWeatherFetching: (state) => ({
       ...state,
       isWeatherFetching: true,
+      isWeatherError: false,
     }),
     finishWeatherFetching: (state) => ({
       ...state,
       isWeatherFetching: false,
+    }),
+    finishFetchingWithError: (state) => ({
+      ...state,
+      isWeatherFetching: false,
+      isWeatherError: true,
     }),
   },
 });
