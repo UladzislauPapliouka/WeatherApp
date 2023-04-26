@@ -1,4 +1,9 @@
-import React, { KeyboardEvent, SyntheticEvent, useState } from 'react';
+import React, {
+  KeyboardEvent,
+  SyntheticEvent,
+  useCallback,
+  useState,
+} from 'react';
 import SelectItemsList from '@components/SelectItemsList';
 import { PlaceActions } from '@store/Reducers';
 import {
@@ -62,13 +67,14 @@ export default function PlaceSearch({
       onClickHandler();
     }
   };
-  const handleAutocomplete = (sel: NormalizedPlaceDataType | string) => {
-    if (typeof sel !== 'string') {
+  const handleAutocomplete = useCallback(
+    (sel: NormalizedPlaceDataType) => {
       setField(sel.city);
       dispatch(PlaceActions.setPlace(sel));
       setIsAutocomplete(false);
-    }
-  };
+    },
+    [dispatch],
+  );
 
   return (
     <PlaceSearchWrapper>

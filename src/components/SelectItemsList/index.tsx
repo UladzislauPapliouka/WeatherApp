@@ -3,7 +3,7 @@ import { ISelectListProps } from '@components/SelectItemsList/types';
 
 import { SelectListWrapper, SelectOption } from './styled';
 
-export default function SelectItemsList<T>({
+function SelectItemsList<T>({
   options,
   handleChangeSelected,
 }: ISelectListProps<T>) {
@@ -24,3 +24,4 @@ export default function SelectItemsList<T>({
     </SelectListWrapper>
   );
 }
+export default React.memo(SelectItemsList) as typeof SelectItemsList;
