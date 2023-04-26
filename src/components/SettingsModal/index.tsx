@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import CustomSelect from '@components/CustomSelect';
 import LoginGoogleButton from '@components/LoginGoogleButton';
 import ModalWindow from '@components/Modal';
@@ -22,18 +22,24 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
     (state) => state.AppReducer.weatherRepresent,
   );
   const dispatch = useAppDispatch();
-  const setPreferredService = (value: string) => {
-    dispatch(
-      AppActions.setPreferredAPI({ preferredAPI: value as APIVariants }),
-    );
-  };
-  const setWeatherRepresent = (value: string) => {
-    dispatch(
-      AppActions.setWeatherRepresent({
-        weatherRepresent: value as WeatherRepresentVariants,
-      }),
-    );
-  };
+  const setPreferredService = useCallback(
+    (value: string) => {
+      dispatch(
+        AppActions.setPreferredAPI({ preferredAPI: value as APIVariants }),
+      );
+    },
+    [dispatch],
+  );
+  const setWeatherRepresent = useCallback(
+    (value: string) => {
+      dispatch(
+        AppActions.setWeatherRepresent({
+          weatherRepresent: value as WeatherRepresentVariants,
+        }),
+      );
+    },
+    [dispatch],
+  );
   const onClickModalBackgroundHandler = () => {
     onClose();
   };

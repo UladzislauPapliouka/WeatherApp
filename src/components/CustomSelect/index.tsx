@@ -56,4 +56,4 @@ function CustomSelect<T>({
   );
 }
 
-export default CustomSelect;
+export default React.memo(CustomSelect) as typeof CustomSelect;
