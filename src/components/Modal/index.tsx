@@ -24,4 +24,4 @@ const ModalWindow: FC<PropsWithChildren<{ handleClose: () => void }>> = ({
     document.body,
   );
 };
-export default ModalWindow;
+export default React.memo(ModalWindow);
