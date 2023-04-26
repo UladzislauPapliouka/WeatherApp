@@ -17,7 +17,7 @@ const openMeteoGeocoder = axios.create({
 const openMeteoAPI = {
   fetchHourlyWeather: async (latitude: number, longitude: number) => {
     const response = await cacheService<OpenMeteoHourlyResponse>(
-      `forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&forecast_days=1`,
+      `forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&forecast_days=2`,
       openMeteoWeather,
     );
     return response;
