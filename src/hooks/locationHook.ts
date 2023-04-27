@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@store';
 import { findPlaceByCoordsOpenWeatherAC } from '@store/Sagas/OpenWeatherSaga';
 import { findPlaceWeatherByCoordsAC } from '@store/Sagas/WeatherSaga';
@@ -13,7 +13,7 @@ const useUserLocation = () => {
     coordinates: { longitude, latitude },
     city,
   } = useAppSelector((state) => state.placeInfo);
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(({ coords }) => {
       if (city) {
         if (preferredAPI === APIVariants.openWeatherAPI) {

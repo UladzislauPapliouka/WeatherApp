@@ -18,7 +18,7 @@ const sagaMiddleware = createSagaMiddleware();
 const Store = configureStore({
   reducer: {
     placeInfo: PersistedPlaceReducer,
-    GoogleEventsReducer,
+    googleEvents: GoogleEventsReducer,
     weatherInfo: WeatherReducer,
     appState: PersistedAppReducer,
     userReducer,
