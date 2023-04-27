@@ -56,7 +56,7 @@ const getAutocompleteWeatherAC = (name: string) => ({
 export function* fetchWeatherAPIDaily() {
   try {
     const location: ReturnType<typeof PlaceReducer> = yield select(
-      (state) => state.PlaceReducer,
+      (state) => state.placeInfo,
     );
     yield put(AppActions.startWeatherFetching());
     const response: OpenMeteoDailyResponse = yield call(
@@ -73,7 +73,7 @@ export function* fetchWeatherAPIDaily() {
 function* fetchWeatherAPIHourly() {
   try {
     const location: ReturnType<typeof PlaceReducer> = yield select(
-      (state) => state.PlaceReducer,
+      (state) => state.placeInfo,
     );
     yield put(AppActions.startWeatherFetching());
     const response: OpenMeteoHourlyResponse = yield call(

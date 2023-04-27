@@ -5,7 +5,7 @@ import {
   WeatherPlaceResponseType,
 } from '@/types/apiTypes/weatherAPITypes';
 
-const insnatce = axios.create({
+const weatherAPIinstance = axios.create({
   baseURL: 'https://api.weatherapi.com/v1/',
   headers: {
     'Access-Control-Allow-Origin': '*',
@@ -15,19 +15,19 @@ const insnatce = axios.create({
 
 const weatherAPI = {
   getWeatherDaily: (latitude: number, longitude: number) =>
-    insnatce.get<WeatherAPIForecastResponseType>(
+    weatherAPIinstance.get<WeatherAPIForecastResponseType>(
       `forecast.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`,
     ),
   getWeatherHourly: (latitude: number, longitude: number) =>
-    insnatce.get<WeatherAPIForecastResponseType>(
+    weatherAPIinstance.get<WeatherAPIForecastResponseType>(
       `forecast.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${latitude},${longitude}&days=1&aqi=no&alerts=no`,
     ),
   getFindPlaceByCoords: (latitude: number, longitude: number) =>
-    insnatce.get<WeatherPlaceResponseType>(
+    weatherAPIinstance.get<WeatherPlaceResponseType>(
       `search.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${latitude},${longitude}`,
     ),
   getFindPlaceByName: (city: string) =>
-    insnatce.get<WeatherPlaceResponseType>(
+    weatherAPIinstance.get<WeatherPlaceResponseType>(
       `search.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${city}`,
     ),
 };

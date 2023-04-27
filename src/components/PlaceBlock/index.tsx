@@ -6,11 +6,13 @@ import { RootAppType } from '@/store';
 import { CityName, CountryName, PlaceBlockWrapper } from './styled';
 
 export default function PlaceBlock() {
-  const place = useSelector((state: RootAppType) => state.PlaceReducer);
+  const { city, country } = useSelector(
+    (state: RootAppType) => state.placeInfo,
+  );
   return (
     <PlaceBlockWrapper>
-      <CityName>{place.city}</CityName>
-      <CountryName>{place.country}</CountryName>
+      <CityName>{city}</CityName>
+      <CountryName>{country}</CountryName>
     </PlaceBlockWrapper>
   );
 }

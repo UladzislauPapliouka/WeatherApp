@@ -26,9 +26,7 @@ function App() {
 
   useUserLocation();
 
-  const currentWeather = useAppSelector(
-    (state) => state.WeatherByDayReducer[0],
-  );
+  const currentWeather = useAppSelector((state) => state.weatherInfo[0]);
 
   const [backgrounds, setBackgrounds] = useState(
     getBackground(WeatherIconVariants.Sun),

@@ -6,53 +6,51 @@ import { APIVariants, WeatherRepresentVariants } from '@Types/storeTypes';
 
 const useUserLocation = () => {
   const dispatch = useAppDispatch();
-  const AppState = useAppSelector((state) => state.AppReducer);
-  const place = useAppSelector((state) => state.PlaceReducer);
+  const { weatherRepresent, preferredAPI } = useAppSelector(
+    (state) => state.appState,
+  );
+  const {
+    coordinates: { longitude, latitude },
+    city,
+  } = useAppSelector((state) => state.placeInfo);
   useLayoutEffect(() => {
-    window.navigator.geolocation.getCurrentPosition((res) => {
-      if (place.city) {
-        if (AppState.preferredAPI === APIVariants.openWeatherAPI) {
+    window.navigator.geolocation.getCurrentPosition(({ coords }) => {
+      if (city) {
+        if (preferredAPI === APIVariants.openWeatherAPI) {
           dispatch(
             findPlaceByCoordsOpenWeatherAC(
-              place.coordinates.latitude,
-              place.coordinates.longitude,
-              AppState.weatherRepresent === WeatherRepresentVariants.hourly,
+              latitude,
+              longitude,
+              weatherRepresent === WeatherRepresentVariants.hourly,
             ),
           );
         } else {
           dispatch(
             findPlaceWeatherByCoordsAC(
-              place.coordinates.latitude,
-              place.coordinates.longitude,
-              AppState.weatherRepresent === WeatherRepresentVariants.hourly,
+              latitude,
+              longitude,
+              weatherRepresent === WeatherRepresentVariants.hourly,
             ),
           );
         }
-      } else if (AppState.preferredAPI === APIVariants.openWeatherAPI) {
+      } else if (preferredAPI === APIVariants.openWeatherAPI) {
         dispatch(
           findPlaceByCoordsOpenWeatherAC(
-            res.coords.latitude,
-            res.coords.longitude,
-            AppState.weatherRepresent === WeatherRepresentVariants.hourly,
+            coords.latitude,
+            coords.longitude,
+            weatherRepresent === WeatherRepresentVariants.hourly,
           ),
         );
       } else {
         dispatch(
           findPlaceWeatherByCoordsAC(
-            res.coords.latitude,
-            res.coords.longitude,
-            AppState.weatherRepresent === WeatherRepresentVariants.hourly,
+            coords.latitude,
+            coords.longitude,
+            weatherRepresent === WeatherRepresentVariants.hourly,
           ),
         );
       }
     });
-  }, [
-    AppState.preferredAPI,
-    AppState.weatherRepresent,
-    dispatch,
-    place.coordinates.latitude,
-    place.coordinates.longitude,
-    place.city,
-  ]);
+  }, [preferredAPI, weatherRepresent, dispatch, latitude, longitude, city]);
 };
 export default useUserLocation;

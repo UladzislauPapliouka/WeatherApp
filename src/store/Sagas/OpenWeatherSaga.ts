@@ -55,7 +55,7 @@ const fetchHourlyOpenWeatherAC = () => ({
 function* fetchOpenWeatherAPIDaily() {
   try {
     const location: ReturnType<typeof PlaceReducer> = yield select(
-      (state) => state.PlaceReducer,
+      (state) => state.placeInfo,
     );
     yield put(AppActions.startWeatherFetching());
     const response: OpenWeatherResponseType = yield call(
@@ -85,7 +85,7 @@ function* fetchOpenWeatherAPIDaily() {
 function* fetchOpenWeatherAPIHourly() {
   try {
     const location: ReturnType<typeof PlaceReducer> = yield select(
-      (state) => state.PlaceReducer,
+      (state) => state.placeInfo,
     );
     yield put(AppActions.startWeatherFetching());
     const response: OpenWeatherResponseType = yield call(

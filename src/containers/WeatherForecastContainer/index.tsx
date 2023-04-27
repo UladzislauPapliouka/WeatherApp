@@ -7,22 +7,22 @@ import { useAppSelector } from '@/store';
 import ForecastWrapper from './styled';
 
 export default function WeatherForecastContainer() {
-  const infoByDays = useAppSelector((state) => state.WeatherByDayReducer);
+  const weatherItems = useAppSelector((state) => state.weatherInfo);
   const isFetching = useAppSelector(
-    (state) => state.AppReducer.isWeatherFetching,
+    (state) => state.appState.isWeatherFetching,
   );
   return (
     <ForecastWrapper>
       {isFetching ? (
         <Loader />
       ) : (
-        infoByDays.map((info, i) => (
+        weatherItems.map(({ id, degrees, name, icon }, i) => (
           <WeatherItem
-            key={info.id}
-            chipText={info.name}
+            key={id}
+            chipText={name}
             variant={i === 0 ? 'full' : 'compact'}
-            weatherIcon={info.icon}
-            temperature={info.degrees}
+            weatherIcon={icon}
+            temperature={degrees}
           />
         ))
       )}

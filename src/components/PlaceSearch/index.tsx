@@ -30,16 +30,16 @@ export default function PlaceSearch({
 }) {
   const dispatch = useAppDispatch();
   const [isAutoComplete, setIsAutocomplete] = useState(false);
-  const auto = useAppSelector((state) =>
-    state.SearchAutocompleteReducer.map((opt) => ({
+  const autoCompleteVariants = useAppSelector((state) =>
+    state.autocompleteVariants.map((opt) => ({
       ...opt,
       toString() {
         return `${opt.city},${opt.country}`;
       },
     })),
   );
-  const initialField = useAppSelector((state) => state.PlaceReducer.city);
-  const [field, setField] = useState<string>(initialField);
+  const initialField = useAppSelector((state) => state.placeInfo.city);
+  const [field, setField] = useState(initialField);
   const onChangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
     e.preventDefault();
     setIsAutocomplete(true);
@@ -52,7 +52,7 @@ export default function PlaceSearch({
     }
   };
 
-  const onClickHandler = () => {
+  const handleClick = () => {
     if (preferredAPI === APIVariants.openWeatherAPI) {
       dispatch(findPlaceByNameOpenWeatherAC(field, hourly));
     } else {
@@ -64,7 +64,7 @@ export default function PlaceSearch({
   };
   const handleEnterClick = ({ key }: KeyboardEvent<HTMLInputElement>) => {
     if (key === 'Enter') {
-      onClickHandler();
+      handleClick();
     }
   };
   const handleAutocomplete = useCallback(
@@ -84,11 +84,11 @@ export default function PlaceSearch({
         onKeyDown={handleEnterClick}
         onChange={onChangeHandler}
       />
-      <SearchButton onClick={onClickHandler}>Search</SearchButton>
-      {isAutoComplete && !!auto.length && (
+      <SearchButton onClick={handleClick}>Search</SearchButton>
+      {isAutoComplete && !!autoCompleteVariants.length && (
         <SelectItemsList
           handleChangeSelected={handleAutocomplete}
-          options={auto}
+          options={autoCompleteVariants}
         />
       )}
     </PlaceSearchWrapper>

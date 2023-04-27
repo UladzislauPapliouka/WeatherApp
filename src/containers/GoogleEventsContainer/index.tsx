@@ -11,12 +11,8 @@ export default function GoogleEventsContainer() {
     <GoogleEventsWrapper data-cy="googleEventsList">
       {events.length ? (
         <>
-          {events.map((event) => (
-            <GoogleEvent
-              key={event.time}
-              time={event.time}
-              eventTitle={event.title}
-            />
+          {events.map(({ time, title }) => (
+            <GoogleEvent key={time + title} time={time} eventTitle={title} />
           ))}
         </>
       ) : (

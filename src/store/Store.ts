@@ -17,12 +17,12 @@ const sagaMiddleware = createSagaMiddleware();
 
 const Store = configureStore({
   reducer: {
-    PlaceReducer: PersistedPlaceReducer,
+    placeInfo: PersistedPlaceReducer,
     GoogleEventsReducer,
-    WeatherByDayReducer: WeatherReducer,
-    AppReducer: PersistedAppReducer,
+    weatherInfo: WeatherReducer,
+    appState: PersistedAppReducer,
     userReducer,
-    SearchAutocompleteReducer,
+    autocompleteVariants: SearchAutocompleteReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

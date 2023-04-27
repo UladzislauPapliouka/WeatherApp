@@ -16,10 +16,10 @@ import { SettingsModalWrapper, SubTitle, Title } from './styled';
 
 const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
   const preferredService = useAppSelector(
-    (state) => state.AppReducer.preferredAPI,
+    (state) => state.appState.preferredAPI,
   );
   const weatherRepresent = useAppSelector(
-    (state) => state.AppReducer.weatherRepresent,
+    (state) => state.appState.weatherRepresent,
   );
   const dispatch = useAppDispatch();
   const setPreferredService = useCallback(
@@ -40,11 +40,11 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
     },
     [dispatch],
   );
-  const onClickModalBackgroundHandler = () => {
+  const handleBackgroundClick = () => {
     onClose();
   };
   return isOpen ? (
-    <ModalWindow handleClose={onClickModalBackgroundHandler}>
+    <ModalWindow handleClose={handleBackgroundClick}>
       <SettingsModalWrapper>
         <Title>Settings</Title>
         <SubTitle>Find place</SubTitle>
