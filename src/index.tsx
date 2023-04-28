@@ -22,7 +22,9 @@ root.render(
     <ThemeProvider theme={theme}>
       <ErrorBoundary>
         <PersistGate persistor={persistor} loading={<Loader />}>
-          <GoogleOAuthProvider clientId="573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com">
+          <GoogleOAuthProvider
+            clientId={`${process.env.REACT_GOOGLE_CLIENT_ID}.apps.googleusercontent.com`}
+          >
             <App />
           </GoogleOAuthProvider>
         </PersistGate>
