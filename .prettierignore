@@ -5,3 +5,4 @@ webpack.prod.js
 cypress.config.ts
 fileTransformer.js
 /coverage
+.eslintrc.js

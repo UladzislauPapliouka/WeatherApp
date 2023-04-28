@@ -23,7 +23,7 @@ module.exports = {
   rules: {
     'prefer-destructuring': ['error', { object: true, array: false }],
     'no-shadow': 'off',
-    camelcase: 'off',
+    'camelcase': ["error",{allow: ["temperature_2m_max","temperature_2m_min","temperature_2m","dt_txt"]}],
     'simple-import-sort/imports': [
       'error',
       {

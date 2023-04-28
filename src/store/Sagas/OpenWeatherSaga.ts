@@ -186,10 +186,9 @@ function* getAutocomplete(
       OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );
-    const places = response;
     yield put(
       AutocompleteActions.setVariant(
-        places.slice(0, 4).map((place) => ({
+        response.slice(0, 4).map((place) => ({
           city: place.name,
           country: place.country,
           coordinates: {
