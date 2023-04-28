@@ -7,7 +7,7 @@ const selectBackground: ColorType = '#353E4DB2';
 const borderColor: ColorType = '#000';
 const whiteColor: ColorType = '#FFF';
 const lightHoverColor: ColorType = '#F5F4FB';
-const lightHoverColor03: ColorType = 'rgba(245,244,251,0.3)';
+const lightHoverColor03: ColorType = '#F5F4FB4C';
 
 const colors = {
   textColor: textColorLight,
