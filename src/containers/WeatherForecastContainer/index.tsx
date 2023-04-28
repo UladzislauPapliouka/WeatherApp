@@ -16,11 +16,11 @@ export default function WeatherForecastContainer() {
       {isFetching ? (
         <Loader />
       ) : (
-        weatherItems.map(({ id, degrees, name, icon }, i) => (
+        weatherItems.map(({ id, degrees, name, icon }, itemIndex) => (
           <WeatherItem
             key={id}
             chipText={name}
-            variant={i === 0 ? 'full' : 'compact'}
+            variant={itemIndex === 0 ? 'full' : 'compact'}
             weatherIcon={icon}
             temperature={degrees}
           />
