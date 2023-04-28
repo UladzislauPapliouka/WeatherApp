@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import loginIcon from '@assets/icons/google.webp';
 import { userActions } from '@store/Reducers/UserReducer';
 import { fetchGoogleEvents } from '@store/Sagas/GoogleEventsWatcher';
-import { GoogleUserEntityType } from '@Types/apiTypes/googleCalendarAPITypes';
+import { IGoogleUserEntity } from '@Types/apiTypes/googleCalendarAPITypes';
 import { gapi, loadAuth2 } from 'gapi-script';
 
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -24,7 +24,7 @@ export default function LoginGoogleButton() {
       auth2.attachClickHandler(
         buttonRef.current,
         {},
-        (user: GoogleUserEntityType) => {
+        (user: IGoogleUserEntity) => {
           dispatch(fetchGoogleEvents());
           dispatch(userActions.setUser({ user: user.wt }));
         },

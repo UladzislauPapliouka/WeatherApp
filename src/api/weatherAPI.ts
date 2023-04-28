@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  WeatherAPIForecastResponseType,
+  IWeatherAPIForecastResponse,
   WeatherPlaceResponseType,
 } from '@/types/apiTypes/weatherAPITypes';
 
@@ -15,11 +15,11 @@ const weatherAPIinstance = axios.create({
 
 const weatherAPI = {
   getWeatherDaily: (latitude: number, longitude: number) =>
-    weatherAPIinstance.get<WeatherAPIForecastResponseType>(
+    weatherAPIinstance.get<IWeatherAPIForecastResponse>(
       `forecast.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`,
     ),
   getWeatherHourly: (latitude: number, longitude: number) =>
-    weatherAPIinstance.get<WeatherAPIForecastResponseType>(
+    weatherAPIinstance.get<IWeatherAPIForecastResponse>(
       `forecast.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${latitude},${longitude}&days=1&aqi=no&alerts=no`,
     ),
   getFindPlaceByCoords: (latitude: number, longitude: number) =>
@@ -32,4 +32,4 @@ const weatherAPI = {
     ),
 };
 export default weatherAPI;
-export type { WeatherPlaceResponseType, WeatherAPIForecastResponseType };
+export type { WeatherPlaceResponseType, IWeatherAPIForecastResponse };

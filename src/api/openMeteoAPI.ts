@@ -1,8 +1,8 @@
 import {
-  OpenMeteoDailyResponse,
-  OpenMeteoHourlyResponse,
+  IOpenMeteoDailyResponse,
+  IOpenMeteoHourlyResponse,
 } from '@Types/apiTypes';
-import { OpenMeteoGeocodeResponse } from '@Types/apiTypes/openMeteoAPIType';
+import { IOpenMeteoGeocodeResponse } from '@Types/apiTypes/openMeteoAPIType';
 import axios from 'axios';
 
 import { cacheService } from '@/services';
@@ -16,21 +16,21 @@ const openMeteoGeocoder = axios.create({
 
 const openMeteoAPI = {
   fetchHourlyWeather: async (latitude: number, longitude: number) => {
-    const response = await cacheService<OpenMeteoHourlyResponse>(
+    const response = await cacheService<IOpenMeteoHourlyResponse>(
       `forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&forecast_days=2`,
       openMeteoWeather,
     );
     return response;
   },
   fetchDailyWeather: async (latitude: number, longitude: number) => {
-    const response = await cacheService<OpenMeteoDailyResponse>(
+    const response = await cacheService<IOpenMeteoDailyResponse>(
       `forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=GMT`,
       openMeteoWeather,
     );
     return response;
   },
   fetchPlacesByName: async (city: string) => {
-    const response = await cacheService<OpenMeteoGeocodeResponse[]>(
+    const response = await cacheService<IOpenMeteoGeocodeResponse[]>(
       `search?name=${city}&count=10&language=en&format=json`,
       openMeteoGeocoder,
     );

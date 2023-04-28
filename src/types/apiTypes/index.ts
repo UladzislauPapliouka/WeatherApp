@@ -1,30 +1,30 @@
 import {
-  OpenWeatherListType,
-  OpenWeatherPlaceResponseType,
-  OpenWeatherResponseType,
+  IOpenWeatherList,
+  IOpenWeatherPlaceResponse,
+  IOpenWeatherResponse,
 } from '@Types/apiTypes/openWeatherAPITypes';
 
 import {
-  GoogleEventEntityType,
-  GoogleUserEntityType,
+  IGoogleEventEntity,
+  IGoogleUserEntity,
 } from './googleCalendarAPITypes';
 import {
-  OpenMeteoDailyResponse,
-  OpenMeteoHourlyResponse,
+  IOpenMeteoDailyResponse,
+  IOpenMeteoHourlyResponse,
 } from './openMeteoAPIType';
 import {
-  WeatherAPIForecastResponseType,
+  IWeatherAPIForecastResponse,
   WeatherPlaceResponseType,
 } from './weatherAPITypes';
 
 export type {
-  GoogleEventEntityType,
-  GoogleUserEntityType,
-  OpenWeatherPlaceResponseType,
-  OpenWeatherResponseType,
-  OpenWeatherListType,
-  WeatherAPIForecastResponseType,
+  IGoogleEventEntity,
+  IGoogleUserEntity,
+  IOpenWeatherPlaceResponse,
+  IOpenWeatherResponse,
+  IOpenWeatherList,
+  IWeatherAPIForecastResponse,
   WeatherPlaceResponseType,
-  OpenMeteoHourlyResponse,
-  OpenMeteoDailyResponse,
+  IOpenMeteoHourlyResponse,
+  IOpenMeteoDailyResponse,
 };

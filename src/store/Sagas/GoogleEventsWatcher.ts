@@ -1,5 +1,5 @@
 import { normalizeGoogleEventEntity } from '@services/index';
-import { GoogleEventEntityType } from '@Types/apiTypes/googleCalendarAPITypes';
+import { IGoogleEventEntity } from '@Types/apiTypes/googleCalendarAPITypes';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchGoogleCalendarEvents } from '@/api';
@@ -11,9 +11,7 @@ const fetchGoogleEvents = () => ({
   type: FETCH_GOOGLE_EVENTS,
 });
 function* fetchGoogleEventsWorker() {
-  const response: GoogleEventEntityType[] = yield call(
-    fetchGoogleCalendarEvents,
-  );
+  const response: IGoogleEventEntity[] = yield call(fetchGoogleCalendarEvents);
   yield put(
     GoogleEventsActions.setEvents(response.map(normalizeGoogleEventEntity)),
   );

@@ -1,24 +1,24 @@
-export type OpenMeteoHourlyResponse = {
+export interface IOpenMeteoHourlyResponse {
   hourly: {
     time: Array<string>;
     temperature_2m: Array<number>;
     weathercode: Array<number>;
   };
-};
+}
 
-export type OpenMeteoDailyResponse = {
+export interface IOpenMeteoDailyResponse {
   daily: {
     time: Array<string>;
     temperature_2m_max: Array<number>;
     temperature_2m_min: Array<number>;
     weathercode: Array<number>;
   };
-};
-export type OpenMeteoGeocodeResponse = {
+}
+export interface IOpenMeteoGeocodeResponse {
   results: Array<{
     name: string;
     latitude: number;
     longitude: number;
     country: string;
   }>;
-};
+}

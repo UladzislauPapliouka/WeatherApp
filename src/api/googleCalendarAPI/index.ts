@@ -1,14 +1,14 @@
 import ApiCalendar from 'react-google-calendar-api';
-import { GoogleEventEntityType } from '@Types/apiTypes/googleCalendarAPITypes';
+import { IGoogleEventEntity } from '@Types/apiTypes/googleCalendarAPITypes';
 
 import { eventsRequestConfig, gapiConfig } from './gapiConfig';
 
 const GoogleCalendarAPI = new ApiCalendar(gapiConfig);
 
 export async function fetchGoogleCalendarEvents(): Promise<
-  GoogleEventEntityType[]
+  IGoogleEventEntity[]
 > {
   const response = await GoogleCalendarAPI.listEvents(eventsRequestConfig);
-  return response.result.items as GoogleEventEntityType[];
+  return response.result.items as IGoogleEventEntity[];
 }
 export default fetchGoogleCalendarEvents;

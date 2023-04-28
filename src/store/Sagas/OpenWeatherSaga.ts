@@ -1,7 +1,7 @@
 import { AutocompleteActions } from '@store/Reducers/SearchAutocompleteReducer';
 import {
-  OpenWeatherPlaceResponseType,
-  OpenWeatherResponseType,
+  IOpenWeatherPlaceResponse,
+  IOpenWeatherResponse,
 } from '@Types/apiTypes/openWeatherAPITypes';
 import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 import { v1 } from 'uuid';
@@ -58,7 +58,7 @@ function* fetchOpenWeatherAPIDaily() {
       (state) => state.placeInfo,
     );
     yield put(AppActions.startWeatherFetching());
-    const response: OpenWeatherResponseType = yield call(
+    const response: IOpenWeatherResponse = yield call(
       OpenWeatherAPI.fetchDailyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
@@ -88,7 +88,7 @@ function* fetchOpenWeatherAPIHourly() {
       (state) => state.placeInfo,
     );
     yield put(AppActions.startWeatherFetching());
-    const response: OpenWeatherResponseType = yield call(
+    const response: IOpenWeatherResponse = yield call(
       OpenWeatherAPI.fetchHourlyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
@@ -116,7 +116,7 @@ function* findPlaceByCoordsOpenWeather(
   action: ReturnType<typeof findPlaceByCoordsOpenWeatherAC>,
 ) {
   try {
-    const response: OpenWeatherPlaceResponseType[] = yield call(
+    const response: IOpenWeatherPlaceResponse[] = yield call(
       OpenWeatherAPI.fetchPlacesByCoordinates,
       action.payload.lat,
       action.payload.lon,
@@ -149,7 +149,7 @@ function* findPlaceByNameOpenWeather(
   action: ReturnType<typeof findPlaceByNameOpenWeatherAC>,
 ) {
   try {
-    const response: OpenWeatherPlaceResponseType[] = yield call(
+    const response: IOpenWeatherPlaceResponse[] = yield call(
       OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );
@@ -182,7 +182,7 @@ function* getAutocomplete(
 ) {
   try {
     delay(2000);
-    const response: OpenWeatherPlaceResponseType[] = yield call(
+    const response: IOpenWeatherPlaceResponse[] = yield call(
       OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );

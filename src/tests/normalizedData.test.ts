@@ -5,10 +5,10 @@ import {
   normalizeOpenWeatherHourly,
 } from '@services/services';
 import {
-  GoogleEventEntityType,
-  OpenMeteoDailyResponse,
-  OpenMeteoHourlyResponse,
-  OpenWeatherResponseType,
+  IGoogleEventEntity,
+  IOpenMeteoDailyResponse,
+  IOpenMeteoHourlyResponse,
+  IOpenWeatherResponse,
 } from '@Types/apiTypes';
 import {
   GoogleEventStoreType,
@@ -19,7 +19,7 @@ import { normalizeGoogleEventEntity } from '@/services';
 
 describe('Entity data should be correct normalized to store', () => {
   test('Hourly data from OpenMeteo should be normalized correct', () => {
-    const apiEntity: OpenMeteoHourlyResponse = {
+    const apiEntity: IOpenMeteoHourlyResponse = {
       hourly: {
         time: [
           '2023-04-23T00:00',
@@ -65,7 +65,7 @@ describe('Entity data should be correct normalized to store', () => {
     expect(normalizedEntity[0]).toHaveProperty('icon');
   });
   test('Daily data from OpenMeteo should be normalized correct', () => {
-    const apiEntity: OpenMeteoDailyResponse = {
+    const apiEntity: IOpenMeteoDailyResponse = {
       daily: {
         time: [
           '2023-04-23',
@@ -95,7 +95,7 @@ describe('Entity data should be correct normalized to store', () => {
     expect(normalizedEntity[0]).toHaveProperty('icon');
   });
   test('Hourly data from OpenWeather should be normalized correct', () => {
-    const { list }: OpenWeatherResponseType = {
+    const { list }: IOpenWeatherResponse = {
       cod: '200',
       message: 0,
       cnt: 40,
@@ -691,7 +691,7 @@ describe('Entity data should be correct normalized to store', () => {
     expect(normalizedEntity[0]).toHaveProperty('icon');
   });
   test('Daily data from OpenWeather should be normalized correct', () => {
-    const { list }: OpenWeatherResponseType = {
+    const { list }: IOpenWeatherResponse = {
       cod: '200',
       message: 0,
       cnt: 40,
@@ -1286,7 +1286,7 @@ describe('Entity data should be correct normalized to store', () => {
     expect(normalizedEntity[0]).toHaveProperty('icon');
   });
   test('Google Events data should be coramlized correct', () => {
-    const googleEventsEntity: GoogleEventEntityType = {
+    const googleEventsEntity: IGoogleEventEntity = {
       start: { dateTime: new Date('2023-04-23T00:00') },
       summary: 'Test event',
     };

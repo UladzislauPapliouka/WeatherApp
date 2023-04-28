@@ -1,4 +1,4 @@
-export type WeatherAPIForecastResponseType = {
+export interface IWeatherAPIForecastResponse {
   location: {
     name: string;
     region: string;
@@ -28,7 +28,7 @@ export type WeatherAPIForecastResponseType = {
       }>;
     }>;
   };
-};
+}
 export type WeatherPlaceResponseType = Array<{
   id: number;
   name: string;

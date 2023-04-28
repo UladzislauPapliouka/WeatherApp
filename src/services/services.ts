@@ -1,10 +1,10 @@
 import * as backgrounds from '@assets/backgrounds';
 import DayNames from '@constants/dayNames';
 import {
-  OpenMeteoDailyResponse,
-  OpenMeteoHourlyResponse,
+  IOpenMeteoDailyResponse,
+  IOpenMeteoHourlyResponse,
 } from '@Types/apiTypes';
-import { OpenWeatherListType } from '@Types/apiTypes/openWeatherAPITypes';
+import { IOpenWeatherList } from '@Types/apiTypes/openWeatherAPITypes';
 import {
   NormalizedWeatherItemDataType,
   WeatherIconVariants,
@@ -49,7 +49,7 @@ function getDayName(dayNumber: number) {
   return daysName[dayNumber];
 }
 function normalizeOpenWeatherDaily(
-  array: Array<OpenWeatherListType>,
+  array: Array<IOpenWeatherList>,
 ): Array<NormalizedWeatherItemDataType> {
   const result: NormalizedWeatherItemDataType[] = [];
   for (let i = 7; i < array.length; i += 8) {
@@ -63,7 +63,7 @@ function normalizeOpenWeatherDaily(
   return result;
 }
 function normalizeOpenWeatherHourly(
-  array: Array<OpenWeatherListType>,
+  array: Array<IOpenWeatherList>,
 ): Array<NormalizedWeatherItemDataType> {
   const result: NormalizedWeatherItemDataType[] = [];
   array.forEach((obj) => {
@@ -125,7 +125,7 @@ function getOpenMeteoIcon(code: number) {
 }
 function normalizeOpenMeteoHourly({
   hourly: { time, temperature_2m, weathercode },
-}: OpenMeteoHourlyResponse): NormalizedWeatherItemDataType[] {
+}: IOpenMeteoHourlyResponse): NormalizedWeatherItemDataType[] {
   const firstIndex = new Date().getHours();
   const lastIndex = firstIndex + 6;
   const result: NormalizedWeatherItemDataType[] = [];
@@ -147,7 +147,7 @@ function normalizeOpenMeteoHourly({
 }
 function normalizeOpenMeteoDaily({
   daily: { temperature_2m_max, temperature_2m_min, weathercode, time },
-}: OpenMeteoDailyResponse): NormalizedWeatherItemDataType[] {
+}: IOpenMeteoDailyResponse): NormalizedWeatherItemDataType[] {
   const result: NormalizedWeatherItemDataType[] = [];
   result.push({
     icon: getOpenMeteoIcon(weathercode[0]),

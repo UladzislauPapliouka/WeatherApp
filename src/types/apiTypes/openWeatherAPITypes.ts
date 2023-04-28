@@ -1,4 +1,4 @@
-export type OpenWeatherPlaceResponseType = {
+export interface IOpenWeatherPlaceResponse {
   country: string;
   lat: number;
   lon: number;
@@ -7,8 +7,8 @@ export type OpenWeatherPlaceResponseType = {
   local_names: {
     [key: string]: string;
   };
-};
-export type OpenWeatherListType = {
+}
+export interface IOpenWeatherList {
   dt: number;
   dt_txt: string;
 
@@ -21,8 +21,8 @@ export type OpenWeatherListType = {
   main: {
     temp: number;
   };
-};
-export type OpenWeatherResponseType = {
+}
+export interface IOpenWeatherResponse {
   cnt: number;
   message: number;
   cod: string;
@@ -32,5 +32,5 @@ export type OpenWeatherResponseType = {
     id: number;
     name: string;
   };
-  list: Array<OpenWeatherListType>;
-};
+  list: Array<IOpenWeatherList>;
+}

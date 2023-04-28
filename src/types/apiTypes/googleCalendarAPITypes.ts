@@ -1,9 +1,9 @@
 import { GoogleUserInfoType } from '@Types/storeTypes/googleStateTypes';
 
-export interface GoogleEventEntityType {
+export interface IGoogleEventEntity {
   start: { dateTime: Date };
   summary: string;
 }
-export interface GoogleUserEntityType {
+export interface IGoogleUserEntity {
   wt: GoogleUserInfoType;
 }

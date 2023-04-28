@@ -1,8 +1,8 @@
-import { GoogleEventEntityType } from '@Types/apiTypes/googleCalendarAPITypes';
+import { IGoogleEventEntity } from '@Types/apiTypes/googleCalendarAPITypes';
 import { GoogleEventStoreType } from '@Types/storeTypes/googleStateTypes';
 
 const normalizeGoogleEventEntity = (
-  event: GoogleEventEntityType,
+  event: IGoogleEventEntity,
 ): GoogleEventStoreType => ({
   time: new Intl.DateTimeFormat('en-US', {
     hour: '2-digit',

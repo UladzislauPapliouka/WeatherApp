@@ -4,10 +4,10 @@ import {
 } from '@services/services';
 import { AutocompleteActions } from '@store/Reducers/SearchAutocompleteReducer';
 import {
-  OpenMeteoDailyResponse,
-  OpenMeteoHourlyResponse,
+  IOpenMeteoDailyResponse,
+  IOpenMeteoHourlyResponse,
 } from '@Types/apiTypes';
-import { OpenMeteoGeocodeResponse } from '@Types/apiTypes/openMeteoAPIType';
+import { IOpenMeteoGeocodeResponse } from '@Types/apiTypes/openMeteoAPIType';
 import { AxiosResponse } from 'axios';
 import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 
@@ -59,7 +59,7 @@ export function* fetchWeatherAPIDaily() {
       (state) => state.placeInfo,
     );
     yield put(AppActions.startWeatherFetching());
-    const response: OpenMeteoDailyResponse = yield call(
+    const response: IOpenMeteoDailyResponse = yield call(
       openMeteoAPI.fetchDailyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
@@ -76,7 +76,7 @@ function* fetchWeatherAPIHourly() {
       (state) => state.placeInfo,
     );
     yield put(AppActions.startWeatherFetching());
-    const response: OpenMeteoHourlyResponse = yield call(
+    const response: IOpenMeteoHourlyResponse = yield call(
       openMeteoAPI.fetchHourlyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
@@ -124,7 +124,7 @@ function* findPlaceWeatherByName(
   action: ReturnType<typeof findPlaceWeatherByNameAC>,
 ) {
   try {
-    const response: OpenMeteoGeocodeResponse = yield call(
+    const response: IOpenMeteoGeocodeResponse = yield call(
       openMeteoAPI.fetchPlacesByName,
       action.payload.name,
     );
@@ -156,7 +156,7 @@ function* getAutoCompleteWeather(
 ) {
   yield delay(2000);
   try {
-    const response: OpenMeteoGeocodeResponse = yield call(
+    const response: IOpenMeteoGeocodeResponse = yield call(
       openMeteoAPI.fetchPlacesByName,
       action.payload.name,
     );
