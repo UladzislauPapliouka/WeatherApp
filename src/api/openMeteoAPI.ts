@@ -8,10 +8,10 @@ import axios from 'axios';
 import { cacheService } from '@/services';
 
 const openMeteoWeather = axios.create({
-  baseURL: 'https://api.open-meteo.com/v1/',
+  baseURL: process.env.REACT_OPEN_METEO_BASE_URL,
 });
 const openMeteoGeocoder = axios.create({
-  baseURL: 'https://geocoding-api.open-meteo.com/v1/',
+  baseURL: process.env.REACT_OPEN_METEO_GEOCODER_BASE_URL,
 });
 
 const openMeteoAPI = {

@@ -6,7 +6,7 @@ import {
 } from '@/types/apiTypes/weatherAPITypes';
 
 const weatherAPIinstance = axios.create({
-  baseURL: 'https://api.weatherapi.com/v1/',
+  baseURL: process.env.REACT_WEATHER_BASE_URL,
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Cache-Control': 'public,must-revalidate, max-age=3600',

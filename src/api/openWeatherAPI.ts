@@ -7,11 +7,11 @@ import axios from 'axios';
 import { cacheService } from '@/services';
 
 const openWeather = axios.create({
-  baseURL: 'https://api.openweathermap.org/data/2.5/',
+  baseURL: process.env.REACT_OPEN_WEATHER_BASE_URL,
 });
 
 const openWeatherGeocoder = axios.create({
-  baseURL: 'https://api.openweathermap.org/geo/1.0/',
+  baseURL: process.env.REACT_OPEN_WEATHER_GEOCODER_BASE_URL,
 });
 
 const openWeatherAPI = {
