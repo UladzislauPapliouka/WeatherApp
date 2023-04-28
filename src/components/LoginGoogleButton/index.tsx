@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import loginIcon from '@assets/icons/google.webp';
 import { userActions } from '@store/reducers/userReducer';
 import { fetchGoogleEvents } from '@store/sagas/googleEventsWatcher';
-import { IGoogleUserEntity } from '@Types/apiTypes/googleCalendarAPITypes';
+import { IGoogleUserEntity } from '@typing/apiTypes/googleCalendarAPITypes';
 import { gapi, loadAuth2 } from 'gapi-script';
 
 import { useAppDispatch, useAppSelector } from '@/store';

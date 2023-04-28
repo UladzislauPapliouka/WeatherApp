@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { userActions } from '@store/reducers/userReducer';
-import { GoogleEventStoreType } from '@Types/storeTypes/googleStateTypes';
+import { GoogleEventStoreType } from '@typing/storeTypes/googleStateTypes';
 
 const initialState: GoogleEventStoreType[] = [];
 const GoogleEventsSlice = createSlice({

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { NormalizedPlaceDataType } from '@Types/storeTypes/placeStateType';
+import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 

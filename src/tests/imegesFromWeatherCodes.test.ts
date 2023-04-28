@@ -4,7 +4,7 @@ import {
   getOpenMeteoIcon,
   getOpenWeatherIcon,
 } from '@services/services';
-import { WeatherIconVariants } from '@Types/storeTypes/weatherStateType';
+import { WeatherIconVariants } from '@typing/storeTypes/weatherStateType';
 
 describe('Correct images chould be choosen due to weatherCode', () => {
   test('OpenMeteo weather code should be correct transform in weatherIcon', () => {

@@ -2,7 +2,7 @@ import { AutocompleteActions } from '@store/reducers/searchAutocompleteReducer';
 import {
   IOpenWeatherPlaceResponse,
   IOpenWeatherResponse,
-} from '@Types/apiTypes/openWeatherAPITypes';
+} from '@typing/apiTypes/openWeatherAPITypes';
 import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 import { v1 } from 'uuid';
 

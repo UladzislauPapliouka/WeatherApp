@@ -1,4 +1,4 @@
-import { ColorType } from '@Types/themeTypes';
+import { ColorType } from '@typing/themeTypes';
 
 const textColorLight: ColorType = '#f1eaea';
 const textColorDark: ColorType = '#100f0f';

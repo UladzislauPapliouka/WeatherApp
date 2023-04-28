@@ -8,7 +8,7 @@ import { AppActions } from '@store/reducers/appReducer';
 import {
   APIVariants,
   WeatherRepresentVariants,
-} from '@Types/storeTypes/appStateTypes';
+} from '@typing/storeTypes/appStateTypes';
 
 import { useAppDispatch, useAppSelector } from '@/store';
 

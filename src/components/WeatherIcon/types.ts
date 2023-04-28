@@ -1,4 +1,4 @@
-import { WeatherIconVariants } from '@Types/storeTypes/weatherStateType';
+import { WeatherIconVariants } from '@typing/storeTypes/weatherStateType';
 
 type sizeVariants = 'small' | 'default' | 'large';
 export interface IWeatherIconProps {

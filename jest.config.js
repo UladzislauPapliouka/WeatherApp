@@ -6,7 +6,7 @@ module.exports = {
     '^@components/(.*)$': '<rootDir>/src/components/$1',
     '^containers/(.*)$': '<rootDir>/src/containers/$1',
     '^@services/(.*)$': '<rootDir>/src/services/$1',
-    '^@Types/(.*)$': '<rootDir>/src/types/$1',
+    '^@typing/(.*)$': '<rootDir>/src/types/$1',
     '^@store/(.*)$': '<rootDir>/src/store/$1',
   },
   preset: 'ts-jest',

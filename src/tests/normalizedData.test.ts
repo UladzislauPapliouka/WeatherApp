@@ -9,11 +9,11 @@ import {
   IOpenMeteoDailyResponse,
   IOpenMeteoHourlyResponse,
   IOpenWeatherResponse,
-} from '@Types/apiTypes';
+} from '@typing/apiTypes';
 import {
   GoogleEventStoreType,
   NormalizedWeatherItemDataType,
-} from '@Types/storeTypes';
+} from '@typing/storeTypes';
 
 import { normalizeGoogleEventEntity } from '@/services';
 

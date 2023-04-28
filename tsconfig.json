@@ -11,7 +11,7 @@
       "@components/*": ["components/*"],
       "@containers/*": ["containers/*"],
       "@services/*": ["services/*"],
-      "@Types/*": ["types/*"],
+      "@typing/*": ["types/*"],
       "@store/*": ["store/*"],
       "@store": ["store/"]
     },

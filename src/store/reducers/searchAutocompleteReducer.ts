@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { NormalizedPlaceDataType } from '@Types/storeTypes/placeStateType';
+import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
 
 const initialState: Array<NormalizedPlaceDataType> = [];
 const SearchAutocompleteSlice = createSlice({

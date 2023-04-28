@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { NormalizedWeatherItemDataType } from '@Types/storeTypes/weatherStateType';
+import { NormalizedWeatherItemDataType } from '@typing/storeTypes/weatherStateType';
 
 const initialState: NormalizedWeatherItemDataType[] = [];
 

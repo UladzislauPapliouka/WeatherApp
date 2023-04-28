@@ -1,4 +1,4 @@
-import { IFontWeight } from '@Types/themeTypes';
+import { IFontWeight } from '@typing/themeTypes';
 
 const fontWeight: IFontWeight = {
   '100': 100,

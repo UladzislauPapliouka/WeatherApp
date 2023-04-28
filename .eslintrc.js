@@ -55,7 +55,7 @@ module.exports = {
           ['@components', './src/components'],
           ['@containers', './src/containers'],
           ['@services', './src/services'],
-          ['@Types', './src/types'],
+          ['@typing', './src/types'],
           ['@store', './src/store'],
         ],
         extensions: ['.ts', '.tsx', '.json'],

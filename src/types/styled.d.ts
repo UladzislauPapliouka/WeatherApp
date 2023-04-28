@@ -1,6 +1,6 @@
 import { colorsType } from '@constants/styles/colors';
 import { sizesType } from '@constants/styles/sizes';
-import { ColorType, IFontWeight, IGreyscale, ISize } from '@Types/themeTypes';
+import { ColorType, IFontWeight, IGreyscale, ISize } from '@typing/themeTypes';
 
 import 'styled-components';
 

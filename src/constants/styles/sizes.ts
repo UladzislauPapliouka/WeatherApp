@@ -1,4 +1,4 @@
-import { ISize } from '@Types/themeTypes';
+import { ISize } from '@typing/themeTypes';
 
 const displayBreakpoints: ISize = {
   xs: 0,

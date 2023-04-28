@@ -1,5 +1,5 @@
 import { normalizeGoogleEventEntity } from '@services/index';
-import { IGoogleEventEntity } from '@Types/apiTypes/googleCalendarAPITypes';
+import { IGoogleEventEntity } from '@typing/apiTypes/googleCalendarAPITypes';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchGoogleCalendarEvents } from '@/api';

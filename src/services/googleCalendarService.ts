@@ -1,5 +1,5 @@
-import { IGoogleEventEntity } from '@Types/apiTypes/googleCalendarAPITypes';
-import { GoogleEventStoreType } from '@Types/storeTypes/googleStateTypes';
+import { IGoogleEventEntity } from '@typing/apiTypes/googleCalendarAPITypes';
+import { GoogleEventStoreType } from '@typing/storeTypes/googleStateTypes';
 
 const normalizeGoogleEventEntity = (
   event: IGoogleEventEntity,

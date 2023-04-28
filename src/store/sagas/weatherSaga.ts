@@ -6,13 +6,13 @@ import { AutocompleteActions } from '@store/reducers/searchAutocompleteReducer';
 import {
   IOpenMeteoDailyResponse,
   IOpenMeteoHourlyResponse,
-} from '@Types/apiTypes';
-import { IOpenMeteoGeocodeResponse } from '@Types/apiTypes/openMeteoAPIType';
+} from '@typing/apiTypes';
+import { IOpenMeteoGeocodeResponse } from '@typing/apiTypes/openMeteoAPIType';
+import { WeatherPlaceResponseType } from '@typing/apiTypes/weatherAPITypes';
 import { AxiosResponse } from 'axios';
 import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 
 import { openMeteoAPI, weatherAPI } from '@/api';
-import { WeatherPlaceResponseType } from '@/types/apiTypes/weatherAPITypes';
 
 import {
   AppActions,

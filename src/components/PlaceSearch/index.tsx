@@ -14,8 +14,8 @@ import {
   findPlaceWeatherByNameAC,
   getAutocompleteWeatherAC,
 } from '@store/sagas/weatherSaga';
-import { APIVariants } from '@Types/storeTypes/appStateTypes';
-import { NormalizedPlaceDataType } from '@Types/storeTypes/placeStateType';
+import { APIVariants } from '@typing/storeTypes/appStateTypes';
+import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
 
 import { useAppDispatch, useAppSelector } from '@/store';
 

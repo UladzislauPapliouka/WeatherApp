@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GoogleUserInfoType } from '@Types/storeTypes/googleStateTypes';
+import { GoogleUserInfoType } from '@typing/storeTypes/googleStateTypes';
 
 const initialState: GoogleUserInfoType = {
   Ad: '',

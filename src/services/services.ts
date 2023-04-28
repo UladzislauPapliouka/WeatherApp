@@ -3,12 +3,12 @@ import DayNames from '@constants/dayNames';
 import {
   IOpenMeteoDailyResponse,
   IOpenMeteoHourlyResponse,
-} from '@Types/apiTypes';
-import { IOpenWeatherList } from '@Types/apiTypes/openWeatherAPITypes';
+} from '@typing/apiTypes';
+import { IOpenWeatherList } from '@typing/apiTypes/openWeatherAPITypes';
 import {
   NormalizedWeatherItemDataType,
   WeatherIconVariants,
-} from '@Types/storeTypes/weatherStateType';
+} from '@typing/storeTypes/weatherStateType';
 import { AxiosInstance } from 'axios';
 import { v1 } from 'uuid';
 

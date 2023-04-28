@@ -1,4 +1,4 @@
-import { IGreyscale } from '@Types/themeTypes';
+import { IGreyscale } from '@typing/themeTypes';
 
 const greyscale: IGreyscale = {
   '0': 0,

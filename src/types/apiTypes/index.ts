@@ -2,7 +2,7 @@ import {
   IOpenWeatherList,
   IOpenWeatherPlaceResponse,
   IOpenWeatherResponse,
-} from '@Types/apiTypes/openWeatherAPITypes';
+} from '@typing/apiTypes/openWeatherAPITypes';
 
 import {
   IGoogleEventEntity,

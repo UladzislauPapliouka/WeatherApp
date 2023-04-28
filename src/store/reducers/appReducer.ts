@@ -3,7 +3,7 @@ import {
   APIVariants,
   AppStateType,
   WeatherRepresentVariants,
-} from '@Types/storeTypes/appStateTypes';
+} from '@typing/storeTypes/appStateTypes';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
