@@ -5,15 +5,15 @@ import React, {
   useState,
 } from 'react';
 import SelectItemsList from '@components/SelectItemsList';
-import { PlaceActions } from '@store/Reducers';
+import { PlaceActions } from '@store/reducers';
 import {
   findPlaceByNameOpenWeatherAC,
   getAutocompleteAC,
-} from '@store/Sagas/OpenWeatherSaga';
+} from '@store/sagas/openWeatherSaga';
 import {
   findPlaceWeatherByNameAC,
   getAutocompleteWeatherAC,
-} from '@store/Sagas/WeatherSaga';
+} from '@store/sagas/weatherSaga';
 import { APIVariants } from '@Types/storeTypes/appStateTypes';
 import { NormalizedPlaceDataType } from '@Types/storeTypes/placeStateType';
 

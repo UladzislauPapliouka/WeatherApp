@@ -4,7 +4,7 @@ import LoginGoogleButton from '@components/LoginGoogleButton';
 import ModalWindow from '@components/Modal';
 import PlaceSearch from '@components/PlaceSearch';
 import ISettingModalProps from '@components/SettingsModal/types';
-import { AppActions } from '@store/Reducers/AppReducer';
+import { AppActions } from '@store/reducers/appReducer';
 import {
   APIVariants,
   WeatherRepresentVariants,

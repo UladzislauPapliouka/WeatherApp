@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@store';
-import { findPlaceByCoordsOpenWeatherAC } from '@store/Sagas/OpenWeatherSaga';
-import { findPlaceWeatherByCoordsAC } from '@store/Sagas/WeatherSaga';
+import { findPlaceByCoordsOpenWeatherAC } from '@store/sagas/openWeatherSaga';
+import { findPlaceWeatherByCoordsAC } from '@store/sagas/weatherSaga';
 import { APIVariants, WeatherRepresentVariants } from '@Types/storeTypes';
 
 const useUserLocation = () => {

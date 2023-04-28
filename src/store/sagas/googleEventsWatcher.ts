@@ -4,7 +4,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchGoogleCalendarEvents } from '@/api';
 
-import { GoogleEventsActions } from '../Reducers';
+import { GoogleEventsActions } from '../reducers';
 
 const FETCH_GOOGLE_EVENTS = 'FETCH_GOOGLE_EVENTS';
 const fetchGoogleEvents = () => ({

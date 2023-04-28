@@ -1,17 +1,17 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from '@store/Reducers/UserReducer';
+import userReducer from '@store/reducers/userReducer';
+import RootSaga from '@store/sagas/rootSaga';
 import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 
-import RootSaga from './Sagas/rootSaga';
 import {
   GoogleEventsReducer,
   PersistedAppReducer,
   PersistedPlaceReducer,
   SearchAutocompleteReducer,
   WeatherReducer,
-} from './Reducers';
+} from './reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -8,7 +8,7 @@ import Loader from '@components/Loader';
 import theme from '@constants/theme';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Store } from '@store';
-import { persistor } from '@store/Store';
+import { persistor } from '@store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ThemeProvider } from 'styled-components';
 

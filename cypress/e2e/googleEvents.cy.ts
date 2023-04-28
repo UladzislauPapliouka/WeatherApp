@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { GoogleEventsActions } from '../../src/store/Reducers';
+import { GoogleEventsActions } from '../../src/store/reducers';
 
 describe('GoogleEvents', () => {
   it('google events successfully displayed', () => {

@@ -1,4 +1,4 @@
-import { AutocompleteActions } from '@store/Reducers/SearchAutocompleteReducer';
+import { AutocompleteActions } from '@store/reducers/searchAutocompleteReducer';
 import {
   IOpenWeatherPlaceResponse,
   IOpenWeatherResponse,
@@ -18,7 +18,7 @@ import {
   PlaceActions,
   PlaceReducer,
   WeatherActions,
-} from '../Reducers';
+} from '../reducers';
 
 const findPlaceByCoordsOpenWeatherAC = (
   lat: number,

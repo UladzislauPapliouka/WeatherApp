@@ -2,7 +2,7 @@ import {
   normalizeOpenMeteoDaily,
   normalizeOpenMeteoHourly,
 } from '@services/services';
-import { AutocompleteActions } from '@store/Reducers/SearchAutocompleteReducer';
+import { AutocompleteActions } from '@store/reducers/searchAutocompleteReducer';
 import {
   IOpenMeteoDailyResponse,
   IOpenMeteoHourlyResponse,
@@ -19,7 +19,7 @@ import {
   PlaceActions,
   PlaceReducer,
   WeatherActions,
-} from '../Reducers';
+} from '../reducers';
 
 const fetchWeatherAPIDailyAC = () => ({
   type: 'FETCH_WEATHER_DAILY',

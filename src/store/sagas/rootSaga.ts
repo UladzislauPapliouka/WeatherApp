@@ -1,8 +1,8 @@
 import { fork } from 'redux-saga/effects';
 
-import { GoogleEventsWatcher } from './GoogleEventsWatcher';
-import { OpenWeatherSaga } from './OpenWeatherSaga';
-import { WeatherSaga } from './WeatherSaga';
+import { GoogleEventsWatcher } from './googleEventsWatcher';
+import { OpenWeatherSaga } from './openWeatherSaga';
+import { WeatherSaga } from './weatherSaga';
 
 export default function* RootSaga() {
   yield fork(GoogleEventsWatcher);

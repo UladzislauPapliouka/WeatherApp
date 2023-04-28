@@ -1,16 +1,16 @@
-import SearchAutocompleteReducer from '@store/Reducers/SearchAutocompleteReducer';
+import SearchAutocompleteReducer from '@store/reducers/searchAutocompleteReducer';
 
-import { AppActions, AppReducer, PersistedAppReducer } from './AppReducer';
+import { AppActions, AppReducer, PersistedAppReducer } from './appReducer';
 import {
   GoogleEventsActions,
   GoogleEventsReducer,
-} from './GoogleEventsReducer';
+} from './googleEventsReducer';
 import {
   PersistedPlaceReducer,
   PlaceActions,
   PlaceReducer,
-} from './PlaceReducer';
-import { WeatherActions, WeatherReducer } from './WeatherReducer';
+} from './placeReducer';
+import { WeatherActions, WeatherReducer } from './weatherReducer';
 
 export {
   PlaceActions,
