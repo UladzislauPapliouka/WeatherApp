@@ -30,6 +30,10 @@ module.exports = {
     ],
     'no-shadow': 'off',
     'camelcase': ["error",{allow: ["temperature_2m_max","temperature_2m_min","temperature_2m","dt_txt"]}],
+    "react/function-component-definition": ["error", {
+      "namedComponents":  "arrow-function",
+      "unnamedComponents":  "arrow-function",
+    }],
     'simple-import-sort/imports': [
       'error',
       {

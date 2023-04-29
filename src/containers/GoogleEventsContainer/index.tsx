@@ -5,7 +5,7 @@ import { useAppSelector } from '@/store';
 
 import { GoogleEventsWrapper, NoEventsText } from './styled';
 
-export default function GoogleEventsContainer() {
+const GoogleEventsContainer = () => {
   const events = useAppSelector((state) => state.googleEvents);
 
   return (
@@ -21,4 +21,6 @@ export default function GoogleEventsContainer() {
       )}
     </GoogleEventsWrapper>
   );
-}
+};
+
+export default GoogleEventsContainer;

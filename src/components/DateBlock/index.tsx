@@ -4,7 +4,7 @@ import { formatTime, parseDate } from '@/services';
 
 import { DateBlockWrapper, DateText, TimeWrapper } from './styled';
 
-function DateBlock() {
+const DateBlock = () => {
   const [time, setTime] = useState(formatTime(new Date()));
 
   const [parsedDate, setParsedDate] = useState(parseDate(new Date()));
@@ -31,6 +31,6 @@ function DateBlock() {
       <DateText variant="small">{parsedDate}</DateText>
     </DateBlockWrapper>
   );
-}
+};
 
 export default DateBlock;

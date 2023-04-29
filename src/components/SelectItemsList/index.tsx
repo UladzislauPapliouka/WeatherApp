@@ -3,10 +3,10 @@ import React from 'react';
 import { SelectListWrapper, SelectOption } from './styled';
 import { ISelectListProps } from './types';
 
-function SelectItemsList<T>({
+const SelectItemsList = <T,>({
   options,
   handleChangeSelected,
-}: ISelectListProps<T>) {
+}: ISelectListProps<T>) => {
   const handleWrapperClick = (event: React.MouseEvent) => {
     event.stopPropagation();
   };
@@ -25,6 +25,6 @@ function SelectItemsList<T>({
       })}
     </SelectListWrapper>
   );
-}
+};
 
 export default React.memo(SelectItemsList) as typeof SelectItemsList;

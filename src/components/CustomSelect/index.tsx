@@ -10,11 +10,11 @@ import {
 } from './styled';
 import { ICustomSelectProps } from './types';
 
-function CustomSelect<T>({
+const CustomSelect = <T,>({
   options,
   selected,
   onChangeSelected,
-}: ICustomSelectProps<T>) {
+}: ICustomSelectProps<T>) => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleSelect = () => setIsActive(!isActive);
@@ -60,6 +60,6 @@ function CustomSelect<T>({
       )}
     </CustomSelectWrapper>
   );
-}
+};
 
 export default React.memo(CustomSelect) as typeof CustomSelect;

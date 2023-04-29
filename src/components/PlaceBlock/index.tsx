@@ -5,7 +5,7 @@ import { RootAppType } from '@/store';
 
 import { CityName, CountryName, PlaceBlockWrapper } from './styled';
 
-export default function PlaceBlock() {
+const PlaceBlock = () => {
   const { city, country } = useSelector(
     (state: RootAppType) => state.placeInfo,
   );
@@ -16,4 +16,6 @@ export default function PlaceBlock() {
       <CountryName>{country}</CountryName>
     </PlaceBlockWrapper>
   );
-}
+};
+
+export default PlaceBlock;

@@ -21,13 +21,13 @@ import { useAppDispatch, useAppSelector } from '@/store';
 
 import { PlaceSearchWrapper, SearchButton, SearchInput } from './styled';
 
-export default function PlaceSearch({
+const PlaceSearch = ({
   preferredAPI,
   hourly,
 }: {
   preferredAPI: APIVariants;
   hourly: boolean;
-}) {
+}) => {
   const dispatch = useAppDispatch();
 
   const [isAutoComplete, setIsAutocomplete] = useState(false);
@@ -102,4 +102,6 @@ export default function PlaceSearch({
       )}
     </PlaceSearchWrapper>
   );
-}
+};
+
+export default PlaceSearch;

@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 
 import { ButtonText, GoogleImage, LoginGoogleButtonWrapper } from './styled';
 
-export default function LoginGoogleButton() {
+const LoginGoogleButton = () => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector((state) => state.userReducer);
@@ -55,4 +55,6 @@ export default function LoginGoogleButton() {
       <ButtonText>Login</ButtonText>
     </LoginGoogleButtonWrapper>
   );
-}
+};
+
+export default LoginGoogleButton;

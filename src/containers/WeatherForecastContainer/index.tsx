@@ -6,7 +6,7 @@ import { useAppSelector } from '@/store';
 
 import ForecastWrapper from './styled';
 
-export default function WeatherForecastContainer() {
+const WeatherForecastContainer = () => {
   const weatherItems = useAppSelector((state) => state.weatherInfo);
 
   const isFetching = useAppSelector(
@@ -30,4 +30,6 @@ export default function WeatherForecastContainer() {
       )}
     </ForecastWrapper>
   );
-}
+};
+
+export default WeatherForecastContainer;

@@ -21,7 +21,7 @@ import {
   WithGoogleEvents,
 } from './styled';
 
-function App() {
+const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useUserLocation();
@@ -72,6 +72,6 @@ function App() {
       </AppBackground>
     </AppWrapper>
   );
-}
+};
 
 export default App;
