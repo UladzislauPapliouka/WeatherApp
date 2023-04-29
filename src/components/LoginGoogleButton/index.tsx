@@ -45,12 +45,12 @@ export default function LoginGoogleButton() {
   };
 
   return user.hK ? (
-    <LoginGoogleButtonWrapper key="2" onClick={signOut}>
+    <LoginGoogleButtonWrapper key="logoutButton" onClick={signOut}>
       <GoogleImage alt="Google logo" src={user.hK} />
       <ButtonText>Logout</ButtonText>
     </LoginGoogleButtonWrapper>
   ) : (
-    <LoginGoogleButtonWrapper key="1" ref={buttonRef}>
+    <LoginGoogleButtonWrapper key="loginButton" ref={buttonRef}>
       <GoogleImage alt="Google logo" src={loginIcon} />
       <ButtonText>Login</ButtonText>
     </LoginGoogleButtonWrapper>
