@@ -33,10 +33,8 @@ root.render(
   </Provider>,
 );
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 if (window.Cypress) {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   window.store = Store;
 }

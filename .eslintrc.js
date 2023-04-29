@@ -29,6 +29,7 @@ module.exports = {
       { blankLine: "always", prev: "*", next: "return"}
     ],
     'no-shadow': 'off',
+    "@typescript-eslint/ban-ts-comment":"off",
     'camelcase': ["error",{allow: ["temperature_2m_max","temperature_2m_min","temperature_2m","dt_txt"]}],
     "react/function-component-definition": ["error", {
       "namedComponents":  "arrow-function",
