@@ -1,10 +1,12 @@
 import * as backgrounds from '@assets/backgrounds';
+import {} from '@services/services';
+import { WeatherIconVariants } from '@typing/storeTypes/weatherStateType';
+
 import {
   getBackground,
   getOpenMeteoIcon,
   getOpenWeatherIcon,
-} from '@services/services';
-import { WeatherIconVariants } from '@typing/storeTypes/weatherStateType';
+} from '@/services/getImagesServices';
 
 describe('Correct images chould be choosen due to weatherCode', () => {
   test('OpenMeteo weather code should be correct transform in weatherIcon', () => {

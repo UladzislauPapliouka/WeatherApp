@@ -1,7 +1,3 @@
-import {
-  normalizeOpenMeteoDaily,
-  normalizeOpenMeteoHourly,
-} from '@services/services';
 import { AutocompleteActions } from '@store/reducers/searchAutocompleteReducer';
 import {
   IOpenMeteoDailyResponse,
@@ -13,6 +9,7 @@ import { AxiosResponse } from 'axios';
 import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 
 import { openMeteoAPI, weatherAPI } from '@/api';
+import { normalizeOpenMeteoDaily, normalizeOpenMeteoHourly } from '@/services';
 
 import {
   fetchWeatherAPIDailyAC,
