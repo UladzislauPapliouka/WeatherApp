@@ -16,23 +16,30 @@ function CustomSelect<T>({
   onChangeSelected,
 }: ICustomSelectProps<T>) {
   const [isActive, setIsActive] = useState(false);
+
   const toggleSelect = () => setIsActive(!isActive);
+
   const selectRef = useRef(null);
+
   const handleChangeSelected = (value: T) => {
     toggleSelect();
     onChangeSelected(value);
   };
+
   useLayoutEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (e.target !== selectRef.current) {
         setIsActive(false);
       }
     };
+
     document.addEventListener('click', handleClick);
+
     return () => {
       document.removeEventListener('click', handleClick);
     };
   }, [selectRef]);
+
   return (
     <CustomSelectWrapper
       data-cy="select"

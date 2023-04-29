@@ -13,8 +13,10 @@ export const DateText = styled.span<IDateTextProps>`
     switch (variant) {
       case 'large':
         return sizes.fontSizes.xxl;
+
       case 'small':
         return sizes.fontSizes.sm;
+
       default:
         return sizes.fontSizes.lg;
     }

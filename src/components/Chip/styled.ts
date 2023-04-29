@@ -23,12 +23,14 @@ export const ChipWrapper = styled.div<IChipWrapperProps>`
           padding: ${({ theme: { sizes } }) => sizes.chipGapSize.sm}px
             ${({ theme: { sizes } }) => sizes.chipGapSize.md}px;
         `;
+
       case 'large':
         return css`
           font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
           padding: ${({ theme: { sizes } }) => sizes.chipGapSize.md}px
             ${({ theme: { sizes } }) => sizes.chipGapSize.lg}px;
         `;
+
       default:
         return css`
           font-size: ${({ theme: { sizes } }) => sizes.fontSizes.sm}px;

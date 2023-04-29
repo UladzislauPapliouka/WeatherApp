@@ -7,12 +7,15 @@ const StyledDegreeSpan = styled.span<StyledDegreesSpanPropsType>`
     switch (size) {
       case 'large':
         return sizes.fontSizes.xl;
+
       case 'small':
         return sizes.fontSizes.md;
+
       default:
         return sizes.fontSizes.lg;
     }
   }}px;
   font-weight: ${({ theme: { fontWeight } }) => fontWeight['200']}};
 `;
+
 export default StyledDegreeSpan;

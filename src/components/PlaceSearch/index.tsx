@@ -29,7 +29,9 @@ export default function PlaceSearch({
   hourly: boolean;
 }) {
   const dispatch = useAppDispatch();
+
   const [isAutoComplete, setIsAutocomplete] = useState(false);
+
   const autoCompleteVariants = useAppSelector((state) =>
     state.autocompleteVariants.map((opt) => ({
       ...opt,
@@ -38,13 +40,17 @@ export default function PlaceSearch({
       },
     })),
   );
+
   const initialField = useAppSelector((state) => state.placeInfo.city);
+
   const [field, setField] = useState(initialField);
+
   const onChangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
     e.preventDefault();
     setIsAutocomplete(true);
     setField(e.currentTarget.value);
     if (!e.currentTarget.value) return;
+
     if (preferredAPI === APIVariants.openWeatherAPI) {
       dispatch(getAutocompleteAC(e.currentTarget.value));
     } else {
@@ -59,14 +65,17 @@ export default function PlaceSearch({
       dispatch(findPlaceWeatherByNameAC(field, hourly));
     }
   };
+
   const handleInputBlur = () => {
     setTimeout(() => setIsAutocomplete(false), 100);
   };
+
   const handleEnterClick = ({ key }: KeyboardEvent<HTMLInputElement>) => {
     if (key === 'Enter') {
       handleClick();
     }
   };
+
   const handleAutocomplete = useCallback(
     (sel: NormalizedPlaceDataType) => {
       setField(sel.city);

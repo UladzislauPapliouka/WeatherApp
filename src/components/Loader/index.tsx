@@ -9,4 +9,5 @@ function Loader() {
     </LoaderWrapper>
   );
 }
+
 export default Loader;

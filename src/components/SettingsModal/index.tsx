@@ -18,10 +18,13 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
   const preferredService = useAppSelector(
     (state) => state.appState.preferredAPI,
   );
+
   const weatherRepresent = useAppSelector(
     (state) => state.appState.weatherRepresent,
   );
+
   const dispatch = useAppDispatch();
+
   const setPreferredService = useCallback(
     (value: string) => {
       dispatch(
@@ -30,6 +33,7 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
     },
     [dispatch],
   );
+
   const setWeatherRepresent = useCallback(
     (value: string) => {
       dispatch(
@@ -40,9 +44,11 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
     },
     [dispatch],
   );
+
   const handleBackgroundClick = () => {
     onClose();
   };
+
   return isOpen ? (
     <ModalWindow handleClose={handleBackgroundClick}>
       <SettingsModalWrapper>
@@ -72,5 +78,6 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
     </ModalWindow>
   ) : null;
 });
+
 SettingsModal.displayName = 'SettingModal';
 export default SettingsModal;

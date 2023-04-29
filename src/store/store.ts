@@ -33,6 +33,9 @@ sagaMiddleware.run(RootSaga);
 export type RootAppType = ReturnType<typeof Store.getState>;
 export type AppDispatch = typeof Store.dispatch;
 const useAppDispatch: () => AppDispatch = useDispatch;
+
 const useAppSelector: TypedUseSelectorHook<RootAppType> = useSelector;
+
 const persistor = persistStore(Store);
+
 export { Store, persistor, useAppDispatch, useAppSelector };

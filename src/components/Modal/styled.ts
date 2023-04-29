@@ -12,4 +12,5 @@ const ModalWrapper = styled.div`
     display: none;
   }
 `;
+
 export default ModalWrapper;

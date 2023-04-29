@@ -11,7 +11,9 @@ import { ButtonText, GoogleImage, LoginGoogleButtonWrapper } from './styled';
 
 export default function LoginGoogleButton() {
   const dispatch = useAppDispatch();
+
   const user = useAppSelector((state) => state.userReducer);
+
   const buttonRef = useRef(null);
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export default function LoginGoogleButton() {
         `${process.env.REACT_GOOGLE_CLIENT_ID}`,
         'https://www.googleapis.com/auth/calendar',
       );
+
       auth2.attachClickHandler(
         buttonRef.current,
         {},
@@ -30,10 +33,12 @@ export default function LoginGoogleButton() {
         },
       );
     };
+
     initializeGoogleLogin();
   }, [buttonRef, user, dispatch]);
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();
+
     auth2.signOut().then(() => {
       dispatch(userActions.resetUser());
     });

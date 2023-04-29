@@ -39,6 +39,7 @@ function App() {
     () => setIsModalOpen(!isModalOpen),
     [isModalOpen],
   );
+
   return (
     <AppWrapper
       style={{ backgroundImage: `url(${backgrounds ? backgrounds[1] : bg2})` }}

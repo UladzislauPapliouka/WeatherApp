@@ -9,6 +9,7 @@ const initialState: GoogleUserInfoType = {
   rV: '',
   uT: '',
 };
+
 const userSlice = createSlice({
   name: 'userSlice',
   initialState,
@@ -18,7 +19,9 @@ const userSlice = createSlice({
     resetUser: () => initialState,
   },
 });
+
 const userActions = userSlice.actions;
+
 export default userSlice.reducer;
 
 export { userActions };

@@ -32,6 +32,7 @@ const findPlaceByCoordsOpenWeatherAC = (
     hourly,
   },
 });
+
 const findPlaceByNameOpenWeatherAC = (name: string, hourly = false) => ({
   type: 'FIND_PLACE_BY_NAME_OPEN_WEATHER',
   payload: {
@@ -39,15 +40,18 @@ const findPlaceByNameOpenWeatherAC = (name: string, hourly = false) => ({
     hourly,
   },
 });
+
 const getAutocompleteAC = (name: string) => ({
   type: 'TAKE_AUTO_COMPLETE_OPEN',
   payload: {
     name,
   },
 });
+
 const fetchDailyOpenWeatherAC = () => ({
   type: 'FETCH_OPEN_WEATHER_DAILY',
 });
+
 const fetchHourlyOpenWeatherAC = () => ({
   type: 'FETCH_OPEN_WEATHER_HOURLY',
 });
@@ -57,13 +61,16 @@ function* fetchOpenWeatherAPIDaily() {
     const location: ReturnType<typeof PlaceReducer> = yield select(
       (state) => state.placeInfo,
     );
+
     yield put(AppActions.startWeatherFetching());
     const response: IOpenWeatherResponse = yield call(
       OpenWeatherAPI.fetchDailyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
+
     const { list } = response;
+
     yield put(AppActions.finishWeatherFetching());
     yield put(
       WeatherActions.setInfo(
@@ -87,14 +94,17 @@ function* fetchOpenWeatherAPIHourly() {
     const location: ReturnType<typeof PlaceReducer> = yield select(
       (state) => state.placeInfo,
     );
+
     yield put(AppActions.startWeatherFetching());
     const response: IOpenWeatherResponse = yield call(
       OpenWeatherAPI.fetchHourlyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
+
     yield put(AppActions.finishWeatherFetching());
     const { list } = response;
+
     yield put(
       WeatherActions.setInfo(
         [
@@ -121,7 +131,9 @@ function* findPlaceByCoordsOpenWeather(
       action.payload.lat,
       action.payload.lon,
     );
+
     const place = response[0];
+
     yield put(
       PlaceActions.setPlace({
         city: place.local_names.en || place.local_names.ascii,
@@ -145,6 +157,7 @@ function* findPlaceByCoordsOpenWeather(
     put(AppActions.finishFetchingWithError());
   }
 }
+
 function* findPlaceByNameOpenWeather(
   action: ReturnType<typeof findPlaceByNameOpenWeatherAC>,
 ) {
@@ -153,7 +166,9 @@ function* findPlaceByNameOpenWeather(
       OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );
+
     const place = response[0];
+
     yield put(
       PlaceActions.setPlace({
         city: place.local_names.en || place.local_names.ascii,
@@ -177,6 +192,7 @@ function* findPlaceByNameOpenWeather(
     put(AppActions.finishFetchingWithError());
   }
 }
+
 function* getAutocomplete(
   action: ReturnType<typeof findPlaceByNameOpenWeatherAC>,
 ) {
@@ -186,6 +202,7 @@ function* getAutocomplete(
       OpenWeatherAPI.fetchPlacesByName,
       action.payload.name,
     );
+
     yield put(
       AutocompleteActions.setVariant(
         response.slice(0, 4).map((place) => ({
@@ -203,6 +220,7 @@ function* getAutocomplete(
     put(AppActions.finishFetchingWithError());
   }
 }
+
 function* OpenWeatherSaga() {
   yield takeLatest('FETCH_OPEN_WEATHER_DAILY', fetchOpenWeatherAPIDaily);
   yield takeLatest('FETCH_OPEN_WEATHER_HOURLY', fetchOpenWeatherAPIHourly);

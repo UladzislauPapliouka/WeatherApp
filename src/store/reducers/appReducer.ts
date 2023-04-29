@@ -13,10 +13,12 @@ const initialState: AppStateType = {
   isWeatherFetching: false,
   isWeatherError: false,
 };
+
 const persistConfig = {
   key: 'AppState',
   storage,
 };
+
 const AppSlice = createSlice({
   name: 'APP',
   initialState,
@@ -29,6 +31,7 @@ const AppSlice = createSlice({
         ...state,
         preferredAPI: action.payload.preferredAPI,
       };
+
       return result;
     },
     setWeatherRepresent: (
@@ -41,6 +44,7 @@ const AppSlice = createSlice({
         ...state,
         weatherRepresent: action.payload.weatherRepresent,
       };
+
       return result;
     },
     startWeatherFetching: (state) => ({
@@ -61,7 +65,9 @@ const AppSlice = createSlice({
 });
 
 const AppReducer = AppSlice.reducer;
+
 const PersistedAppReducer = persistReducer(persistConfig, AppSlice.reducer);
+
 const AppActions = AppSlice.actions;
 
 export { AppActions, PersistedAppReducer, AppReducer };

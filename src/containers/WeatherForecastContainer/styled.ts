@@ -19,4 +19,5 @@ const ForecastWrapper = styled.div`
     }
   }
 `;
+
 export default ForecastWrapper;

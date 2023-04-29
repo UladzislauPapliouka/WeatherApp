@@ -10,4 +10,5 @@ const normalizeGoogleEventEntity = (
   }).format(new Date(event.start.dateTime)),
   title: event.summary,
 });
+
 export default normalizeGoogleEventEntity;

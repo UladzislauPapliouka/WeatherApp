@@ -32,5 +32,6 @@ const weatherAPI = {
       `search.json?key=${process.env.REACT_WEATHER_API_KEY}&q=${city}`,
     ),
 };
+
 export default weatherAPI;
 export type { WeatherPlaceResponseType, IWeatherAPIForecastResponse };

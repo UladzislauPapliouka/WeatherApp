@@ -21,6 +21,7 @@ const openWeatherAPI = {
       `forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}&units=metric&cnt=48`,
       openWeather,
     );
+
     return response;
   },
   fetchHourlyWeather: async (latitude: number, longitude: number) => {
@@ -28,6 +29,7 @@ const openWeatherAPI = {
       `forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}&units=metric&cnt=16`,
       openWeather,
     );
+
     return response;
   },
   fetchPlacesByCoordinates: async (latitude: number, longitude: number) => {
@@ -35,6 +37,7 @@ const openWeatherAPI = {
       `reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}`,
       openWeatherGeocoder,
     );
+
     return response;
   },
   fetchPlacesByName: async (city: string) => {
@@ -42,7 +45,9 @@ const openWeatherAPI = {
       `direct?q=${city}&limit=5&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}`,
       openWeatherGeocoder,
     );
+
     return response;
   },
 };
+
 export default openWeatherAPI;

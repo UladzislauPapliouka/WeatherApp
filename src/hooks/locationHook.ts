@@ -8,13 +8,16 @@ import { APIVariants, WeatherRepresentVariants } from '@typing/storeTypes';
 
 const useUserLocation = () => {
   const dispatch = useAppDispatch();
+
   const { weatherRepresent, preferredAPI } = useAppSelector(
     (state) => state.appState,
   );
+
   const {
     coordinates: { longitude, latitude },
     city,
   } = useAppSelector((state) => state.placeInfo);
+
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(({ coords }) => {
       if (city) {
@@ -55,4 +58,5 @@ const useUserLocation = () => {
     });
   }, [preferredAPI, weatherRepresent, dispatch, latitude, longitude, city]);
 };
+
 export default useUserLocation;

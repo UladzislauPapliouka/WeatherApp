@@ -8,9 +8,11 @@ import ForecastWrapper from './styled';
 
 export default function WeatherForecastContainer() {
   const weatherItems = useAppSelector((state) => state.weatherInfo);
+
   const isFetching = useAppSelector(
     (state) => state.appState.isWeatherFetching,
   );
+
   return (
     <ForecastWrapper>
       {isFetching ? (

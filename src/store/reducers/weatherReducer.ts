@@ -13,5 +13,7 @@ const WeatherByDaySlice = createSlice({
 });
 
 const WeatherReducer = WeatherByDaySlice.reducer;
+
 const WeatherActions = WeatherByDaySlice.actions;
+
 export { WeatherReducer, WeatherActions };

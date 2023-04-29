@@ -24,9 +24,11 @@ import {
 const fetchWeatherAPIDailyAC = () => ({
   type: 'FETCH_WEATHER_DAILY',
 });
+
 const fetchWeatherAPIHourlyAC = () => ({
   type: 'FETCH_WEATHER_HOURLY',
 });
+
 const findPlaceWeatherByCoordsAC = (
   lat: number,
   lon: number,
@@ -39,6 +41,7 @@ const findPlaceWeatherByCoordsAC = (
     hourly,
   },
 });
+
 const findPlaceWeatherByNameAC = (name: string, hourly = false) => ({
   type: 'FIND_PLACE_BY_NAME_WEATHER',
   payload: {
@@ -46,6 +49,7 @@ const findPlaceWeatherByNameAC = (name: string, hourly = false) => ({
     hourly,
   },
 });
+
 const getAutocompleteWeatherAC = (name: string) => ({
   type: 'TAKE_AUTO_COMPLETE_WEATHER',
   payload: {
@@ -58,12 +62,14 @@ export function* fetchWeatherAPIDaily() {
     const location: ReturnType<typeof PlaceReducer> = yield select(
       (state) => state.placeInfo,
     );
+
     yield put(AppActions.startWeatherFetching());
     const response: IOpenMeteoDailyResponse = yield call(
       openMeteoAPI.fetchDailyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
+
     yield put(AppActions.finishWeatherFetching());
     yield put(WeatherActions.setInfo(normalizeOpenMeteoDaily(response)));
   } catch (e) {
@@ -75,12 +81,14 @@ function* fetchWeatherAPIHourly() {
     const location: ReturnType<typeof PlaceReducer> = yield select(
       (state) => state.placeInfo,
     );
+
     yield put(AppActions.startWeatherFetching());
     const response: IOpenMeteoHourlyResponse = yield call(
       openMeteoAPI.fetchHourlyWeather,
       location.coordinates.latitude,
       location.coordinates.longitude,
     );
+
     yield put(AppActions.finishWeatherFetching());
     yield put(WeatherActions.setInfo(normalizeOpenMeteoHourly(response)));
   } catch (e) {
@@ -97,7 +105,9 @@ function* findPlaceWeatherByCoords(
       action.payload.lat,
       action.payload.lon,
     );
+
     const place = response.data[0];
+
     yield put(
       PlaceActions.setPlace({
         city: place.name,
@@ -128,6 +138,7 @@ function* findPlaceWeatherByName(
       openMeteoAPI.fetchPlacesByName,
       action.payload.name,
     );
+
     const place = response.results[0];
 
     yield put(
@@ -151,6 +162,7 @@ function* findPlaceWeatherByName(
     put(AppActions.finishFetchingWithError());
   }
 }
+
 function* getAutoCompleteWeather(
   action: ReturnType<typeof findPlaceWeatherByNameAC>,
 ) {
@@ -160,7 +172,9 @@ function* getAutoCompleteWeather(
       openMeteoAPI.fetchPlacesByName,
       action.payload.name,
     );
+
     const places = response.results;
+
     yield put(
       AutocompleteActions.setVariant(
         places.slice(0, 4).map((place) => ({
@@ -178,6 +192,7 @@ function* getAutoCompleteWeather(
     put(AppActions.finishFetchingWithError());
   }
 }
+
 function* WeatherSaga() {
   yield takeLatest('FETCH_WEATHER_DAILY', fetchWeatherAPIDaily);
   yield takeLatest('FETCH_WEATHER_HOURLY', fetchWeatherAPIHourly);

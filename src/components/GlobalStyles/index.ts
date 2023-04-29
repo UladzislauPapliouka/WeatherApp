@@ -13,4 +13,5 @@ const GlobalStyles = createGlobalStyle`
       monospace;
   }
 `;
+
 export default GlobalStyles;

@@ -9,6 +9,7 @@ export default function PlaceBlock() {
   const { city, country } = useSelector(
     (state: RootAppType) => state.placeInfo,
   );
+
   return (
     <PlaceBlockWrapper>
       <CityName>{city}</CityName>

@@ -8,4 +8,5 @@ function DegreesSpan({ value, size = 'default' }: DegreesSpanPropsType) {
     <StyledDegreeSpan size={size}>{`${value.toFixed(0)}°`}</StyledDegreeSpan>
   );
 }
+
 export default DegreesSpan;

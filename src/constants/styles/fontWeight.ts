@@ -5,4 +5,5 @@ const fontWeight: IFontWeight = {
   '200': 200,
   '500': 500,
 };
+
 export default fontWeight;

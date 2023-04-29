@@ -57,8 +57,10 @@ describe('Entity data should be correct normalized to store', () => {
         ],
       },
     };
+
     const normalizedEntity: NormalizedWeatherItemDataType[] =
       normalizeOpenMeteoHourly(apiEntity);
+
     expect(normalizedEntity).toHaveLength(7);
     expect(normalizedEntity[0]).toHaveProperty('name', 'Now');
     expect(normalizedEntity[0]).toHaveProperty('degrees');
@@ -87,8 +89,10 @@ describe('Entity data should be correct normalized to store', () => {
         ],
       },
     };
+
     const normalizedEntity: NormalizedWeatherItemDataType[] =
       normalizeOpenMeteoDaily(apiEntity);
+
     expect(normalizedEntity).toHaveLength(7);
     expect(normalizedEntity[0]).toHaveProperty('name', 'Today');
     expect(normalizedEntity[0]).toHaveProperty('degrees');
@@ -683,8 +687,10 @@ describe('Entity data should be correct normalized to store', () => {
         country: 'RU',
       },
     };
+
     const normalizedEntity: NormalizedWeatherItemDataType[] =
       normalizeOpenWeatherHourly(list.slice(1, 7));
+
     expect(normalizedEntity).toHaveLength(6);
     expect(normalizedEntity[0]).toHaveProperty('name');
     expect(normalizedEntity[0]).toHaveProperty('degrees');
@@ -1278,8 +1284,10 @@ describe('Entity data should be correct normalized to store', () => {
         country: 'RU',
       },
     };
+
     const normalizedEntity: NormalizedWeatherItemDataType[] =
       normalizeOpenWeatherDaily(list);
+
     expect(normalizedEntity).toHaveLength(5);
     expect(normalizedEntity[0]).toHaveProperty('name');
     expect(normalizedEntity[0]).toHaveProperty('degrees');
@@ -1290,8 +1298,10 @@ describe('Entity data should be correct normalized to store', () => {
       start: { dateTime: new Date('2023-04-23T00:00') },
       summary: 'Test event',
     };
+
     const normalizedGoogleEvent: GoogleEventStoreType =
       normalizeGoogleEventEntity(googleEventsEntity);
+
     expect(normalizedGoogleEvent).toHaveProperty('time', '12:00 AM');
     expect(normalizedGoogleEvent).toHaveProperty('title', 'Test event');
   });

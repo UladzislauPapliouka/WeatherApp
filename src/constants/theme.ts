@@ -8,4 +8,5 @@ const theme: DefaultTheme = {
   greyscale,
   fontWeight,
 };
+
 export default theme;

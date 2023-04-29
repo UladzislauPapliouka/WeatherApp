@@ -8,11 +8,13 @@ const ModalWindow: FC<PropsWithChildren<{ handleClose: () => void }>> = ({
   children,
 }) => {
   const backRef = useRef(null);
+
   const handleBackgroundClick = ({ target }: MouseEvent<HTMLDivElement>) => {
     if (backRef.current === target) {
       handleClose();
     }
   };
+
   return ReactDOM.createPortal(
     <ModalWrapper
       data-cy="modalBackground"
@@ -24,4 +26,5 @@ const ModalWindow: FC<PropsWithChildren<{ handleClose: () => void }>> = ({
     document.body,
   );
 };
+
 export default React.memo(ModalWindow);

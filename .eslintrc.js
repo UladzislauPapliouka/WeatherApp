@@ -22,6 +22,12 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'simple-import-sort', 'prettier'],
   rules: {
     'prefer-destructuring': ['error', { object: true, array: false }],
+    "padding-line-between-statements": [
+      "error",
+      { blankLine: "always", prev: ["const", "let", "var", "for", "if", "case", "function","switch"], next: "*"},
+      { blankLine: "always", prev: ["const", "let", "var"], next: ["const", "let", "var"]},
+      { blankLine: "always", prev: "*", next: "return"}
+    ],
     'no-shadow': 'off',
     'camelcase': ["error",{allow: ["temperature_2m_max","temperature_2m_min","temperature_2m","dt_txt"]}],
     'simple-import-sort/imports': [

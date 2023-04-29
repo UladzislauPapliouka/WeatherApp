@@ -8,8 +8,10 @@ const WeatherImage = styled.img<IWeatherImageProps>`
     switch (size) {
       case 'small':
         return sizes.WeatherIconSizes.sm;
+
       case 'large':
         return sizes.WeatherIconSizes.lg;
+
       default:
         return sizes.WeatherIconSizes.md;
     }

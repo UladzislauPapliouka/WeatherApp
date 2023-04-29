@@ -15,6 +15,7 @@ const persistConfig = {
   key: 'PlaceState',
   storage,
 };
+
 const PlaceSlice = createSlice({
   name: 'PLACE',
   initialState,
@@ -23,7 +24,11 @@ const PlaceSlice = createSlice({
       action.payload,
   },
 });
+
 const PlaceReducer = PlaceSlice.reducer;
+
 const PersistedPlaceReducer = persistReducer(persistConfig, PlaceSlice.reducer);
+
 const PlaceActions = PlaceSlice.actions;
+
 export { PlaceActions, PlaceReducer, PersistedPlaceReducer };

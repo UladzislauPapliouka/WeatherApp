@@ -13,4 +13,5 @@ const greyscale: IGreyscale = {
   '90': 0.9,
   '100': 1,
 };
+
 export default greyscale;

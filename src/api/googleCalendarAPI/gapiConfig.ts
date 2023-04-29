@@ -1,7 +1,9 @@
 import * as process from 'process';
 
 const today = new Date();
+
 const tomorrow = new Date();
+
 tomorrow.setDate(today.getDate() + 3);
 export const eventsRequestConfig = {
   calendarId: 'primary',

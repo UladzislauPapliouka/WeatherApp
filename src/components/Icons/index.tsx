@@ -19,6 +19,7 @@ function SettingIcon({ color, scale }: IIconProps) {
     </svg>
   );
 }
+
 function CheckIcon() {
   return (
     <svg
@@ -37,4 +38,5 @@ function CheckIcon() {
     </svg>
   );
 }
+
 export { SettingIcon, CheckIcon };

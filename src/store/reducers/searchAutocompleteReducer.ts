@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
 
 const initialState: Array<NormalizedPlaceDataType> = [];
+
 const SearchAutocompleteSlice = createSlice({
   name: 'Autocomplete',
   initialState,
@@ -12,6 +13,8 @@ const SearchAutocompleteSlice = createSlice({
     ) => action.payload,
   },
 });
+
 export default SearchAutocompleteSlice.reducer;
 const AutocompleteActions = SearchAutocompleteSlice.actions;
+
 export { AutocompleteActions };
