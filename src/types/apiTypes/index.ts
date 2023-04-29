@@ -1,17 +1,17 @@
 import {
-  IOpenWeatherList,
-  IOpenWeatherPlaceResponse,
-  IOpenWeatherResponse,
-} from '@typing/apiTypes/openWeatherAPITypes';
-
-import {
   IGoogleEventEntity,
   IGoogleUserEntity,
 } from './googleCalendarAPITypes';
 import {
   IOpenMeteoDailyResponse,
+  IOpenMeteoGeocodeResponse,
   IOpenMeteoHourlyResponse,
 } from './openMeteoAPIType';
+import {
+  IOpenWeatherList,
+  IOpenWeatherPlaceResponse,
+  IOpenWeatherResponse,
+} from './openWeatherAPITypes';
 import {
   IWeatherAPIForecastResponse,
   WeatherPlaceResponseType,
@@ -27,4 +27,5 @@ export type {
   WeatherPlaceResponseType,
   IOpenMeteoHourlyResponse,
   IOpenMeteoDailyResponse,
+  IOpenMeteoGeocodeResponse,
 };

@@ -1,9 +1,10 @@
 import axios from 'axios';
+import * as process from 'process';
 
 import {
   IWeatherAPIForecastResponse,
   WeatherPlaceResponseType,
-} from '@/types/apiTypes/weatherAPITypes';
+} from '@/types/apiTypes';
 
 const weatherAPIinstance = axios.create({
   baseURL: process.env.REACT_WEATHER_BASE_URL,

@@ -3,6 +3,7 @@ import {
   IOpenWeatherResponse,
 } from '@typing/apiTypes/openWeatherAPITypes';
 import axios from 'axios';
+import * as process from 'process';
 
 import { cacheService } from '@/services';
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { IChipProps } from '@components/Chip/types';
 
 import { ChipText, ChipWrapper } from './styled';
+import { IChipProps } from './types';
 
 function Chip({ text, variant = 'default' }: IChipProps) {
   return (

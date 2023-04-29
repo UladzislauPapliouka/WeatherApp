@@ -1,4 +1,5 @@
 import SearchAutocompleteReducer from '@store/reducers/searchAutocompleteReducer';
+import userReducer from '@store/reducers/userReducer';
 
 import { AppActions, AppReducer, PersistedAppReducer } from './appReducer';
 import {
@@ -13,6 +14,7 @@ import {
 import { WeatherActions, WeatherReducer } from './weatherReducer';
 
 export {
+  userReducer,
   PlaceActions,
   PersistedAppReducer,
   PersistedPlaceReducer,

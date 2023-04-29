@@ -1,5 +1,6 @@
-import { IDateTextProps } from '@components/DateBlock/types';
 import styled from 'styled-components';
+
+import { IDateTextProps } from './types';
 
 export const DateBlockWrapper = styled.div`
   display: flex;

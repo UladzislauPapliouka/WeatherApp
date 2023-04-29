@@ -1,5 +1,6 @@
-import { ISelectArrowProps } from '@components/CustomSelect/types';
 import styled, { css } from 'styled-components';
+
+import { ISelectArrowProps } from './types';
 
 export const CustomSelectWrapper = styled.div`
   position: relative;

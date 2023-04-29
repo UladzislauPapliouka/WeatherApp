@@ -1,9 +1,10 @@
 import {
   IOpenMeteoDailyResponse,
+  IOpenMeteoGeocodeResponse,
   IOpenMeteoHourlyResponse,
 } from '@typing/apiTypes';
-import { IOpenMeteoGeocodeResponse } from '@typing/apiTypes/openMeteoAPIType';
 import axios from 'axios';
+import * as process from 'process';
 
 import { cacheService } from '@/services';
 

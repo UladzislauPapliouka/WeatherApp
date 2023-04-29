@@ -3,7 +3,6 @@ import CustomSelect from '@components/CustomSelect';
 import LoginGoogleButton from '@components/LoginGoogleButton';
 import ModalWindow from '@components/Modal';
 import PlaceSearch from '@components/PlaceSearch';
-import ISettingModalProps from '@components/SettingsModal/types';
 import { AppActions } from '@store/reducers/appReducer';
 import {
   APIVariants,
@@ -13,6 +12,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/store';
 
 import { SettingsModalWrapper, SubTitle, Title } from './styled';
+import ISettingModalProps from './types';
 
 const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
   const preferredService = useAppSelector(

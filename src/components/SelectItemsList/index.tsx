@@ -1,7 +1,7 @@
 import React from 'react';
-import { ISelectListProps } from '@components/SelectItemsList/types';
 
 import { SelectListWrapper, SelectOption } from './styled';
+import { ISelectListProps } from './types';
 
 function SelectItemsList<T>({
   options,

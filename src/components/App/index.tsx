@@ -6,11 +6,11 @@ import PlaceBlock from '@components/PlaceBlock';
 import SettingsModal from '@components/SettingsModal';
 import GoogleEventsContainer from '@containers/GoogleEventsContainer';
 import WeatherForecastContainer from '@containers/WeatherForecastContainer';
+import { useAppSelector } from '@store';
 import { WeatherIconVariants } from '@typing/storeTypes/weatherStateType';
 
 import useUserLocation from '@/hooks/locationHook';
 import { getBackground } from '@/services';
-import { useAppSelector } from '@/store';
 
 import {
   AppBackground,

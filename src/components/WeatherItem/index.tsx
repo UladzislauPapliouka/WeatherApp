@@ -2,7 +2,6 @@ import React from 'react';
 import Chip from '@components/Chip';
 import DegreesSpan from '@components/DegreesSpan';
 import WeatherIcon from '@components/WeatherIcon';
-import { IWeatherItemProps } from '@components/WeatherItem/types';
 
 import {
   ChipContainer,
@@ -10,6 +9,7 @@ import {
   IconContainer,
   WeatherItemWrapper,
 } from './styled';
+import { IWeatherItemProps } from './types';
 
 export default function WeatherItem({
   chipText,

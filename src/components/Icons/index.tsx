@@ -1,5 +1,6 @@
 import React from 'react';
-import IIconProps from '@components/Icons/types';
+
+import IIconProps from './types';
 
 function SettingIcon({ color, scale }: IIconProps) {
   return (

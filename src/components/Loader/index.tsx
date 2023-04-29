@@ -1,5 +1,6 @@
 import React from 'react';
-import { LoaderWrapper, Spinner } from '@components/Loader/styled';
+
+import { LoaderWrapper, Spinner } from './styled';
 
 function Loader() {
   return (

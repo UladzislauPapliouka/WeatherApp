@@ -1,8 +1,8 @@
 import React from 'react';
 import * as weatherImages from '@assets/weatherIcons';
-import { IWeatherIconProps } from '@components/WeatherIcon/types';
 
 import WeatherImage from './styles';
+import { IWeatherIconProps } from './types';
 
 export default function WeatherIcon({
   icon,

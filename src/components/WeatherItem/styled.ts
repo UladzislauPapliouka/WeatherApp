@@ -1,5 +1,6 @@
-import { IWeatherItemWrapperProps } from '@components/WeatherItem/types';
 import styled, { css } from 'styled-components';
+
+import { IWeatherItemWrapperProps } from './types';
 
 const mobileView = css`
   width: 80%;

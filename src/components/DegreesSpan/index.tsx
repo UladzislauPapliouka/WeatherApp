@@ -1,7 +1,7 @@
 import React from 'react';
-import { DegreesSpanPropsType } from '@components/DegreesSpan/types';
 
 import StyledDegreeSpan from './styled';
+import { DegreesSpanPropsType } from './types';
 
 function DegreesSpan({ value, size = 'default' }: DegreesSpanPropsType) {
   return (
