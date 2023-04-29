@@ -1,23 +1,23 @@
-import { fetchGoogleEvents, GoogleEventsWatcher } from './googleEventsWatcher';
 import {
   fetchDailyOpenWeatherAC,
+  fetchGoogleEventsAC,
   fetchHourlyOpenWeatherAC,
-  findPlaceByCoordsOpenWeatherAC,
-  findPlaceByNameOpenWeatherAC,
-  getAutocompleteAC,
-  OpenWeatherSaga,
-} from './openWeatherSaga';
-import {
   fetchWeatherAPIDailyAC,
   fetchWeatherAPIHourlyAC,
+  findPlaceByCoordsOpenWeatherAC,
+  findPlaceByNameOpenWeatherAC,
   findPlaceWeatherByCoordsAC,
   findPlaceWeatherByNameAC,
+  getAutocompleteAC,
   getAutocompleteWeatherAC,
-  WeatherSaga,
-} from './weatherSaga';
+} from '@store/actionCreators';
+
+import GoogleEventsWatcher from './googleEventsWatcher';
+import OpenWeatherSaga from './openWeatherSaga';
+import WeatherSaga from './weatherSaga';
 
 export {
-  fetchGoogleEvents,
+  fetchGoogleEventsAC,
   GoogleEventsWatcher,
   fetchDailyOpenWeatherAC,
   fetchHourlyOpenWeatherAC,

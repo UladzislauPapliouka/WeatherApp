@@ -14,47 +14,18 @@ import {
 } from '@/services';
 
 import {
+  fetchDailyOpenWeatherAC,
+  fetchHourlyOpenWeatherAC,
+  findPlaceByCoordsOpenWeatherAC,
+  findPlaceByNameOpenWeatherAC,
+  openWeatherActionTypes,
+} from '../actionCreators';
+import {
   AppActions,
   PlaceActions,
   PlaceReducer,
   WeatherActions,
 } from '../reducers';
-
-const findPlaceByCoordsOpenWeatherAC = (
-  lat: number,
-  lon: number,
-  hourly = false,
-) => ({
-  type: 'FIND_PLACE_BY_COORDS_OPEN_WEATHER',
-  payload: {
-    lat,
-    lon,
-    hourly,
-  },
-});
-
-const findPlaceByNameOpenWeatherAC = (name: string, hourly = false) => ({
-  type: 'FIND_PLACE_BY_NAME_OPEN_WEATHER',
-  payload: {
-    name,
-    hourly,
-  },
-});
-
-const getAutocompleteAC = (name: string) => ({
-  type: 'TAKE_AUTO_COMPLETE_OPEN',
-  payload: {
-    name,
-  },
-});
-
-const fetchDailyOpenWeatherAC = () => ({
-  type: 'FETCH_OPEN_WEATHER_DAILY',
-});
-
-const fetchHourlyOpenWeatherAC = () => ({
-  type: 'FETCH_OPEN_WEATHER_HOURLY',
-});
 
 function* fetchOpenWeatherAPIDaily() {
   try {
@@ -222,24 +193,26 @@ function* getAutocomplete(
 }
 
 function* OpenWeatherSaga() {
-  yield takeLatest('FETCH_OPEN_WEATHER_DAILY', fetchOpenWeatherAPIDaily);
-  yield takeLatest('FETCH_OPEN_WEATHER_HOURLY', fetchOpenWeatherAPIHourly);
   yield takeLatest(
-    'FIND_PLACE_BY_COORDS_OPEN_WEATHER',
+    openWeatherActionTypes.FETCH_OPEN_WEATHER_DAILY,
+    fetchOpenWeatherAPIDaily,
+  );
+  yield takeLatest(
+    openWeatherActionTypes.FETCH_OPEN_WEATHER_HOURLY,
+    fetchOpenWeatherAPIHourly,
+  );
+  yield takeLatest(
+    openWeatherActionTypes.FIND_PLACE_BY_COORDS_OPEN_WEATHER,
     findPlaceByCoordsOpenWeather,
   );
   yield takeLatest(
-    'FIND_PLACE_BY_NAME_OPEN_WEATHER',
+    openWeatherActionTypes.FIND_PLACE_BY_NAME_OPEN_WEATHER,
     findPlaceByNameOpenWeather,
   );
-  yield takeLatest('TAKE_AUTO_COMPLETE_OPEN', getAutocomplete);
+  yield takeLatest(
+    openWeatherActionTypes.TAKE_AUTO_COMPLETE_OPEN,
+    getAutocomplete,
+  );
 }
 
-export {
-  OpenWeatherSaga,
-  fetchHourlyOpenWeatherAC,
-  findPlaceByCoordsOpenWeatherAC,
-  fetchDailyOpenWeatherAC,
-  findPlaceByNameOpenWeatherAC,
-  getAutocompleteAC,
-};
+export default OpenWeatherSaga;

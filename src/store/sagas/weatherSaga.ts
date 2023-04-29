@@ -15,47 +15,18 @@ import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 import { openMeteoAPI, weatherAPI } from '@/api';
 
 import {
+  fetchWeatherAPIDailyAC,
+  fetchWeatherAPIHourlyAC,
+  findPlaceWeatherByCoordsAC,
+  findPlaceWeatherByNameAC,
+  openMeteoActionsType,
+} from '../actionCreators';
+import {
   AppActions,
   PlaceActions,
   PlaceReducer,
   WeatherActions,
 } from '../reducers';
-
-const fetchWeatherAPIDailyAC = () => ({
-  type: 'FETCH_WEATHER_DAILY',
-});
-
-const fetchWeatherAPIHourlyAC = () => ({
-  type: 'FETCH_WEATHER_HOURLY',
-});
-
-const findPlaceWeatherByCoordsAC = (
-  lat: number,
-  lon: number,
-  hourly = false,
-) => ({
-  type: 'FIND_PLACE_BY_COORDS_WEATHER',
-  payload: {
-    lat,
-    lon,
-    hourly,
-  },
-});
-
-const findPlaceWeatherByNameAC = (name: string, hourly = false) => ({
-  type: 'FIND_PLACE_BY_NAME_WEATHER',
-  payload: {
-    name,
-    hourly,
-  },
-});
-
-const getAutocompleteWeatherAC = (name: string) => ({
-  type: 'TAKE_AUTO_COMPLETE_WEATHER',
-  payload: {
-    name,
-  },
-});
 
 export function* fetchWeatherAPIDaily() {
   try {
@@ -194,18 +165,26 @@ function* getAutoCompleteWeather(
 }
 
 function* WeatherSaga() {
-  yield takeLatest('FETCH_WEATHER_DAILY', fetchWeatherAPIDaily);
-  yield takeLatest('FETCH_WEATHER_HOURLY', fetchWeatherAPIHourly);
-  yield takeLatest('FIND_PLACE_BY_COORDS_WEATHER', findPlaceWeatherByCoords);
-  yield takeLatest('FIND_PLACE_BY_NAME_WEATHER', findPlaceWeatherByName);
-  yield takeLatest('TAKE_AUTO_COMPLETE_WEATHER', getAutoCompleteWeather);
+  yield takeLatest(
+    openMeteoActionsType.FETCH_WEATHER_DAILY,
+    fetchWeatherAPIDaily,
+  );
+  yield takeLatest(
+    openMeteoActionsType.FETCH_WEATHER_HOURLY,
+    fetchWeatherAPIHourly,
+  );
+  yield takeLatest(
+    openMeteoActionsType.FIND_PLACE_BY_COORDS_WEATHER,
+    findPlaceWeatherByCoords,
+  );
+  yield takeLatest(
+    openMeteoActionsType.FIND_PLACE_BY_NAME_WEATHER,
+    findPlaceWeatherByName,
+  );
+  yield takeLatest(
+    openMeteoActionsType.TAKE_AUTO_COMPLETE_WEATHER,
+    getAutoCompleteWeather,
+  );
 }
 
-export {
-  WeatherSaga,
-  fetchWeatherAPIDailyAC,
-  fetchWeatherAPIHourlyAC,
-  findPlaceWeatherByNameAC,
-  findPlaceWeatherByCoordsAC,
-  getAutocompleteWeatherAC,
-};
+export default WeatherSaga;
