@@ -207,9 +207,9 @@ function normalizeOpenMeteoDaily({
 }
 
 const cacheService = async <T>(url: string, instance: AxiosInstance) => {
-  const Cache = await window.caches.open('openMeteo');
+  const cache = await window.caches.open('openMeteo');
 
-  const cacheItem = await Cache.match(url);
+  const cacheItem = await cache.match(url);
 
   if (cacheItem) {
     const response = await cacheItem.json();
@@ -223,7 +223,7 @@ const cacheService = async <T>(url: string, instance: AxiosInstance) => {
 
   if (!response) return null;
 
-  await Cache.put(
+  await cache.put(
     response.config.url as string,
     new Response(
       JSON.stringify({ ...response.data, cacheTime: new Date().getTime() }),
