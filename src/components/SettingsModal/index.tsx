@@ -15,12 +15,8 @@ import { SettingsModalWrapper, SubTitle, Title } from './styled';
 import ISettingModalProps from './types';
 
 const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
-  const preferredService = useAppSelector(
-    (state) => state.appState.preferredAPI,
-  );
-
-  const weatherRepresent = useAppSelector(
-    (state) => state.appState.weatherRepresent,
+  const { preferredAPI, weatherRepresent } = useAppSelector(
+    (state) => state.appState,
   );
 
   const dispatch = useAppDispatch();
@@ -56,12 +52,12 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
         <SubTitle>Find place</SubTitle>
         <PlaceSearch
           hourly={weatherRepresent === WeatherRepresentVariants.hourly}
-          preferredAPI={preferredService}
+          preferredAPI={preferredAPI}
         />
         <SubTitle>Service</SubTitle>
         <CustomSelect
           options={[APIVariants.weatherAPI, APIVariants.openWeatherAPI]}
-          selected={preferredService}
+          selected={preferredAPI}
           onChangeSelected={setPreferredService}
         />
         <SubTitle>How to represent weather</SubTitle>
