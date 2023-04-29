@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
 
 export const initialState: NormalizedPlaceDataType = {
   city: '',

@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import {
   APIVariants,
   AppStateType,
   WeatherRepresentVariants,
 } from '@typing/storeTypes/appStateTypes';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
 const initialState: AppStateType = {
   preferredAPI: APIVariants.weatherAPI,

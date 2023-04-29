@@ -1,5 +1,6 @@
-import DayNames from '@constants/dayNames';
 import { AxiosInstance } from 'axios';
+
+import DayNames from '@constants/dayNames';
 
 function getDayName(dayNumber: number) {
   const daysName = [

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Chip from '@components/Chip';
 
 import { GoogleEventTitle, GoogleEventWrapper } from './styled';

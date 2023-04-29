@@ -1,6 +1,5 @@
-import * as backgrounds from '@assets/backgrounds';
-
 import { WeatherIconVariants } from '@/types/storeTypes/weatherStateType';
+import * as backgrounds from '@assets/backgrounds';
 
 export function getOpenWeatherIcon(code: number) {
   if (code >= 200 && code <= 299) {

@@ -4,6 +4,8 @@ import React, {
   useCallback,
   useState,
 } from 'react';
+
+import { useAppDispatch, useAppSelector } from '@/store';
 import SelectItemsList from '@components/SelectItemsList';
 import {
   findPlaceByNameOpenWeatherAC,
@@ -14,8 +16,6 @@ import {
 import { PlaceActions } from '@store/reducers';
 import { APIVariants } from '@typing/storeTypes/appStateTypes';
 import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
-
-import { useAppDispatch, useAppSelector } from '@/store';
 
 import { PlaceSearchWrapper, SearchButton, SearchInput } from './styled';
 

@@ -1,3 +1,8 @@
+import { AxiosResponse } from 'axios';
+import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
+
+import { openMeteoAPI, weatherAPI } from '@/api';
+import { normalizeOpenMeteoDaily, normalizeOpenMeteoHourly } from '@/services';
 import { AutocompleteActions } from '@store/reducers/searchAutocompleteReducer';
 import {
   IOpenMeteoDailyResponse,
@@ -5,11 +10,6 @@ import {
 } from '@typing/apiTypes';
 import { IOpenMeteoGeocodeResponse } from '@typing/apiTypes/openMeteoAPIType';
 import { WeatherPlaceResponseType } from '@typing/apiTypes/weatherAPITypes';
-import { AxiosResponse } from 'axios';
-import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
-
-import { openMeteoAPI, weatherAPI } from '@/api';
-import { normalizeOpenMeteoDaily, normalizeOpenMeteoHourly } from '@/services';
 
 import {
   fetchWeatherAPIDailyAC,

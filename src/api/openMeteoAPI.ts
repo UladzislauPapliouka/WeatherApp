@@ -1,12 +1,12 @@
+import axios from 'axios';
+import * as process from 'process';
+
+import { cacheService } from '@/services';
 import {
   IOpenMeteoDailyResponse,
   IOpenMeteoGeocodeResponse,
   IOpenMeteoHourlyResponse,
 } from '@typing/apiTypes';
-import axios from 'axios';
-import * as process from 'process';
-
-import { cacheService } from '@/services';
 
 const openMeteoWeather = axios.create({
   baseURL: process.env.REACT_OPEN_METEO_BASE_URL,

@@ -1,4 +1,3 @@
-import { getDayName } from '@services/services';
 import { v1 } from 'uuid';
 
 import {
@@ -11,6 +10,7 @@ import {
   GoogleEventStoreType,
   NormalizedWeatherItemDataType,
 } from '@/types/storeTypes';
+import { getDayName } from '@services/services';
 
 import { getOpenMeteoIcon, getOpenWeatherIcon } from './getImagesServices';
 

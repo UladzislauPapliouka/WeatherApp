@@ -1,4 +1,11 @@
 import {
+  normalizeGoogleEventEntity,
+  normalizeOpenMeteoDaily,
+  normalizeOpenMeteoHourly,
+  normalizeOpenWeatherDaily,
+  normalizeOpenWeatherHourly,
+} from '@/services';
+import {
   IGoogleEventEntity,
   IOpenMeteoDailyResponse,
   IOpenMeteoHourlyResponse,
@@ -8,14 +15,6 @@ import {
   GoogleEventStoreType,
   NormalizedWeatherItemDataType,
 } from '@typing/storeTypes';
-
-import {
-  normalizeGoogleEventEntity,
-  normalizeOpenMeteoDaily,
-  normalizeOpenMeteoHourly,
-  normalizeOpenWeatherDaily,
-  normalizeOpenWeatherHourly,
-} from '@/services';
 
 describe('Entity data should be correct normalized to store', () => {
   test('Hourly data from OpenMeteo should be normalized correct', () => {

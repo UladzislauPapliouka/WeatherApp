@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as weatherImages from '@assets/weatherIcons';
 
 import WeatherImage from './styles';

@@ -1,4 +1,6 @@
 import React, { useCallback } from 'react';
+
+import { useAppDispatch, useAppSelector } from '@/store';
 import CustomSelect from '@components/CustomSelect';
 import LoginGoogleButton from '@components/LoginGoogleButton';
 import ModalWindow from '@components/Modal';
@@ -8,8 +10,6 @@ import {
   APIVariants,
   WeatherRepresentVariants,
 } from '@typing/storeTypes/appStateTypes';
-
-import { useAppDispatch, useAppSelector } from '@/store';
 
 import { SettingsModalWrapper, SubTitle, Title } from './styled';
 import ISettingModalProps from './types';

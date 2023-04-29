@@ -1,9 +1,9 @@
-import { normalizeGoogleEventEntity } from '@services/index';
-import { FETCH_GOOGLE_EVENTS_ACTION_TYPE } from '@store/actionCreators';
-import { IGoogleEventEntity } from '@typing/apiTypes/googleCalendarAPITypes';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchGoogleCalendarEvents } from '@/api';
+import { normalizeGoogleEventEntity } from '@services/index';
+import { FETCH_GOOGLE_EVENTS_ACTION_TYPE } from '@store/actionCreators';
+import { IGoogleEventEntity } from '@typing/apiTypes/googleCalendarAPITypes';
 
 import { GoogleEventsActions } from '../reducers';
 

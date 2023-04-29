@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { PersistGate } from 'redux-persist/integration/react';
+import { ThemeProvider } from 'styled-components';
+
 import App from '@components/App';
 import ErrorBoundary from '@components/ErrorBoundaries';
 import GlobalStyles from '@components/GlobalStyles';
 import Loader from '@components/Loader';
 import theme from '@constants/theme';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Store } from '@store';
 import { persistor } from '@store/store';
-import { PersistGate } from 'redux-persist/integration/react';
-import { ThemeProvider } from 'styled-components';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

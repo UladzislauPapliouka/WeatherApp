@@ -1,8 +1,3 @@
-import { AutocompleteActions } from '@store/reducers/searchAutocompleteReducer';
-import {
-  IOpenWeatherPlaceResponse,
-  IOpenWeatherResponse,
-} from '@typing/apiTypes/openWeatherAPITypes';
 import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
 import { v1 } from 'uuid';
 
@@ -12,6 +7,11 @@ import {
   normalizeOpenWeatherDaily,
   normalizeOpenWeatherHourly,
 } from '@/services';
+import { AutocompleteActions } from '@store/reducers/searchAutocompleteReducer';
+import {
+  IOpenWeatherPlaceResponse,
+  IOpenWeatherResponse,
+} from '@typing/apiTypes/openWeatherAPITypes';
 
 import {
   fetchDailyOpenWeatherAC,

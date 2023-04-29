@@ -1,8 +1,8 @@
 import React from 'react';
-import Loader from '@components/Loader';
-import WeatherItem from '@components/WeatherItem';
 
 import { useAppSelector } from '@/store';
+import Loader from '@components/Loader';
+import WeatherItem from '@components/WeatherItem';
 
 import ForecastWrapper from './styled';
 

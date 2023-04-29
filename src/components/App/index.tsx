@@ -1,4 +1,7 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
+
+import useUserLocation from '@/hooks/locationHook';
+import { getBackground } from '@/services';
 import { bg1, bg2 } from '@assets/backgrounds';
 import DateBlock from '@components/DateBlock';
 import { SettingIcon } from '@components/Icons';
@@ -8,9 +11,6 @@ import GoogleEventsContainer from '@containers/GoogleEventsContainer';
 import WeatherForecastContainer from '@containers/WeatherForecastContainer';
 import { useAppSelector } from '@store';
 import { WeatherIconVariants } from '@typing/storeTypes/weatherStateType';
-
-import useUserLocation from '@/hooks/locationHook';
-import { getBackground } from '@/services';
 
 import {
   AppBackground,

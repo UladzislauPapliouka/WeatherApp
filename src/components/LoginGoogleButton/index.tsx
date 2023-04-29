@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import { gapi, loadAuth2 } from 'gapi-script';
+
+import { useAppDispatch, useAppSelector } from '@/store';
 import loginIcon from '@assets/icons/google.webp';
 import { fetchGoogleEventsAC } from '@store/actionCreators';
 import { userActions } from '@store/reducers/userReducer';
 import { IGoogleUserEntity } from '@typing/apiTypes/googleCalendarAPITypes';
-import { gapi, loadAuth2 } from 'gapi-script';
-
-import { useAppDispatch, useAppSelector } from '@/store';
 
 import { ButtonText, GoogleImage, LoginGoogleButtonWrapper } from './styled';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Chip from '@components/Chip';
 import DegreesSpan from '@components/DegreesSpan';
 import WeatherIcon from '@components/WeatherIcon';

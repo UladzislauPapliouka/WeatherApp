@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
 
 const initialState: Array<NormalizedPlaceDataType> = [];

@@ -1,11 +1,11 @@
-import {
-  IOpenWeatherPlaceResponse,
-  IOpenWeatherResponse,
-} from '@typing/apiTypes/openWeatherAPITypes';
 import axios from 'axios';
 import * as process from 'process';
 
 import { cacheService } from '@/services';
+import {
+  IOpenWeatherPlaceResponse,
+  IOpenWeatherResponse,
+} from '@typing/apiTypes/openWeatherAPITypes';
 
 const openWeather = axios.create({
   baseURL: process.env.REACT_OPEN_WEATHER_BASE_URL,
