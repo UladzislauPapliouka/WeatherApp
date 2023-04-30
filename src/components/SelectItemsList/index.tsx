@@ -3,7 +3,7 @@ import React from 'react';
 import { SelectListWrapper, SelectOption } from './styled';
 import { ISelectListProps } from './types';
 
-const SelectItemsList = <T,>({
+const SelectItemsList = <T extends { toString: () => string }>({
   options,
   handleChangeSelected,
 }: ISelectListProps<T>) => {
@@ -18,8 +18,8 @@ const SelectItemsList = <T,>({
           ((option: T) => handleChangeSelected(option))(option);
 
         return (
-          <SelectOption key={option?.toString()} onClick={handleSelect}>
-            {option?.toString()}
+          <SelectOption key={option.toString()} onClick={handleSelect}>
+            {option.toString()}
           </SelectOption>
         );
       })}

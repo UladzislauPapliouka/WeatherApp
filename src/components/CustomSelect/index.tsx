@@ -11,7 +11,7 @@ import {
 } from './styled';
 import { ICustomSelectProps } from './types';
 
-const CustomSelect = <T,>({
+const CustomSelect = <T extends { toString: () => string }>({
   options,
   selected,
   onChangeSelected,
