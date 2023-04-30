@@ -11,6 +11,9 @@ const ModalWrapper = styled.div`
   &:empty {
     display: none;
   }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default ModalWrapper;

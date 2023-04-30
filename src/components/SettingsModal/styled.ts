@@ -17,6 +17,9 @@ export const SettingsModalWrapper = styled.div`
       sizes.displayBreakpoints.md}px) {
     width: 80%;
   }
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const TitleMixin = css`
