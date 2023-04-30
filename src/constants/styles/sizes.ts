@@ -73,7 +73,7 @@ const selectGapSizes: ISize = {
 };
 
 const selectWidthSizes: ISize = {
-  md: 400,
+  md: 300,
 };
 
 const selectArrowSizes: ISize = {

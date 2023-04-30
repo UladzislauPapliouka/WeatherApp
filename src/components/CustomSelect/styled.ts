@@ -10,7 +10,9 @@ export const CustomSelectWrapper = styled.div`
       sizes.paddingSize.sm && 2 * sizes.paddingSize.sm}px;
   color: ${({ theme: { colors } }) => colors.textColorDark};
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.md}px;
+  box-sizing: border-box;
   min-width: ${({ theme: { sizes } }) => sizes.selectWidthSizes.md}px;
+  width: 90%;
   border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
   &:hover {
     background-color: ${({ theme: { colors } }) => colors.lightHoverColor};
