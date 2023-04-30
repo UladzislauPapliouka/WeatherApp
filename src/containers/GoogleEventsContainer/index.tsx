@@ -1,9 +1,14 @@
 import React from 'react';
 
 import { useAppSelector } from '@/store';
-import GoogleEvent from '@components/GoogleEvent';
+import Chip from '@components/Chip';
 
-import { GoogleEventsWrapper, NoEventsText } from './styled';
+import {
+  GoogleEventsWrapper,
+  GoogleEventTitle,
+  GoogleEventWrapper,
+  NoEventsText,
+} from './styled';
 
 const GoogleEventsContainer = () => {
   const events = useAppSelector((state) => state.googleEvents);
@@ -13,7 +18,10 @@ const GoogleEventsContainer = () => {
       {events.length ? (
         <>
           {events.map(({ time, title }) => (
-            <GoogleEvent key={time + title} time={time} eventTitle={title} />
+            <GoogleEventWrapper key={time + title}>
+              <Chip text={time.slice(0, 5)} />
+              <GoogleEventTitle>{title}</GoogleEventTitle>
+            </GoogleEventWrapper>
           ))}
         </>
       ) : (
