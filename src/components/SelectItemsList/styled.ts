@@ -4,7 +4,7 @@ export const SelectListWrapper = styled.div`
   box-sizing: border-box;
   position: absolute;
   width: 100%;
-  top: calc(100% + 4px);
+  top: ${({ theme: { sizes } }) => `calc(100% + ${sizes.selectGapSizes.sm}px)`};
   left: 0;
   display: flex;
   flex-direction: column;
