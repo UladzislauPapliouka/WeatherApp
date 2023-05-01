@@ -1,32 +1,23 @@
-import bg1 from './bg1.jpg';
-import bg2 from './bg2.jpg';
-
-import cloudsMain from './cloudsMain.jpg';
-import cloudsSecondary from './cloudsSecondary.jpg';
-
-import fogMain from './fogMain.jpg';
-import fogSecondary from './fogSecondary.jpg';
-
-import partlySunnyMain from './partlySunnyMain.jpg';
-import partlySunnySecondary from './partlySunnySecondary.jpg';
-
-import rainMain from './rainMain.jpg';
-import rainSecondary from './rainSecondary.jpg';
-
-import showerMain from './showerMain.jpg';
-import showerSEcondary from './showerSecondary.jpg';
-
-import snowMain from './snowMain.jpg';
-import snowSecondary from './snowSecondary.jpg';
-
-import sunMain from './sunMain.jpg';
-import sunSecondary from './sunSecondary.jpg';
-
-import thunderMain from './thunderMain.jpg';
-import thunderSecondary from './thunderSecondary.jpg';
-
-import windyMain from './windyMain.jpg';
-import windySecondary from './windySecondary.jpg';
+import bg1 from './bg1.webp';
+import bg2 from './bg2.webp';
+import cloudsMain from './cloudsMain.webp';
+import cloudsSecondary from './cloudsSecondary.webp';
+import fogMain from './fogMain.webp';
+import fogSecondary from './fogSecondary.webp';
+import partlySunnyMain from './partlySunnyMain.webp';
+import partlySunnySecondary from './partlySunnySecondary.webp';
+import rainMain from './rainMain.webp';
+import rainSecondary from './rainSecondary.webp';
+import showerMain from './showerMain.webp';
+import showerSEcondary from './showerSecondary.webp';
+import snowMain from './snowMain.webp';
+import snowSecondary from './snowSecondary.webp';
+import sunMain from './sunMain.webp';
+import sunSecondary from './sunSecondary.webp';
+import thunderMain from './thunderMain.webp';
+import thunderSecondary from './thunderSecondary.webp';
+import windyMain from './windyMain.webp';
+import windySecondary from './windySecondary.webp';
 
 export {
   cloudsMain,

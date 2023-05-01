@@ -1,23 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import App from './App';
-import { Store } from './Store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { ThemeProvider } from 'styled-components';
+
+import App from '@components/App';
+import ErrorBoundary from '@components/ErrorBoundaries';
+import GlobalStyles from '@components/GlobalStyles';
+import Loader from '@components/Loader';
+import theme from '@constants/theme';
+import { Store } from '@store';
+import { persistor } from '@store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
 root.render(
-  <React.StrictMode>
-    <Provider store={Store}>
-      <GoogleOAuthProvider clientId="573990938888-37r8rfbfecr9dne6q7m3ht0li3pf17ed.apps.googleusercontent.com">
-        <App />
-      </GoogleOAuthProvider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={Store}>
+    <GlobalStyles />
+    <ThemeProvider theme={theme}>
+      <ErrorBoundary>
+        <PersistGate persistor={persistor} loading={<Loader />}>
+          <GoogleOAuthProvider
+            clientId={`${process.env.REACT_GOOGLE_CLIENT_ID}.apps.googleusercontent.com`}
+          >
+            <App />
+          </GoogleOAuthProvider>
+        </PersistGate>
+      </ErrorBoundary>
+    </ThemeProvider>
+  </Provider>,
 );
+
+// @ts-ignore
+if (window.Cypress) {
+  // @ts-ignore
+  window.store = Store;
+}
