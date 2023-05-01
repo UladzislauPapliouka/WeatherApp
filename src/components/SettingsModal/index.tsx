@@ -23,22 +23,24 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
 
   const setPreferredService = useCallback(
     (value: string) => {
+      onClose();
       dispatch(
         AppActions.setPreferredAPI({ preferredAPI: value as APIVariants }),
       );
     },
-    [dispatch],
+    [dispatch, onClose],
   );
 
   const setWeatherRepresent = useCallback(
     (value: string) => {
+      onClose();
       dispatch(
         AppActions.setWeatherRepresent({
           weatherRepresent: value as WeatherRepresentVariants,
         }),
       );
     },
-    [dispatch],
+    [dispatch, onClose],
   );
 
   const handleBackgroundClick = () => {
@@ -53,6 +55,7 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
         <PlaceSearch
           hourly={weatherRepresent === WeatherRepresentVariants.hourly}
           preferredAPI={preferredAPI}
+          chooseCallback={onClose}
         />
         <SubTitle>Service</SubTitle>
         <CustomSelect

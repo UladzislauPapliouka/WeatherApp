@@ -35,6 +35,8 @@ module.exports = {
       "namedComponents":  "arrow-function",
       "unnamedComponents":  "arrow-function",
     }],
+    'react/require-default-props':"off",
+    'no-unused-expressions':"off",
     'simple-import-sort/imports': [
       'error',
       {

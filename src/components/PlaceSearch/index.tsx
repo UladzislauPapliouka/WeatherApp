@@ -22,9 +22,11 @@ import { PlaceSearchWrapper, SearchButton, SearchInput } from './styled';
 const PlaceSearch = ({
   preferredAPI,
   hourly,
+  chooseCallback,
 }: {
   preferredAPI: APIVariants;
   hourly: boolean;
+  chooseCallback?: () => void;
 }) => {
   const dispatch = useAppDispatch();
 
@@ -57,6 +59,7 @@ const PlaceSearch = ({
   };
 
   const handleClick = () => {
+    chooseCallback && chooseCallback();
     if (preferredAPI === APIVariants.openWeatherAPI) {
       dispatch(findPlaceByNameOpenWeatherAC(field, hourly));
     } else {
@@ -76,6 +79,7 @@ const PlaceSearch = ({
 
   const handleAutocomplete = useCallback(
     (sel: NormalizedPlaceDataType) => {
+      chooseCallback && chooseCallback();
       setField(sel.city);
       dispatch(PlaceActions.setPlace(sel));
       setIsAutocomplete(false);
