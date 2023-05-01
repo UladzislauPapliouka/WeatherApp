@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useAppSelector } from '@/store';
 import Chip from '@components/Chip';
+import { getGoogleEvents } from '@store/selectors/selector';
 
 import {
   GoogleEventsWrapper,
@@ -11,7 +12,7 @@ import {
 } from './styled';
 
 const GoogleEventsContainer = () => {
-  const events = useAppSelector((state) => state.googleEvents);
+  const events = useAppSelector(getGoogleEvents);
 
   return (
     <GoogleEventsWrapper data-cy="googleEventsList">

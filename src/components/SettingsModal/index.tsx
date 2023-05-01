@@ -6,6 +6,7 @@ import LoginGoogleButton from '@components/LoginGoogleButton';
 import ModalWindow from '@components/Modal';
 import PlaceSearch from '@components/PlaceSearch';
 import { AppActions } from '@store/reducers/appReducer';
+import { getAppState } from '@store/selectors/selector';
 import {
   APIVariants,
   WeatherRepresentVariants,
@@ -15,9 +16,7 @@ import { SettingsModalWrapper, SubTitle, Title } from './styled';
 import ISettingModalProps from './types';
 
 const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
-  const { preferredAPI, weatherRepresent } = useAppSelector(
-    (state) => state.appState,
-  );
+  const { preferredAPI, weatherRepresent } = useAppSelector(getAppState);
 
   const dispatch = useAppDispatch();
 

@@ -14,6 +14,7 @@ import {
   getAutocompleteWeatherAC,
 } from '@store/actionCreators';
 import { PlaceActions } from '@store/reducers';
+import { getAutocompleteVariants, getPlace } from '@store/selectors/selector';
 import { APIVariants } from '@typing/storeTypes/appStateTypes';
 import { NormalizedPlaceDataType } from '@typing/storeTypes/placeStateType';
 
@@ -32,18 +33,11 @@ const PlaceSearch = ({
 
   const [isAutoComplete, setIsAutocomplete] = useState(false);
 
-  const autoCompleteVariants = useAppSelector((state) =>
-    state.autocompleteVariants.map((opt) => ({
-      ...opt,
-      toString() {
-        return `${opt.city},${opt.country}`;
-      },
-    })),
-  );
+  const autoCompleteVariants = useAppSelector(getAutocompleteVariants);
 
-  const initialField = useAppSelector((state) => state.placeInfo.city);
+  const { city } = useAppSelector(getPlace);
 
-  const [field, setField] = useState(initialField);
+  const [field, setField] = useState(city);
 
   const onChangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
     e.preventDefault();

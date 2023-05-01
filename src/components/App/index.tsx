@@ -10,6 +10,7 @@ import SettingsModal from '@components/SettingsModal';
 import GoogleEventsContainer from '@containers/GoogleEventsContainer';
 import WeatherForecastContainer from '@containers/WeatherForecastContainer';
 import { useAppSelector } from '@store';
+import { getCurrentWeather } from '@store/selectors/selector';
 import { WeatherIconVariants } from '@typing/storeTypes/weatherStateType';
 
 import { Info, SettingButtonWrapper, WithGoogleEvents } from './styled';
@@ -19,7 +20,7 @@ const App = () => {
 
   useUserLocation();
 
-  const currentWeather = useAppSelector((state) => state.weatherInfo[0]);
+  const currentWeather = useAppSelector(getCurrentWeather);
 
   const [backgrounds, setBackgrounds] = useState(
     getBackground(WeatherIconVariants.Sun),

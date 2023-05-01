@@ -3,19 +3,18 @@ import React from 'react';
 import { useAppSelector } from '@/store';
 import Loader from '@components/Loader';
 import WeatherItem from '@components/WeatherItem';
+import { getAppState, getForecast } from '@store/selectors/selector';
 
 import ForecastWrapper from './styled';
 
 const WeatherForecastContainer = () => {
-  const weatherItems = useAppSelector((state) => state.weatherInfo);
+  const weatherItems = useAppSelector(getForecast);
 
-  const isFetching = useAppSelector(
-    (state) => state.appState.isWeatherFetching,
-  );
+  const { isWeatherFetching } = useAppSelector(getAppState);
 
   return (
     <ForecastWrapper>
-      {isFetching ? (
+      {isWeatherFetching ? (
         <Loader />
       ) : (
         weatherItems.map(({ id, degrees, name, icon }, itemIndex) => (

@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import loginIcon from '@assets/icons/google.webp';
 import { fetchGoogleEventsAC } from '@store/actionCreators';
 import { userActions } from '@store/reducers/userReducer';
+import { getGoogleUser } from '@store/selectors/selector';
 import { IGoogleUserEntity } from '@typing/apiTypes/googleCalendarAPITypes';
 
 import { ButtonText, GoogleImage, LoginGoogleButtonWrapper } from './styled';
@@ -12,7 +13,7 @@ import { ButtonText, GoogleImage, LoginGoogleButtonWrapper } from './styled';
 const LoginGoogleButton = () => {
   const dispatch = useAppDispatch();
 
-  const user = useAppSelector((state) => state.userReducer);
+  const user = useAppSelector(getGoogleUser);
 
   const buttonRef = useRef(null);
 
