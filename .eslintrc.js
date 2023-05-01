@@ -37,6 +37,7 @@ module.exports = {
     }],
     'react/require-default-props':"off",
     'no-unused-expressions':"off",
+    'react-hooks/exhaustive-deps':'off',
     'simple-import-sort/imports': [
       'error',
       {

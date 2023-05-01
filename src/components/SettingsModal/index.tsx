@@ -28,7 +28,7 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
         AppActions.setPreferredAPI({ preferredAPI: value as APIVariants }),
       );
     },
-    [dispatch, onClose],
+    [onClose],
   );
 
   const setWeatherRepresent = useCallback(
@@ -40,7 +40,7 @@ const SettingsModal = React.memo(({ isOpen, onClose }: ISettingModalProps) => {
         }),
       );
     },
-    [dispatch, onClose],
+    [onClose],
   );
 
   const handleBackgroundClick = () => {

@@ -77,15 +77,12 @@ const PlaceSearch = ({
     }
   };
 
-  const handleAutocomplete = useCallback(
-    (sel: NormalizedPlaceDataType) => {
-      chooseCallback && chooseCallback();
-      setField(sel.city);
-      dispatch(PlaceActions.setPlace(sel));
-      setIsAutocomplete(false);
-    },
-    [dispatch],
-  );
+  const handleAutocomplete = useCallback((sel: NormalizedPlaceDataType) => {
+    chooseCallback && chooseCallback();
+    setField(sel.city);
+    dispatch(PlaceActions.setPlace(sel));
+    setIsAutocomplete(false);
+  }, []);
 
   return (
     <PlaceSearchWrapper>

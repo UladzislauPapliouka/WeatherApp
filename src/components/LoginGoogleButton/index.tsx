@@ -35,7 +35,7 @@ const LoginGoogleButton = () => {
     };
 
     initializeGoogleLogin();
-  }, [buttonRef, user, dispatch]);
+  }, [buttonRef, user]);
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();
 
