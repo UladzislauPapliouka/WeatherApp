@@ -11,6 +11,7 @@ export const initialState: NormalizedPlaceDataType = {
     latitude: 0,
     longitude: 0,
   },
+  id: '',
 };
 const persistConfig = {
   key: 'PlaceState',

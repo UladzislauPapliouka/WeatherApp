@@ -115,6 +115,7 @@ function* findPlaceByCoordsOpenWeather(
           latitude: place.lat,
           longitude: place.lon,
         },
+        id: v1(),
       }),
     );
     if (place) {
@@ -150,6 +151,7 @@ function* findPlaceByNameOpenWeather(
           latitude: place.lat,
           longitude: place.lon,
         },
+        id: v1(),
       }),
     );
     if (place) {
@@ -183,6 +185,7 @@ function* getAutocomplete(
             latitude: place.lat,
             longitude: place.lon,
           },
+          id: v1(),
         })),
       ),
     );

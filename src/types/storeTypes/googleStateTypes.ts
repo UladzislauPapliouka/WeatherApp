@@ -1,6 +1,7 @@
 export type GoogleEventStoreType = {
   time: string;
   title: string;
+  id: string;
 };
 export type GoogleUserInfoType = {
   Ad: string;

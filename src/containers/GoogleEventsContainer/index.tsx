@@ -18,8 +18,8 @@ const GoogleEventsContainer = () => {
     <GoogleEventsWrapper data-cy="googleEventsList">
       {events.length ? (
         <>
-          {events.map(({ time, title }) => (
-            <GoogleEventWrapper key={time + title}>
+          {events.map(({ time, title, id }) => (
+            <GoogleEventWrapper key={id}>
               <Chip text={time.slice(0, 5)} />
               <GoogleEventTitle>{title}</GoogleEventTitle>
             </GoogleEventWrapper>

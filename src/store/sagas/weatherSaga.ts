@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { call, delay, put, select, takeLatest } from 'redux-saga/effects';
+import { v1 } from 'uuid';
 
 import { openMeteoAPI, weatherAPI } from '@/api';
 import { normalizeOpenMeteoDaily, normalizeOpenMeteoHourly } from '@/services';
@@ -84,6 +85,7 @@ function* findPlaceWeatherByCoords(
           latitude: place.lat,
           longitude: place.lon,
         },
+        id: v1(),
       }),
     );
     if (place) {
@@ -117,6 +119,7 @@ function* findPlaceWeatherByName(
           latitude: place.latitude,
           longitude: place.longitude,
         },
+        id: v1(),
       }),
     );
     if (place) {
@@ -152,6 +155,7 @@ function* getAutoCompleteWeather(
             latitude: place.latitude,
             longitude: place.longitude,
           },
+          id: v1(),
         })),
       ),
     );

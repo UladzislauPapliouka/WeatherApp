@@ -107,4 +107,5 @@ export const normalizeGoogleEventEntity = (
     minute: '2-digit',
   }).format(new Date(event.start.dateTime)),
   title: event.summary,
+  id: v1(),
 });

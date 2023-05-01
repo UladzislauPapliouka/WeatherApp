@@ -73,8 +73,10 @@ const PlaceSearch = ({
 
   const handleAutocomplete = useCallback((sel: NormalizedPlaceDataType) => {
     chooseCallback && chooseCallback();
+    const { city, country, id, coordinates } = sel;
+
     setField(sel.city);
-    dispatch(PlaceActions.setPlace(sel));
+    dispatch(PlaceActions.setPlace({ country, coordinates, city, id }));
     setIsAutocomplete(false);
   }, []);
 

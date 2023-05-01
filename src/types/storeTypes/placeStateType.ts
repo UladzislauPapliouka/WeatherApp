@@ -5,4 +5,5 @@ export type NormalizedPlaceDataType = {
     latitude: number;
     longitude: number;
   };
+  id: string;
 };

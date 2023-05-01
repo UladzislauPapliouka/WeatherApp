@@ -1,4 +1,5 @@
 import React from 'react';
+import { v1 } from 'uuid';
 
 import { SelectListWrapper, SelectOption } from './styled';
 import { ISelectListProps } from './types';
@@ -18,7 +19,7 @@ const SelectItemsList = <T extends { toString: () => string }>({
           ((option: T) => handleChangeSelected(option))(option);
 
         return (
-          <SelectOption key={option.toString()} onClick={handleSelect}>
+          <SelectOption key={v1()} onClick={handleSelect}>
             {option.toString()}
           </SelectOption>
         );
