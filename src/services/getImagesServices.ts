@@ -33,7 +33,7 @@ export function getOpenWeatherIcon(code: number) {
   return WeatherIconVariants.Windy;
 }
 
-export function getBackground(weather: WeatherIconVariants) {
+export function getBackground(weather: WeatherIconVariants): [string, string] {
   switch (weather) {
     case WeatherIconVariants.Cloudy:
       return [backgrounds.cloudsMain, backgrounds.cloudsSecondary];

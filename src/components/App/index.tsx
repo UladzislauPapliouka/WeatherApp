@@ -2,9 +2,9 @@ import React, { useCallback, useLayoutEffect, useState } from 'react';
 
 import useUserLocation from '@/hooks/locationHook';
 import { getBackground } from '@/services';
-import { bg1, bg2 } from '@assets/backgrounds';
 import DateBlock from '@components/DateBlock';
 import { SettingIcon } from '@components/Icons';
+import Layout from '@components/Layout';
 import PlaceBlock from '@components/PlaceBlock';
 import SettingsModal from '@components/SettingsModal';
 import GoogleEventsContainer from '@containers/GoogleEventsContainer';
@@ -12,14 +12,7 @@ import WeatherForecastContainer from '@containers/WeatherForecastContainer';
 import { useAppSelector } from '@store';
 import { WeatherIconVariants } from '@typing/storeTypes/weatherStateType';
 
-import {
-  AppBackground,
-  AppWrapper,
-  Container,
-  Info,
-  SettingButtonWrapper,
-  WithGoogleEvents,
-} from './styled';
+import { Info, SettingButtonWrapper, WithGoogleEvents } from './styled';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,36 +34,23 @@ const App = () => {
   );
 
   return (
-    <AppWrapper
-      style={{ backgroundImage: `url(${backgrounds ? backgrounds[1] : bg2})` }}
-    >
-      <AppBackground>
-        <Container
-          style={{
-            backgroundImage: `url(${backgrounds ? backgrounds[0] : bg1})`,
-          }}
-        >
-          <SettingButtonWrapper
-            data-cy="settingsButton"
-            onClick={handleToggleModalWindow}
-          >
-            <SettingIcon color="#f1eaea" scale={1} />
-          </SettingButtonWrapper>
-          <WithGoogleEvents>
-            <Info>
-              <DateBlock />
-              <PlaceBlock />
-            </Info>
-            <GoogleEventsContainer />
-          </WithGoogleEvents>
-          <WeatherForecastContainer />
-          <SettingsModal
-            isOpen={isModalOpen}
-            onClose={handleToggleModalWindow}
-          />
-        </Container>
-      </AppBackground>
-    </AppWrapper>
+    <Layout backgrounds={backgrounds}>
+      <SettingButtonWrapper
+        data-cy="settingsButton"
+        onClick={handleToggleModalWindow}
+      >
+        <SettingIcon color="#f1eaea" scale={1} />
+      </SettingButtonWrapper>
+      <WithGoogleEvents>
+        <Info>
+          <DateBlock />
+          <PlaceBlock />
+        </Info>
+        <GoogleEventsContainer />
+      </WithGoogleEvents>
+      <WeatherForecastContainer />
+      <SettingsModal isOpen={isModalOpen} onClose={handleToggleModalWindow} />
+    </Layout>
   );
 };
 
