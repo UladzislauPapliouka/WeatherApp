@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 
-import { CheckIcon } from '@components/Icons';
+import { CheckIcon } from '@assets/icons';
 import SelectItemsList from '@components/SelectItemsList';
 
 import {

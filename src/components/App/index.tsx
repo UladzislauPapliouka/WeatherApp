@@ -2,8 +2,8 @@ import React, { useCallback, useLayoutEffect, useState } from 'react';
 
 import useUserLocation from '@/hooks/locationHook';
 import { getBackground } from '@/services';
+import { SettingIcon } from '@assets/icons';
 import DateBlock from '@components/DateBlock';
-import { SettingIcon } from '@components/Icons';
 import Layout from '@components/Layout';
 import PlaceBlock from '@components/PlaceBlock';
 import SettingsModal from '@components/SettingsModal';
